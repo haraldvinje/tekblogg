@@ -14,4 +14,4 @@ export const fadeIn = {
   transition: {
     duration: 0.05
   }
-} 
+}

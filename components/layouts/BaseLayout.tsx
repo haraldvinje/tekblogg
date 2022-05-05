@@ -12,7 +12,7 @@ const BaseLayout = ({ children }: { children: ReactNode }) => {
             </Head>
             <Navbar />
             <AnimationLayout>
-                <main className="my-20 py-[5%] px-[10%] xl:px-[20%]">{children}</main>
+                <main className="flex justify-center my-10 py-[5%] px-[10%] xl:px-[20%]">{children}</main>
             </AnimationLayout>
         </>
     )
