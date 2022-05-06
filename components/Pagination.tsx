@@ -38,9 +38,11 @@ export const Pagination = ({
   return (
     <div className="flex justify-between sm:scale-100 scale-75">
       <button
-        className={`px-2 py-1 border border-gray-300 rounded-lg ${
-          currentPageNumber > 0 ? "" : "invisible"
-        }`}
+        className={`
+          w-8 py-1 border border-gray-300 rounded-lg
+          transition-colors duration-200 ease-in-out hover:bg-slate-400
+          ${currentPageNumber > 0 ? "" : "invisible"}
+        `}
         onClick={() => handlePageClick(currentPageNumber - 1)}
       >
         <FontAwesomeIcon icon={faArrowLeft} />
@@ -49,7 +51,10 @@ export const Pagination = ({
         {currentPageNumber >= 2 && (
           <>
             <button
-              className="px-2 py-1 border border-gray-300 rounded-lg"
+              className="
+                w-8 py-1 border border-gray-300 rounded-lg
+                transition-colors duration-200 ease-in-out hover:bg-slate-400
+              "
               onClick={() => handlePageClick(0)}
             >
               1

@@ -29,9 +29,10 @@ const Post = ({ post }: { post: Post }) => {
       </Head>
       <article className='prose lg:prose-xl w-full'>
         <h1 className='flex justify-center'>{title}</h1>
-        <span>
-          <i>{`${author} - ${formatDate(publishedAt)}`}</i>
-        </span>
+        <div className='flex flex-col space-y-2 my-2'>
+          <i>{author}</i>
+          {formatDate(publishedAt)}
+        </div>
         {categories && (
           <>
             <div className="flex">
@@ -40,14 +41,14 @@ const Post = ({ post }: { post: Post }) => {
             </div>
           </>
         )}
-        <span className='text-xl'>
+        <span className='text-xl font-bold'>
           <RichText value={introduction} />
         </span>
         {mainImage && (
           <img
             alt={"mainImage"}
             loading="lazy"
-            src={urlFor(mainImage).width(600).height(450).fit('max').auto('format').url()}
+            src={urlFor(mainImage).fit('max').auto('format').url()}
           />
         )}
         <RichText value={body} />

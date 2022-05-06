@@ -30,8 +30,6 @@ const ptComponents = {
           alt={value.alt || " "}
           loading="lazy"
           src={urlFor(value)
-            .width(530)
-            .height(400)
             .fit("max")
             .auto("format")
             .url()}

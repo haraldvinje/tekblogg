@@ -4,6 +4,7 @@ import client from "lib/sanityClient";
 import BlogPostCard from "components/BlogPostCard";
 import { Post } from "./post/[slug]";
 import { Pagination } from "components/Pagination";
+import { randomUUID } from "crypto";
 
 const Home = ({ posts }: { posts: PostCardData[] }) => {
   const itemsPerPage = 3;
@@ -19,7 +20,7 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
   };
 
   return (
-    <div>
+    <div className="w-[80%]">
       {currentPosts.map((post, index) => (
         <BlogPostCard key={index} post={post} />
       ))}

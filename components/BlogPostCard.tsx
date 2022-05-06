@@ -10,15 +10,15 @@ const BlogPostCard = ({ post }: { post: PostCardData }) => {
   const { title, categories, mainImage, publishedAt, introduction, slug } = post;
   const linkRef = `/post/${slug}`;
   return (
-    <div className="transition ease-in-out shadow-sm rounded-md border border-slate-400 mb-8 p-2 hover:shadow-xl sm:scale-100 scale-75">
+    <div className="transition ease-in-out shadow-sm rounded-md border border-slate-400 sm:mb-8 p-2 hover:shadow-xl sm:scale-100 scale-75">
       <div className="ml-4">
-        <div className="my-2 flex space-x-2">
+        <div className="my-2 flex items-center space-x-2">
           <Link href={linkRef} passHref>
             <a>
               <Image
                 src={urlFor(mainImage).url()}
-                width={150}
-                height={150}
+                width={300}
+                height={300}
                 layout="intrinsic"
                 alt="mainImage"
               />
@@ -31,7 +31,7 @@ const BlogPostCard = ({ post }: { post: PostCardData }) => {
             <div className="text-xs my-2 opacity-60">
               {formatDate(publishedAt)}
             </div>
-            <RichText className="text-sm" value={introduction} />
+            <RichText className="text-sm mr-6" value={introduction} />
           </div>
         </div>
         {categories?.map((category, index) => (
