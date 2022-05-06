@@ -8,7 +8,7 @@ const BaseLayout = ({ children }: { children: ReactNode }) => {
     return (
         <>
             <Head>
-                <title>To be added 🎉</title>
+                <title>Blogg</title>
             </Head>
             <Navbar />
             <AnimationLayout>
