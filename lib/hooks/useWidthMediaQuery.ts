@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 
 export const useWidthMediaQuery = (width: number) => {
-  const [targetReached, setTargetReached] = useState(true);
+  const [targetReached, setTargetReached] = useState(false);
 
   const updateTarget = useCallback((e: MediaQueryListEvent)  => {
     if (e.matches) {

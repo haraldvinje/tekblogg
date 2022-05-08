@@ -3,7 +3,7 @@
 import groq from 'groq'
 import client from 'lib/sanityClient'
 import { formatAuthors, formatDate } from 'lib/utils'
-import { RichText, SanityImageResponse, urlFor, PortableTextValue } from 'components/RichText'
+import { RichText, SanityImage, urlFor, PortableTextValue } from 'components/RichText'
 import { Category } from 'components/Category'
 import Head from 'next/head'
 
@@ -11,7 +11,7 @@ export interface Post {
   title: string
   authors: string[]
   slug: string
-  mainImage: SanityImageResponse
+  mainImage: SanityImage
   categories?: string[]
   publishedAt: string
   introduction: PortableTextValue
