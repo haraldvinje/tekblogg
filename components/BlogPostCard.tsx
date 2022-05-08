@@ -19,13 +19,17 @@ const BlogPostCard = ({ post }: { post: PostCardData }) => {
           {wideEnough && (
             <Link href={linkRef} passHref>
               <a>
-                <Image
-                  src={urlFor(mainImage).url()}
-                  width={300}
-                  height={300}
-                  layout="intrinsic"
-                  alt="mainImage"
-                />
+                <div style={{width: '200px'}}>
+                  <Image
+                    src={urlFor(mainImage).url()}
+                    alt="mainImage"
+                    width={200}
+                    height={200}
+                    quality={100}
+                    placeholder="blur"
+                    blurDataURL="https://image-component.nextjs.gallery/placeholder"
+                  />
+                </div>
               </a>
             </Link>
           )}
