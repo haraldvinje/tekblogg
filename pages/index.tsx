@@ -36,7 +36,7 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
 
 export type PostCardData = Omit<Post, "body">;
 
-const query = groq`*[_type == "post"]{
+const query = groq`*[_type == "post"] | order(publishedAt desc) {
   title,
   "author": author->name,
   "categories": categories[]->title,
