@@ -13,7 +13,7 @@ export const Pagination = ({
   pageCount: number;
 }) => {
   const numberOfPageIcons = 5;
-  const pageNumbers = Array.from(Array(pageCount).keys());
+  const [pageNumbers] = useState(Array.from(Array(pageCount).keys()));
   const [currentPageNumber, setCurrentPage] = useState(initalPageNumber);
   const [pagesToDisplay, setPagesToDisplay] = useState(
     pageNumbers.slice(currentPageNumber, currentPageNumber + numberOfPageIcons)
@@ -28,7 +28,7 @@ export const Pagination = ({
         end
       )
     );
-  }, [currentPageNumber, pageNumbers, pageCount]);
+  }, [currentPageNumber, pageCount, pageNumbers])
 
   const handlePageClick = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -48,7 +48,7 @@ export const Pagination = ({
         <FontAwesomeIcon icon={faArrowLeft} />
       </button>
       <div className="flex justify-center space-x-4 max-w-24">
-        {currentPageNumber >= 2 && (
+        {currentPageNumber >= 2 && pageCount > numberOfPageIcons && (
           <>
             <button
               className="
@@ -59,7 +59,7 @@ export const Pagination = ({
             >
               1
             </button>
-            <span>...</span>
+            {pagesToDisplay[0] !== 1 && <span>...</span>}
           </>
         )}
         {pagesToDisplay.map((i) => (

@@ -4,7 +4,6 @@ import client from "lib/sanityClient";
 import BlogPostCard from "components/BlogPostCard";
 import { Post } from "./post/[slug]";
 import { Pagination } from "components/Pagination";
-import { randomUUID } from "crypto";
 
 const Home = ({ posts }: { posts: PostCardData[] }) => {
   const itemsPerPage = 3;
