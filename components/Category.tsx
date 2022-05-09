@@ -15,7 +15,8 @@ export const Category = ({
       className={`
                 inline-block bg-gray-200 rounded-full px-3 py-1 
                 text-sm font-semibold text-gray-700 mr-2 mb-2
-                ${clicked && "bg-gray-400"} ${clickable && "hover:cursor-pointer"}}`}
+                ${clickable && "hover:cursor-pointer"}
+                ${clicked && "bg-gray-400"} `}
       onClick={() => {
         if (clickable) {
           onClick(value);
