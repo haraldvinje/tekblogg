@@ -96,15 +96,7 @@ const query = groq`*[_type == "post"] | order(publishedAt desc) {
 }`;
 
 export const getStaticProps = async () => {
-  const myposts: PostCardData[] = await client.fetch(query);
-
-  const posts = myposts.flatMap((p) => [
-    { ...p, title: randomUUID() },
-    { ...p, title: randomUUID() },
-    { ...p, title: randomUUID() },
-    { ...p, title: randomUUID() },
-    { ...p, title: randomUUID() },
-  ]);
+  const posts: PostCardData[] = await client.fetch(query);
 
   return {
     props: {
