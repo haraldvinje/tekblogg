@@ -5,7 +5,6 @@ import BlogPostCard from "components/BlogPostCard";
 import { Post } from "./post/[slug]";
 import { Pagination } from "components/Pagination";
 import { Category } from "components/Category";
-import { randomUUID } from "crypto";
 
 function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
   return value !== null && value !== undefined;
@@ -16,7 +15,6 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
   const [filteredPosts, setFilteredPosts] = useState<PostCardData[]>(posts);
   const [postsTotal, setPostsTotal] = useState(posts.length);
   const [pagesTotal, setPagesTotal] = useState(Math.ceil(posts.length / itemsPerPage));
-  const [currentPage, setCurrentPage] = useState(0);
   const [postsInPage, setPostsInPage] = useState<PostCardData[]>(
     posts.slice(0, itemsPerPage)
   );
@@ -34,7 +32,6 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
   const handlePageClick = useCallback((pageNumber: number) => {
     const newOffset = (pageNumber * itemsPerPage) % postsTotal;
     setPostsInPage(filteredPosts.slice(newOffset, newOffset + itemsPerPage));
-    setCurrentPage(pageNumber);
   }, [filteredPosts, postsTotal]);
 
   useEffect(() => {
