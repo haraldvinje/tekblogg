@@ -23,6 +23,11 @@ export const Pagination = ({
     setPageNumbers(Array.from({ length: pagesTotal }, (_, i) => i))
     setPagesToDisplay(Array.from({ length: initialPage + numberOfPageIcons }, (_, i) => i))
     setCurrentPageNumber(0);
+    return () => {
+      setPageNumbers([]);
+      setPagesToDisplay([]);
+      setCurrentPageNumber(0);
+    }
   }, [initialPage, pagesTotal])
 
   useEffect(() => {
@@ -34,6 +39,9 @@ export const Pagination = ({
         end
       )
     );
+    return () => {
+      setPagesToDisplay([]);
+    }
   }, [initialPage, pagesTotal, pageNumbers])
 
   const handlePageClick = (pageNumber: number) => {

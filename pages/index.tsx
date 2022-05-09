@@ -11,15 +11,23 @@ function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
 }
 
 const Home = ({ posts }: { posts: PostCardData[] }) => {
-  const itemsPerPage = 3;
-  const [filteredPosts, setFilteredPosts] = useState<PostCardData[]>(posts);
-  const [postsTotal, setPostsTotal] = useState(posts.length);
-  const [pagesTotal, setPagesTotal] = useState(Math.ceil(posts.length / itemsPerPage));
-  const [postsInPage, setPostsInPage] = useState<PostCardData[]>(
-    posts.slice(0, itemsPerPage)
-  );
-
+  const itemsPerPage = 5;
+  const [filteredPosts, setFilteredPosts] = useState<PostCardData[]>([]);
+  const [pagesCount, setPagesCount] = useState<number>(0);
+  const [postsInPage, setPostsInPage] = useState<PostCardData[]>([]);
+  const [allCategories, setAllCategories] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  useEffect(() => {
+    setFilteredPosts(posts);
+    setPagesCount(Math.ceil(posts.length / itemsPerPage));
+    setPostsInPage(posts.slice(0, itemsPerPage));
+    setAllCategories(posts
+      .flatMap((p) => p.categories)
+      .filter((c, index, categories) => categories.indexOf(c) === index)
+      .filter(notEmpty)
+    );
+  }, [posts]);
 
   const handleCategoryClick = (category: string) => {
     if (selectedCategories.includes(category)) {
@@ -29,10 +37,13 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
     }
   };
 
-  const handlePageClick = useCallback((pageNumber: number) => {
-    const newOffset = (pageNumber * itemsPerPage) % postsTotal;
-    setPostsInPage(filteredPosts.slice(newOffset, newOffset + itemsPerPage));
-  }, [filteredPosts, postsTotal]);
+  const handlePageClick = useCallback(
+    (pageNumber: number) => {
+      const newOffset = (pageNumber * itemsPerPage) % filteredPosts.length;
+      setPostsInPage(filteredPosts.slice(newOffset, newOffset + itemsPerPage));
+    },
+    [filteredPosts]
+  );
 
   useEffect(() => {
     if (selectedCategories.length === 0) {
@@ -44,20 +55,21 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
         })
       );
     }
+    return () => {
+      setFilteredPosts(posts);
+    };
   }, [selectedCategories, posts]);
 
   useEffect(() => {
-    setPostsInPage(filteredPosts.slice(0, itemsPerPage))
-    setPagesTotal(Math.ceil(filteredPosts.length / itemsPerPage));
-    setPostsTotal(filteredPosts.length);
+    setPostsInPage(filteredPosts.slice(0, itemsPerPage));
+    setPagesCount(Math.ceil(filteredPosts.length / itemsPerPage));
     handlePageClick(0);
-  }, [filteredPosts, handlePageClick, postsTotal, selectedCategories]);
+    return () => {
+      setPostsInPage(posts.slice(0, itemsPerPage));
+    };
+  }, [filteredPosts, handlePageClick, posts, selectedCategories]);
 
-  const allCategories = posts
-    .flatMap((p) => p.categories)
-    .filter((c, index, categories) => categories.indexOf(c) === index)
-    .filter(notEmpty);
-  
+
   return (
     <div className="w-[80%]">
       <div className="mb-4 p-2">
@@ -67,15 +79,19 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
         {allCategories.map(
           (category, index) =>
             category && (
-              <Category key={index} value={category} onClick={() => handleCategoryClick(category)} />
+              <Category
+                key={index}
+                value={category}
+                onClick={() => handleCategoryClick(category)}
+              />
             )
         )}
       </div>
       {postsInPage.map((post, index) => (
         <BlogPostCard key={index} post={post} />
       ))}
-      {postsTotal > itemsPerPage && (
-        <Pagination onPageChange={handlePageClick} pagesTotal={pagesTotal} />
+      {filteredPosts.length > itemsPerPage && (
+        <Pagination onPageChange={handlePageClick} pagesTotal={pagesCount} />
       )}
     </div>
   );
@@ -83,17 +99,17 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
 
 export type PostCardData = Omit<Post, "body" | "authors">;
 
-const query = groq`*[_type == "post"] | order(publishedAt desc) {
-  title,
-  "categories": categories[]->title,
-  "publishedAt": publishedAt,
-  "slug": slug.current,
-  mainImage,
-  introduction
-}`;
-
 export const getStaticProps = async () => {
-  const posts: PostCardData[] = await client.fetch(query);
+  const posts: PostCardData[] = await client.fetch(
+    groq`*[_type == "post"] | order(publishedAt desc) {
+      title,
+      "categories": categories[]->title,
+      "publishedAt": publishedAt,
+      "slug": slug.current,
+      mainImage,
+      introduction
+    }`
+  );
 
   return {
     props: {

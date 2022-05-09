@@ -27,7 +27,7 @@ const BlogPostCard = ({ post }: { post: PostCardData }) => {
                     height={200}
                     quality={100}
                     placeholder="blur"
-                    blurDataURL="https://image-component.nextjs.gallery/placeholder"
+                    blurDataURL="mountains.avif"
                   />
                 </div>
               </a>
