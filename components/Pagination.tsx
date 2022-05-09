@@ -5,22 +5,22 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export const Pagination = ({
   onPageChange,
-  pagesTotal,
+  pagesCount,
   initialPage = 0,
 }: {
   onPageChange: (pageNumber: number) => void;
-  pagesTotal: number;
+  pagesCount: number;
   initialPage?: number;
 }) => {
   const numberOfPageIcons = 5;
-  const [pageNumbers, setPageNumbers] = useState(Array.from({ length: pagesTotal }, (_, i) => i));
+  const [pageNumbers, setPageNumbers] = useState(Array.from({ length: pagesCount }, (_, i) => i));
   const [currentPageNumber, setCurrentPageNumber] = useState(0);
   const [pagesToDisplay, setPagesToDisplay] = useState(
     pageNumbers.slice(initialPage, initialPage + numberOfPageIcons)
   );
 
   useEffect(() => {
-    setPageNumbers(Array.from({ length: pagesTotal }, (_, i) => i))
+    setPageNumbers(Array.from({ length: pagesCount }, (_, i) => i))
     setPagesToDisplay(Array.from({ length: initialPage + numberOfPageIcons }, (_, i) => i))
     setCurrentPageNumber(0);
     return () => {
@@ -28,10 +28,10 @@ export const Pagination = ({
       setPagesToDisplay([]);
       setCurrentPageNumber(0);
     }
-  }, [initialPage, pagesTotal])
+  }, [initialPage, pagesCount])
 
   useEffect(() => {
-    const start = Math.max(Math.min(initialPage, pagesTotal - numberOfPageIcons), 0);
+    const start = Math.max(Math.min(initialPage, pagesCount - numberOfPageIcons), 0);
     const end = initialPage + numberOfPageIcons;
     setPagesToDisplay(
       pageNumbers.slice(
@@ -42,7 +42,7 @@ export const Pagination = ({
     return () => {
       setPagesToDisplay([]);
     }
-  }, [initialPage, pagesTotal, pageNumbers])
+  }, [initialPage, pagesCount, pageNumbers])
 
   const handlePageClick = (pageNumber: number) => {
     setCurrentPageNumber(pageNumber);
@@ -62,7 +62,7 @@ export const Pagination = ({
         <FontAwesomeIcon icon={faArrowLeft} />
       </button>
       <div className="flex justify-center space-x-4 max-w-24">
-        {currentPageNumber >= 2 && pagesTotal > numberOfPageIcons && (
+        {currentPageNumber >= 2 && pagesCount > numberOfPageIcons && (
           <>
             <button
               className="
@@ -92,7 +92,7 @@ export const Pagination = ({
       </div>
       <button
         className={`px-2 py-1 border border-gray-300 rounded-lg ${
-          currentPageNumber < pagesTotal - 1 ? "" : "invisible"
+          currentPageNumber < pagesCount - 1 ? "" : "invisible"
         }`}
         onClick={() => handlePageClick(currentPageNumber + 1)}
       >

@@ -12,22 +12,25 @@ function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
 
 const Home = ({ posts }: { posts: PostCardData[] }) => {
   const itemsPerPage = 5;
-  const [filteredPosts, setFilteredPosts] = useState<PostCardData[]>([]);
-  const [pagesCount, setPagesCount] = useState<number>(0);
-  const [postsInPage, setPostsInPage] = useState<PostCardData[]>([]);
-  const [allCategories, setAllCategories] = useState<string[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<PostCardData[]>(posts);
+  const [pagesCount, setPagesCount] = useState<number>(Math.ceil(posts.length / itemsPerPage));
+  const [postsInPage, setPostsInPage] = useState<PostCardData[]>(posts.slice(0, itemsPerPage));
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   useEffect(() => {
-    setFilteredPosts(posts);
-    setPagesCount(Math.ceil(posts.length / itemsPerPage));
-    setPostsInPage(posts.slice(0, itemsPerPage));
-    setAllCategories(posts
-      .flatMap((p) => p.categories)
-      .filter((c, index, categories) => categories.indexOf(c) === index)
-      .filter(notEmpty)
-    );
-  }, [posts]);
+    if (selectedCategories.length === 0) {
+      setFilteredPosts(posts);
+    } else {
+      setFilteredPosts(
+        posts.filter((p) => {
+          return p.categories?.some((c) => selectedCategories.includes(c));
+        })
+      );
+    }
+    return () => {
+      setFilteredPosts([]);
+    };
+  }, [selectedCategories, posts]);
 
   const handleCategoryClick = (category: string) => {
     if (selectedCategories.includes(category)) {
@@ -46,29 +49,18 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
   );
 
   useEffect(() => {
-    if (selectedCategories.length === 0) {
-      setFilteredPosts(posts);
-    } else {
-      setFilteredPosts(
-        posts.filter((p) => {
-          return p.categories?.some((c) => selectedCategories.includes(c));
-        })
-      );
-    }
-    return () => {
-      setFilteredPosts(posts);
-    };
-  }, [selectedCategories, posts]);
-
-  useEffect(() => {
     setPostsInPage(filteredPosts.slice(0, itemsPerPage));
     setPagesCount(Math.ceil(filteredPosts.length / itemsPerPage));
     handlePageClick(0);
     return () => {
-      setPostsInPage(posts.slice(0, itemsPerPage));
+      setPostsInPage([]);
     };
   }, [filteredPosts, handlePageClick, posts, selectedCategories]);
 
+  const allCategories = posts
+    .flatMap((post) => post.categories)
+    .filter((category, index, categories) => categories.indexOf(category) === index)
+    .filter(notEmpty)
 
   return (
     <div className="w-[80%]">
@@ -91,7 +83,7 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
         <BlogPostCard key={index} post={post} />
       ))}
       {filteredPosts.length > itemsPerPage && (
-        <Pagination onPageChange={handlePageClick} pagesTotal={pagesCount} />
+        <Pagination onPageChange={handlePageClick} pagesCount={pagesCount} />
       )}
     </div>
   );
