@@ -37,7 +37,7 @@ const Post = ({ post }: { post: Post }) => {
           <>
             <div className="flex">
               <span className='mr-2'>Kategorier:</span>
-              {categories.map(category => <Category key={category} value={category} />)}
+              {categories.map((category, index) => <Category key={index} value={category} />)}
             </div>
           </>
         )}

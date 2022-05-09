@@ -4,39 +4,45 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export const Pagination = ({
-  initalPageNumber,
   onPageChange,
-  pageCount,
+  pagesTotal,
+  initialPage = 0,
 }: {
-  initalPageNumber: number;
   onPageChange: (pageNumber: number) => void;
-  pageCount: number;
+  pagesTotal: number;
+  initialPage?: number;
 }) => {
   const numberOfPageIcons = 5;
-  const [pageNumbers] = useState(Array.from(Array(pageCount).keys()));
-  const [currentPageNumber, setCurrentPage] = useState(initalPageNumber);
+  const [pageNumbers, setPageNumbers] = useState(Array.from({ length: pagesTotal }, (_, i) => i));
+  const [currentPageNumber, setCurrentPageNumber] = useState(0);
   const [pagesToDisplay, setPagesToDisplay] = useState(
-    pageNumbers.slice(currentPageNumber, currentPageNumber + numberOfPageIcons)
+    pageNumbers.slice(initialPage, initialPage + numberOfPageIcons)
   );
 
   useEffect(() => {
-    const start = Math.min(currentPageNumber, pageCount - numberOfPageIcons)
-    const end = currentPageNumber + numberOfPageIcons;
+    setPageNumbers(Array.from({ length: pagesTotal }, (_, i) => i))
+    setPagesToDisplay(Array.from({ length: initialPage + numberOfPageIcons }, (_, i) => i))
+    setCurrentPageNumber(0);
+  }, [initialPage, pagesTotal])
+
+  useEffect(() => {
+    const start = Math.max(Math.min(initialPage, pagesTotal - numberOfPageIcons), 0);
+    const end = initialPage + numberOfPageIcons;
     setPagesToDisplay(
       pageNumbers.slice(
         start,
         end
       )
     );
-  }, [currentPageNumber, pageCount, pageNumbers])
+  }, [initialPage, pagesTotal, pageNumbers])
 
   const handlePageClick = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
+    setCurrentPageNumber(pageNumber);
     onPageChange(pageNumber);
   };
 
   return (
-    <div className="flex justify-between sm:scale-100 scale-75">
+    <div className="flex justify-center space-x-8 sm:scale-100 scale-75">
       <button
         className={`
           w-8 py-1 border border-gray-300 rounded-lg
@@ -48,7 +54,7 @@ export const Pagination = ({
         <FontAwesomeIcon icon={faArrowLeft} />
       </button>
       <div className="flex justify-center space-x-4 max-w-24">
-        {currentPageNumber >= 2 && pageCount > numberOfPageIcons && (
+        {currentPageNumber >= 2 && pagesTotal > numberOfPageIcons && (
           <>
             <button
               className="
@@ -78,7 +84,7 @@ export const Pagination = ({
       </div>
       <button
         className={`px-2 py-1 border border-gray-300 rounded-lg ${
-          currentPageNumber < pageCount - 1 ? "" : "invisible"
+          currentPageNumber < pagesTotal - 1 ? "" : "invisible"
         }`}
         onClick={() => handlePageClick(currentPageNumber + 1)}
       >
