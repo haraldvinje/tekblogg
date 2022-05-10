@@ -11,8 +11,8 @@ const Navbar = () => {
         <div className="flex w-[50%] items-center justify-center space-x-4 py-3 text-white sm:space-x-12">
           <Link href="/" passHref>
             <a
-              className="text-md flex items-center rounded-md py-1 px-1 text-center font-bold leading-snug transition duration-300 ease-in-out 
-                                hover:bg-white hover:text-black sm:py-2 sm:px-2 sm:text-3xl"
+              className="flex items-center rounded-md p-1 text-center font-bold leading-snug transition duration-300 ease-in-out hover:bg-white hover:text-black
+                          sm:p-2 sm:text-3xl"
             >
               <span>
                 Blogg
@@ -22,8 +22,8 @@ const Navbar = () => {
           </Link>
           <Link href="/about" passHref>
             <a
-              className="text-md flex items-center rounded-md px-1 py-1 font-bold leading-snug  transition duration-300 ease-in-out 
-                                hover:bg-white hover:text-black sm:py-2 sm:px-2 sm:text-3xl"
+              className="flex items-center rounded-md p-1 font-bold leading-snug transition duration-300  ease-in-out hover:bg-white hover:text-black
+                          sm:p-2 sm:text-3xl"
             >
               <span>Info</span>
             </a>

@@ -54,13 +54,13 @@ export const Pagination = ({
       >
         <FontAwesomeIcon icon={faArrowLeft} />
       </button>
-      <div className="max-w-24 flex justify-center space-x-4">
+      <div className="flex justify-center space-x-4">
         {currentPageNumber >= 2 && pagesCount > numberOfPageIcons && (
           <>
             <button
               className="w-8 rounded-lg border border-gray-300 py-1
-								transition-colors duration-200 ease-in-out hover:bg-slate-400
-							"
+                transition-colors duration-200 ease-in-out hover:bg-slate-400
+            "
               onClick={() => handlePageClick(0)}
             >
               1
