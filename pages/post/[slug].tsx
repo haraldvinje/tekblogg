@@ -7,8 +7,8 @@ import {
   RichText,
   SanityImage,
   urlFor,
-  PortableTextValue,
-  PortableTextIntro
+  PortableTextIntro,
+  PortableTextBody
 } from 'components/RichText'
 import { Category } from 'components/Category'
 import Metatags from 'components/Metatags'
@@ -21,8 +21,8 @@ export interface Post {
   mainImage: SanityImage
   categories?: string[]
   publishedAt: string
-  introduction: PortableTextValue
-  body: PortableTextValue
+  introduction: PortableTextIntro
+  body: PortableTextBody
 }
 
 const Post = ({ post }: { post: Post }) => {
@@ -32,7 +32,7 @@ const Post = ({ post }: { post: Post }) => {
     <>
       <Metatags
         title={title}
-        description={(introduction as PortableTextIntro[])[0]?.text || ''}
+        description={(introduction as PortableTextIntro)?.[0]?.text || ''}
         image={urlFor(mainImage).url()}
         url={`tekblogg.dev/post/${slug}`}
       />
