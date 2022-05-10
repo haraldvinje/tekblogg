@@ -6,7 +6,17 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import client from 'lib/sanityClient'
 
-export type PortableTextValue<B extends TypedObject = PortableTextBlock> = B | B[]
+export type PortableTextIntro = {
+  _type: string
+  _key: string
+  marks: string[]
+  text: string
+}
+
+export type PortableTextValue<B extends TypedObject = PortableTextBlock> =
+  | B
+  | B[]
+  | PortableTextIntro[]
 
 export type SanityImage = {
   asset?: { _ref: string }
