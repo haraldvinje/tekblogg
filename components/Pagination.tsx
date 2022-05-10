@@ -14,18 +14,18 @@ export const Pagination = ({
 }) => {
   const numberOfPageIcons = 5
   const [pageNumbers, setPageNumbers] = useState(Array.from({ length: pagesCount }, (_, i) => i))
-  const [currentPageNumber, setCurrentPageNumber] = useState(0)
-  const [pagesToDisplay, setPagesToDisplay] = useState(
+  const [currentPageNumber, setCurrentPageNumber] = useState(initialPage)
+  const [pageNumbersToDisplay, setPageNumbersToDisplay] = useState(
     pageNumbers.slice(initialPage, initialPage + numberOfPageIcons)
   )
 
   useEffect(() => {
     setPageNumbers(Array.from({ length: pagesCount }, (_, i) => i))
-    setPagesToDisplay(Array.from({ length: initialPage + numberOfPageIcons }, (_, i) => i))
+    setPageNumbersToDisplay(Array.from({ length: initialPage + numberOfPageIcons }, (_, i) => i))
     setCurrentPageNumber(0)
     return () => {
       setPageNumbers([])
-      setPagesToDisplay([])
+      setPageNumbersToDisplay([])
       setCurrentPageNumber(0)
     }
   }, [initialPage, pagesCount])
@@ -33,9 +33,9 @@ export const Pagination = ({
   useEffect(() => {
     const start = Math.max(Math.min(initialPage, pagesCount - numberOfPageIcons), 0)
     const end = initialPage + numberOfPageIcons
-    setPagesToDisplay(pageNumbers.slice(start, end))
+    setPageNumbersToDisplay(pageNumbers.slice(start, end))
     return () => {
-      setPagesToDisplay([])
+      setPageNumbersToDisplay([])
     }
   }, [initialPage, pagesCount, pageNumbers])
 
@@ -65,10 +65,10 @@ export const Pagination = ({
             >
               1
             </button>
-            {pagesToDisplay[0] !== 1 && <span>...</span>}
+            {pageNumbersToDisplay[0] !== 1 && <span>...</span>}
           </>
         )}
-        {pagesToDisplay.map((i) => (
+        {pageNumbersToDisplay.map((i) => (
           <button
             className={`w-8 rounded-lg border border-gray-300 py-1
 							transition-colors duration-200 ease-in-out hover:bg-slate-400
