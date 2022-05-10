@@ -1,26 +1,26 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react'
 
 export const useWidthMediaQuery = (width: number) => {
-  const [targetReached, setTargetReached] = useState(false);
+  const [targetReached, setTargetReached] = useState(false)
 
-  const updateTarget = useCallback((e: MediaQueryListEvent)  => {
+  const updateTarget = useCallback((e: MediaQueryListEvent) => {
     if (e.matches) {
-      setTargetReached(true);
+      setTargetReached(true)
     } else {
-      setTargetReached(false);
+      setTargetReached(false)
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
-    const media = window.matchMedia(`(min-width: ${width}px)`);
-    media.addEventListener('change', updateTarget);
+    const media = window.matchMedia(`(min-width: ${width}px)`)
+    media.addEventListener('change', updateTarget)
 
     if (media.matches) {
-      setTargetReached(true);
+      setTargetReached(true)
     }
 
-    return () => media.removeEventListener('change', updateTarget);
-  }, [updateTarget, width]);
+    return () => media.removeEventListener('change', updateTarget)
+  }, [updateTarget, width])
 
-  return targetReached;
-};
+  return targetReached
+}

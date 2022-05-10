@@ -1,61 +1,60 @@
-import groq from "groq";
-import { useEffect, useState, useCallback } from "react";
-import client from "lib/sanityClient";
-import BlogPostCard from "components/BlogPostCard";
-import { Post } from "./post/[slug]";
-import { Pagination } from "components/Pagination";
-import { Category } from "components/Category";
+import groq from 'groq'
+import { useEffect, useState, useCallback } from 'react'
+import client from 'lib/sanityClient'
+import BlogPostCard from 'components/BlogPostCard'
+import { Post } from './post/[slug]'
+import { Pagination } from 'components/Pagination'
+import { Category } from 'components/Category'
 
 function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
-  return value !== null && value !== undefined;
+  return value !== null && value !== undefined
 }
 
 const Home = ({ posts }: { posts: PostCardData[] }) => {
-  const itemsPerPage = 5;
-  const [filteredPosts, setFilteredPosts] = useState<PostCardData[]>(posts);
-  const [pagesCount, setPagesCount] = useState<number>(Math.ceil(posts.length / itemsPerPage));
-  const [postsInPage, setPostsInPage] = useState<PostCardData[]>(posts.slice(0, itemsPerPage));
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const itemsPerPage = 5
+  const [filteredPosts, setFilteredPosts] = useState<PostCardData[]>(posts)
+  const [pagesCount, setPagesCount] = useState<number>(Math.ceil(posts.length / itemsPerPage))
+  const [postsInPage, setPostsInPage] = useState<PostCardData[]>(posts.slice(0, itemsPerPage))
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
 
   useEffect(() => {
-    if (selectedCategories.length === 0) {
-      setFilteredPosts(posts);
-    } else {
+    if (selectedCategories.length === 0) setFilteredPosts(posts)
+    else
       setFilteredPosts(
         posts.filter((p) => {
-          return p.categories?.some((c) => selectedCategories.includes(c));
+          return p.categories?.some((c) => selectedCategories.includes(c))
         })
-      );
-    }
+      )
+
     return () => {
-      setFilteredPosts([]);
-    };
-  }, [selectedCategories, posts]);
+      setFilteredPosts([])
+    }
+  }, [selectedCategories, posts])
 
   const handleCategoryClick = (category: string) => {
     if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter((c) => c !== category));
+      setSelectedCategories(selectedCategories.filter((c) => c !== category))
     } else {
-      setSelectedCategories([...selectedCategories, category]);
+      setSelectedCategories([...selectedCategories, category])
     }
-  };
+  }
 
   const handlePageClick = useCallback(
     (pageNumber: number) => {
-      const newOffset = (pageNumber * itemsPerPage) % filteredPosts.length;
-      setPostsInPage(filteredPosts.slice(newOffset, newOffset + itemsPerPage));
+      const newOffset = (pageNumber * itemsPerPage) % filteredPosts.length
+      setPostsInPage(filteredPosts.slice(newOffset, newOffset + itemsPerPage))
     },
     [filteredPosts]
-  );
+  )
 
   useEffect(() => {
-    setPostsInPage(filteredPosts.slice(0, itemsPerPage));
-    setPagesCount(Math.ceil(filteredPosts.length / itemsPerPage));
-    handlePageClick(0);
+    setPostsInPage(filteredPosts.slice(0, itemsPerPage))
+    setPagesCount(Math.ceil(filteredPosts.length / itemsPerPage))
+    handlePageClick(0)
     return () => {
-      setPostsInPage([]);
-    };
-  }, [filteredPosts, handlePageClick, posts, selectedCategories]);
+      setPostsInPage([])
+    }
+  }, [filteredPosts, handlePageClick, posts, selectedCategories])
 
   const allCategories = posts
     .flatMap((post) => post.categories)
@@ -65,9 +64,7 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
   return (
     <div className="w-[80%]">
       <div className="mb-4 p-2">
-        <h1 className="text-2xl font-bold text-center mb-2 text-gray-500">
-          Filtrer på kategori
-        </h1>
+        <h1 className="mb-2 text-center text-2xl font-bold text-gray-500">Filtrer på kategori</h1>
         {allCategories.map(
           (category, index) =>
             category && (
@@ -86,10 +83,10 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
         <Pagination onPageChange={handlePageClick} pagesCount={pagesCount} />
       )}
     </div>
-  );
-};
+  )
+}
 
-export type PostCardData = Omit<Post, "body" | "authors">;
+export type PostCardData = Omit<Post, 'body' | 'authors'>
 
 export const getStaticProps = async () => {
   const posts: PostCardData[] = await client.fetch(
@@ -101,14 +98,14 @@ export const getStaticProps = async () => {
       mainImage,
       introduction
     }`
-  );
+  )
 
   return {
     props: {
-      posts,
+      posts
     },
-    revalidate: 60,
-  };
-};
+    revalidate: 60
+  }
+}
 
-export default Home;
+export default Home

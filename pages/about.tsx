@@ -1,15 +1,14 @@
-import type { NextPage } from "next";
-import Image from "next/image";
+import type { NextPage } from 'next'
+import Image from 'next/image'
 
 const Blog: NextPage = () => {
   return (
-    <div className="prose lg:prose-xl w-full">
+    <div className="prose w-full lg:prose-xl">
       <h1 className="flex justify-center">Velkommen til bloggen!🤓</h1>
       <p>
-        Denne bloggen er laget og drives av Harald Vinje. Innleggene vil
-        hovedsakelig ta for seg ny og moderne teknologi innen temaer som front
-        end, back end, sky, maskinlæring, automatisering og programmering
-        generelt. Fra tid til annen kan det komme innlegg som omhandler noe helt
+        Denne bloggen er laget og drives av Harald Vinje. Innleggene vil hovedsakelig ta for seg ny
+        og moderne teknologi innen temaer som front end, back end, sky, maskinlæring, automatisering
+        og programmering generelt. Fra tid til annen kan det komme innlegg som omhandler noe helt
         annet!
       </p>
       <h2>Om Harald</h2>
@@ -24,16 +23,15 @@ const Blog: NextPage = () => {
         />
       </div>
       <p>
-        Harald Vinje fullførte sivilingeniørgrad i Datateknologi fra NTNU i
-        2020, og har jobbet både som konsulent og in house-utvikler. For tiden
-        jobber Harald som fullstack-utvikler hos{" "}
+        Harald Vinje fullførte sivilingeniørgrad i Datateknologi fra NTNU i 2020, og har jobbet både
+        som konsulent og in house-utvikler. For tiden jobber Harald som fullstack-utvikler hos{' '}
         <a href="https://www.xperitech.com/" target="_blank" rel="noreferrer">
           XperiTech
         </a>
         .
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default Blog;
+export default Blog

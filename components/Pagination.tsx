@@ -1,74 +1,66 @@
-import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useEffect } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 export const Pagination = ({
   onPageChange,
   pagesCount,
-  initialPage = 0,
+  initialPage = 0
 }: {
-  onPageChange: (pageNumber: number) => void;
-  pagesCount: number;
-  initialPage?: number;
+  onPageChange: (pageNumber: number) => void
+  pagesCount: number
+  initialPage?: number
 }) => {
-  const numberOfPageIcons = 5;
-  const [pageNumbers, setPageNumbers] = useState(Array.from({ length: pagesCount }, (_, i) => i));
-  const [currentPageNumber, setCurrentPageNumber] = useState(0);
+  const numberOfPageIcons = 5
+  const [pageNumbers, setPageNumbers] = useState(Array.from({ length: pagesCount }, (_, i) => i))
+  const [currentPageNumber, setCurrentPageNumber] = useState(0)
   const [pagesToDisplay, setPagesToDisplay] = useState(
     pageNumbers.slice(initialPage, initialPage + numberOfPageIcons)
-  );
+  )
 
   useEffect(() => {
     setPageNumbers(Array.from({ length: pagesCount }, (_, i) => i))
     setPagesToDisplay(Array.from({ length: initialPage + numberOfPageIcons }, (_, i) => i))
-    setCurrentPageNumber(0);
+    setCurrentPageNumber(0)
     return () => {
-      setPageNumbers([]);
-      setPagesToDisplay([]);
-      setCurrentPageNumber(0);
+      setPageNumbers([])
+      setPagesToDisplay([])
+      setCurrentPageNumber(0)
     }
   }, [initialPage, pagesCount])
 
   useEffect(() => {
-    const start = Math.max(Math.min(initialPage, pagesCount - numberOfPageIcons), 0);
-    const end = initialPage + numberOfPageIcons;
-    setPagesToDisplay(
-      pageNumbers.slice(
-        start,
-        end
-      )
-    );
+    const start = Math.max(Math.min(initialPage, pagesCount - numberOfPageIcons), 0)
+    const end = initialPage + numberOfPageIcons
+    setPagesToDisplay(pageNumbers.slice(start, end))
     return () => {
-      setPagesToDisplay([]);
+      setPagesToDisplay([])
     }
   }, [initialPage, pagesCount, pageNumbers])
 
   const handlePageClick = (pageNumber: number) => {
-    setCurrentPageNumber(pageNumber);
-    onPageChange(pageNumber);
-  };
+    setCurrentPageNumber(pageNumber)
+    onPageChange(pageNumber)
+  }
 
   return (
-    <div className="flex justify-center space-x-8 sm:scale-100 scale-75">
+    <div className="flex scale-75 justify-center space-x-8 sm:scale-100">
       <button
-        className={`
-          w-8 py-1 border border-gray-300 rounded-lg
-          transition-colors duration-200 ease-in-out hover:bg-slate-400
-          ${currentPageNumber > 0 ? "" : "invisible"}
-        `}
+        className={`w-8 rounded-lg border border-gray-300 py-1
+					transition-colors duration-200 ease-in-out hover:bg-slate-400
+					${currentPageNumber > 0 ? '' : 'invisible'}`}
         onClick={() => handlePageClick(currentPageNumber - 1)}
       >
         <FontAwesomeIcon icon={faArrowLeft} />
       </button>
-      <div className="flex justify-center space-x-4 max-w-24">
+      <div className="max-w-24 flex justify-center space-x-4">
         {currentPageNumber >= 2 && pagesCount > numberOfPageIcons && (
           <>
             <button
-              className="
-                w-8 py-1 border border-gray-300 rounded-lg
-                transition-colors duration-200 ease-in-out hover:bg-slate-400
-              "
+              className="w-8 rounded-lg border border-gray-300 py-1
+								transition-colors duration-200 ease-in-out hover:bg-slate-400
+							"
               onClick={() => handlePageClick(0)}
             >
               1
@@ -78,11 +70,9 @@ export const Pagination = ({
         )}
         {pagesToDisplay.map((i) => (
           <button
-            className={`
-                    w-8 py-1 border border-gray-300 rounded-lg
-                    transition-colors duration-200 ease-in-out hover:bg-slate-400
-                    ${currentPageNumber === i ? "border-black" : ""}
-                `}
+            className={`w-8 rounded-lg border border-gray-300 py-1
+							transition-colors duration-200 ease-in-out hover:bg-slate-400
+							${currentPageNumber === i ? 'border-black' : ''}`}
             key={i}
             onClick={() => handlePageClick(i)}
           >
@@ -91,13 +81,13 @@ export const Pagination = ({
         ))}
       </div>
       <button
-        className={`px-2 py-1 border border-gray-300 rounded-lg ${
-          currentPageNumber < pagesCount - 1 ? "" : "invisible"
+        className={`rounded-lg border border-gray-300 px-2 py-1 ${
+          currentPageNumber < pagesCount - 1 ? '' : 'invisible'
         }`}
         onClick={() => handlePageClick(currentPageNumber + 1)}
       >
         <FontAwesomeIcon icon={faArrowRight} />
       </button>
     </div>
-  );
-};
+  )
+}
