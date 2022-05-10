@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import groq from 'groq'
+import { useRouter } from 'next/router'
 import client from 'lib/sanityClient'
 import { formatAuthors, formatDate } from 'lib/utils'
 import {
@@ -17,7 +18,6 @@ import { ShareButtons } from 'components/ShareButtons'
 export interface Post {
   title: string
   authors: string[]
-  slug: string
   mainImage: SanityImage
   categories?: string[]
   publishedAt: string
@@ -26,7 +26,9 @@ export interface Post {
 }
 
 const Post = ({ post }: { post: Post }) => {
-  const { title, authors, categories, mainImage, publishedAt, introduction, body, slug } = post
+  const { title, authors, categories, mainImage, publishedAt, introduction, body } = post
+  const router = useRouter()
+  const slug = router.query.slug as string
 
   return (
     <>
@@ -34,7 +36,7 @@ const Post = ({ post }: { post: Post }) => {
         title={title}
         description={(introduction as PortableTextIntro)?.[0]?.text || ''}
         image={urlFor(mainImage).url()}
-        url={`tekblogg.dev/post/${slug}`}
+        path={`/post/${slug}`}
       />
       <article className="prose w-full lg:prose-xl">
         <h1 className="flex justify-center">{title}</h1>
@@ -95,7 +97,6 @@ export const getStaticProps = async ({ params }: { params: { slug: string } }) =
     groq`*[_type == "post" && slug.current == $slug][0]{
       title,
       "authors": authors[]->name,
-      slug,
       "categories": categories[]->title,
       "publishedAt": publishedAt,
       mainImage,

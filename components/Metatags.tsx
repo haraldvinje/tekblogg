@@ -4,13 +4,15 @@ const Metatags = ({
   title,
   description,
   image,
-  url
+  path
 }: {
   title: string
   description?: string
   image?: string
-  url?: string
+  path?: string
 }) => {
+  const url = process.env.NEXT_PUBLIC_DOMAIN + '/' + (path ? path.replace(/^\//, '') : '')
+
   return (
     <Head>
       <title>{title}</title>

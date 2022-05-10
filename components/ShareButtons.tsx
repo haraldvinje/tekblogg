@@ -1,18 +1,9 @@
-/* eslint-disable tailwindcss/no-custom-classname */
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import absoluteUrl from 'next-absolute-url'
 import { faLinkedin, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useAbsoluteUrl } from 'lib/hooks/useAbsoluteUrl'
 
 export const ShareButtons = ({ className }: { className?: string }) => {
-  const [url, setUrl] = useState('')
-  const router = useRouter()
-
-  useEffect(() => {
-    const { host } = absoluteUrl()
-    setUrl(host + router.asPath)
-  }, [router])
+  const url = useAbsoluteUrl()
 
   return (
     <div className={`flex items-center space-x-4 opacity-80 ${className}`}>
