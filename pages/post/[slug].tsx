@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
 import groq from 'groq'
-import { useRouter } from 'next/router'
 import client from 'lib/sanityClient'
 import { formatAuthors, formatDate } from 'lib/utils'
 import {
@@ -21,14 +20,13 @@ export interface Post {
   mainImage: SanityImage
   categories?: string[]
   publishedAt: string
+  slug: string
   introduction: PortableTextIntro
   body: PortableTextBody
 }
 
 const Post = ({ post }: { post: Post }) => {
-  const { title, authors, categories, mainImage, publishedAt, introduction, body } = post
-  const router = useRouter()
-  const slug = router.query.slug as string
+  const { title, authors, categories, mainImage, publishedAt, introduction, body, slug } = post
 
   return (
     <>
@@ -99,6 +97,7 @@ export const getStaticProps = async ({ params }: { params: { slug: string } }) =
       "authors": authors[]->name,
       "categories": categories[]->title,
       "publishedAt": publishedAt,
+      "slug": slug.current,
       mainImage,
       introduction,
       body
