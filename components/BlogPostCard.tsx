@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from 'next/link'
 import { PostCardData } from 'pages'
 import Image from 'next/image'
