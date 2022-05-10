@@ -13,7 +13,9 @@ type PortableTextIntroBlock = {
   text?: string
 }
 
-export type PortableTextIntro = PortableTextIntroBlock[]
+export interface PortableTextIntro {
+  children?: PortableTextIntroBlock[]
+}
 
 export type PortableTextBody<B extends TypedObject = PortableTextBlock> = B | B[]
 

@@ -32,7 +32,7 @@ const Post = ({ post }: { post: Post }) => {
     <>
       <Metatags
         title={title}
-        description={(introduction as PortableTextIntro)?.[0]?.text || ''}
+        description={(introduction as PortableTextIntro)?.children?.[0]?.text || ''}
         image={urlFor(mainImage).url()}
         path={`/post/${slug}`}
       />
