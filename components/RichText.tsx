@@ -7,15 +7,15 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import client from 'lib/sanityClient'
 
 type PortableTextIntroBlock = {
-  _type: string
-  _key: string
-  marks?: string[]
-  text?: string
+  children?: {
+    _type: string
+    _key: string
+    marks?: string[]
+    text?: string
+  }[]
 }
 
-export interface PortableTextIntro {
-  children?: PortableTextIntroBlock[]
-}
+export type PortableTextIntro = PortableTextIntroBlock[]
 
 export type PortableTextBody<B extends TypedObject = PortableTextBlock> = B | B[]
 

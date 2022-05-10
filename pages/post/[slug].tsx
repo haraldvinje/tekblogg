@@ -27,12 +27,13 @@ export interface Post {
 
 const Post = ({ post }: { post: Post }) => {
   const { title, authors, categories, mainImage, publishedAt, introduction, body, slug } = post
+  const rawIntro = (introduction as PortableTextIntro)?.[0]?.children?.[0].text || ''
 
   return (
     <>
       <Metatags
         title={title}
-        description={(introduction as PortableTextIntro)?.children?.[0]?.text || ''}
+        description={rawIntro}
         image={urlFor(mainImage).url()}
         path={`/post/${slug}`}
       />
