@@ -3,7 +3,7 @@ import { PortableText } from '@portabletext/react'
 import { PortableTextBlock, TypedObject } from '@portabletext/types'
 import imageUrlBuilder from '@sanity/image-url'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import gruvboxDark from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { gruvboxDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import client from 'lib/sanityClient'
 
 type PortableTextIntroBlock = {
