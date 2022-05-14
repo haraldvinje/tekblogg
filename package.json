@@ -6,8 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
     "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && next lint",
-    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
+    "lintfix": "next lint --fix && prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -35,11 +36,15 @@
     "@types/node": "17.0.23",
     "@types/react": "18.0.3",
     "@types/react-dom": "18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
     "autoprefixer": "^10.4.4",
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.5",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-tailwindcss": "^3.5.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "postcss": "^8.4.12",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.10",
