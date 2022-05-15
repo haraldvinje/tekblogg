@@ -2,17 +2,17 @@ import { useState, useEffect } from 'react'
 
 export const Category = ({
   value,
-  onClick
+  onCategoryClick
 }: {
   value: string
-  onClick?: (arg: string) => void
+  onCategoryClick?: (arg: string) => void
 }) => {
   const [clicked, setClicked] = useState(false)
   const [clickable, setClickable] = useState(false)
 
   useEffect(() => {
-    setClickable(onClick !== undefined)
-  }, [onClick])
+    setClickable(onCategoryClick !== undefined)
+  }, [onCategoryClick])
 
   return (
     <span
@@ -21,8 +21,8 @@ export const Category = ({
         ${clickable ? 'hover:cursor-pointer' : ''}
         ${clicked ? 'bg-gray-400' : ''} `}
       onClick={() => {
-        if (clickable && onClick) {
-          onClick(value)
+        if (clickable && onCategoryClick) {
+          onCategoryClick(value)
           setClicked(!clicked)
         }
       }}

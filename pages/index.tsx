@@ -77,7 +77,7 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
                 <Category
                   key={index}
                   value={category}
-                  onClick={() => handleCategoryClick(category)}
+                  onCategoryClick={(category) => handleCategoryClick(category)}
                 />
               )
           )}
