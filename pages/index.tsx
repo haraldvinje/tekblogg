@@ -94,7 +94,7 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
 }
 
 type PartialPostCardData = Omit<Post, 'body' | 'authors'>
-export interface PostCardData extends PartialPostCardData{
+export interface PostCardData extends PartialPostCardData {
   estimatedReadingTime: number
 }
 

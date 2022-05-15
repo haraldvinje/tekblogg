@@ -7,7 +7,8 @@ import { formatDate } from 'lib/utils'
 import { useWidthMediaQuery } from 'lib/hooks/useWidthMediaQuery'
 
 const BlogPostCard = ({ post }: { post: PostCardData }) => {
-  const { title, categories, mainImage, publishedAt, introduction, slug, estimatedReadingTime } = post
+  const { title, categories, mainImage, publishedAt, introduction, slug, estimatedReadingTime } =
+    post
   const wideEnough = useWidthMediaQuery(800)
   const linkRef = `/post/${slug}`
   return (
@@ -35,7 +36,9 @@ const BlogPostCard = ({ post }: { post: PostCardData }) => {
             <Link href={linkRef} passHref>
               <a className="text-2xl font-bold hover:text-blue-600">{title}</a>
             </Link>
-            <div className="my-2 text-xs opacity-60">{`${formatDate(publishedAt)} - ${estimatedReadingTime} min lesing`}</div>
+            <div className="my-2 text-xs opacity-60">
+              {`${formatDate(publishedAt)} - ${estimatedReadingTime} min lesning`}
+            </div>
             <RichText className="mr-6 text-sm" value={introduction} />
           </div>
         </div>
