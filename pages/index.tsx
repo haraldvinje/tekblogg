@@ -93,7 +93,10 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
   )
 }
 
-export type PostCardData = Omit<Post, 'body' | 'authors'>
+type PartialPostCardData = Omit<Post, 'body' | 'authors'>
+export interface PostCardData extends PartialPostCardData{
+  estimatedReadingTime: number
+}
 
 export const getStaticProps = async () => {
   const posts: PostCardData[] = await client.fetch(
@@ -102,6 +105,7 @@ export const getStaticProps = async () => {
       "categories": categories[]->title,
       "publishedAt": publishedAt,
       "slug": slug.current,
+      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
       mainImage,
       introduction
     }`
