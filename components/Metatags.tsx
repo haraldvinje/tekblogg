@@ -22,6 +22,8 @@ const Metatags = ({
       <meta name="twitter:description" content={description}></meta>
       <meta name="twitter:image" content={image}></meta>
 
+      <meta name="description" content={description}></meta>
+
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
