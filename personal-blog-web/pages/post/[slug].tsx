@@ -76,7 +76,6 @@ const Post = ({ post }: { post: Post }) => {
           />
         )}
         <RichText value={body} />
-        <h2 className='text-white'>Lol</h2>
         <ShareButtons className="justify-center" />
       </article>
     </>
