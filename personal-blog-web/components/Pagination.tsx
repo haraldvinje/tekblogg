@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { useTheme } from 'next-themes'
 
 export const Pagination = ({
   onPageChange,
@@ -18,6 +19,8 @@ export const Pagination = ({
   const [pageNumbersToDisplay, setPageNumbersToDisplay] = useState(
     pageNumbers.slice(initialPage, initialPage + numberOfPageIcons)
   )
+  const { theme } = useTheme()
+  const activeBorderColor = theme === 'dark' ? 'border-gray-100' : 'border-gray-800'
 
   useEffect(() => {
     setPageNumbers(Array.from({ length: pagesCount }, (_, i) => i))
@@ -47,9 +50,9 @@ export const Pagination = ({
   return (
     <div className="flex scale-75 justify-center space-x-8 sm:scale-100">
       <button
-        className={`w-8 rounded-lg border border-gray-300 py-1
+        className={`w-8 rounded-lg border border-gray-500 py-1
 					transition-colors duration-200 ease-in-out hover:bg-slate-400
-					${currentPageNumber > 0 ? '' : 'invisible'}`}
+					${currentPageNumber === 0 ? 'invisible' : ''}`}
         onClick={() => handlePageClick(currentPageNumber - 1)}
       >
         <FontAwesomeIcon icon={faArrowLeft} />
@@ -58,9 +61,8 @@ export const Pagination = ({
         {currentPageNumber >= 2 && pagesCount > numberOfPageIcons && (
           <>
             <button
-              className="w-8 rounded-lg border border-gray-300 py-1
-                transition-colors duration-200 ease-in-out hover:bg-slate-400
-            "
+              className="w-8 rounded-lg border border-gray-500 py-1
+                transition-colors duration-200 ease-in-out hover:bg-slate-400"
               onClick={() => handlePageClick(0)}
             >
               1
@@ -70,9 +72,9 @@ export const Pagination = ({
         )}
         {pageNumbersToDisplay.map((i) => (
           <button
-            className={`w-8 rounded-lg border border-gray-300 py-1
+            className={`w-8 rounded-lg border border-gray-500 py-1
 							transition-colors duration-200 ease-in-out hover:bg-slate-400
-							${currentPageNumber === i ? 'border-black' : ''}`}
+							${currentPageNumber === i ? activeBorderColor : ''}`}
             key={i}
             onClick={() => handlePageClick(i)}
           >
@@ -81,9 +83,9 @@ export const Pagination = ({
         ))}
       </div>
       <button
-        className={`rounded-lg border border-gray-300 px-2 py-1 ${
-          currentPageNumber < pagesCount - 1 ? '' : 'invisible'
-        }`}
+        className={`rounded-lg border border-gray-500 px-2 py-1
+          transition-colors duration-200 ease-in-out hover:bg-slate-400
+          ${currentPageNumber === pagesCount - 1 ? 'invisible' : ''}`}
         onClick={() => handlePageClick(currentPageNumber + 1)}
       >
         <FontAwesomeIcon icon={faArrowRight} />
