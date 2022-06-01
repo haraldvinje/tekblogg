@@ -5,11 +5,12 @@ import Image from 'next/image'
 
 const Blog: NextPage = () => {
   const {theme} = useTheme()
-  const textStyle = theme === 'dark' ? 'prose-invert' : ''
+  const textColorStyle = theme === 'dark' ? 'prose-invert' : ''
+
   return (
     <>
       <Metatags title="Om TekBlogg" description="TekBlogg er laget og drevet av Harald Vinje." />
-      <div className={`prose lg:prose-xl w-full ${textStyle}`}>
+      <div className={`prose lg:prose-xl w-full ${textColorStyle}`}>
         <h1 className="flex justify-center">Velkommen til bloggen!🤓</h1>
         <p>
           Denne bloggen er laget og drives av Harald Vinje. Innleggene vil hovedsakelig ta for seg
