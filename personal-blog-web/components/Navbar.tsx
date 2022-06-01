@@ -14,7 +14,7 @@ const Navbar = () => {
                           transition duration-300 ease-in-out hover:bg-white hover:text-black
                           sm:p-2 sm:text-3xl`
   const iconStyle =
-    'h-6 text-white transition duration-300 ease-in-out hover:scale-125 hover:opacity-70'
+    'h-4 sm:h-6 text-white transition duration-300 ease-in-out hover:scale-125 hover:opacity-70'
 
   return (
     <div className="relative z-10 h-16 w-[100%] text-white sm:h-20">
@@ -35,7 +35,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex w-[50%] items-center justify-center space-x-4 py-3 text-white">
-          <div className='mx-8'>
+          <div className='mx-4'>
             {currentTheme === "dark" ? (
               <SunIcon className={iconStyle} onClick={() => setTheme("light")} />
             ) : (
