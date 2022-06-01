@@ -20,7 +20,7 @@ export const Pagination = ({
     pageNumbers.slice(initialPage, initialPage + numberOfPageIcons)
   )
   const { theme } = useTheme()
-  const activeBorderColor = theme === 'dark' ? 'border-gray-100' : 'border-gray-800'
+  const activeColor = theme === 'dark' ? 'bg-gray-400' : 'bg-gray-400'
 
   useEffect(() => {
     setPageNumbers(Array.from({ length: pagesCount }, (_, i) => i))
@@ -74,7 +74,7 @@ export const Pagination = ({
           <button
             className={`w-8 rounded-lg border border-gray-500 py-1
 							transition-colors duration-200 ease-in-out hover:bg-slate-400
-							${currentPageNumber === i ? activeBorderColor : ''}`}
+							${currentPageNumber === i ? activeColor : ''}`}
             key={i}
             onClick={() => handlePageClick(i)}
           >
