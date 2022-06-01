@@ -6,8 +6,7 @@ import { useTheme } from 'next-themes'
 import { SunIcon, MoonIcon } from '@heroicons/react/solid'
 
 const Navbar = () => {
-  const { systemTheme, theme, setTheme } = useTheme()
-  const currentTheme = theme === 'system' ? systemTheme : theme
+  const { theme, setTheme } = useTheme()
 
   const navItemStyle = `flex items-center rounded-md p-1 text-center font-bold leading-snug 
                           transition duration-300 ease-in-out hover:bg-white hover:text-black
@@ -35,7 +34,7 @@ const Navbar = () => {
         </div>
         <div className="flex w-[50%] items-center justify-center space-x-4 py-3 text-white">
           <div className="mx-4">
-            {currentTheme === 'dark' ? (
+            {theme === 'dark' ? (
               <SunIcon className={iconStyle} onClick={() => setTheme('light')} />
             ) : (
               <MoonIcon className={iconStyle} onClick={() => setTheme('dark')} />
