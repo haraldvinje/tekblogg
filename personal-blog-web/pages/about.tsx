@@ -6,7 +6,7 @@ const Blog: NextPage = () => {
   return (
     <>
       <Metatags title="Om TekBlogg" description="TekBlogg er laget og drevet av Harald Vinje." />
-      <div className="prose w-full">
+      <div className="prose lg:prose-xl w-full">
         <h1 className="flex justify-center">Velkommen til bloggen!🤓</h1>
         <p>
           Denne bloggen er laget og drives av Harald Vinje. Innleggene vil hovedsakelig ta for seg

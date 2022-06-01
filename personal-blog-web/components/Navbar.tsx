@@ -2,8 +2,14 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedinIn, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons'
+import { useTheme } from 'next-themes'
+import{SunIcon ,MoonIcon} from "@heroicons/react/solid";
 
 const Navbar = () => {
+
+  const {systemTheme, theme, setTheme} = useTheme()
+  const currentTheme = theme === "system" ? systemTheme : theme
+
   const navItemStyle = `flex items-center rounded-md p-1 text-center font-bold leading-snug 
                           transition duration-300 ease-in-out hover:bg-white hover:text-black
                           sm:p-2 sm:text-3xl`
@@ -29,6 +35,13 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex w-[50%] items-center justify-center space-x-4 py-3 text-white">
+          <div className='mx-8'>
+            {currentTheme === "dark" ? (
+              <SunIcon className={iconStyle} onClick={() => setTheme("light")} />
+            ) : (
+              <MoonIcon className={iconStyle} onClick={() => setTheme("dark")} />
+            )}
+          </div>
           <a href="https://github.com/haraldvinje" target="_blank" rel="noreferrer">
             <FontAwesomeIcon className={iconStyle} icon={faGithub} color="white" />
           </a>

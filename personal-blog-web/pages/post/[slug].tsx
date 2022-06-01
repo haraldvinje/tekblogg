@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import groq from 'groq'
+import { useTheme } from 'next-themes'
 import client from 'lib/sanityClient'
 import { formatAuthors, formatDate } from 'lib/utils'
 import {
@@ -29,6 +30,9 @@ const Post = ({ post }: { post: Post }) => {
   const { title, authors, categories, mainImage, publishedAt, introduction, body, slug } = post
   const rawIntro = (introduction as PortableTextIntro)?.[0]?.children?.[0].text || ''
 
+  const {theme} = useTheme()
+  const textStyle = theme === 'dark' ? 'prose-invert' : ''
+
   return (
     <>
       <Metatags
@@ -37,7 +41,7 @@ const Post = ({ post }: { post: Post }) => {
         image={urlFor(mainImage).url()}
         path={`/post/${slug}`}
       />
-      <article className="prose w-full">
+      <article className={`prose lg:prose-xl w-full ${textStyle}`}>
         <h1 className="flex justify-center">{title}</h1>
         <div className="flex flex-col space-y-2">
           <span className="flex items-center justify-between">
@@ -72,6 +76,7 @@ const Post = ({ post }: { post: Post }) => {
           />
         )}
         <RichText value={body} />
+        <h2 className='text-white'>Lol</h2>
         <ShareButtons className="justify-center" />
       </article>
     </>

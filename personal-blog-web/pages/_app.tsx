@@ -1,6 +1,7 @@
 import '/styles/globals.css'
 import type { AppProps } from 'next/app'
 import Script from 'next/script'
+import { ThemeProvider } from 'next-themes'
 import BaseLayout from 'components/layouts/BaseLayout'
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -21,9 +22,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                 `}
       </Script>
 
-      <BaseLayout>
-        <Component {...pageProps} />
-      </BaseLayout>
+      <ThemeProvider>
+        <BaseLayout>
+          <Component {...pageProps} />
+        </BaseLayout>
+      </ThemeProvider>
     </>
   )
 }
