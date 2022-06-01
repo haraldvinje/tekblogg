@@ -34,9 +34,19 @@ const Navbar = () => {
         <div className="flex w-[50%] items-center justify-center space-x-4 py-3 text-white">
           <div className="mx-4">
             {theme === 'dark' ? (
-              <FontAwesomeIcon className={iconStyle} icon={faSun} color="white" onClick={() => setTheme('light')} />
+              <FontAwesomeIcon
+                className={iconStyle}
+                icon={faSun}
+                color="white"
+                onClick={() => setTheme('light')}
+              />
             ) : (
-              <FontAwesomeIcon className={iconStyle} icon={faMoon} color="white" onClick={() => setTheme('dark')} />
+              <FontAwesomeIcon
+                className={iconStyle}
+                icon={faMoon}
+                color="white"
+                onClick={() => setTheme('dark')}
+              />
             )}
           </div>
           <a href="https://github.com/haraldvinje" target="_blank" rel="noreferrer">
