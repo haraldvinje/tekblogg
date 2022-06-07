@@ -1,10 +1,9 @@
 import groq from 'groq'
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState } from 'react'
 import client from 'lib/sanityClient'
 import Metatags from 'components/Metatags'
 import BlogPostCard from 'components/BlogPostCard'
 import { Post } from './post/[slug]'
-import { Pagination } from 'components/Pagination'
 import { Category } from 'components/Category'
 
 function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
@@ -12,10 +11,7 @@ function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
 }
 
 const Home = ({ posts }: { posts: PostCardData[] }) => {
-  const itemsPerPage = 5
   const [filteredPosts, setFilteredPosts] = useState<PostCardData[]>(posts)
-  const [pagesCount, setPagesCount] = useState<number>(Math.ceil(posts.length / itemsPerPage))
-  const [postsInPage, setPostsInPage] = useState<PostCardData[]>(posts.slice(0, itemsPerPage))
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
 
   useEffect(() => {
@@ -39,23 +35,6 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
       setSelectedCategories([...selectedCategories, category])
     }
   }
-
-  const handlePageClick = useCallback(
-    (pageNumber: number) => {
-      const newOffset = (pageNumber * itemsPerPage) % filteredPosts.length
-      setPostsInPage(filteredPosts.slice(newOffset, newOffset + itemsPerPage))
-    },
-    [filteredPosts]
-  )
-
-  useEffect(() => {
-    setPostsInPage(filteredPosts.slice(0, itemsPerPage))
-    setPagesCount(Math.ceil(filteredPosts.length / itemsPerPage))
-    handlePageClick(0)
-    return () => {
-      setPostsInPage([])
-    }
-  }, [filteredPosts, handlePageClick, posts, selectedCategories])
 
   const allCategories = posts
     .flatMap((post) => post.categories)
@@ -82,12 +61,9 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
               )
           )}
         </div>
-        {postsInPage.map((post, index) => (
+        {filteredPosts.map((post, index) => (
           <BlogPostCard key={index} post={post} />
         ))}
-        {filteredPosts.length > itemsPerPage && (
-          <Pagination onPageChange={handlePageClick} pagesCount={pagesCount} />
-        )}
       </div>
     </>
   )
