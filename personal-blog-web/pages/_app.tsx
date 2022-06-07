@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 `}
       </Script>
 
-      <ThemeProvider enableSystem={false}>
+      <ThemeProvider>
         <BaseLayout>
           <Component {...pageProps} />
         </BaseLayout>

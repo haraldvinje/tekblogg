@@ -56,6 +56,13 @@ const ptComponents = {
         </SyntaxHighlighter>
       )
     }
+  },
+  marks: {
+    code: ({ text }: { text: string }) => (
+      <code className="rounded-sm border-2 border-amber-100 bg-slate-800 p-2 text-amber-100 before:content-none after:content-none">
+        {text}
+      </code>
+    )
   }
 }
 

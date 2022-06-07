@@ -1,12 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-    code {
-        @apply bg-[#222529] text-[#a8652c] border-[#cecabb]
-                p-[1px] rounded-sm border-2 
-                before:content-none after:content-none 
-                !important;
-    }
-}
