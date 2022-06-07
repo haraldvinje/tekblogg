@@ -31,7 +31,6 @@ const Post = ({ post }: { post: Post }) => {
   const rawIntro = (introduction as PortableTextIntro)?.[0]?.children?.[0].text || ''
 
   const { theme } = useTheme()
-  const textColorStyle = theme === 'dark' ? 'prose-invert' : ''
 
   return (
     <>
@@ -41,7 +40,7 @@ const Post = ({ post }: { post: Post }) => {
         image={urlFor(mainImage).url()}
         path={`/post/${slug}`}
       />
-      <article className={`prose w-full lg:prose-xl ${textColorStyle}`}>
+      <article className={`prose w-full lg:prose-xl ${theme === 'dark' && 'prose-invert'}`}>
         <h1 className="flex justify-center">{title}</h1>
         <div className="flex flex-col space-y-2">
           <span className="flex items-center justify-between">
