@@ -95,7 +95,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }: { params: { slug: string } }) => {
   const { slug = '' } = params
 
-  const post: Post[] = await client.fetch(
+  const post: Post = await client.fetch(
     groq`*[_type == "post" && slug.current == $slug][0]{
       title,
       "authors": authors[]->name,
