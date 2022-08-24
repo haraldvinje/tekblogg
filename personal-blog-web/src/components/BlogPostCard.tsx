@@ -1,6 +1,6 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { PostCardData } from 'src/pages'
-import Image from 'next/image'
 import { RichText, urlFor } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
 import { formatDate } from 'src/lib/utils'

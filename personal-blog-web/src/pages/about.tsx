@@ -1,7 +1,7 @@
-import Metatags from 'src/components/Metatags'
 import type { NextPage } from 'next'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
+import Metatags from 'src/components/Metatags'
 
 const Blog: NextPage = () => {
   const { theme } = useTheme()

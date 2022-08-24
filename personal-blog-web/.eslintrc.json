@@ -2,6 +2,7 @@
   "plugins": [
     "tailwindcss",
     "unused-imports",
+    "import",
     "prettier"
   ],
   "extends": [
@@ -29,6 +30,20 @@
         "varsIgnorePattern": "^_",
         "args": "after-used",
         "argsIgnorePattern": "^_"
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object"
+        ]
       }
     ],
     "prettier/prettier": [

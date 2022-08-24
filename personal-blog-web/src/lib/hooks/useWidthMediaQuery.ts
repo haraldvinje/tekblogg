@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 export const useWidthMediaQuery = (width: number) => {
   const [targetReached, setTargetReached] = useState(false)

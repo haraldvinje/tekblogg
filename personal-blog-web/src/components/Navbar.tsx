@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faLinkedinIn, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 import { faBookOpen, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from 'next-themes'
 

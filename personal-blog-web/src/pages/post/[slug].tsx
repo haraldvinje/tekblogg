@@ -1,15 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 
-import groq from 'groq'
 import { useTheme } from 'next-themes'
+import groq from 'groq'
 import client from 'src/lib/sanityClient'
 import { formatAuthors, formatDate } from 'src/lib/utils'
 import {
+  PortableTextBody,
+  PortableTextIntro,
   RichText,
   SanityImage,
-  urlFor,
-  PortableTextIntro,
-  PortableTextBody
+  urlFor
 } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
 import Metatags from 'src/components/Metatags'
