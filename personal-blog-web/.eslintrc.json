@@ -1,6 +1,18 @@
 {
-  "plugins": ["tailwindcss", "unused-imports"],
-  "extends": ["next/core-web-vitals", "plugin:tailwindcss/recommended", "prettier"],
+  "plugins": [
+    "tailwindcss",
+    "unused-imports",
+    "prettier"
+  ],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:tailwindcss/recommended",
+    "prettier"
+  ],
+  "ignorePatterns": [
+    "*.json",
+    "*.js"
+  ],
   "rules": {
     "tailwindcss/classnames-order": [
       "warn",
@@ -12,7 +24,15 @@
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
       "warn",
-      { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "prettier/prettier": [
+      "error"
     ]
   }
 }

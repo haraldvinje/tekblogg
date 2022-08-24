@@ -1,10 +1,10 @@
 import groq from 'groq'
 import { useEffect, useState } from 'react'
-import client from 'lib/sanityClient'
-import Metatags from 'components/Metatags'
-import BlogPostCard from 'components/BlogPostCard'
+import client from 'src/lib/sanityClient'
+import Metatags from 'src/components/Metatags'
+import BlogPostCard from 'src/components/BlogPostCard'
 import { Post } from './post/[slug]'
-import { Category } from 'components/Category'
+import { Category } from 'src/components/Category'
 
 function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
   return value !== null && value !== undefined

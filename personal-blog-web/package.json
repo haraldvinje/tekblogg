@@ -7,9 +7,11 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
-    "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && next lint",
-    "lintfix": "next lint --fix && prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix src",
+    "prettier": "prettier --check src",
+    "prettier:fix": "prettier --write src",
+    "format": "yarn lint:fix && yarn prettier:fix",
     "prepare": "cd .. && husky install personal-blog-web/.husky"
   },
   "dependencies": {
@@ -46,6 +48,7 @@
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-tailwindcss": "^3.5.0",
     "eslint-plugin-unused-imports": "^2.0.0",
@@ -59,6 +62,6 @@
     "typescript": "4.7.4"
   },
   "lint-staged": {
-    "*.{ts,tsx}": "yarn lintfix"
+    "*.{ts,tsx}": "yarn format"
   }
 }

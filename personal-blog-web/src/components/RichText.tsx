@@ -4,7 +4,7 @@ import { PortableTextBlock, TypedObject } from '@portabletext/types'
 import imageUrlBuilder from '@sanity/image-url'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import client from 'lib/sanityClient'
+import client from 'src/lib/sanityClient'
 
 type PortableTextIntroBlock = {
   children?: {

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import AnimationLayout from 'components/layouts/AnimationLayout'
-import Navbar from 'components/Navbar'
+import AnimationLayout from 'src/components/layouts/AnimationLayout'
+import Navbar from 'src/components/Navbar'
 
 const BaseLayout = ({ children }: { children: ReactNode }) => {
   return (

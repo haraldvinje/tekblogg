@@ -1,6 +1,6 @@
 import { faLinkedin, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useAbsoluteUrl } from 'lib/hooks/useAbsoluteUrl'
+import { useAbsoluteUrl } from 'src/lib/hooks/useAbsoluteUrl'
 
 export const ShareButtons = ({ className }: { className?: string }) => {
   const url = useAbsoluteUrl()

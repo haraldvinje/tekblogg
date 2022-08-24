@@ -2,18 +2,18 @@
 
 import groq from 'groq'
 import { useTheme } from 'next-themes'
-import client from 'lib/sanityClient'
-import { formatAuthors, formatDate } from 'lib/utils'
+import client from 'src/lib/sanityClient'
+import { formatAuthors, formatDate } from 'src/lib/utils'
 import {
   RichText,
   SanityImage,
   urlFor,
   PortableTextIntro,
   PortableTextBody
-} from 'components/RichText'
-import { Category } from 'components/Category'
-import Metatags from 'components/Metatags'
-import { ShareButtons } from 'components/ShareButtons'
+} from 'src/components/RichText'
+import { Category } from 'src/components/Category'
+import Metatags from 'src/components/Metatags'
+import { ShareButtons } from 'src/components/ShareButtons'
 
 export interface Post {
   title: string
