@@ -69,10 +69,7 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
   )
 }
 
-type PartialPostCardData = Omit<Post, 'body' | 'authors'>
-export interface PostCardData extends PartialPostCardData {
-  estimatedReadingTime: number
-}
+type PostCardData = Omit<Post, 'body' | 'authors'>
 
 export const getStaticProps = async () => {
   const posts: PostCardData[] = await client.fetch(

@@ -21,13 +21,24 @@ export interface Post {
   mainImage: SanityImage
   categories?: string[]
   publishedAt: string
+  estimatedReadingTime: number
   slug: string
   introduction: PortableTextIntro
   body: PortableTextBody
 }
 
 const Post = ({ post }: { post: Post }) => {
-  const { title, authors, categories, mainImage, publishedAt, introduction, body, slug } = post
+  const {
+    title,
+    authors,
+    categories,
+    mainImage,
+    publishedAt,
+    estimatedReadingTime,
+    introduction,
+    body,
+    slug
+  } = post
   const rawIntro = (introduction as PortableTextIntro)?.[0]?.children?.[0].text || ''
 
   const { theme } = useTheme()
@@ -50,6 +61,7 @@ const Post = ({ post }: { post: Post }) => {
           <p>
             <b>{formatDate(publishedAt)}</b>
           </p>
+          <p>{`${estimatedReadingTime} min lesning`}</p>
         </div>
         {categories && (
           <>
@@ -102,6 +114,7 @@ export const getStaticProps = async ({ params }: { params: { slug: string } }) =
       "categories": categories[]->title,
       "publishedAt": publishedAt,
       "slug": slug.current,
+      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
       mainImage,
       introduction,
       body
