@@ -8,7 +8,7 @@ import { useWidthMediaQuery } from 'src/lib/hooks/useWidthMediaQuery'
 const Navbar = () => {
   const { theme, setTheme } = useTheme()
 
-  const wideEnough = useWidthMediaQuery('300')
+  const wideEnough = useWidthMediaQuery(300)
 
   const navItemStyle = `flex items-center rounded-md p-1 text-center font-bold leading-snug 
                           transition duration-300 ease-in-out hover:bg-white hover:text-black

@@ -12,6 +12,7 @@
     "prettier": "prettier --check src",
     "prettier:fix": "prettier --write src",
     "format": "yarn lint:fix && yarn prettier:fix",
+    "ts-lint": "tsc --noEmit --incremental",
     "clean": "rm -rf node_modules .next src/.next",
     "prepare": "cd .. && husky install personal-blog-web/.husky"
   },

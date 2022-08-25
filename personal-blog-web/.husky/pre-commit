@@ -3,3 +3,4 @@
 
 cd personal-blog-web
 npx lint-staged
+yarn ts-lint

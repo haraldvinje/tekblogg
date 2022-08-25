@@ -1,16 +1,12 @@
 ## Install
 
 ```bash
-npm install
-# or
 yarn
 ```
 
 ## Develop
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 

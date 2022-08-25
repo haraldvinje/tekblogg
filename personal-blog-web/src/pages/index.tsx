@@ -69,7 +69,7 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
   )
 }
 
-type PostCardData = Omit<Post, 'body' | 'authors'>
+export type PostCardData = Omit<Post, 'body' | 'authors'>
 
 export const getStaticProps = async () => {
   const posts: PostCardData[] = await client.fetch(
