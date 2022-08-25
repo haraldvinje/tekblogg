@@ -3,9 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 import { faBookOpen, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from 'next-themes'
+import { useWidthMediaQuery } from 'src/lib/hooks/useWidthMediaQuery'
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme()
+
+  const wideEnough = useWidthMediaQuery('300')
 
   const navItemStyle = `flex items-center rounded-md p-1 text-center font-bold leading-snug 
                           transition duration-300 ease-in-out hover:bg-white hover:text-black
@@ -21,7 +24,7 @@ const Navbar = () => {
             <a className={navItemStyle}>
               <span>
                 Blogg
-                <FontAwesomeIcon icon={faBookOpen} className="px-2" />
+                {wideEnough && <FontAwesomeIcon icon={faBookOpen} className="fa-xs px-2" />}
               </span>
             </a>
           </Link>

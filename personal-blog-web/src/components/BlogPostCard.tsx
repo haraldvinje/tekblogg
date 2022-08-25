@@ -32,7 +32,7 @@ const BlogPostCard = ({ post }: { post: PostCardData }) => {
               </a>
             </Link>
           )}
-          <div>
+          <div className="overflow-hidden">
             <Link href={linkRef} passHref>
               <a className="text-2xl font-bold hover:text-blue-600">{title}</a>
             </Link>

@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState } from 'react'
 
 export const useWidthMediaQuery = (width: number) => {
-  const [targetReached, setTargetReached] = useState(false)
+  const [minPixelWidthReaced, setMinPixelWidthReached] = useState(false)
 
   const updateTarget = useCallback((e: MediaQueryListEvent) => {
     if (e.matches) {
-      setTargetReached(true)
+      setMinPixelWidthReached(true)
     } else {
-      setTargetReached(false)
+      setMinPixelWidthReached(false)
     }
   }, [])
 
@@ -16,11 +16,11 @@ export const useWidthMediaQuery = (width: number) => {
     media.addEventListener('change', updateTarget)
 
     if (media.matches) {
-      setTargetReached(true)
+      setMinPixelWidthReached(true)
     }
 
     return () => media.removeEventListener('change', updateTarget)
   }, [updateTarget, width])
 
-  return targetReached
+  return minPixelWidthReaced
 }
