@@ -2,4 +2,4 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 cd personal-blog-web
-npx lint-staged
+yarn ts-lint
