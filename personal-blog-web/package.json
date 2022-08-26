@@ -14,6 +14,7 @@
     "format": "yarn lint:fix && yarn prettier:fix",
     "ts-lint": "tsc --noEmit --incremental",
     "clean": "rm -rf node_modules .next src/.next",
+    "clean:install": "rm -rf node_modules .next src/.next && yarn",
     "prepare": "cd .. && husky install personal-blog-web/.husky"
   },
   "dependencies": {

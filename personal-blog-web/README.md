@@ -1,7 +1,6 @@
 ## Install
 
 You will need [Node](https://nodejs.org/en/download/package-manager/) and [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable) to run this web app.
-You need [tsc](https://www.npmjs.com/package/typescript) globally (`npm install -g typescript`) if you are pushing to a remote git repo, since [husky](https://typicode.github.io/husky/#/) runs a git pre-push hook that uses `tsc`.
 
 Install dependcies with:
 

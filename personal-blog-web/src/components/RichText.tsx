@@ -1,23 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { PortableText } from '@portabletext/react'
-import { PortableTextBlock, TypedObject } from '@portabletext/types'
+import { PortableTextBlock } from '@portabletext/types'
 import imageUrlBuilder from '@sanity/image-url'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import client from 'src/lib/sanityClient'
-
-type PortableTextIntroBlock = {
-  children?: {
-    _type: string
-    _key: string
-    marks?: string[]
-    text?: string
-  }[]
-}
-
-export type PortableTextIntro = PortableTextIntroBlock[]
-
-export type PortableTextBody<B extends TypedObject = PortableTextBlock> = B | B[]
 
 export type SanityImage = {
   asset?: { _ref: string }
@@ -70,12 +57,12 @@ export const RichText = ({
   value,
   className
 }: {
-  value: PortableTextBody | PortableTextIntro
+  value: PortableTextBlock[]
   className?: string
 }) => {
   return (
     <div className={className}>
-      <PortableText value={value as PortableTextBody} components={ptComponents} />
+      <PortableText value={value} components={ptComponents} />
     </div>
   )
 }

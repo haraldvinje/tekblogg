@@ -2,15 +2,10 @@
 
 import { useTheme } from 'next-themes'
 import groq from 'groq'
+import { PortableTextBlock } from '@portabletext/types'
 import client from 'src/lib/sanityClient'
-import { formatAuthors, formatDate } from 'src/lib/utils'
-import {
-  PortableTextBody,
-  PortableTextIntro,
-  RichText,
-  SanityImage,
-  urlFor
-} from 'src/components/RichText'
+import { formatAuthors, formatDate, richToPlainText } from 'src/lib/utils'
+import { RichText, SanityImage, urlFor } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
 import Metatags from 'src/components/Metatags'
 import { ShareButtons } from 'src/components/ShareButtons'
@@ -23,8 +18,8 @@ export interface Post {
   publishedAt: string
   estimatedReadingTime: number
   slug: string
-  introduction: PortableTextIntro
-  body: PortableTextBody
+  introduction: PortableTextBlock[]
+  body: PortableTextBlock[]
 }
 
 const Post = ({ post }: { post: Post }) => {
@@ -39,7 +34,7 @@ const Post = ({ post }: { post: Post }) => {
     body,
     slug
   } = post
-  const rawIntro = (introduction as PortableTextIntro)?.[0]?.children?.[0].text || ''
+  const rawIntro = richToPlainText(introduction)
 
   const { theme } = useTheme()
 
