@@ -21,6 +21,14 @@
         "officialSorting": true
       }
     ],
+    "tailwindcss/no-custom-classname": [
+      "warn",
+      {
+        "whitelist": [
+          "fa-[a-zA-Z0-9]+"
+        ]
+      }
+    ],
     "@typescript-eslint/no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
