@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix src",
+    "lint:all": "yarn lint && yarn prettier && yarn ts-lint",
     "prettier": "prettier --check src",
     "prettier:fix": "prettier --write src",
     "format": "yarn lint:fix && yarn prettier:fix",
