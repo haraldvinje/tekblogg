@@ -5,36 +5,24 @@ import imageUrlBuilder from '@sanity/image-url'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import client from 'src/lib/sanityClient'
-
-export type SanityImage = {
-  asset?: { _ref: string }
-  alt: string
-}
+import { SanityImage, SanityImageObjectProps } from 'src/components/SanityImage'
 
 export type SanityCodeBlock = {
   language: string
   code: string
 }
 
-export function urlFor(source: SanityImage) {
+export function urlFor(source: SanityImageObjectProps) {
   return imageUrlBuilder(client).image(source)
 }
 
 const ptComponents = {
   types: {
-    image: ({ value }: { value: SanityImage }) => {
+    image: ({ value }: { value: SanityImageObjectProps }) => {
       if (!value?.asset?._ref) {
         return null
       }
-
-      return (
-        <img
-          className="flex justify-center"
-          alt={value.alt || ' '}
-          loading="lazy"
-          src={urlFor(value).fit('max').auto('format').url()}
-        />
-      )
+      return <SanityImage image={value} loading="lazy" />
     },
     code: ({ value }: { value: SanityCodeBlock }) => {
       return (

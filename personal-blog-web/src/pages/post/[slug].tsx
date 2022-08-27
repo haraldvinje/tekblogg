@@ -1,19 +1,18 @@
-/* eslint-disable @next/next/no-img-element */
-
 import { useTheme } from 'next-themes'
 import groq from 'groq'
 import { PortableTextBlock } from '@portabletext/types'
 import client from 'src/lib/sanityClient'
 import { formatAuthors, formatDate, richToPlainText } from 'src/lib/utils'
-import { RichText, SanityImage, urlFor } from 'src/components/RichText'
+import { RichText, urlFor } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
 import Metatags from 'src/components/Metatags'
 import { ShareButtons } from 'src/components/ShareButtons'
+import { SanityImage, SanityImageObjectProps } from 'src/components/SanityImage'
 
 export interface Post {
   title: string
   authors: string[]
-  mainImage: SanityImage
+  mainImage: SanityImageObjectProps
   categories?: string[]
   publishedAt: string
   estimatedReadingTime: number
@@ -34,8 +33,8 @@ const Post = ({ post }: { post: Post }) => {
     body,
     slug
   } = post
-  const rawIntro = richToPlainText(introduction)
 
+  const rawIntro = richToPlainText(introduction)
   const { theme } = useTheme()
 
   return (
@@ -73,14 +72,7 @@ const Post = ({ post }: { post: Post }) => {
         <div className="text-xl font-bold">
           <RichText value={introduction} />
         </div>
-        {mainImage && (
-          <img
-            className="w-full"
-            alt={'mainImage'}
-            loading="lazy"
-            src={urlFor(mainImage).fit('max').auto('format').url()}
-          />
-        )}
+        {mainImage && <SanityImage image={mainImage} alt="mainImage" loading="lazy" />}
         <RichText value={body} />
         <ShareButtons className="justify-center" />
       </article>
