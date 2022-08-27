@@ -1,10 +1,10 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { PostCardData } from 'src/pages'
-import { RichText, urlFor } from 'src/components/RichText'
+import { RichText } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
 import { formatDate } from 'src/lib/utils'
 import { useWidthMediaQuery } from 'src/lib/hooks/useWidthMediaQuery'
+import { SanityImage } from './SanityImage'
 
 const BlogPostCard = ({ post }: { post: PostCardData }) => {
   const { title, categories, mainImage, publishedAt, introduction, slug, estimatedReadingTime } =
@@ -19,8 +19,8 @@ const BlogPostCard = ({ post }: { post: PostCardData }) => {
             <Link href={linkRef} passHref>
               <a>
                 <div style={{ width: '200px' }}>
-                  <Image
-                    src={urlFor(mainImage).url()}
+                  <SanityImage
+                    image={mainImage}
                     alt="mainImage"
                     width={200}
                     height={200}
