@@ -31,10 +31,9 @@ const Blog: NextPage = () => {
         </div>
         <p>
           Harald Vinje fullførte sivilingeniørgrad i Datateknologi fra NTNU i 2020, og har jobbet
-          både som konsulent og in house-utvikler. For tiden jobber Harald som fullstack-utvikler
-          hos{' '}
-          <a href="https://www.xperitech.com/" target="_blank" rel="noreferrer">
-            XperiTech
+          både som konsulent og in house-utvikler. For tiden jobber Harald som seniorkonsulent hos{' '}
+          <a href="https://item.no/" target="_blank" rel="noreferrer">
+            Item Consulting
           </a>
           .
         </p>
