@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import { PostCardData } from 'src/pages'
+import type { PostCardData } from 'src/pages'
 import { RichText } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
 import { formatDate } from 'src/lib/utils'
 import { useWidthMediaQuery } from 'src/lib/hooks/useWidthMediaQuery'
-import { SanityImage } from './SanityImage'
+import { SanityImage } from 'src/components/SanityImage'
 
 const BlogPostCard = ({ post }: { post: PostCardData }) => {
   const { title, categories, mainImage, publishedAt, introduction, slug, estimatedReadingTime } =

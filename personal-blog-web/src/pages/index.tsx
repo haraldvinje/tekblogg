@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import groq from 'groq'
 import client from 'src/lib/sanityClient'
 import Metatags from 'src/components/Metatags'
@@ -11,22 +11,7 @@ function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
 }
 
 const Home = ({ posts }: { posts: PostCardData[] }) => {
-  const [filteredPosts, setFilteredPosts] = useState<PostCardData[]>(posts)
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
-
-  useEffect(() => {
-    if (selectedCategories.length === 0) setFilteredPosts(posts)
-    else
-      setFilteredPosts(
-        posts.filter((p) => {
-          return p.categories?.some((c) => selectedCategories.includes(c))
-        })
-      )
-
-    return () => {
-      setFilteredPosts([])
-    }
-  }, [selectedCategories, posts])
 
   const handleCategoryClick = (category: string) => {
     if (selectedCategories.includes(category)) {
@@ -35,6 +20,11 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
       setSelectedCategories([...selectedCategories, category])
     }
   }
+
+  const filteredPosts =
+    selectedCategories.length === 0
+      ? posts
+      : posts.filter((p) => p.categories?.some((c) => selectedCategories.includes(c)))
 
   const allCategories = posts
     .flatMap((post) => post.categories)
