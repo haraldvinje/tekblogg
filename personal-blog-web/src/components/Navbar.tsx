@@ -52,14 +52,32 @@ const Navbar = () => {
               />
             )}
           </div>
-          <a href="https://github.com/haraldvinje" target="_blank" rel="noreferrer">
-            <FontAwesomeIcon className={iconStyle} icon={faGithub} color="white" />
+          <a
+            href="https://github.com/haraldvinje"
+            title="GitHub"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub page"
+          >
+            <FontAwesomeIcon className={iconStyle} icon={faGithub} color="white" aria-hidden />
           </a>
-          <a href="https://no.linkedin.com/in/haraldvinje" target="_blank" rel="noreferrer">
-            <FontAwesomeIcon className={iconStyle} icon={faLinkedinIn} color="white" />
+          <a
+            href="https://no.linkedin.com/in/haraldvinje"
+            title="LinkedIn"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn profile"
+          >
+            <FontAwesomeIcon className={iconStyle} icon={faLinkedinIn} color="white" aria-hidden />
           </a>
-          <a href="https://www.instagram.com/haraldvinje/" target="_blank" rel="noreferrer">
-            <FontAwesomeIcon className={iconStyle} icon={faInstagram} color="white" />
+          <a
+            href="https://www.instagram.com/haraldvinje/"
+            title="Instagram"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram profile"
+          >
+            <FontAwesomeIcon className={iconStyle} icon={faInstagram} color="white" aria-hidden />
           </a>
         </div>
       </nav>

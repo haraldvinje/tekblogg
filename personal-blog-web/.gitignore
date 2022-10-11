@@ -36,3 +36,12 @@ yarn-error.log*
 
 # editor
 .vscode
+
+# sitemap
+sitemap.xml
+sitemap-0.xml
+
+# service workers
+**/public/workbox-*.js
+**/public/sw.js
+**/public/worker-*.js

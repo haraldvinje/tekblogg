@@ -18,7 +18,11 @@ const withPWA = require('next-pwa')({
   runtimeCaching
 })
 
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true'
+})
+
 module.exports = (_phase, { defaultConfig }) => {
-  const plugins = [withPWA]
+  const plugins = [withPWA, withBundleAnalyzer]
   return plugins.reduce((acc, plugin) => plugin(acc), { ...nextConfig })
 }
