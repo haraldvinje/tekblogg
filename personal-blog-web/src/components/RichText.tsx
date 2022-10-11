@@ -1,16 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
+import dynamic from 'next/dynamic'
 import { PortableText } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
 import imageUrlBuilder from '@sanity/image-url'
-import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
-import codeColorScheme from 'react-syntax-highlighter/dist/cjs/styles/hljs/gruvbox-dark'
 import client from 'src/lib/sanityClient'
 import { SanityImage, SanityImageObjectProps } from 'src/components/SanityImage'
+import type { CodeBlock as CodeBlockType } from 'src/components/CodeBlock'
 
-export type SanityCodeBlock = {
-  language: string
-  code: string
-}
+type CodeBlockProps = JSX.LibraryManagedAttributes<
+  typeof CodeBlockType,
+  React.ComponentProps<typeof CodeBlockType>
+>
+
+const CodeBlock = dynamic<CodeBlockProps>(() =>
+  import('src/components/CodeBlock').then((mod) => mod.CodeBlock)
+)
 
 export function urlFor(source: SanityImageObjectProps) {
   return imageUrlBuilder(client).image(source)
@@ -24,12 +28,8 @@ const ptComponents = {
       }
       return <SanityImage image={value} loading="lazy" />
     },
-    code: ({ value }: { value: SanityCodeBlock }) => {
-      return (
-        <SyntaxHighlighter language={value.language} style={codeColorScheme} showLineNumbers>
-          {value.code}
-        </SyntaxHighlighter>
-      )
+    code: ({ value }: { value: CodeBlockProps }) => {
+      return <CodeBlock code={value.code} language={value.language} />
     }
   },
   marks: {
