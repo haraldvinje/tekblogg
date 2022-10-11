@@ -19,6 +19,7 @@
     "prepare": "cd .. && husky install personal-blog-web/.husky"
   },
   "dependencies": {
+    "@babel/core": "^7.11.3",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
@@ -42,7 +43,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-syntax-highlighter": "^15.5.0",
-    "sharp": "^0.30.4"
+    "sharp": "^0.30.4",
+    "webpack": "^5.74.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.2",
@@ -62,6 +64,7 @@
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
+    "next-bundle-analyzer": "^0.6.4",
     "next-sitemap": "^3.1.12",
     "nextjs-google-analytics": "^2.1.0",
     "postcss": "^8.4.12",

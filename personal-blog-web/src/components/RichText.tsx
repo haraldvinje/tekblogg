@@ -2,8 +2,8 @@
 import { PortableText } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
 import imageUrlBuilder from '@sanity/image-url'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
+import codeColorScheme from 'react-syntax-highlighter/dist/cjs/styles/hljs/gruvbox-dark'
 import client from 'src/lib/sanityClient'
 import { SanityImage, SanityImageObjectProps } from 'src/components/SanityImage'
 
@@ -26,7 +26,7 @@ const ptComponents = {
     },
     code: ({ value }: { value: SanityCodeBlock }) => {
       return (
-        <SyntaxHighlighter language={value.language} style={tomorrow} showLineNumbers>
+        <SyntaxHighlighter language={value.language} style={codeColorScheme} showLineNumbers>
           {value.code}
         </SyntaxHighlighter>
       )
