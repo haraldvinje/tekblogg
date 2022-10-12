@@ -66,7 +66,6 @@
     "lint-staged": "^13.0.3",
     "next-bundle-analyzer": "^0.6.4",
     "next-sitemap": "^3.1.12",
-    "nextjs-google-analytics": "^2.1.0",
     "postcss": "^8.4.12",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.10",
