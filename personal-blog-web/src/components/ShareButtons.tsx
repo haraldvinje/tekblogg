@@ -10,10 +10,22 @@ export const ShareButtons = ({ className }: { className?: string }) => {
       <p>
         <i>Del: </i>
       </p>
-      <a href={`https://twitter.com/intent/tweet?text=${url}`} target="_blank" rel="noreferrer">
+      <a
+        href={`https://twitter.com/intent/tweet?text=${url}`}
+        title="Del på Twitter"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Del på Twitter"
+      >
         <FontAwesomeIcon icon={faTwitterSquare} color="#1DA1F2" size="2x" />
       </a>
-      <a href={`https://linkedin.com/share?url=${url}`} target="_blank" rel="noreferrer">
+      <a
+        href={`https://linkedin.com/share?url=${url}`}
+        title="Del på LinkedIn"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Del på LinkedIn"
+      >
         <FontAwesomeIcon icon={faLinkedin} color="#0072b1" size="2x" />
       </a>
     </div>
