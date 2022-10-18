@@ -99,7 +99,7 @@ export const getStaticProps = async ({ params }: { params: { slug: string } }) =
       title,
       "authors": authors[]->name,
       "categories": categories[]->title,
-      "publishedAt": publishedAt,
+      publishedAt,
       "slug": slug.current,
       "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
       mainImage,

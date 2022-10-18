@@ -65,7 +65,7 @@ export const getStaticProps = async () => {
     groq`*[_type == "post"] | order(publishedAt desc) {
       title,
       "categories": categories[]->title,
-      "publishedAt": publishedAt,
+      publishedAt,
       "slug": slug.current,
       "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
       mainImage,
