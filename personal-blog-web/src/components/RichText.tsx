@@ -1,21 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
-// import dynamic from 'next/dynamic'
 import { PortableText } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
 import imageUrlBuilder from '@sanity/image-url'
 import client from 'src/lib/sanityClient'
 import { SanityImage, SanityImageObjectProps } from 'src/components/SanityImage'
-// import type { CodeBlock as CodeBlockType } from 'src/components/CodeBlock'
 import CodeBlock, { CodeBlockProps } from 'src/components/CodeBlock'
-
-// type CodeBlockProps = JSX.LibraryManagedAttributes<
-//   typeof CodeBlockType,
-//   React.ComponentProps<typeof CodeBlockType>
-// >
-
-// const CodeBlock = dynamic<CodeBlockProps>(() =>
-//   import('src/components/CodeBlock').then((mod) => mod.CodeBlock)
-// )
 
 export function urlFor(source: SanityImageObjectProps) {
   return imageUrlBuilder(client).image(source)
