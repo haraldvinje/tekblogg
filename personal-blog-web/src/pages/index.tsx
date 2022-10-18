@@ -46,11 +46,7 @@ const Home = ({ posts }: { posts: PostCardData[] }) => {
           {allCategories.map(
             (category, index) =>
               category && (
-                <Category
-                  key={index}
-                  value={category}
-                  onCategoryClick={(category) => handleCategoryClick(category)}
-                />
+                <Category key={index} value={category} onCategoryClick={handleCategoryClick} />
               )
           )}
         </div>

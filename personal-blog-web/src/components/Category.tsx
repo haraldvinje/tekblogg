@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export const Category = ({
   value,
@@ -8,11 +8,7 @@ export const Category = ({
   onCategoryClick?: (arg: string) => void
 }) => {
   const [clicked, setClicked] = useState(false)
-  const [clickable, setClickable] = useState(false)
-
-  useEffect(() => {
-    setClickable(onCategoryClick !== undefined)
-  }, [onCategoryClick])
+  const clickable = onCategoryClick !== undefined
 
   return (
     <span
