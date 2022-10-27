@@ -1,18 +1,20 @@
+'use client'
+
 import { ReactNode } from 'react'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { AnimatePresence, LazyMotion, domAnimation, m } from 'framer-motion'
 import { fadeIn } from 'src/lib/animations'
 
 const AnimationWrapper = ({ children }: { children: ReactNode }) => {
   const animation = fadeIn
-  const router = useRouter()
+  const pathname = usePathname()
 
   return (
     <div>
       <LazyMotion features={domAnimation}>
         <AnimatePresence mode="wait">
           <m.div
-            key={router.route.concat(animation.name)}
+            key={pathname.concat(animation.name)}
             initial="initial"
             animate="animate"
             exit="exit"

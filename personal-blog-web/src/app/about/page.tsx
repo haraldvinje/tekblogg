@@ -1,9 +1,8 @@
-import type { NextPage } from 'next'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import Metatags from 'src/components/Metatags'
 
-const Blog: NextPage = () => {
+export default function AboutPage() {
   const { theme } = useTheme()
   const textColorStyle = theme === 'dark' ? 'prose-invert' : ''
 
@@ -44,5 +43,3 @@ const Blog: NextPage = () => {
     </>
   )
 }
-
-export default Blog

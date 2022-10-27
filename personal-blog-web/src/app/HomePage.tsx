@@ -1,16 +1,18 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import groq from 'groq'
+import client from 'src/lib/sanityClient'
 import Metatags from 'src/components/Metatags'
 import BlogPostCard from 'src/components/BlogPostCard'
 import { Category } from 'src/components/Category'
-import { PostCardData } from 'src/app/page'
+import { Post } from 'src/pages/post/[slug]'
 
 function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
   return value !== null && value !== undefined
 }
 
-export default function HomePage({ posts }: { posts: PostCardData[] }) {
+const Home = ({ posts }: { posts: PostCardData[] }) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const allCategories = useMemo(
     () =>
@@ -57,3 +59,28 @@ export default function HomePage({ posts }: { posts: PostCardData[] }) {
     </>
   )
 }
+
+export type PostCardData = Omit<Post, 'body' | 'authors'>
+
+export const getStaticProps = async () => {
+  const posts: PostCardData[] = await client.fetch(
+    groq`*[_type == "post"] | order(publishedAt desc) {
+      title,
+      "categories": categories[]->title,
+      publishedAt,
+      "slug": slug.current,
+      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
+      mainImage,
+      introduction
+    }`
+  )
+
+  return {
+    props: {
+      posts
+    },
+    revalidate: 60
+  }
+}
+
+export default Home
