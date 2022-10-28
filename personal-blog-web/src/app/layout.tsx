@@ -1,3 +1,6 @@
+'use client'
+
+import '/styles/globals.css'
 import Script from 'next/script'
 import { ThemeProvider } from 'next-themes'
 import Metatags from 'src/components/Metatags'
@@ -15,19 +18,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icons/icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){window.dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {cookie_flags: 'SameSite=None;Secure'});
-          `}
-        </Script>
       </head>
       <body>
         <ThemeProvider enableSystem={false}>
@@ -39,6 +29,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </AnimationWrapper>
         </ThemeProvider>
       </body>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+      />
+      <Script id="google-analytics">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {cookie_flags: 'SameSite=None;Secure'});
+          `}
+      </Script>
     </html>
   )
 }

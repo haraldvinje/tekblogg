@@ -1,7 +1,7 @@
 import groq from 'groq'
 import client from 'src/lib/sanityClient'
+import { Post } from 'src/app/post/[slug]/page'
 import HomePage from 'src/app/HomePage'
-import { Post } from 'src/pages/post/[slug]'
 
 export const revalidate = 60
 

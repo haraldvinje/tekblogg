@@ -1,5 +1,7 @@
+'use client'
+
 import Link from 'next/link'
-import type { PostCardData } from 'src/pages'
+import type { PostCardData } from 'src/app/page'
 import { RichText } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
 import { formatDate } from 'src/lib/utils'
@@ -21,11 +23,13 @@ const BlogPostCard = ({ post }: { post: PostCardData }) => {
                 <SanityImage
                   image={mainImage}
                   alt="mainImage"
-                  width={200}
-                  height={200}
                   quality={100}
                   placeholder="blur"
                   blurDataURL="mountains.avif"
+                  style={{
+                    width: '100%',
+                    aspectRatio: '1'
+                  }}
                 />
               </div>
             </Link>

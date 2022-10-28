@@ -1,3 +1,5 @@
+'use client'
+
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import Metatags from 'src/components/Metatags'
@@ -27,7 +29,8 @@ export default function AboutPage() {
             alt="profile"
             style={{
               maxWidth: '100%',
-              height: 'auto'
+              height: 'auto',
+              width: 'auto'
             }}
           />
         </div>
