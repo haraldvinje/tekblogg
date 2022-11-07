@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import Metatags from 'src/components/Metatags'
 import BlogPostCard from 'src/components/BlogPostCard'
 import { Category } from 'src/components/Category'
 import { PostCardData } from 'src/app/page'
