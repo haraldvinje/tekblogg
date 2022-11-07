@@ -1,3 +1,6 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
@@ -6,7 +9,12 @@ import { useTheme } from 'next-themes'
 import { useWidthMediaQuery } from 'src/lib/hooks/useWidthMediaQuery'
 
 const Navbar = () => {
+  const [isClientSide, setIsClientSide] = useState(false)
   const { theme, setTheme } = useTheme()
+
+  useEffect(() => {
+    setIsClientSide(true)
+  }, [])
 
   const wideEnough = useWidthMediaQuery(300)
 
@@ -20,38 +28,36 @@ const Navbar = () => {
     <div className="relative z-10 h-16 w-[100%] text-white sm:h-20">
       <nav className="fixed flex w-full bg-black">
         <div className="flex w-[50%] items-center justify-center space-x-4 py-3 text-white sm:space-x-12">
-          <Link href="/" passHref>
-            <a className={navItemStyle}>
-              <span>
-                Blogg
-                {wideEnough && <FontAwesomeIcon icon={faBookOpen} className="fa-xs px-2" />}
-              </span>
-            </a>
+          <Link href="/" passHref className={navItemStyle}>
+            <span>
+              Blogg
+              {wideEnough && <FontAwesomeIcon icon={faBookOpen} className="fa-xs px-2" />}
+            </span>
           </Link>
-          <Link href="/about" passHref>
-            <a className={navItemStyle}>
-              <span>Info</span>
-            </a>
+          <Link href="/about" passHref className={navItemStyle}>
+            <span>Info</span>
           </Link>
         </div>
         <div className="flex w-[50%] items-center justify-center space-x-4 py-3 text-white">
-          <div className="mx-4">
-            {theme === 'dark' ? (
-              <FontAwesomeIcon
-                className={iconStyle}
-                icon={faSun}
-                color="white"
-                onClick={() => setTheme('light')}
-              />
-            ) : (
-              <FontAwesomeIcon
-                className={iconStyle}
-                icon={faMoon}
-                color="white"
-                onClick={() => setTheme('dark')}
-              />
-            )}
-          </div>
+          {isClientSide ? (
+            <div className="mx-4">
+              {theme === 'dark' ? (
+                <FontAwesomeIcon
+                  className={iconStyle}
+                  icon={faSun}
+                  color="white"
+                  onClick={() => setTheme('light')}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  className={iconStyle}
+                  icon={faMoon}
+                  color="white"
+                  onClick={() => setTheme('dark')}
+                />
+              )}
+            </div>
+          ) : null}
           <a
             href="https://github.com/haraldvinje"
             title="GitHub"

@@ -1,5 +1,7 @@
+'use client'
+
 import Link from 'next/link'
-import type { PostCardData } from 'src/pages'
+import type { PostCardData } from 'src/app/page'
 import { RichText } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
 import { formatDate } from 'src/lib/utils'
@@ -17,24 +19,24 @@ const BlogPostCard = ({ post }: { post: PostCardData }) => {
         <div className="my-2 flex items-center space-x-2">
           {wideEnough && (
             <Link href={linkRef} passHref>
-              <a>
-                <div style={{ width: '200px' }}>
-                  <SanityImage
-                    image={mainImage}
-                    alt="mainImage"
-                    width={200}
-                    height={200}
-                    quality={100}
-                    placeholder="blur"
-                    blurDataURL="mountains.avif"
-                  />
-                </div>
-              </a>
+              <div style={{ width: '200px' }}>
+                <SanityImage
+                  image={mainImage}
+                  alt="mainImage"
+                  quality={100}
+                  placeholder="blur"
+                  blurDataURL="mountains.avif"
+                  style={{
+                    width: '100%',
+                    aspectRatio: '1'
+                  }}
+                />
+              </div>
             </Link>
           )}
           <div className="overflow-hidden">
-            <Link href={linkRef} passHref>
-              <a className="text-2xl font-bold hover:text-blue-600">{title}</a>
+            <Link href={linkRef} passHref className="text-2xl font-bold hover:text-blue-600">
+              {title}
             </Link>
             <div className="my-2 text-xs opacity-60">
               {`${formatDate(publishedAt)} - ${estimatedReadingTime} min lesning`}

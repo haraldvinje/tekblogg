@@ -1,9 +1,10 @@
-import type { NextPage } from 'next'
+'use client'
+
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import Metatags from 'src/components/Metatags'
 
-const Blog: NextPage = () => {
+export default function AboutPage() {
   const { theme } = useTheme()
   const textColorStyle = theme === 'dark' ? 'prose-invert' : ''
 
@@ -25,8 +26,12 @@ const Blog: NextPage = () => {
             src="/harald.png"
             width={300}
             height={300}
-            layout="intrinsic"
             alt="profile"
+            style={{
+              maxWidth: '100%',
+              height: 'auto',
+              width: 'auto'
+            }}
           />
         </div>
         <p>
@@ -41,5 +46,3 @@ const Blog: NextPage = () => {
     </>
   )
 }
-
-export default Blog

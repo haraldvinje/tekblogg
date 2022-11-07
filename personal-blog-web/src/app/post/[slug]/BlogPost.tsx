@@ -1,27 +1,16 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
-import groq from 'groq'
-import { PortableTextBlock } from '@portabletext/types'
-import client from 'src/lib/sanityClient'
 import { formatAuthors, formatDate, richToPlainText } from 'src/lib/utils'
+import { Post } from 'src/app/post/[slug]/page'
 import { RichText, urlFor } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
 import Metatags from 'src/components/Metatags'
 import { ShareButtons } from 'src/components/ShareButtons'
-import { SanityImage, SanityImageObjectProps } from 'src/components/SanityImage'
+import { SanityImage } from 'src/components/SanityImage'
 
-export interface Post {
-  title: string
-  authors: string[]
-  mainImage: SanityImageObjectProps
-  categories?: string[]
-  publishedAt: string
-  estimatedReadingTime: number
-  slug: string
-  introduction: PortableTextBlock[]
-  body: PortableTextBlock[]
-}
-
-const Post = ({ post }: { post: Post }) => {
+export default function BlogPost({ post }: { post: Post }) {
   const {
     title,
     authors,
@@ -36,6 +25,10 @@ const Post = ({ post }: { post: Post }) => {
 
   const rawIntro = richToPlainText(introduction)
   const { theme } = useTheme()
+  const [textTheme, setTextTheme] = useState('')
+  useEffect(() => {
+    setTextTheme(theme === 'dark' ? 'prose-invert' : '')
+  }, [theme])
 
   return (
     <>
@@ -45,7 +38,7 @@ const Post = ({ post }: { post: Post }) => {
         image={urlFor(mainImage).url()}
         path={`/post/${slug}`}
       />
-      <article className={`prose w-full lg:prose-xl ${theme === 'dark' && 'prose-invert'}`}>
+      <article className={`prose w-full lg:prose-xl ${textTheme}`}>
         <h1 className="flex justify-center">{title}</h1>
         <div className="flex flex-col space-y-2">
           <span className="flex items-center justify-between">
@@ -57,7 +50,7 @@ const Post = ({ post }: { post: Post }) => {
           </p>
           <p>{`${estimatedReadingTime} min lesning`}</p>
         </div>
-        {categories && (
+        {categories ? (
           <>
             <div className="flex">
               <span className="mr-2">
@@ -68,55 +61,14 @@ const Post = ({ post }: { post: Post }) => {
               ))}
             </div>
           </>
-        )}
+        ) : null}
         <div className="text-xl font-bold">
           <RichText value={introduction} />
         </div>
-        {mainImage && <SanityImage image={mainImage} alt="mainImage" loading="lazy" />}
+        {mainImage ? <SanityImage image={mainImage} alt="mainImage" loading="lazy" /> : null}
         <RichText value={body} />
         <ShareButtons className="justify-center" />
       </article>
     </>
   )
 }
-
-export const getStaticPaths = async () => {
-  const paths: string[] = await client.fetch(
-    `*[_type == "post" && defined(slug.current)][].slug.current`
-  )
-
-  return {
-    paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: 'blocking'
-  }
-}
-
-export const getStaticProps = async ({ params }: { params: { slug: string } }) => {
-  const { slug = '' } = params
-
-  const post: Post = await client.fetch(
-    groq`*[_type == "post" && slug.current == $slug][0]{
-      title,
-      "authors": authors[]->name,
-      "categories": categories[]->title,
-      publishedAt,
-      "slug": slug.current,
-      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
-      mainImage,
-      introduction,
-      body
-    }`,
-    { slug: slug }
-  )
-
-  if (!post) return { notFound: true }
-
-  return {
-    props: {
-      post
-    },
-    revalidate: 60
-  }
-}
-
-export default Post
