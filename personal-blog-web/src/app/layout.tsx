@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           description="Velkommen til TekBloggen! Sjekk ut det nyeste innen teknologi og programmering her."
         />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/icons/icon.png"></link>
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png"></link>
         <meta name="theme-color" content="#317EFB" />
       </head>
       <body>
