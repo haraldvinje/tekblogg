@@ -1,8 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useTheme } from 'next-themes'
 import { formatAuthors, formatDate, richToPlainText } from 'src/lib/utils'
+import { useClientTheme } from 'src/lib/hooks/useClientTheme'
 import { Post } from 'src/app/post/[slug]/page'
 import { RichText, urlFor } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
@@ -24,11 +23,7 @@ export default function BlogPost({ post }: { post: Post }) {
   } = post
 
   const rawIntro = richToPlainText(introduction)
-  const { theme } = useTheme()
-  const [textTheme, setTextTheme] = useState('')
-  useEffect(() => {
-    setTextTheme(theme === 'dark' ? 'prose-invert' : '')
-  }, [theme])
+  const { textTheme } = useClientTheme()
 
   return (
     <>

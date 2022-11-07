@@ -1,4 +1,5 @@
 import groq from 'groq'
+import { notFound } from 'next/navigation'
 import { PortableTextBlock } from '@portabletext/types'
 import client from 'src/lib/sanityClient'
 import { SanityImageObjectProps } from 'src/components/SanityImage'
@@ -46,6 +47,8 @@ async function getPost(params: { slug: string }) {
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = await getPost(params)
+
+  if (!post) notFound()
 
   return <BlogPost post={post} />
 }
