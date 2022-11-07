@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
@@ -8,7 +9,12 @@ import { useTheme } from 'next-themes'
 import { useWidthMediaQuery } from 'src/lib/hooks/useWidthMediaQuery'
 
 const Navbar = () => {
+  const [isClientSide, setIsClientSide] = useState(false)
   const { theme, setTheme } = useTheme()
+
+  useEffect(() => {
+    setIsClientSide(true)
+  }, [])
 
   const wideEnough = useWidthMediaQuery(300)
 
@@ -33,23 +39,25 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex w-[50%] items-center justify-center space-x-4 py-3 text-white">
-          <div className="mx-4">
-            {theme === 'dark' ? (
-              <FontAwesomeIcon
-                className={iconStyle}
-                icon={faSun}
-                color="white"
-                onClick={() => setTheme('light')}
-              />
-            ) : (
-              <FontAwesomeIcon
-                className={iconStyle}
-                icon={faMoon}
-                color="white"
-                onClick={() => setTheme('dark')}
-              />
-            )}
-          </div>
+          {isClientSide ? (
+            <div className="mx-4">
+              {theme === 'dark' ? (
+                <FontAwesomeIcon
+                  className={iconStyle}
+                  icon={faSun}
+                  color="white"
+                  onClick={() => setTheme('light')}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  className={iconStyle}
+                  icon={faMoon}
+                  color="white"
+                  onClick={() => setTheme('dark')}
+                />
+              )}
+            </div>
+          ) : null}
           <a
             href="https://github.com/haraldvinje"
             title="GitHub"

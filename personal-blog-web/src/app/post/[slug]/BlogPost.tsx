@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
 import { formatAuthors, formatDate, richToPlainText } from 'src/lib/utils'
 import { Post } from 'src/app/post/[slug]/page'
@@ -24,6 +25,10 @@ export default function BlogPost({ post }: { post: Post }) {
 
   const rawIntro = richToPlainText(introduction)
   const { theme } = useTheme()
+  const [textTheme, setTextTheme] = useState('')
+  useEffect(() => {
+    setTextTheme(theme === 'dark' ? 'prose-invert' : '')
+  }, [theme])
 
   return (
     <>
@@ -33,7 +38,7 @@ export default function BlogPost({ post }: { post: Post }) {
         image={urlFor(mainImage).url()}
         path={`/post/${slug}`}
       />
-      <article className={`prose w-full lg:prose-xl ${theme === 'dark' && 'prose-invert'}`}>
+      <article className={`prose w-full lg:prose-xl ${textTheme}`}>
         <h1 className="flex justify-center">{title}</h1>
         <div className="flex flex-col space-y-2">
           <span className="flex items-center justify-between">
@@ -45,7 +50,7 @@ export default function BlogPost({ post }: { post: Post }) {
           </p>
           <p>{`${estimatedReadingTime} min lesning`}</p>
         </div>
-        {categories && (
+        {categories ? (
           <>
             <div className="flex">
               <span className="mr-2">
@@ -56,11 +61,11 @@ export default function BlogPost({ post }: { post: Post }) {
               ))}
             </div>
           </>
-        )}
+        ) : null}
         <div className="text-xl font-bold">
           <RichText value={introduction} />
         </div>
-        {mainImage && <SanityImage image={mainImage} alt="mainImage" loading="lazy" />}
+        {mainImage ? <SanityImage image={mainImage} alt="mainImage" loading="lazy" /> : null}
         <RichText value={body} />
         <ShareButtons className="justify-center" />
       </article>
