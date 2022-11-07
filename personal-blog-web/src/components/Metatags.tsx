@@ -1,5 +1,3 @@
-import Head from 'next/head'
-
 const Metatags = ({
   title,
   description,
@@ -14,7 +12,7 @@ const Metatags = ({
   const url = process.env.NEXT_PUBLIC_DOMAIN + '/' + (path ? path.replace(/^\//, '') : '')
 
   return (
-    <Head>
+    <>
       <title>{title}</title>
       <meta name="twitter:card" content="summary"></meta>
       <meta name="twitter:site" content="@haraldvin"></meta>
@@ -28,7 +26,7 @@ const Metatags = ({
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
       <meta property="og:url" content={url} />
-    </Head>
+    </>
   )
 }
 
