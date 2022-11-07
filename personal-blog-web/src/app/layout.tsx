@@ -1,11 +1,13 @@
 'use client'
 
 import '/styles/globals.css'
+import { ReactNode } from 'react'
 import Script from 'next/script'
 import { ThemeProvider } from 'next-themes'
+import { AnimatePresence, LazyMotion, domAnimation, m } from 'framer-motion'
 import Metatags from 'src/components/Metatags'
-import AnimationWrapper from 'src/components/AnimationWrapper'
-import Navbar from 'src/components/Navbar'
+import Navbar from 'src/app/Navbar'
+import { fadeIn } from 'src/lib/animations'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -41,5 +43,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
       </Script>
     </html>
+  )
+}
+
+function AnimationWrapper({ children }: { children: ReactNode }) {
+  const animation = fadeIn
+  return (
+    <div>
+      <LazyMotion features={domAnimation}>
+        <AnimatePresence mode="wait">
+          <m.div
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={animation.variants}
+            transition={animation.transition}
+          >
+            {children}
+          </m.div>
+        </AnimatePresence>
+      </LazyMotion>
+    </div>
   )
 }

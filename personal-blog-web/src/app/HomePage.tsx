@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import BlogPostCard from 'src/components/BlogPostCard'
+import BlogPostCard from 'src/app/BlogPostCard'
 import { Category } from 'src/components/Category'
 import { PostCardData } from 'src/app/page'
 
