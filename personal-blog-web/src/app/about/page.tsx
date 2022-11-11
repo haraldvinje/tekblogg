@@ -1,17 +1,16 @@
 'use client'
 
-import { useTheme } from 'next-themes'
 import Image from 'next/image'
+import { useClientTheme } from 'src/lib/hooks/useClientTheme'
 import Metatags from 'src/components/Metatags'
 
 export default function AboutPage() {
-  const { theme } = useTheme()
-  const textColorStyle = theme === 'dark' ? 'prose-invert' : ''
+  const { textTheme } = useClientTheme()
 
   return (
     <>
       <Metatags title="Om TekBlogg" description="TekBlogg er laget og drevet av Harald Vinje." />
-      <div className={`prose w-full lg:prose-xl ${textColorStyle}`}>
+      <div className={`prose w-full lg:prose-xl ${textTheme}`}>
         <h1 className="flex justify-center">Velkommen til bloggen!🤓</h1>
         <p>
           Denne bloggen er laget og drives av Harald Vinje. Innleggene vil hovedsakelig ta for seg
