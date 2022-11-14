@@ -1,20 +1,14 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 import { faBookOpen, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
-import { useTheme } from 'next-themes'
 import { useWidthMediaQuery } from 'src/lib/hooks/useWidthMediaQuery'
+import { useClientTheme } from 'src/lib/hooks/useClientTheme'
 
 const Navbar = () => {
-  const [isClientSide, setIsClientSide] = useState(false)
-  const { theme, setTheme } = useTheme()
-
-  useEffect(() => {
-    setIsClientSide(true)
-  }, [])
+  const { theme, setTheme, isClientSide } = useClientTheme()
 
   const wideEnough = useWidthMediaQuery(300)
 
