@@ -15,7 +15,7 @@
     "format": "yarn lint:fix && yarn prettier:fix",
     "ts-lint": "tsc --noEmit --incremental",
     "clean": "rm -rf node_modules .next src/.next",
-    "clean:install": "rm -rf node_modules .next src/.next && yarn",
+    "clean:install": "rm -rf node_modules .next && yarn",
     "prepare": "cd .. && husky install personal-blog-web/.husky"
   },
   "dependencies": {
@@ -37,7 +37,7 @@
     "eslint-config-next": "13.0.3",
     "framer-motion": "^7.6.6",
     "groq": "^2.33.2",
-    "next": "13.0.3",
+    "next": "^13.0.3",
     "next-absolute-url": "^1.2.2",
     "next-pwa": "^5.6.0",
     "next-sanity-image": "^5.0.0",
