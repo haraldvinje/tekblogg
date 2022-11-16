@@ -1,8 +1,8 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import BlogPostCard from 'src/app/BlogPostCard'
-import { Category } from 'src/components/Category'
+import BlogPostCard from 'src/app/blog-post-card'
+import { Category } from 'src/components/category'
 import { PostCardData } from 'src/app/page'
 
 function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
