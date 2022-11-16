@@ -2,11 +2,11 @@
 
 import Link from 'next/link'
 import type { PostCardData } from 'src/app/page'
-import { RichText } from 'src/components/RichText'
-import { Category } from 'src/components/Category'
+import { RichText } from 'src/components/rich-text'
+import { Category } from 'src/components/category'
 import { formatDate } from 'src/lib/utils'
 import { useWidthMediaQuery } from 'src/lib/hooks/useWidthMediaQuery'
-import { SanityImage } from 'src/components/SanityImage'
+import { SanityImage } from 'src/components/sanity-image'
 
 const BlogPostCard = ({ post }: { post: PostCardData }) => {
   const { title, categories, mainImage, publishedAt, introduction, slug, estimatedReadingTime } =

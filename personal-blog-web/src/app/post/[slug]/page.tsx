@@ -2,8 +2,8 @@ import groq from 'groq'
 import { notFound } from 'next/navigation'
 import { PortableTextBlock } from '@portabletext/types'
 import client from 'src/lib/sanityClient'
-import { SanityImageObjectProps } from 'src/components/SanityImage'
-import BlogPost from 'src/app/post/[slug]/BlogPost'
+import { SanityImageObjectProps } from 'src/components/sanity-image'
+import BlogPost from 'src/app/post/[slug]/blog-post'
 
 export interface Post {
   title: string
