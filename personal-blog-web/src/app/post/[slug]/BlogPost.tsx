@@ -3,11 +3,11 @@
 import { formatAuthors, formatDate, richToPlainText } from 'src/lib/utils'
 import { useClientTheme } from 'src/lib/hooks/useClientTheme'
 import { Post } from 'src/app/post/[slug]/page'
-import { RichText, urlFor } from 'src/components/rich-text'
-import { Category } from 'src/components/category'
-import Metatags from 'src/components/metatags'
-import { ShareButtons } from 'src/components/share-buttons'
-import { SanityImage } from 'src/components/sanity-image'
+import { RichText, urlFor } from 'src/components/RichText'
+import { Category } from 'src/components/Category'
+import Metatags from 'src/components/Metatags'
+import { ShareButtons } from 'src/components/ShareButtons'
+import { SanityImage } from 'src/components/SanityImage'
 
 export default function BlogPost({ post }: { post: Post }) {
   const {

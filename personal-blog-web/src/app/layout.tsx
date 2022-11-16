@@ -5,8 +5,8 @@ import { ReactNode } from 'react'
 import Script from 'next/script'
 import { ThemeProvider } from 'next-themes'
 import { AnimatePresence, LazyMotion, domAnimation, m } from 'framer-motion'
-import Metatags from 'src/components/metatags'
-import Navbar from 'src/app/navbar'
+import Metatags from 'src/components/Metatags'
+import Navbar from 'src/app/Navbar'
 import { fadeIn } from 'src/lib/animations'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useClientTheme } from 'src/lib/hooks/useClientTheme'
-import Metatags from 'src/components/metatags'
+import Metatags from 'src/components/Metatags'
 
 export default function AboutPage() {
   const { textTheme } = useClientTheme()

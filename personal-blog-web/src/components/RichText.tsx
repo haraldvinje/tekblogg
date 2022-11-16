@@ -3,8 +3,8 @@ import { PortableText } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
 import imageUrlBuilder from '@sanity/image-url'
 import client from 'src/lib/sanityClient'
-import { SanityImage, SanityImageObjectProps } from 'src/components/sanity-image'
-import { CodeBlockProps } from 'src/components/code-block'
+import { SanityImage, SanityImageObjectProps } from 'src/components/SanityImage'
+import { CodeBlockProps } from 'src/components/CodeBlock'
 
 export function urlFor(source: SanityImageObjectProps) {
   return imageUrlBuilder(client).image(source)
@@ -19,7 +19,7 @@ const ptComponents = {
       return <SanityImage image={value} loading="lazy" alt="image" />
     },
     code: ({ value }: { value: CodeBlockProps }) => {
-      const CodeBlock = lazy(() => import('src/components/code-block'))
+      const CodeBlock = lazy(() => import('src/components/CodeBlock'))
       return <CodeBlock code={value.code} language={value.language} />
     }
   },
