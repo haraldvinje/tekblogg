@@ -1,5 +1,5 @@
 {
-  "name": "personal-blog-web",
+  "name": "tekblogg-web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -16,7 +16,7 @@
     "ts-lint": "tsc --noEmit --incremental",
     "clean": "rm -rf node_modules .next src/.next",
     "clean:install": "rm -rf node_modules .next && yarn",
-    "prepare": "cd .. && husky install personal-blog-web/.husky"
+    "prepare": "cd .. && husky install tekblogg-web/.husky"
   },
   "dependencies": {
     "@babel/core": "^7.20.2",
