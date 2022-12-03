@@ -1,5 +1,3 @@
-'use client'
-
 import Image from 'next/image'
 import { useClientTheme } from 'src/lib/hooks/useClientTheme'
 import Metatags from 'src/components/Metatags'

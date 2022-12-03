@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
@@ -22,14 +20,18 @@ const Navbar = () => {
     <div className="relative z-10 h-16 w-[100%] text-white sm:h-20">
       <nav className="fixed flex w-full bg-black">
         <div className="flex w-[50%] items-center justify-center space-x-4 py-3 text-white sm:space-x-12">
-          <Link href="/" passHref className={navItemStyle}>
-            <span>
-              Blogg
-              {wideEnough && <FontAwesomeIcon icon={faBookOpen} className="fa-xs px-2" />}
-            </span>
+          <Link href="/" passHref>
+            <a className={navItemStyle}>
+              <span>
+                Blogg
+                {wideEnough && <FontAwesomeIcon icon={faBookOpen} className="fa-xs px-2" />}
+              </span>
+            </a>
           </Link>
-          <Link href="/about" passHref className={navItemStyle}>
-            <span>Info</span>
+          <Link href="/about" passHref>
+            <a className={navItemStyle}>
+              <span>Info</span>
+            </a>
           </Link>
         </div>
         <div className="flex w-[50%] items-center justify-center space-x-4 py-3 text-white">

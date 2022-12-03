@@ -15,5 +15,5 @@ type SanityImageProps = NextImage & {
 export const SanityImage = ({ image, alt = 'image', ...nextImageProps }: SanityImageProps) => {
   const imageProps = useNextSanityImage(client, image)
 
-  return <Image {...imageProps} {...nextImageProps} alt={alt} />
+  return <Image {...imageProps} {...nextImageProps} layout="responsive" alt={alt} />
 }

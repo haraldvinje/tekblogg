@@ -1,10 +1,9 @@
-import lazy from 'next/dynamic'
 import { PortableText } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
 import imageUrlBuilder from '@sanity/image-url'
 import client from 'src/lib/sanityClient'
 import { SanityImage, SanityImageObjectProps } from 'src/components/SanityImage'
-import { CodeBlockProps } from 'src/components/CodeBlock'
+import CodeBlock, { CodeBlockProps } from 'src/components/CodeBlock'
 
 export function urlFor(source: SanityImageObjectProps) {
   return imageUrlBuilder(client).image(source)
@@ -16,10 +15,9 @@ const ptComponents = {
       if (!value?.asset?._ref) {
         return null
       }
-      return <SanityImage image={value} loading="lazy" alt="image" />
+      return <SanityImage image={value} loading="lazy" />
     },
     code: ({ value }: { value: CodeBlockProps }) => {
-      const CodeBlock = lazy(() => import('src/components/CodeBlock'))
       return <CodeBlock code={value.code} language={value.language} />
     }
   },

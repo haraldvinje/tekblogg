@@ -1,5 +1,3 @@
-'use client'
-
 import { faLinkedin, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useAbsoluteUrl } from 'src/lib/hooks/useAbsoluteUrl'

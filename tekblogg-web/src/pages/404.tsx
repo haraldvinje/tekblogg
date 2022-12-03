@@ -1,16 +1,9 @@
-'use client'
-
-import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-
-export default function NotFound() {
+const Custom404 = () => {
   return (
-    <main className="flex">
-      <Link href="/" className="mx-4 rounded-md hover:font-bold">
-        <FontAwesomeIcon icon={faArrowLeft} />
-      </Link>
-      <p className="text-xl font-bold">404 - Siden finnes ikke</p>
+    <main>
+      <h1 className="mb-4 text-xl font-bold text-black">404 - Siden finnes ikke</h1>
     </main>
   )
 }
+
+export default Custom404

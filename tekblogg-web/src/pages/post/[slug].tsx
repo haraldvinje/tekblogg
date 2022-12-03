@@ -1,15 +1,28 @@
-'use client'
-
+import groq from 'groq'
+import { PortableTextBlock } from '@portabletext/types'
+import client from 'src/lib/sanityClient'
 import { formatAuthors, formatDate, richToPlainText } from 'src/lib/utils'
 import { useClientTheme } from 'src/lib/hooks/useClientTheme'
-import { Post } from 'src/app/post/[slug]/page'
+import Post from 'src/pages/index'
 import { RichText, urlFor } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
 import Metatags from 'src/components/Metatags'
 import { ShareButtons } from 'src/components/ShareButtons'
-import { SanityImage } from 'src/components/SanityImage'
+import { SanityImage, SanityImageObjectProps } from 'src/components/SanityImage'
 
-export default function BlogPost({ post }: { post: Post }) {
+export interface Post {
+  title: string
+  authors: string[]
+  mainImage: SanityImageObjectProps
+  categories?: string[]
+  publishedAt: string
+  estimatedReadingTime: number
+  slug: string
+  introduction: PortableTextBlock[]
+  body: PortableTextBlock[]
+}
+
+const Post = ({ post }: { post: Post }) => {
   const {
     title,
     authors,
@@ -67,3 +80,44 @@ export default function BlogPost({ post }: { post: Post }) {
     </>
   )
 }
+
+export const getStaticPaths = async () => {
+  const paths: string[] = await client.fetch(
+    `*[_type == "post" && defined(slug.current)][].slug.current`
+  )
+
+  return {
+    paths: paths.map((slug) => ({ params: { slug } })),
+    fallback: 'blocking'
+  }
+}
+
+export const getStaticProps = async ({ params }: { params: { slug: string } }) => {
+  const { slug = '' } = params
+
+  const post: Post = await client.fetch(
+    groq`*[_type == "post" && slug.current == $slug][0]{
+      title,
+      "authors": authors[]->name,
+      "categories": categories[]->title,
+      publishedAt,
+      "slug": slug.current,
+      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
+      mainImage,
+      introduction,
+      body
+    }`,
+    { slug: slug }
+  )
+
+  if (!post) return { notFound: true }
+
+  return {
+    props: {
+      post
+    },
+    revalidate: 60
+  }
+}
+
+export default Post

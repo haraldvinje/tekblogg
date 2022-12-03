@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import absoluteUrl from 'next-absolute-url'
-import { usePathname } from 'next/navigation'
 
 export const useAbsoluteUrl = () => {
   const [url, setUrl] = useState('')
-  const pathname = usePathname
+  const router = useRouter()
 
   useEffect(() => {
     const { host } = absoluteUrl()
-    setUrl(host + pathname)
-  }, [pathname])
+    setUrl(host + router.asPath)
+  }, [router])
 
   return url
 }
