@@ -11,14 +11,14 @@ const Navbar = () => {
   const wideEnough = useWidthMediaQuery(300)
 
   const navItemStyle = `flex items-center rounded-md p-1 text-center font-bold leading-snug 
-                          transition duration-300 ease-in-out hover:bg-white hover:text-black
+                          transition duration-300 ease-in-out hover:bg-white hover:text-dark
                           sm:p-2 sm:text-3xl`
   const iconStyle =
     'h-4 sm:h-6 text-white transition duration-300 ease-in-out hover:scale-125 hover:opacity-70'
 
   return (
     <div className="relative z-10 h-16 w-[100%] text-white sm:h-20">
-      <nav className="fixed flex w-full bg-black">
+      <nav className="fixed flex w-full bg-dark">
         <div className="flex w-[50%] items-center justify-center space-x-4 py-3 text-white sm:space-x-12">
           <Link href="/" passHref>
             <a className={navItemStyle}>
