@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { PostCardData } from 'src/pages'
 import { RichText } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
-import { formatDate } from 'src/lib/utils'
+import { formatDate } from 'src/lib/textUtils'
 import { useWidthMediaQuery } from 'src/lib/hooks/useWidthMediaQuery'
 import { SanityImage } from 'src/components/SanityImage'
 

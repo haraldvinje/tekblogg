@@ -1,7 +1,7 @@
 import groq from 'groq'
 import { PortableTextBlock } from '@portabletext/types'
 import client from 'src/lib/sanityClient'
-import { formatAuthors, formatDate, richToPlainText } from 'src/lib/utils'
+import { formatAuthors, formatDate, richToPlainText } from 'src/lib/textUtils'
 import { useClientTheme } from 'src/lib/hooks/useClientTheme'
 import Post from 'src/pages/index'
 import { RichText, urlFor } from 'src/components/RichText'
