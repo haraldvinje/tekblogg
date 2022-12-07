@@ -1,6 +1,7 @@
 {
   "plugins": [
     "tailwindcss",
+    "no-relative-import-paths",
     "unused-imports",
     "import",
     "prettier"
@@ -53,6 +54,12 @@
           "index",
           "object"
         ]
+      }
+    ],
+    "no-relative-import-paths/no-relative-import-paths": [
+      "warn",
+      {
+        "allowSameFolder": true
       }
     ],
     "prettier/prettier": [
