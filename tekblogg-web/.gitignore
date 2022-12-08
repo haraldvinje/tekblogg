@@ -46,3 +46,4 @@ sitemap-0.xml
 **/public/workbox-*.js
 **/public/sw.js
 **/public/worker-*.js
+**/public/~partytown/
