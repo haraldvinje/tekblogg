@@ -12,7 +12,7 @@ const AboutPage: NextPage = () => {
 
   return (
     <BaseLayout>
-      <Metatags title="Om TekBlogg" description="TekBlogg er laget og drevet av Harald Vinje." />
+      <Metatags title={t('about_blog_title')} description={t('about_blog_description') ?? ''} />
       <div className={`prose w-full lg:prose-xl ${textTheme}`}>
         <h1 className="flex justify-center">{t('welcome')}</h1>
         <p>{t('about_blog')}</p>
