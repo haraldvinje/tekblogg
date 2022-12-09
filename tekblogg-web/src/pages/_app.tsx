@@ -4,7 +4,6 @@ import { Analytics } from '@vercel/analytics/react'
 import { appWithTranslation } from 'next-i18next'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
-import BaseLayout from 'src/components/layouts/BaseLayout'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -23,9 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         `}
       </Script>
       <ThemeProvider enableSystem={false}>
-        <BaseLayout>
-          <Component {...pageProps} />
-        </BaseLayout>
+        <Component {...pageProps} />
       </ThemeProvider>
       <Analytics />
     </>

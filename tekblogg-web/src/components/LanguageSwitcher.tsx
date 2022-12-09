@@ -9,11 +9,11 @@ export const LanguageSwitcher = () => {
   return (
     <>
       {currentLocale === 'nb' ? (
-        <Link href={router.route} locale="en">
+        <Link href={router.asPath} locale="en">
           🇺🇸
         </Link>
       ) : (
-        <Link href={router.route} locale="nb">
+        <Link href={router.asPath} locale="nb">
           🇳🇴
         </Link>
       )}

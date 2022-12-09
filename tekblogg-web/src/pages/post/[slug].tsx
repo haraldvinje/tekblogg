@@ -9,6 +9,7 @@ import { Category } from 'src/components/Category'
 import Metatags from 'src/components/Metatags'
 import { ShareButtons } from 'src/components/ShareButtons'
 import { SanityImage, SanityImageObjectProps } from 'src/components/SanityImage'
+import BaseLayout from 'src/components/layouts/BaseLayout'
 
 export interface Post {
   title: string
@@ -39,7 +40,7 @@ const Post = ({ post }: { post: Post }) => {
   const { textTheme } = useClientTheme()
 
   return (
-    <>
+    <BaseLayout>
       <Metatags
         title={title}
         description={rawIntro}
@@ -77,7 +78,7 @@ const Post = ({ post }: { post: Post }) => {
         <RichText value={body} />
         <ShareButtons className="justify-center" />
       </article>
-    </>
+    </BaseLayout>
   )
 }
 

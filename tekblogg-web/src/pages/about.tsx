@@ -4,13 +4,14 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useClientTheme } from 'src/lib/hooks/useClientTheme'
 import Metatags from 'src/components/Metatags'
+import BaseLayout from 'src/components/layouts/BaseLayout'
 
 const AboutPage: NextPage = () => {
   const { t } = useTranslation('about')
   const { textTheme } = useClientTheme()
 
   return (
-    <>
+    <BaseLayout>
       <Metatags title="Om TekBlogg" description="TekBlogg er laget og drevet av Harald Vinje." />
       <div className={`prose w-full lg:prose-xl ${textTheme}`}>
         <h1 className="flex justify-center">{t('welcome')}</h1>
@@ -27,7 +28,7 @@ const AboutPage: NextPage = () => {
           .
         </p>
       </div>
-    </>
+    </BaseLayout>
   )
 }
 

@@ -8,6 +8,7 @@ import Metatags from 'src/components/Metatags'
 import BlogPostCard from 'src/components/BlogPostCard'
 import { Category } from 'src/components/Category'
 import { Post } from 'src/pages/post/[slug]'
+import BaseLayout from 'src/components/layouts/BaseLayout'
 
 function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
   return value !== null && value !== undefined
@@ -44,7 +45,7 @@ const Home: NextPage<HomePageProps> = ({ posts }: HomePageProps) => {
       : posts.filter((p) => p.categories?.some((c) => selectedCategories.includes(c)))
 
   return (
-    <>
+    <BaseLayout>
       <Metatags title="TekBlogg" description={t('html_head_description') ?? ''} />
       <div className="w-[80%]">
         <div className="mb-4 p-2">
@@ -62,7 +63,7 @@ const Home: NextPage<HomePageProps> = ({ posts }: HomePageProps) => {
           <BlogPostCard key={index} post={post} />
         ))}
       </div>
-    </>
+    </BaseLayout>
   )
 }
 
@@ -83,7 +84,7 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale ?? 'nb', ['common'])),
       posts
     },
     revalidate: 60
