@@ -1,5 +1,6 @@
 import '/styles/globals.css'
 import Script from 'next/script'
+import { Analytics } from '@vercel/analytics/react'
 import { appWithTranslation } from 'next-i18next'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
@@ -26,6 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </BaseLayout>
       </ThemeProvider>
+      <Analytics />
     </>
   )
 }
