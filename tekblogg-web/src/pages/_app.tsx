@@ -1,9 +1,8 @@
 import '/styles/globals.css'
 import Script from 'next/script'
-import { Analytics } from '@vercel/analytics/react'
-import { appWithTranslation } from 'next-i18next'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
+import BaseLayout from 'src/components/layouts/BaseLayout'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -22,11 +21,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         `}
       </Script>
       <ThemeProvider enableSystem={false}>
-        <Component {...pageProps} />
+        <BaseLayout>
+          <Component {...pageProps} />
+        </BaseLayout>
       </ThemeProvider>
-      <Analytics />
     </>
   )
 }
 
-export default appWithTranslation(MyApp)
+export default MyApp

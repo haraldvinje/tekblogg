@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-const { i18n } = require('./next-i18next.config')
 
 const nextConfig = {
   reactStrictMode: true,
@@ -12,8 +11,7 @@ const nextConfig = {
   },
   experimental: {
     nextScriptWorkers: true
-  },
-  i18n
+  }
 }
 
 const runtimeCaching = require('next-pwa/cache')

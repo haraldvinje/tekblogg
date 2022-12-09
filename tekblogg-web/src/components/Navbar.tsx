@@ -1,15 +1,11 @@
 import Link from 'next/link'
-import { useTranslation } from 'next-i18next'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 import { faBookOpen, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { useWidthMediaQuery } from 'src/lib/hooks/useWidthMediaQuery'
 import { useClientTheme } from 'src/lib/hooks/useClientTheme'
-import { LanguageSwitcher } from './LanguageSwitcher'
 
 const Navbar = () => {
-  const { t } = useTranslation('common')
-
   const { theme, setTheme, isClientSide } = useClientTheme()
 
   const wideEnough = useWidthMediaQuery(300)
@@ -27,19 +23,18 @@ const Navbar = () => {
           <Link href="/" passHref>
             <a className={navItemStyle}>
               <span>
-                {t('blog')}
+                Blogg
                 {wideEnough && <FontAwesomeIcon icon={faBookOpen} className="fa-xs px-2" />}
               </span>
             </a>
           </Link>
           <Link href="/about" passHref>
             <a className={navItemStyle}>
-              <span>{t('about')}</span>
+              <span>Info</span>
             </a>
           </Link>
         </div>
         <div className="flex w-[50%] items-center justify-center space-x-4 py-3 text-white">
-          <LanguageSwitcher />
           {isClientSide ? (
             <div className="mx-4">
               {theme === 'dark' ? (
