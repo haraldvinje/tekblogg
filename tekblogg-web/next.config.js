@@ -10,7 +10,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true
   },
-  i18n
+  experimental: {
+    nextScriptWorkers: true
+  }
 }
 
 const runtimeCaching = require('next-pwa/cache')
