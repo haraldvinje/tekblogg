@@ -8,7 +8,7 @@ import { useClientTheme } from 'src/lib/hooks/useClientTheme'
 import { LanguageSwitcher } from './LanguageSwitcher'
 
 const Navbar = () => {
-  const { t } = useTranslation('navbar')
+  const { t } = useTranslation('common')
 
   const { theme, setTheme, isClientSide } = useClientTheme()
 

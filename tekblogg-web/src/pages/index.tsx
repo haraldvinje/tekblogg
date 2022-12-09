@@ -45,10 +45,7 @@ const Home: NextPage<HomePageProps> = ({ posts }: HomePageProps) => {
 
   return (
     <>
-      <Metatags
-        title="TekBlogg"
-        description="Velkommen til TekBloggen! Sjekk ut det nyeste innen teknologi og programmering her."
-      />
+      <Metatags title="TekBlogg" description={t('html_head_description') ?? ''} />
       <div className="w-[80%]">
         <div className="mb-4 p-2">
           <h1 className="mb-2 text-center text-2xl font-bold text-gray-500">
@@ -86,7 +83,7 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'navbar'])),
+      ...(await serverSideTranslations(locale, ['common'])),
       posts
     },
     revalidate: 60
