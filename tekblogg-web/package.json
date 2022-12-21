@@ -29,7 +29,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@next/bundle-analyzer": "^12.3.1",
     "@next/env": "^12.2.3",
-    "@portabletext/react": "^1.0.6",
+    "@portabletext/react": "^2.0.0",
     "@sanity/client": "^3.3.0",
     "@sanity/image-url": "^1.0.1",
     "@vercel/analytics": "^0.1.6",
