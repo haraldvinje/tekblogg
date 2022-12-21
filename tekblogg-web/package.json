@@ -45,7 +45,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-syntax-highlighter": "^15.5.0",
-    "sharp": "^0.30.4",
+    "sharp": "^0.31.0",
     "webpack": "^5.74.0"
   },
   "devDependencies": {
