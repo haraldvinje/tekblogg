@@ -1,3 +1,4 @@
+import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import groq from 'groq'
 import { PortableTextBlock } from '@portabletext/types'
 import client from 'src/lib/sanityClient'
@@ -8,12 +9,12 @@ import { RichText, urlFor } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
 import Metatags from 'src/components/Metatags'
 import { ShareButtons } from 'src/components/ShareButtons'
-import { SanityImage, SanityImageObjectProps } from 'src/components/SanityImage'
+import { SanityImage } from 'src/components/SanityImage'
 
 export interface Post {
   title: string
   authors: string[]
-  mainImage: SanityImageObjectProps
+  mainImage: SanityImageObject
   categories?: string[]
   publishedAt: string
   estimatedReadingTime: number
@@ -73,7 +74,7 @@ const Post = ({ post }: { post: Post }) => {
         <div className="text-xl font-bold">
           <RichText value={introduction} />
         </div>
-        {mainImage ? <SanityImage image={mainImage} alt="mainImage" loading="lazy" /> : null}
+        {mainImage ? <SanityImage image={mainImage} alt="mainImage" /> : null}
         <RichText value={body} />
         <ShareButtons className="justify-center" />
       </article>

@@ -1,17 +1,18 @@
+import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import { PortableText } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
 import imageUrlBuilder from '@sanity/image-url'
 import client from 'src/lib/sanityClient'
-import { SanityImage, SanityImageObjectProps } from 'src/components/SanityImage'
+import { SanityImage } from 'src/components/SanityImage'
 import CodeBlock, { CodeBlockProps } from 'src/components/CodeBlock'
 
-export function urlFor(source: SanityImageObjectProps) {
+export function urlFor(source: SanityImageObject) {
   return imageUrlBuilder(client).image(source)
 }
 
 const ptComponents = {
   types: {
-    image: ({ value }: { value: SanityImageObjectProps }) => {
+    image: ({ value }: { value: SanityImageObject }) => {
       if (!value?.asset?._ref) {
         return null
       }
