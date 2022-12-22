@@ -17,24 +17,22 @@ const BlogPostCard = ({ post }: { post: PostCardData }) => {
         <div className="my-2 flex items-center space-x-2">
           {wideEnough && (
             <Link href={linkRef} passHref>
-              <a>
-                <div style={{ width: '200px' }}>
-                  <SanityImage
-                    image={mainImage}
-                    alt="mainImage"
-                    width={200}
-                    height={200}
-                    quality={100}
-                    placeholder="blur"
-                    blurDataURL="mountains.avif"
-                  />
-                </div>
-              </a>
+              <div className="w-[200px]">
+                <SanityImage
+                  sizes="(max-width: 500px) 100vw,
+                         (max-width: 1200px) 50vw,
+                          33wv"
+                  width={200}
+                  image={mainImage}
+                  alt="mainImage"
+                  placeholder="blur"
+                />
+              </div>
             </Link>
           )}
           <div className="overflow-hidden">
-            <Link href={linkRef} passHref>
-              <a className="text-2xl font-bold hover:text-blue-600">{title}</a>
+            <Link href={linkRef} passHref className="text-2xl font-bold hover:text-blue-600">
+              {title}
             </Link>
             <div className="my-2 text-xs opacity-60">
               {`${formatDate(publishedAt)} - ${estimatedReadingTime} min lesning`}
