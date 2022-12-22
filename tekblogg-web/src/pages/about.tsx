@@ -18,18 +18,7 @@ export default function AboutPage() {
         </p>
         <h2>Om Harald</h2>
         <div className="flex justify-center">
-          <Image
-            className="rounded-md"
-            src="/harald.png"
-            width={300}
-            height={300}
-            alt="profile"
-            style={{
-              maxWidth: '100%',
-              height: 'auto',
-              width: 'auto'
-            }}
-          />
+          <Image className="rounded-md" src="/harald.png" placeholder="blur" alt="profile" />
         </div>
         <p>
           Harald Vinje fullførte sivilingeniørgrad i Datateknologi fra NTNU i 2020, og har jobbet
