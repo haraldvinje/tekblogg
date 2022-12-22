@@ -4,8 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['cdn.sanity.io', 'nextjs.gallery'],
-    loader: 'custom'
+    domains: ['cdn.sanity.io', 'nextjs.gallery']
   },
   compiler: {
     styledComponents: true
