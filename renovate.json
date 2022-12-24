@@ -3,15 +3,21 @@
   "timezone": "Europe/Oslo",
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "groupName": "All non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest", "rollback"],
+      "schedule": ["at 08:00 am every Monday"],
       "automerge": true
     },
     {
-      "groupName": "all non-major dependencies",
-      "groupSlug": "all-minor-patch",
-      "matchPackagePatterns": ["*"],
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "schedule": ["at 11:55 am every day"]
+      "groupName": "Major dependencies",
+      "groupSlug": "all-major",
+      "matchPaths": ["*"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "schedule": ["at 08:00 am every Monday"],
+      "prCreation": "immediate"
     }
   ],
   "platformAutomerge": true
