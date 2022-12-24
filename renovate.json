@@ -7,7 +7,7 @@
       "groupSlug": "all-minor-patch",
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["minor", "patch", "pin", "digest", "rollback"],
-      "schedule": ["at 08:00 am every Monday"],
+      "schedule": ["every weekend"],
       "automerge": true
     },
     {
@@ -16,7 +16,7 @@
       "matchPaths": ["*"],
       "matchUpdateTypes": ["major"],
       "automerge": false,
-      "schedule": ["at 08:00 am every Monday"],
+      "schedule": ["every weekend"],
       "prCreation": "immediate"
     }
   ],
