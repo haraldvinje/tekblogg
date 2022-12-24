@@ -1,5 +1,6 @@
 {
   "extends": ["config:base"],
+  "timezone": "Europe/Oslo",
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
@@ -10,7 +11,7 @@
       "groupSlug": "all-minor-patch",
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "schedule": ["every 5 mins"]
+      "schedule": ["at 11:55 am"]
     }
   ],
   "platformAutomerge": true
