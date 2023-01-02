@@ -8,7 +8,8 @@
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["minor", "patch", "pin", "digest", "rollback"],
       "schedule": ["every weekend"],
-      "automerge": true
+      "automerge": true,
+      "automergeType": "branch"
     },
     {
       "groupName": "Major dependencies",
