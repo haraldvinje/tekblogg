@@ -9,7 +9,7 @@ import { SanityImage } from 'src/components/SanityImage'
 const BlogPostCard = ({ post }: { post: PostCardData }) => {
   const { title, categories, mainImage, publishedAt, introduction, slug, estimatedReadingTime } =
     post
-  const wideEnough = useWidthMediaQuery(800)
+  const wideEnough = useWidthMediaQuery(900)
   const linkRef = `/post/${slug}`
   return (
     <div className="scale-90 rounded-md border border-slate-400 p-2 shadow-sm transition ease-in-out hover:shadow-xl sm:mb-8 sm:scale-100">

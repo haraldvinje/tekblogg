@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import harald from 'public/harald.png'
 import { useClientTheme } from 'src/lib/hooks/useClientTheme'
 import Metatags from 'src/components/Metatags'
 
@@ -27,9 +28,8 @@ export default function AboutPage() {
               width: '80%',
               height: 'auto'
             }}
-            src="/harald.png"
+            src={harald}
             placeholder="blur"
-            blurDataURL="/mountains.avif"
             alt="profile"
           />
         </div>
