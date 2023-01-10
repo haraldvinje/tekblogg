@@ -22,7 +22,7 @@ jobs:
             tekblogg-cms/**
 
       - name: Deploy
-        if: steps.cms-files.any_changed == 'true'
+        if: steps.cms-files.outputs.any_changed == 'true'
         uses: sanity-io/github-action-sanity@v0.4-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
