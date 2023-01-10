@@ -27,4 +27,4 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
         with:
-          args: tebkblogg-cms deploy
+          args: tekblogg-cms deploy

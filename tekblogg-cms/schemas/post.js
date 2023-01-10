@@ -53,7 +53,6 @@ export default {
       type: "blockContent",
     },
   ],
-
   preview: {
     select: {
       title: "title",
