@@ -1,0 +1,30 @@
+name: Deploy CMS
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  sanity-deploy:
+    runs-on: ubuntu-latest
+    name: Deploy Sanity
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Check for changes in CMS folder
+        uses: tj-actions/verify-changed-files@v35
+        id: cms-files
+        with:
+          files: |
+            tekblogg-cms/**
+
+      - name: Deploy
+        if: steps.cms-files.files_changed == 'true'
+        uses: sanity-io/github-action-sanity@v0.2-alpha
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+        with:
+          args: deploy
