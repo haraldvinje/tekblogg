@@ -7,7 +7,7 @@ on:
 jobs:
   sanity-deploy:
     runs-on: ubuntu-latest
-    name: Deploy to Sanity if Sanity project has changed
+    name: Deploy to Sanity if CMS project files have changed
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
