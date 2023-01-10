@@ -10,7 +10,7 @@ on:
 jobs:
   sanity-deploy:
     runs-on: ubuntu-latest
-    name: Deploy website
+    name: Deploy website if web files have changed
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
