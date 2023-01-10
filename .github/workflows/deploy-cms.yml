@@ -15,14 +15,14 @@ jobs:
           fetch-depth: 2
 
       - name: Check for changes in CMS folder
-        uses: tj-actions/verify-changed-files@v13
+        uses: tj-actions/changed-files@v35
         id: cms-files
         with:
           files: |
             tekblogg-cms/**
 
       - name: Deploy
-        if: steps.cms-files.files_changed == 'true'
+        if: steps.cms-files.any_changed == 'true'
         uses: sanity-io/github-action-sanity@v0.4-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
