@@ -3443,10 +3443,10 @@ grapheme-splitter@^1.0.4:
   resolved "https://registry.yarnpkg.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
-groq@^2.29.3:
-  version "2.33.2"
-  resolved "https://registry.npmjs.org/groq/-/groq-2.33.2.tgz"
-  integrity sha512-5pf4c91JESCS28IJCgolJq/WBw4Xvf2m8FgZVUlrCig17I+qERosALAHLyyutXu403EYnyCD3DdCLaPb3aGneA==
+groq@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/groq/-/groq-3.2.3.tgz#5cc951861622bd4e6af798bc3d7828798696b3b5"
+  integrity sha512-e/u4Q2lCPXGfZzZYfcSKXgAFp8Js2s5ERgJ7Ixw9dHCIZ55mYx7T51Sd7Zr+isMF5b6x4o3SonDN88rRKp6QUg==
 
 gzip-size@^6.0.0:
   version "6.0.0"
