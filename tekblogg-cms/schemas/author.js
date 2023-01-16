@@ -7,6 +7,8 @@ export default {
       name: "name",
       title: "Name",
       type: "string",
+      codegen: { required: true },
+      validation: Rule => Rule.required()
     },
     {
       name: "slug",

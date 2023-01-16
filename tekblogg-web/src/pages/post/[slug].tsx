@@ -1,27 +1,12 @@
-import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
-import groq from 'groq'
-import { PortableTextBlock } from '@portabletext/types'
-import client from 'src/lib/sanityClient'
+import { urlFor, getAllSlugs, getPost } from 'src/lib/sanityClient'
+import type { Post } from 'src/lib/sanityClient'
 import { formatAuthors, formatDate, richToPlainText } from 'src/lib/textUtils'
 import { useClientTheme } from 'src/lib/hooks/useClientTheme'
-import Post from 'src/pages/index'
-import { RichText, urlFor } from 'src/components/RichText'
+import { RichText } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
 import Metatags from 'src/components/Metatags'
 import { ShareButtons } from 'src/components/ShareButtons'
 import { SanityImage } from 'src/components/SanityImage'
-
-export interface Post {
-  title: string
-  authors: string[]
-  mainImage: SanityImageObject
-  categories?: string[]
-  publishedAt: string
-  estimatedReadingTime: number
-  slug: string
-  introduction: PortableTextBlock[]
-  body: PortableTextBlock[]
-}
 
 const Post = ({ post }: { post: Post }) => {
   const {
@@ -83,9 +68,7 @@ const Post = ({ post }: { post: Post }) => {
 }
 
 export const getStaticPaths = async () => {
-  const paths: string[] = await client.fetch(
-    `*[_type == "post" && defined(slug.current)][].slug.current`
-  )
+  const paths = await getAllSlugs()
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
@@ -95,22 +78,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }: { params: { slug: string } }) => {
   const { slug = '' } = params
-
-  const post: Post = await client.fetch(
-    groq`*[_type == "post" && slug.current == $slug][0]{
-      title,
-      "authors": authors[]->name,
-      "categories": categories[]->title,
-      publishedAt,
-      "slug": slug.current,
-      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
-      mainImage,
-      introduction,
-      body
-    }`,
-    { slug: slug }
-  )
-
+  const post = await getPost(slug)
   if (!post) return { notFound: true }
 
   return {
