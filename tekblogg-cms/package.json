@@ -15,7 +15,7 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/code-input": "^3.0.1",
+    "@sanity/code-input": "^4.0.0",
     "@sanity/eslint-config-studio": "^2.0.1",
     "eslint": "^8.32.0",
     "@sanity/vision": "^3.2.3",
