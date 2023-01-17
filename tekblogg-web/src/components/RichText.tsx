@@ -1,14 +1,8 @@
 import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import { PortableText } from '@portabletext/react'
-import { PortableTextBlock } from '@portabletext/types'
-import imageUrlBuilder from '@sanity/image-url'
-import client from 'src/lib/sanityClient'
 import { SanityImage } from 'src/components/SanityImage'
 import CodeBlock, { CodeBlockProps } from 'src/components/CodeBlock'
-
-export function urlFor(source: SanityImageObject) {
-  return imageUrlBuilder(client).image(source)
-}
+import { BlockContent } from 'src/types/sanitySchema'
 
 const ptComponents = {
   types: {
@@ -31,13 +25,7 @@ const ptComponents = {
   }
 }
 
-export const RichText = ({
-  value,
-  className
-}: {
-  value: PortableTextBlock[]
-  className?: string
-}) => {
+export const RichText = ({ value, className }: { value: BlockContent; className?: string }) => {
   return (
     <div className={className}>
       <PortableText value={value} components={ptComponents} />

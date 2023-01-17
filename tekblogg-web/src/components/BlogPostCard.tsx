@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import type { PostCardData } from 'src/pages'
+import type { PostMetadata } from 'src/lib/sanityClient'
 import { RichText } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
 import { formatDate } from 'src/lib/textUtils'
 import { useWidthMediaQuery } from 'src/lib/hooks/useWidthMediaQuery'
 import { SanityImage } from 'src/components/SanityImage'
 
-const BlogPostCard = ({ post }: { post: PostCardData }) => {
+const BlogPostCard = ({ post }: { post: PostMetadata }) => {
   const { title, categories, mainImage, publishedAt, introduction, slug, estimatedReadingTime } =
     post
   const wideEnough = useWidthMediaQuery(900)
