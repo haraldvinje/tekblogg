@@ -36,7 +36,7 @@ const Post = ({ post }: { post: Post }) => {
         <h1 className="flex justify-center">{title}</h1>
         <div className="flex flex-col space-y-2">
           <span className="flex items-center justify-between">
-            <i>{formatAuthors(authors)}</i>
+            {formatAuthors(authors)}
             <ShareButtons />
           </span>
           <p>

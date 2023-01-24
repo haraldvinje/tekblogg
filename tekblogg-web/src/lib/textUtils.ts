@@ -1,12 +1,11 @@
 import { formatInTimeZone } from 'date-fns-tz'
 import { nb } from 'date-fns/locale'
-import type { BlockContent, Author } from 'src/types/sanitySchema'
+import type { BlockContent } from 'src/types/sanitySchema'
 
 export const formatDate = (date: string, timeFormat: string = 'd. MMMM yyyy HH:mm') =>
   formatInTimeZone(new Date(date), 'Europe/Oslo', timeFormat, { locale: nb })
 
-export const formatAuthors = (authors?: Author[]) =>
-  authors?.map((author) => author.name)?.join(', ')
+export const formatAuthors = (authors?: string[]) => authors?.map((author) => author)?.join(', ')
 
 export const richToPlainText = (blocks: BlockContent): string => {
   return blocks
