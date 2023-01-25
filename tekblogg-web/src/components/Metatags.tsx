@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-const Metatags = ({
+export const Metatags = ({
   title,
   description,
   image,
@@ -29,5 +29,3 @@ const Metatags = ({
     </Head>
   )
 }
-
-export default Metatags

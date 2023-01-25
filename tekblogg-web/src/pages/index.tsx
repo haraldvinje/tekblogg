@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { getAllPostsMetadata, PostMetadata } from 'src/lib/sanityClient'
-import Metatags from 'src/components/Metatags'
+import { Metatags } from 'src/components/Metatags'
 import BlogPostCard from 'src/components/BlogPostCard'
 import { Category } from 'src/components/Category'
 

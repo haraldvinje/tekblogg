@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import harald from 'public/harald.png'
 import { useClientTheme } from 'src/lib/hooks/useClientTheme'
-import Metatags from 'src/components/Metatags'
+import { Metatags } from 'src/components/Metatags'
 
 export default function AboutPage() {
   const { textTheme } = useClientTheme()

@@ -1,4 +1,4 @@
-import Metatags from 'src/components/Metatags'
+import { Metatags } from 'src/components/Metatags'
 
 const Custom404 = () => {
   return (

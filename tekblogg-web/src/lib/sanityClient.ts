@@ -48,7 +48,7 @@ const getPostQuery = groq`
 export type Post = Omit<Schema.Post, 'categories' | 'authors'> & {
   categories: Schema.Category['title'][]
   estimatedReadingTime: number
-  authors: string[]
+  authors: Schema.Author['name'][]
 }
 
 export type PostMetadata = Omit<Post, 'body' | 'authors'>

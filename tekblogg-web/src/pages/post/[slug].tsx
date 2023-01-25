@@ -4,7 +4,7 @@ import { formatAuthors, formatDate, richToPlainText } from 'src/lib/textUtils'
 import { useClientTheme } from 'src/lib/hooks/useClientTheme'
 import { RichText } from 'src/components/RichText'
 import { Category } from 'src/components/Category'
-import Metatags from 'src/components/Metatags'
+import { Metatags } from 'src/components/Metatags'
 import { ShareButtons } from 'src/components/ShareButtons'
 import { SanityImage } from 'src/components/SanityImage'
 
