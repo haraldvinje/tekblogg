@@ -14,7 +14,7 @@ const BlogPostCard = ({ post }: { post: PostMetadata }) => {
   return (
     <div className="scale-90 rounded-md border border-slate-400 p-2 shadow-sm transition ease-in-out hover:shadow-xl sm:mb-8 sm:scale-100">
       <div className="ml-4">
-        <div className="my-2 flex items-center space-x-2">
+        <div className={`my-2 flex items-center space-x-2 dark:text-white`}>
           {wideEnough && (
             <Link href={linkRef} passHref>
               <div className="w-[200px]">

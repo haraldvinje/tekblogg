@@ -40,7 +40,9 @@ const Home = ({ posts }: { posts: PostMetadata[] }) => {
       />
       <div className="w-[80%]">
         <div className="mb-4 p-2">
-          <h1 className="mb-2 text-center text-2xl font-bold text-gray-500">Filtrer på kategori</h1>
+          <h1 className="mb-2 text-center text-2xl font-bold text-gray-500 dark:text-gray-300">
+            Filtrer på kategori
+          </h1>
           {allCategories.map(
             (category, index) =>
               category && (
