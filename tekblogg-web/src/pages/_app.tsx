@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {cookie_flags: 'SameSite=None;Secure'});
         `}
       </Script>
-      <ThemeProvider enableSystem={false}>
+      <ThemeProvider attribute="class" enableSystem={false}>
         <BaseLayout>
           <Component {...pageProps} />
         </BaseLayout>
