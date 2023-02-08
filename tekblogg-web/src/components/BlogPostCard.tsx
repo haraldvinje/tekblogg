@@ -19,6 +19,7 @@ const BlogPostCard = ({ post }: { post: PostMetadata }) => {
             <Link href={linkRef} passHref>
               <div className="w-[200px]">
                 <SanityImage
+                  className="rounded-md"
                   sizes="(max-width: 500px) 100vw,
                          (max-width: 1200px) 50vw,
                           33wv"
