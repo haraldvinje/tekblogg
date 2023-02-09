@@ -1,10 +1,13 @@
-export default {
-  title: "Introduction",
+import { defineField, defineType } from "sanity";
+
+export default defineType({
   name: "postIntroduction",
+  title: "Introduction",
   type: "array",
   of: [
-    {
-      title: "Block",
+    defineField({
+      name: "body",
+      title: "Body",
       type: "block",
       styles: [{ title: "Normal", value: "normal" }],
       lists: [{ title: "Bullet", value: "bullet" }],
@@ -28,6 +31,7 @@ export default {
           },
         ],
       },
-    },
+      validation: (Rule) => Rule.required(),
+    }),
   ],
-};
+});
