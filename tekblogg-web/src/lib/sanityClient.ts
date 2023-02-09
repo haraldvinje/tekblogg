@@ -45,7 +45,8 @@ const getPostQuery = groq`
   }
 `
 
-export type Post = Omit<Schema.Post, 'categories' | 'authors'> & {
+export type Post = Omit<Schema.Post, 'slug' | 'categories' | 'authors'> & {
+  slug: Schema.Post['slug']['current']
   categories: Schema.Category['title'][]
   estimatedReadingTime: number
   authors: Schema.Author['name'][]
