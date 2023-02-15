@@ -30,7 +30,7 @@
     "@next/bundle-analyzer": "^13.1.2",
     "@next/env": "^13.1.2",
     "@portabletext/react": "^2.0.0",
-    "@sanity/client": "^4.0.0",
+    "@sanity/client": "^5.0.0",
     "@vercel/analytics": "^0.1.8",
     "date-fns": "^2.28.0",
     "date-fns-tz": "^2.0.0",
