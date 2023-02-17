@@ -29,7 +29,7 @@ const Post = ({ post }: { post: Post }) => {
       <Metatags
         title={title}
         description={rawIntro}
-        image={urlFor(mainImage).url()}
+        image={urlFor(mainImage)}
         path={`/post/${slug}`}
       />
       <article className={`prose w-full lg:prose-xl ${textTheme}`}>
