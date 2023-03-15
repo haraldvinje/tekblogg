@@ -3777,9 +3777,9 @@ grapheme-splitter@^1.0.4:
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
 groq@^3.2.3:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/groq/-/groq-3.6.0.tgz#c501abf02e495a64a9032fc77919dba7886f3c4a"
-  integrity sha512-IJr1eRjIcpENtkBM+U1KB7VmHkObz02bb4NwtjoKy+Ak6CySvsvn3KOKflTryE2bIBDrPSAz4JXNOUZvMcVSlg==
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/groq/-/groq-3.7.0.tgz#42b4033ed0290293f048a51f6f6fc13338fde3c5"
+  integrity sha512-aJVUjwChHFo2nYkIpZUg1qO/RP849CJ7+xn//VxIAtAkZY2HPZUqPfr61JTj2lzSe2DdpPmrbkbIuNT0SEXlMQ==
 
 gzip-size@^6.0.0:
   version "6.0.0"
