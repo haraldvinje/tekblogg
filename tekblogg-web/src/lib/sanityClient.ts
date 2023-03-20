@@ -1,24 +1,18 @@
-import type { SanityImageObject, SanityClientLike } from '@sanity/image-url/lib/types/types'
+import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 import groq from 'groq'
 import type * as Schema from 'src/types/sanitySchema'
 
-export const config: SanityClientLike = {
-  clientConfig: {
-    projectId: 'jbq2yq78',
-    dataset: 'production'
-  }
-}
-
 const client = createClient({
-  ...config.clientConfig,
+  projectId: 'jbq2yq78',
+  dataset: 'production',
   apiVersion: 'v2021-10-21',
   useCdn: true
 })
 
 export function urlFor(source: SanityImageObject) {
-  return imageUrlBuilder(config).image(source).url()
+  return imageUrlBuilder(client).image(source).url()
 }
 
 const getAllPostsMetadataQuery = groq`
