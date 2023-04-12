@@ -17,11 +17,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
-
           gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {cookie_flags: 'SameSite=None;Secure'});
         `}
       </Script>
-      <ThemeProvider attribute="class" enableColorScheme={false}>
+      <ThemeProvider attribute="class" defaultTheme="light" enableColorScheme={false}>
         <BaseLayout>
           <Component {...pageProps} />
         </BaseLayout>
