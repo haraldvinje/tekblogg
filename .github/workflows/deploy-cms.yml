@@ -9,7 +9,7 @@ on:
 jobs:
   sanity-deploy:
     runs-on: ubuntu-latest
-    name: Deploy to Sanity if CMS project files have changed
+    name: Deploy to Sanity
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -17,7 +17,6 @@ jobs:
           fetch-depth: 2
 
       - name: Deploy
-        if: steps.cms-files.outputs.any_changed == 'true'
         uses: sanity-io/github-action-sanity@v0.4-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
