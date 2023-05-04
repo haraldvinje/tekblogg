@@ -10,11 +10,11 @@ SyntaxHighlighter.registerLanguage('python', python)
 SyntaxHighlighter.registerLanguage('sh', sh)
 
 export type CodeBlockProps = {
-  language: string
   code: string
+  language: string
 }
 
-const CodeBlock = ({ language, code }: CodeBlockProps) => {
+const CodeBlock = ({ code, language }: CodeBlockProps) => {
   return (
     <SyntaxHighlighter language={language} style={colorScheme} showLineNumbers>
       {code}
