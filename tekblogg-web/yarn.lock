@@ -1324,9 +1324,9 @@
   integrity sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==
 
 "@sanity/client@^6.0.0":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-6.0.1.tgz#e51042a03238820c81f9e70dde44a7f137d85d52"
-  integrity sha512-q2Mi79ttJxoUjZG3LGlfIFoYfMUxra9tRaPbfmQRVJQ2I/TiVGvuE6yt38fgox796wpeZvYeuYH8L7Ms79IXYg==
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-6.1.0.tgz#d205d619ff1e4abddd9899e2c137b8b941af4bcf"
+  integrity sha512-l+cyCG7HhJJC2IgpFeIkF0e+gbtDqRn8n/K8xVs9x1VYcZu6M7651FE3dAxSYsOlQkYetgxXzWW5Y0BvQMXoyQ==
   dependencies:
     "@sanity/eventsource" "^5.0.0"
     get-it "^8.1.0"
@@ -3335,9 +3335,9 @@ get-intrinsic@^1.0.2, get-intrinsic@^1.1.1, get-intrinsic@^1.1.3, get-intrinsic@
     has-symbols "^1.0.3"
 
 get-it@^8.1.0:
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/get-it/-/get-it-8.1.1.tgz#6522df2b0726a0596d8087f23063ec7f5e35ea1c"
-  integrity sha512-83P2+3V/3E+KSdlHnGlOr4vCrlV8wDsT580AyJkMtkK/8LtZc0TOCI9bjQXH1sgYnmQTzCoPoPaOAE+a8JZqLQ==
+  version "8.1.3"
+  resolved "https://registry.yarnpkg.com/get-it/-/get-it-8.1.3.tgz#9991e5232c8525a93af0ee596d00224ddb475ca0"
+  integrity sha512-cbyYSla0qAQrwirBNHM4CERo8H32eUWNxhsby4AcKiRW3jIwMPDhgLnR0Ok/UmZO68vsccjRCFbZFEeB3BXvLg==
   dependencies:
     debug "^4.3.4"
     decompress-response "^7.0.0"
