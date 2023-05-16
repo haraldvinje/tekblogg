@@ -6,8 +6,8 @@ export default defineType({
   type: "array",
   of: [
     defineField({
-      name: "body",
-      title: "Body",
+      name: "block",
+      title: "Block",
       type: "block",
       styles: [{ title: "Normal", value: "normal" }],
       lists: [{ title: "Bullet", value: "bullet" }],
