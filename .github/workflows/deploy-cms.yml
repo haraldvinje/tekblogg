@@ -2,8 +2,6 @@ name: Deploy CMS
 
 on:
   workflow_dispatch:
-    branches:
-      - master
 
 jobs:
   sanity-deploy:
