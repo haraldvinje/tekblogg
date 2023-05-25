@@ -1,13 +1,9 @@
 name: Deploy CMS
+
 on:
   workflow_dispatch:
     branches:
       - master
-  push:
-    branches:
-      - master
-    paths:
-      - 'tekblogg-cms/**'
 
 jobs:
   sanity-deploy:
