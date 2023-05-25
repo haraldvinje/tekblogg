@@ -1,13 +1,13 @@
 name: Deploy CMS
+
 on:
   workflow_dispatch:
-    branches:
-      - master
 
 jobs:
   sanity-deploy:
     runs-on: ubuntu-latest
     name: Deploy to Sanity
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
