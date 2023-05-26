@@ -1,38 +1,41 @@
-import dynamic from 'next/dynamic'
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
-import colorScheme from 'react-syntax-highlighter/dist/cjs/styles/prism/gruvbox-dark'
-import typescript from 'react-syntax-highlighter/dist/cjs/languages/prism/typescript'
-import python from 'react-syntax-highlighter/dist/cjs/languages/prism/python'
-import sh from 'react-syntax-highlighter/dist/cjs/languages/prism/bash'
+import { useEffect } from 'react'
+import { themes, Highlight, Prism } from 'prism-react-renderer'
 
-SyntaxHighlighter.registerLanguage('typescript', typescript)
-SyntaxHighlighter.registerLanguage('python', python)
-SyntaxHighlighter.registerLanguage('sh', sh)
+const env = global !== undefined ? global : window
+env.Prism = Prism
 
 export type CodeBlockProps = {
   code: string
   language: string
 }
 
-const CodeBlock = ({ code, language }: CodeBlockProps) => {
+export const CodeBlock = ({ code, language }: CodeBlockProps) => {
+  const theme = ['javascripts', 'typescript', 'jsx', 'tsx'].includes(language)
+    ? themes.vsDark
+    : themes.nightOwl
+
+  useEffect(() => {
+    // The prism-react-rendered package only supports certain languages by default.
+    if (language === 'python') {
+      require('prismjs/components/prism-python')
+    }
+  }, [language])
+
+  require('prismjs/components/prism-python')
+
   return (
-    <SyntaxHighlighter language={language} style={colorScheme} showLineNumbers>
-      {code}
-    </SyntaxHighlighter>
+    <Highlight prism={Prism} theme={theme} code={code} language={language}>
+      {({ style, tokens, getTokenProps }) => (
+        <pre style={style}>
+          {tokens.map((line, i) => (
+            <div key={i}>
+              {line.map((token, key) => (
+                <span key={key} {...getTokenProps({ token })} />
+              ))}
+            </div>
+          ))}
+        </pre>
+      )}
+    </Highlight>
   )
 }
-
-const LoadingPlaceholder = () => {
-  return (
-    <div className="flex animate-bounce items-center justify-center space-x-2">
-      <div className="h-4 w-4 rounded-full bg-blue-400"></div>
-      <div className="h-4 w-4 rounded-full bg-green-400"></div>
-      <div className="h-4 w-4 rounded-full bg-black"></div>
-    </div>
-  )
-}
-
-export default dynamic(() => Promise.resolve(CodeBlock), {
-  ssr: false,
-  loading: LoadingPlaceholder
-})
