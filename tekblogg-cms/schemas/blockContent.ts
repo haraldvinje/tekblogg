@@ -1,4 +1,4 @@
-import { defineType, defineArrayMember } from "sanity";
+import { defineType, defineField, defineArrayMember } from "sanity";
 
 export default defineType({
   title: "Block Content",
@@ -45,8 +45,23 @@ export default defineType({
       type: "image",
       options: { hotspot: true },
     }),
-    defineArrayMember({
-      type: "code",
-    }),
+    defineField({
+      type: 'code',
+      name: 'code',
+      title: 'Code Block',
+      options: {
+        language: 'javascript',
+        languageAlternatives: [
+          { title: 'HTML', value: 'html' },
+          { title: 'CSS', value: 'css' },
+          { title: 'Javascript', value: 'javascript' },
+          { title: 'Typescript', value: 'typescript' },
+          { title: 'JSX', value: 'jsx' },
+          { title: 'TSX', value: 'tsx' },
+          { title: 'Python', value: 'python' },
+          { title: 'Shell', value: 'sh' },
+        ],
+      },
+    })
   ],
 });
