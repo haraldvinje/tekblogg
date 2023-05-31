@@ -1337,9 +1337,9 @@
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
 "@portabletext/react@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@portabletext/react/-/react-3.0.0.tgz#9066e00500ef5f30a92d9eb26bcd2209be1c8aad"
-  integrity sha512-bvh9Ls3ZOa7rPOtJ2fTrTFAC6nXAwHlyt1ukFqFSgTehtsgl91WB2kaBa3XdXCBiobzED3OPcLZ3Y3fsb9ZFiQ==
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@portabletext/react/-/react-3.0.1.tgz#ef39edbc2713c0e716540f18d4df43635fe06be5"
+  integrity sha512-09nvHFR5ESx4+q83WPlBf2CJgmoBohwfY7D/vmU/uperqBFCRDUFEb3V+ud0dlKg+iC4Nkp4qFLL/jjwVLa5kQ==
   dependencies:
     "@portabletext/toolkit" "^2.0.1"
     "@portabletext/types" "^2.0.2"
