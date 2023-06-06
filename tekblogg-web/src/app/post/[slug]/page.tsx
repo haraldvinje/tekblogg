@@ -16,19 +16,20 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 
   return {
-    ...commonFields,
     twitter: {
-      ...commonFields,
       cardType: 'summary_large_image',
       creator: '@haraldvin',
       images: {
         url: imageUrl,
         alt: title
-      }
+      },
+      ...commonFields
     },
     openGraph: {
-      images: [imageUrl]
-    }
+      images: [imageUrl],
+      ...commonFields
+    },
+    ...commonFields
   }
 }
 
