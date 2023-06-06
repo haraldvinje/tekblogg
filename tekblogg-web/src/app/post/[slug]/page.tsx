@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       ...commonFields
     },
     openGraph: {
+      type: 'article',
       images: [imageUrl],
       ...commonFields
     },
