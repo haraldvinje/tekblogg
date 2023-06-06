@@ -1,8 +1,10 @@
+'use client'
+
 import { faLinkedin, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useAbsoluteUrl } from 'src/lib/hooks/useAbsoluteUrl'
+import { useAbsoluteUrl } from '@/lib/hooks/use-absolute-url'
 
-export const ShareButtons = ({ className }: { className?: string }) => {
+export function ShareButtons({ className }: { className?: string }) {
   const url = useAbsoluteUrl()
 
   return (

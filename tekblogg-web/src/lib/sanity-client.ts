@@ -2,7 +2,7 @@ import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 import groq from 'groq'
-import type * as Schema from 'src/types/sanitySchema'
+import type * as Schema from '@/types/sanity-schema'
 
 const client = createClient({
   projectId: 'jbq2yq78',
@@ -45,20 +45,20 @@ const getPostQuery = groq`
   }
 `
 
-export type Post = Omit<Schema.Post, 'slug' | 'categories' | 'authors'> & {
+export type BlogPost = Omit<Schema.Post, 'slug' | 'categories' | 'authors'> & {
   slug: Schema.Post['slug']['current']
   categories: Schema.Category['title'][]
   estimatedReadingTime: number
   authors: Schema.Author['name'][]
 }
 
-export type PostMetadata = Omit<Post, 'body' | 'authors'>
+export type BlogPostMetadata = Omit<BlogPost, 'body' | 'authors'>
 
-export const getAllPostsMetadata = async () =>
-  await client.fetch<PostMetadata[]>(getAllPostsMetadataQuery)
+export const getAllBlogPostsMetadata = async () =>
+  await client.fetch<BlogPostMetadata[]>(getAllPostsMetadataQuery)
 
 export const getAllSlugs = async () => await client.fetch<String[]>(getAllSlugsQuery)
 
-export const getPost = async (slug: string) => client.fetch<Post>(getPostQuery, { slug })
+export const getBlogPost = async (slug: string) => client.fetch<BlogPost>(getPostQuery, { slug })
 
 export default client
