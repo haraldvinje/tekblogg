@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn partytown && next build",
+    "partytown": "partytown copylib public/~partytown",
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
