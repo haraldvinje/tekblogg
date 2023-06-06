@@ -1,14 +1,14 @@
-import { urlFor, getAllSlugs, getPost } from 'src/lib/sanityClient'
-import type { Post } from 'src/lib/sanityClient'
-import { formatAuthors, formatDate, richToPlainText } from 'src/lib/textUtils'
-import { useClientTheme } from 'src/lib/hooks/useClientTheme'
-import { RichText } from 'src/components/RichText'
-import { Category } from 'src/components/Category'
-import { Metatags } from 'src/components/Metatags'
-import { ShareButtons } from 'src/components/ShareButtons'
-import { SanityImage } from 'src/components/SanityImage'
+'use client'
 
-const Post = ({ post }: { post: Post }) => {
+import { useClientTheme } from '@/lib/hooks/use-client-theme'
+import type { BlogPost as BlogPostType } from '@/lib/sanity-client'
+import { formatAuthors, formatDate } from '@/lib/text-utils'
+import { RichText } from '@/components/rich-text'
+import { Category } from '@/components/category'
+import { ShareButtons } from '@/components/share-buttons'
+import { SanityImage } from '@/components/sanity-image'
+
+export const BlogPost = ({ post }: { post: BlogPostType }) => {
   const {
     title,
     authors,
@@ -17,21 +17,13 @@ const Post = ({ post }: { post: Post }) => {
     publishedAt,
     estimatedReadingTime,
     introduction,
-    body,
-    slug
+    body
   } = post
 
-  const rawIntro = richToPlainText(introduction)
   const { textTheme } = useClientTheme()
 
   return (
     <>
-      <Metatags
-        title={title}
-        description={rawIntro}
-        image={urlFor(mainImage)}
-        path={`/post/${slug}`}
-      />
       <article className={`prose w-full lg:prose-xl ${textTheme}`}>
         <h1 className="flex justify-center">{title}</h1>
         <div className="flex flex-col space-y-2">
@@ -66,27 +58,3 @@ const Post = ({ post }: { post: Post }) => {
     </>
   )
 }
-
-export const getStaticPaths = async () => {
-  const paths = await getAllSlugs()
-
-  return {
-    paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: 'blocking'
-  }
-}
-
-export const getStaticProps = async ({ params }: { params: { slug: string } }) => {
-  const { slug = '' } = params
-  const post = await getPost(slug)
-  if (!post) return { notFound: true }
-
-  return {
-    props: {
-      post
-    },
-    revalidate: 60
-  }
-}
-
-export default Post

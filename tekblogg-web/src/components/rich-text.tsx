@@ -1,8 +1,8 @@
 import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import { PortableText } from '@portabletext/react'
-import { SanityImage } from 'src/components/SanityImage'
-import { CodeBlock, CodeBlockProps } from 'src/components/CodeBlock'
-import { BlockContent } from 'src/types/sanitySchema'
+import type { BlockContent } from '@/types/sanity-schema'
+import { SanityImage } from '@/components/sanity-image'
+import { CodeBlock, CodeBlockProps } from '@/components/code-block'
 
 const ptComponents = {
   types: {

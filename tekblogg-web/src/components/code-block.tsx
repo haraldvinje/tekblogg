@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect } from 'react'
 import { themes, Highlight, Prism } from 'prism-react-renderer'
 

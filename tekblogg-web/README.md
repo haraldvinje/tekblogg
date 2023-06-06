@@ -20,4 +20,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Deploy
 
-Automatic deployment from changes in `master` on [GitHub](https://github.com/) can easily be added by connecting your GitHub account and repo to [Vercel](https://vercel.com/). Small hobby projects are free to host. Sign up to Vercel [here](https://vercel.com/signup).
+Deployment is done manually by triggering a GitHub workflow. See how [here](https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow).
