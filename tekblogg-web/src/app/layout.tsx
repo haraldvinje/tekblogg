@@ -1,4 +1,5 @@
 import './globals.css'
+import type { Metadata } from 'next'
 import Script from 'next/script'
 import { Partytown } from '@builder.io/partytown/react'
 import { Analytics } from '@vercel/analytics/react'
@@ -6,21 +7,44 @@ import { Navbar } from '@/components/navbar'
 import { ThemeWrapper } from '@/components/theme-wrapper'
 import { AnimationWrapper } from '@/components/animation-wrapper'
 
+const title = 'TekBlogg'
+const titleObject = {
+  default: title,
+  template: '%s - TekBlogg'
+}
+const description =
+  'Velkommen til TekBloggen! Sjekk ut det nyeste innen teknologi og programmering her.'
+const images = '/harald.png'
+
 const metaFields = {
-  title: 'TekBlogg',
-  description:
-    'Velkommen til TekBloggen! Sjekk ut det nyeste innen teknologi og programmering her.',
-  images: '/harald.png'
+  title,
+  description,
+  images
 }
 
-export const metadata = {
+export const metadata: Metadata = {
+  manifest: '/manifest.json',
+  themeColor: '#FFFFFF',
   metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN ?? 'https://tekblogg.dev'),
   ...metaFields,
   openGraph: {
-    ...metaFields
+    type: 'website',
+    siteName: title,
+    description,
+    ...titleObject
   },
   twitter: {
-    ...metaFields
+    card: 'summary',
+    description,
+    ...titleObject
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title
+  },
+  formatDetection: {
+    telephone: false
   }
 }
 
