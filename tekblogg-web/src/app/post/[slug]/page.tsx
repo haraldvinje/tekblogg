@@ -5,24 +5,6 @@ import { BlogPost } from './blog-post'
 
 export const revalidate = 60
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = await getBlogPost(params.slug)
-
-  return (
-    <AnimationWrapper>
-      <BlogPost post={post} />
-    </AnimationWrapper>
-  )
-}
-
-export async function generateStaticParams() {
-  const slugs = await getAllSlugs()
-
-  return slugs.map((slug) => ({
-    slug
-  }))
-}
-
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const { title, mainImage, introduction } = await getBlogPost(params.slug)
   const rawIntro = richToPlainText(introduction)
@@ -32,6 +14,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     title,
     description: rawIntro
   }
+
   return {
     ...commonFields,
     twitter: {
@@ -42,6 +25,27 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         url: imageUrl,
         alt: title
       }
+    },
+    openGraph: {
+      images: [imageUrl]
     }
   }
+}
+
+export async function generateStaticParams() {
+  const slugs = await getAllSlugs()
+
+  return slugs.map((slug) => ({
+    slug
+  }))
+}
+
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+  const post = await getBlogPost(params.slug)
+
+  return (
+    <AnimationWrapper>
+      <BlogPost post={post} />
+    </AnimationWrapper>
+  )
 }
