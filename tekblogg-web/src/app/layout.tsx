@@ -1,5 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import { Partytown } from '@builder.io/partytown/react'
 import { Analytics } from '@vercel/analytics/react'
@@ -49,9 +50,14 @@ export const metadata: Metadata = {
   }
 }
 
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap'
+})
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="nb" suppressHydrationWarning>
+    <html lang="nb" className={inter.className}>
       <body className="transition duration-500 dark:bg-dark-lighter">
         <ThemeWrapper>
           <Navbar />
