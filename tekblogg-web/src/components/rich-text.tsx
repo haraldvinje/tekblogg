@@ -1,8 +1,18 @@
+import type { ReactNode } from 'react'
 import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import { PortableText } from '@portabletext/react'
 import type { BlockContent } from '@/types/sanity-schema'
 import { SanityImage } from '@/components/sanity-image'
 import { CodeBlock, CodeBlockProps } from '@/components/code-block'
+
+type SanityLink = {
+  value?: {
+    href: string
+    _type: string
+    _key: string
+  }
+  children: ReactNode
+}
 
 const ptComponents = {
   types: {
@@ -21,7 +31,14 @@ const ptComponents = {
       <code className="rounded-sm border-2 border-amber-100 bg-slate-800 p-2 text-amber-100 before:content-none after:content-none">
         {text}
       </code>
-    )
+    ),
+    link: ({ value, children }: SanityLink) => {
+      return (
+        <a href={value?.href ?? ''} target="_blank" rel="noopener">
+          {children}
+        </a>
+      )
+    }
   }
 }
 
