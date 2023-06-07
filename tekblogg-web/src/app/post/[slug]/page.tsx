@@ -1,5 +1,5 @@
 import { getAllSlugs, getBlogPost, urlFor } from '@/lib/sanity-client'
-import { richToPlainText } from '@/lib/text-utils'
+import { richToPlainText, getAppropriateMetaDescriptionText } from '@/lib/text-utils'
 import { AnimationWrapper } from '@/components/animation-wrapper'
 import { BlogPost } from './blog-post'
 
@@ -9,25 +9,23 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const { title, mainImage, introduction } = await getBlogPost(params.slug)
   const rawIntro = richToPlainText(introduction)
   const imageUrl = urlFor(mainImage)
+  const image = { url: imageUrl, alt: title, width: 800, height: 600 }
 
   const commonFields = {
     title,
-    description: rawIntro
+    description: getAppropriateMetaDescriptionText(rawIntro)
   }
 
   return {
     twitter: {
       cardType: 'summary_large_image',
       creator: '@haraldvin',
-      images: {
-        url: imageUrl,
-        alt: title
-      },
+      images: [image],
       ...commonFields
     },
     openGraph: {
       type: 'article',
-      images: [imageUrl],
+      images: [image],
       ...commonFields
     },
     ...commonFields

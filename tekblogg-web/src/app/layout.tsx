@@ -13,13 +13,13 @@ const titleObject = {
   template: '%s - TekBlogg'
 }
 const description =
-  'Velkommen til TekBloggen! Sjekk ut det nyeste innen teknologi og programmering her.'
-const images = '/harald.png'
+  'Velkommen til TekBlogg 🤓 Sjekk ut det nyeste innen teknologi og programmering her!'
+const image = { url: '/harald.png', width: 400, height: 400 }
 
 const metaFields = {
   title,
   description,
-  images
+  images: image
 }
 
 export const metadata: Metadata = {
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: title,
     description,
-    images: [images],
+    images: [image],
     ...titleObject
   },
   twitter: {

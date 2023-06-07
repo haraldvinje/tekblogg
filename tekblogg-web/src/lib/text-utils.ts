@@ -17,3 +17,10 @@ export const richToPlainText = (blocks: BlockContent): string => {
     })
     .join('\n\n')
 }
+
+export const getAppropriateMetaDescriptionText = (description: string) => {
+  if (description.length > 160) {
+    return description.substring(0, 150) + '...'
+  }
+  return description
+}
