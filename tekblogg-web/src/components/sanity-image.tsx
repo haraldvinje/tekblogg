@@ -19,6 +19,7 @@ type SanityImageProps = NextImage & {
 export const SanityImage = ({
   image,
   alt = 'image',
+  title = 'image title',
   width = 1000,
   quality = 100,
   ...nextImageProps
@@ -35,9 +36,9 @@ export const SanityImage = ({
       style={{ width: '100%', height: 'auto' }}
       sizes="(max-width: 800px) 100vw, 800px"
       alt={alt}
+      title={title}
       placeholder="blur"
       blurDataURL="mountains.avif"
-      unoptimized
       {...imageProps}
       {...nextImageProps}
     />

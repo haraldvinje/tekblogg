@@ -29,7 +29,10 @@ export function About() {
           src={harald}
           placeholder="blur"
           blurDataURL="mountains.avif"
-          alt="profile"
+          priority
+          loading="eager"
+          alt="Picture of Harald Vinje"
+          title="Picture of Harald Vinje"
         />
       </div>
       <p>

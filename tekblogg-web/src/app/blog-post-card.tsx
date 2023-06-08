@@ -24,8 +24,9 @@ export const BlogPostCard = ({ post }: { post: BlogPostMetadata }) => {
                           33wv"
                 width={200}
                 image={mainImage}
-                alt="mainImage"
                 placeholder="blur"
+                alt={mainImage.alt ?? 'Main image'}
+                title={mainImage.title ?? 'Main image'}
               />
             </div>
           </Link>

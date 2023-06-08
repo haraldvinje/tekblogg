@@ -4,7 +4,8 @@ import { About } from './about'
 
 export const metadata = {
   title: 'Om TekBlogg',
-  description: 'TekBlogg er laget og drevet av Harald Vinje.',
+  description:
+    'TekBlogg er laget er en blogg om teknologi og programmering. Bloggen er drevet av Harald Vinje.',
   url: generateCanonicalUrl('/about')
 }
 

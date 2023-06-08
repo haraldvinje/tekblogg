@@ -36,9 +36,9 @@ export function BlogPostList({ posts }: { posts: BlogPostMetadata[] }) {
   return (
     <>
       <div className="mb-4 p-2">
-        <h1 className="mb-2 text-center text-2xl font-bold text-gray-500 dark:text-gray-300">
+        <p className="mb-2 text-center text-2xl font-bold text-gray-500 dark:text-gray-300">
           Filtrer på kategori
-        </h1>
+        </p>
         {allCategories.map(
           (category, index) =>
             category && (

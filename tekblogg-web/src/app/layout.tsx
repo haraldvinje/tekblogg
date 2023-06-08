@@ -6,7 +6,6 @@ import { Partytown } from '@builder.io/partytown/react'
 import { Analytics } from '@vercel/analytics/react'
 import { Navbar } from '@/components/navbar'
 import { ThemeWrapper } from '@/components/theme-wrapper'
-import { AnimationWrapper } from '@/components/animation-wrapper'
 import { generateCanonicalUrl } from '@/lib/text-utils'
 
 const title = 'TekBlogg'
@@ -16,25 +15,31 @@ const titleObject = {
 }
 const description =
   'Velkommen til TekBlogg 🤓 Sjekk ut det nyeste innen teknologi og programmering her!'
-const image = { url: '/harald.png', width: 400, height: 400 }
+const image = { url: '/harald.png', width: 200, height: 200 }
 
 const commonFields = {
   title,
   description,
-  images: image,
-  url: generateCanonicalUrl()
+  images: image
 }
+
+const url = generateCanonicalUrl()
 
 export const metadata: Metadata = {
   manifest: '/manifest.json',
   themeColor: '#FFFFFF',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN ?? 'https://www.tekblogg.dev'),
+  metadataBase: url,
+  alternates: {
+    canonical: '/'
+  },
   ...commonFields,
   openGraph: {
     type: 'website',
     siteName: title,
     description,
     images: [image],
+    url,
+    title,
     ...titleObject
   },
   twitter: {
@@ -63,11 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="transition duration-500 dark:bg-dark-lighter">
         <ThemeWrapper>
           <Navbar />
-          <AnimationWrapper>
-            <main className="flex w-full justify-center px-[10%] py-10 xl:px-[20%]">
-              {children}
-            </main>
-          </AnimationWrapper>
+          <main className="flex w-full justify-center px-[10%] py-10 xl:px-[20%]">{children}</main>
           <Partytown debug={true} forward={['dataLayer.push']} />
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}

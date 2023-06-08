@@ -51,7 +51,15 @@ export const BlogPost = ({ post }: { post: BlogPostType }) => {
         <div className="text-xl font-bold">
           <RichText value={introduction} />
         </div>
-        {mainImage ? <SanityImage image={mainImage} alt="mainImage" /> : null}
+        {mainImage ? (
+          <SanityImage
+            priority
+            loading="eager"
+            image={mainImage}
+            alt={mainImage.alt ?? 'Main image'}
+            title={mainImage.title ?? 'Main image'}
+          />
+        ) : null}
         <RichText value={body} />
         <ShareButtons className="justify-center" />
       </article>

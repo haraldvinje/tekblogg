@@ -28,6 +28,5 @@ export const getAppropriateMetaDescriptionText = (description: string) => {
 export const generateCanonicalUrl = (path?: string) => {
   const baseUrl = process.env.NEXT_PUBLIC_DOMAIN ?? 'https://www.tekblogg.dev'
   const cleanPath = path?.replace(/^\/|\/$/g, '')
-  const url = cleanPath ? baseUrl + '/' + cleanPath : baseUrl
-  return new URL(url)
+  return new URL(cleanPath ? baseUrl + '/' + cleanPath : baseUrl)
 }

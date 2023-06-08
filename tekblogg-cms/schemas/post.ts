@@ -35,6 +35,18 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: 'title',
+          type: 'string',
+          title: 'Title',
+        },
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+        },
+      ],
       validation: (Rule) => Rule.required(),
     }),
     defineField({
