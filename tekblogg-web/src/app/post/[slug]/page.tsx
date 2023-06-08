@@ -1,5 +1,9 @@
 import { getAllSlugs, getBlogPost, urlFor } from '@/lib/sanity-client'
-import { richToPlainText, getAppropriateMetaDescriptionText } from '@/lib/text-utils'
+import {
+  richToPlainText,
+  getAppropriateMetaDescriptionText,
+  generateCanonicalUrl
+} from '@/lib/text-utils'
 import { AnimationWrapper } from '@/components/animation-wrapper'
 import { BlogPost } from './blog-post'
 
@@ -13,7 +17,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
   const commonFields = {
     title,
-    description: getAppropriateMetaDescriptionText(rawIntro)
+    description: getAppropriateMetaDescriptionText(rawIntro),
+    url: generateCanonicalUrl(params.slug)
   }
 
   return {

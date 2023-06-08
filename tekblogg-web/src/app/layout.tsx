@@ -7,6 +7,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { Navbar } from '@/components/navbar'
 import { ThemeWrapper } from '@/components/theme-wrapper'
 import { AnimationWrapper } from '@/components/animation-wrapper'
+import { generateCanonicalUrl } from '@/lib/text-utils'
 
 const title = 'TekBlogg'
 const titleObject = {
@@ -17,17 +18,18 @@ const description =
   'Velkommen til TekBlogg 🤓 Sjekk ut det nyeste innen teknologi og programmering her!'
 const image = { url: '/harald.png', width: 400, height: 400 }
 
-const metaFields = {
+const commonFields = {
   title,
   description,
-  images: image
+  images: image,
+  url: generateCanonicalUrl()
 }
 
 export const metadata: Metadata = {
   manifest: '/manifest.json',
   themeColor: '#FFFFFF',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN ?? 'https://tekblogg.dev'),
-  ...metaFields,
+  metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN ?? 'https://www.tekblogg.dev'),
+  ...commonFields,
   openGraph: {
     type: 'website',
     siteName: title,
