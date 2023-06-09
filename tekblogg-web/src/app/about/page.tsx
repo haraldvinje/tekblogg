@@ -1,13 +1,13 @@
 import { Metadata } from 'next'
 import { AnimationWrapper } from '@/components/animation-wrapper'
-import { generateCanonicalUrl } from '@/lib/text-utils'
 import { About } from './about'
 
+const title = 'Om TekBlogg'
+
 export const metadata: Metadata = {
-  title: 'Om TekBlogg',
+  title,
   description:
-    'TekBlogg er en blogg om teknologi og programmering. Bloggen er drevet av Harald Vinje.',
-  metadataBase: generateCanonicalUrl('/about')
+    'TekBlogg er en blogg om teknologi og programmering. Bloggen er drevet av Harald Vinje.'
 }
 
 export default async function AboutPage() {
