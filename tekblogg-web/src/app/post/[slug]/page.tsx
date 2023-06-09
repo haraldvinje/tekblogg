@@ -30,7 +30,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 
   return {
-    metadataBase: url,
+    alternates: {
+      canonical: url.pathname
+    },
     twitter: {
       cardType: 'summary_large_image',
       creator: '@haraldvin',
