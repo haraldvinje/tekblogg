@@ -12,6 +12,7 @@ export const revalidate = 60
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const post = await getBlogPost(params.slug)
+
   if (!post) {
     notFound()
   }
