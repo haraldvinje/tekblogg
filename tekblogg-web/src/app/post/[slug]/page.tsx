@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation'
 import { getAllSlugs, getBlogPost, urlFor } from '@/lib/sanity-client'
 import {
   richToPlainText,
@@ -10,7 +11,12 @@ import { BlogPost } from './blog-post'
 export const revalidate = 60
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const { title, mainImage, introduction } = await getBlogPost(params.slug)
+  const post = await getBlogPost(params.slug)
+  if (!post) {
+    notFound()
+  }
+
+  const { title, mainImage, introduction } = post
   const rawIntro = richToPlainText(introduction)
   const imageUrl = urlFor(mainImage)
   const image = { url: imageUrl, alt: title, width: 800, height: 600 }
@@ -47,6 +53,10 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = await getBlogPost(params.slug)
+
+  if (!post) {
+    notFound()
+  }
 
   return (
     <AnimationWrapper>
