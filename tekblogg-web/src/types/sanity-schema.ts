@@ -140,8 +140,6 @@ export interface Author extends SanityDocument {
     asset: SanityReference<SanityImageAsset>
     crop?: SanityImageCrop
     hotspot?: SanityImageHotspot
-    alt?: string
-    title?: string
   }
 
   /**
@@ -177,16 +175,16 @@ export interface Category extends SanityDocument {
 
 export type PostIntroduction = Array<SanityKeyed<SanityBlock>>
 
-export type BlockContent = Array<
-  | SanityKeyed<SanityBlock>
-  | SanityKeyed<{
-      _type: 'image'
-      asset: SanityReference<SanityImageAsset>
-      crop?: SanityImageCrop
-      hotspot?: SanityImageHotspot
-    }>
-  | SanityKeyed<Code>
->
+export type BlockContentImage = SanityKeyed<{
+  _type: 'image'
+  asset: SanityReference<SanityImageAsset>
+  crop?: SanityImageCrop
+  hotspot?: SanityImageHotspot
+  alt?: string
+  title?: string
+}>
+
+export type BlockContent = Array<SanityKeyed<SanityBlock> | BlockContentImage | SanityKeyed<Code>>
 
 export type Documents = Post | Author | Category
 

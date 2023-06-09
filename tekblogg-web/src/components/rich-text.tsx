@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
-import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import { PortableText } from '@portabletext/react'
-import type { BlockContent } from '@/types/sanity-schema'
+import type { BlockContent, BlockContentImage } from '@/types/sanity-schema'
 import { SanityImage } from '@/components/sanity-image'
 import { CodeBlock, CodeBlockProps } from '@/components/code-block'
 
@@ -16,11 +15,12 @@ type SanityLink = {
 
 const ptComponents = {
   types: {
-    image: ({ value }: { value: SanityImageObject }) => {
+    image: ({ value }: { value: BlockContentImage }) => {
       if (!value?.asset?._ref) {
         return null
       }
-      return <SanityImage image={value} loading="lazy" />
+      const { title, alt } = value
+      return <SanityImage image={value} loading="lazy" title={title} alt={alt} />
     },
     code: ({ value }: { value: CodeBlockProps }) => {
       return <CodeBlock code={value.code} language={value.language} />
