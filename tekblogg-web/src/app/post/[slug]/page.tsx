@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
   return {
     alternates: {
-      canonical: params.slug
+      canonical: url.pathname
     },
     twitter: {
       cardType: 'summary_large_image',
