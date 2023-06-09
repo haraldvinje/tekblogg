@@ -39,6 +39,7 @@ export const SanityImage = ({
       title={title}
       placeholder="blur"
       blurDataURL="mountains.avif"
+      unoptimized
       {...imageProps}
       {...nextImageProps}
     />

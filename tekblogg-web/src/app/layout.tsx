@@ -17,13 +17,14 @@ const description =
   'Velkommen til TekBlogg 🤓 Sjekk ut det nyeste innen teknologi og programmering her!'
 const image = { url: '/harald.png', width: 200, height: 200 }
 
+const url = generateCanonicalUrl()
+
 const commonFields = {
   title,
   description,
-  images: image
+  images: image,
+  url
 }
-
-const url = generateCanonicalUrl()
 
 export const metadata: Metadata = {
   manifest: '/manifest.json',
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    description,
+    ...commonFields,
     ...titleObject
   },
   appleWebApp: {
