@@ -1590,9 +1590,9 @@
   integrity sha512-IthPJsJR85GhOkp3Hvp8zFOPK5ynKn6STyHa/WZpioK7E1aYDiBzpqQPrngc14DszIUkIrdd3k9Iu0XSzlP/1w==
 
 "@sanity/client@^6.0.0":
-  version "6.1.2"
-  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-6.1.2.tgz#03a032c3b1c98c35efa94db6acd478ae2a71a46c"
-  integrity sha512-8/NRBmyzJaT8ZNZxj3UmOAhvqKxDtXWysogsa4rn+o/Z+zS7upkToh1wSdvoFLcv9uHSYF6JGeycigjwO1Zpnw==
+  version "6.1.3"
+  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-6.1.3.tgz#94b87b1de78b041fb85cc489fefc03304c353e3b"
+  integrity sha512-asO/AvN+/D1Ljd6UNPWlo/toeO6SmZdsxyl+fJdLfI9by4svp/K3hD4Qy2DXXmwOfGYqGSH7etv2lnRhu+C5YA==
   dependencies:
     "@sanity/eventsource" "^5.0.0"
     get-it "^8.1.0"
@@ -6397,15 +6397,15 @@ tslib@^1.8.1:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.1.0, tslib@^2.5.0:
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.5.2.tgz#1b6f07185c881557b0ffa84b111a0106989e8338"
-  integrity sha512-5svOrSA2w3iGFDs1HibEVBGbDrAY82bFQ3HZ3ixB+88nsbsWQoKqDRb5UBYAUPEzbBn6dAp5gRNXglySbx1MlA==
-
-tslib@^2.4.0:
+tslib@^2.1.0, tslib@^2.4.0:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.5.3.tgz#24944ba2d990940e6e982c4bea147aba80209913"
   integrity sha512-mSxlJJwl3BMEQCUNnxXBU9jP4JBktcEGhURcPR6VQVlnP0FdDEsIaz0C35dXNGLyRfrATNofF0F5p2KPxQgB+w==
+
+tslib@^2.5.0:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.5.2.tgz#1b6f07185c881557b0ffa84b111a0106989e8338"
+  integrity sha512-5svOrSA2w3iGFDs1HibEVBGbDrAY82bFQ3HZ3ixB+88nsbsWQoKqDRb5UBYAUPEzbBn6dAp5gRNXglySbx1MlA==
 
 tsutils@^3.21.0:
   version "3.21.0"
