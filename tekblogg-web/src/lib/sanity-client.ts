@@ -12,7 +12,7 @@ const client = createClient({
 })
 
 export function urlFor(source: SanityImageObject) {
-  return imageUrlBuilder(client).image(source).url()
+  return imageUrlBuilder(client).image(source)
 }
 
 const getAllPostsMetadataQuery = groq`

@@ -19,8 +19,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
   const { title, mainImage, introduction } = post
   const rawIntro = richToPlainText(introduction)
-  const imageUrl = urlFor(mainImage)
-  const image = { url: imageUrl, alt: title, width: 800, height: 600 }
+
+  const imageWidth = 800
+  const imageHeight = 600
+  const imageUrl = urlFor(mainImage).width(imageWidth).height(imageHeight).url()
+  const image = { url: imageUrl, alt: title, widht: imageWidth, height: imageHeight }
 
   const url = generateCanonicalUrl(`/post/${params.slug}`)
 
