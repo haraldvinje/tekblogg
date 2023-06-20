@@ -31,7 +31,7 @@ export function BlogPostList({ posts }: { posts: BlogPostMetadata[] }) {
   const filteredPosts =
     selectedCategories.length === 0
       ? posts
-      : posts.filter((p) => p.categories?.some((c) => selectedCategories.includes(c)))
+      : posts.filter((p) => p.categories?.some((category) => selectedCategories.includes(category)))
 
   return (
     <>
