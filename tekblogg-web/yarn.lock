@@ -3757,9 +3757,9 @@ graphemer@^1.4.0:
   integrity sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==
 
 groq@^3.2.3:
-  version "3.12.2"
-  resolved "https://registry.yarnpkg.com/groq/-/groq-3.12.2.tgz#2959bdf225e80b5cf17298af096ed8dfb9f1d2b7"
-  integrity sha512-CHHWUIVkK5ZF1oYmXZ8svO7OtkMY/25JIj4ozjw4saCW09ukSO/WpyadikKKot+QIg9foRumxHmtFfcwt5zawg==
+  version "3.13.0"
+  resolved "https://registry.yarnpkg.com/groq/-/groq-3.13.0.tgz#77d84809802befa7c552907da5157e067e0319f7"
+  integrity sha512-ZnvJx6AhcanQP+XwUXiNr8ZEIEE0V8GT2ozBBB5bRd1OziRQocM+l+yaUFbnWWgVyqILzyR5xXgB5FpiObpdkA==
 
 gzip-size@^6.0.0:
   version "6.0.0"
