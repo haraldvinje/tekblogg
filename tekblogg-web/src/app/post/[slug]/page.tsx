@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const imageWidth = 800
   const imageHeight = 600
   const imageUrl = urlFor(mainImage).width(imageWidth).height(imageHeight).url()
-  const image = { url: imageUrl, alt: title, widht: imageWidth, height: imageHeight }
+  const image = { url: imageUrl, alt: title, width: imageWidth, height: imageHeight }
 
   const url = generateCanonicalUrl(`/post/${params.slug}`)
 
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       canonical: url.pathname
     },
     twitter: {
-      cardType: 'summary_large_image',
+      card: 'summary_large_image',
       creator: '@haraldvin',
       images: [image],
       ...commonFields
