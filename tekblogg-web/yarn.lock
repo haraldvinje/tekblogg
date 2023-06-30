@@ -1169,9 +1169,9 @@
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
 
 "@ducanh2912/next-pwa@^9.0.0":
-  version "9.1.2"
-  resolved "https://registry.yarnpkg.com/@ducanh2912/next-pwa/-/next-pwa-9.1.2.tgz#048b8bf30279088c3a75373ac4810b0877410da3"
-  integrity sha512-eTH0ck2PA5UrjyHJ/m9fEv3l7Qq68uefIURdWNaKVnbp2RdmzUWxLfex6uN+Q6x3ONby4anZtW8Z46SNI8lh7g==
+  version "9.1.3"
+  resolved "https://registry.yarnpkg.com/@ducanh2912/next-pwa/-/next-pwa-9.1.3.tgz#5cce7470063f94253b3a88dbbe56783640c550dd"
+  integrity sha512-wdPACewaJugmUHXWUuz1NZlpQ1U5rfQIHTZeYowGNT1IoiYTgzngqipjyTFHt8pI4khpzuXPcxnZw0hbF8FJ1A==
   dependencies:
     clean-webpack-plugin "4.0.0"
     fast-glob "3.2.12"
