@@ -22,7 +22,7 @@ jobs:
         run: yarn lint && yarn ts-lint
 
       - name: Build and test
-        run: yarn build && yarn start-and-test
+        run: yarn build && yarn start-and-test:production
 
   deploy-production:
     needs: run-tests
