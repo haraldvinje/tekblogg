@@ -10,11 +10,11 @@ env:
 jobs:
   run-tests:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./tekblogg-web
     steps:
       - uses: actions/checkout@v3
-      - name: Change to right directory
-        run: cd tekblogg-web
-
       - name: Install dependencies
         run: yarn
 
@@ -26,6 +26,7 @@ jobs:
         run: yarn build && yarn start-and-test
 
   deploy-production:
+    needs: run-tests
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
