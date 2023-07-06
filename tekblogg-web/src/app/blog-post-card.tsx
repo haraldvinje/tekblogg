@@ -12,10 +12,13 @@ export const BlogPostCard = ({ post }: { post: BlogPostMetadata }) => {
   const wideEnough = useWidthMediaQuery(900)
   const linkRef = `/post/${slug}`
   return (
-    <div className="w-full scale-90 rounded-md border border-slate-400 p-4 shadow-sm transition ease-in-out hover:shadow-xl sm:mb-8 sm:scale-100">
+    <div
+      className="w-full scale-90 rounded-md border border-slate-400 p-4 shadow-sm transition ease-in-out hover:shadow-xl sm:mb-8 sm:scale-100"
+      data-cy="article-card"
+    >
       <div className="mb-2 flex items-center space-x-2 dark:text-white">
         {wideEnough && (
-          <Link href={linkRef} passHref>
+          <Link href={linkRef}>
             <div className="w-[200px]">
               <SanityImage
                 className="rounded-md"
@@ -32,7 +35,11 @@ export const BlogPostCard = ({ post }: { post: BlogPostMetadata }) => {
           </Link>
         )}
         <div className="overflow-hidden">
-          <Link href={linkRef} passHref className="text-2xl font-bold hover:text-blue">
+          <Link
+            href={linkRef}
+            className="text-2xl font-bold hover:text-blue"
+            data-cy="article-link"
+          >
             {title}
           </Link>
           <div className="my-2 text-xs opacity-60">
