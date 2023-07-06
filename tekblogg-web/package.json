@@ -8,11 +8,12 @@
     "partytown": "partytown copylib public/~partytown",
     "postbuild": "next-sitemap",
     "start": "next start",
+    "test": "cypress run",
+    "start-and-test": "concurrently -k -s first \"yarn dev\" \"wait-on --timeout 10000 tcp:localhost:3000 && yarn test\"",
+    "start-and-test:production": "concurrently -k -s first \"yarn start\" \"wait-on --timeout 10000 tcp:localhost:3000 && yarn test\"",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "prettier": "prettier --check src",
-    "prettier:fix": "prettier --write src",
-    "format": "yarn lint:fix && yarn prettier:fix",
+    "prettier": "prettier --write src",
     "ts-lint": "tsc --noEmit --incremental",
     "clean": "rm -rf node_modules .next",
     "prepare": "cd .. && husky install tekblogg-web/.husky"
@@ -46,7 +47,6 @@
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.4",
     "eslint-plugin-no-relative-import-paths": "^1.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.0",
     "eslint-plugin-tailwindcss": "^3.5.0",
     "eslint-plugin-unused-imports": "^2.0.0",
@@ -62,7 +62,7 @@
     "next-sitemap": "^4.0.0",
     "next-themes": "^0.2.1",
     "postcss": "8.4.25",
-    "prettier": "^3.0.0",
+    "prettier": "2.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
     "prism-react-renderer": "^2.0.4",
     "prismjs": "^1.29.0",
@@ -76,6 +76,11 @@
     "webpack": "^5.74.0"
   },
   "lint-staged": {
-    "*.{ts,tsx}": "yarn format"
+    "*.{ts,tsx}": "yarn prettier"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "cypress": "^12.16.0",
+    "wait-on": "^7.0.1"
   }
 }

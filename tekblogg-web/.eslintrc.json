@@ -3,8 +3,7 @@
     "tailwindcss",
     "no-relative-import-paths",
     "unused-imports",
-    "import",
-    "prettier"
+    "import"
   ],
   "extends": [
     "next/core-web-vitals",
@@ -61,9 +60,6 @@
       {
         "allowSameFolder": true
       }
-    ],
-    "prettier/prettier": [
-      "error"
     ]
   }
 }

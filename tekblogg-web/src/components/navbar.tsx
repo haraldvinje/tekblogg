@@ -21,13 +21,13 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-10 flex h-16 w-[100%] bg-dark text-white sm:h-20">
       <div className="flex w-[50%] items-center justify-center space-x-4 py-3 text-white sm:space-x-12">
-        <Link href="/" className={navItemStyle}>
+        <Link href="/" className={navItemStyle} data-cy="home ">
           <span>
             Blogg
             {wideEnough && <FontAwesomeIcon icon={faBookOpen} className="fa-xs px-2" />}
           </span>
         </Link>
-        <Link href="/about" className={navItemStyle}>
+        <Link href="/about" className={navItemStyle} data-cy="about">
           <span>Info</span>
         </Link>
       </div>
