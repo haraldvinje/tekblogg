@@ -15,13 +15,38 @@ jobs:
       run:
         working-directory: ./tekblogg-web
     steps:
+      - uses: actions/checkout@v3
+
+      - name: Cache node modules
+        id: cache-yarn
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache node modules
+        id: cache-next
+        uses: actions/cache@v3
+        with:
+          path: |
+            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+            ${{ github.workspace }}/tekblogg-web/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**/*.[jt]s', '**/*.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
+
       - uses: actions/setup-node@v3
         with:
           node-version-file: ./tekblogg-web/.nvmrc
           cache: yarn
           cache-dependency-path: ./tekblogg-web/yarn.lock
 
-      - uses: actions/checkout@v3
       - name: Install dependencies
         run: yarn
 
@@ -37,6 +62,7 @@ jobs:
     if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v3
+
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
