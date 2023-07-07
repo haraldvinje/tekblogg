@@ -23,7 +23,9 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
-          path: ./tekblogg-web/node_modules
+          path: |
+            ./tekblogg-web/node_modules
+            ${{ github.workspace }}/.cache/Cypress
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('./tekblogg-web/yarn.lock') }}
 
       - name: Get yarn cache directory path
