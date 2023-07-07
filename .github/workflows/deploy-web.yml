@@ -23,7 +23,7 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
-          path: ./node_modules
+          path: ./tekblogg-web/node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Get yarn cache directory path
@@ -36,7 +36,7 @@ jobs:
         with:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            ${{ github.workspace }}/tekblogg-web/.next/cache
+            ./tekblogg-web/.next/cache
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**/*.[jt]s', '**/*.[jt]sx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
