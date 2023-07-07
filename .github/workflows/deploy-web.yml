@@ -10,10 +10,17 @@ env:
 jobs:
   run-tests:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     defaults:
       run:
         working-directory: ./tekblogg-web
     steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: ./tekblogg-web/.nvmrc
+          cache: yarn
+          cache-dependency-path: ./tekblogg-web/yarn.lock
+
       - uses: actions/checkout@v3
       - name: Install dependencies
         run: yarn
@@ -21,7 +28,7 @@ jobs:
       - name: Lint
         run: yarn lint && yarn ts-lint
 
-      - name: Build and test
+      - name: Build, run and test
         run: yarn build && yarn start-and-test:production
 
   deploy-production:
