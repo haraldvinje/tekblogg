@@ -25,7 +25,7 @@ jobs:
         with:
           path: |
             ./tekblogg-web/node_modules
-            $HOME/.cache/Cypress
+            /home/runner/.cache/Cypress
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('./tekblogg-web/yarn.lock') }}
 
       - name: Get yarn cache directory path
