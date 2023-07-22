@@ -13,7 +13,7 @@ export const BlogPostCard = ({ post }: { post: BlogPostMetadata }) => {
   const linkRef = `/post/${slug}`
   return (
     <div
-      className="w-full scale-90 rounded-md border border-slate-400 p-4 shadow-sm transition ease-in-out hover:shadow-xl sm:mb-8 sm:scale-100"
+      className="w-full scale-90 rounded-md p-4 shadow-sm transition ease-in-out hover:shadow-xl sm:mb-8 sm:scale-100"
       data-cy="article-card"
     >
       <div className="mb-2 flex items-center space-x-2 dark:text-white">
@@ -48,9 +48,7 @@ export const BlogPostCard = ({ post }: { post: BlogPostMetadata }) => {
           <RichText className="text-sm" value={introduction} />
         </div>
       </div>
-      {categories?.map((category, index) => (
-        <Category key={index} value={category} />
-      ))}
+      {categories?.map((category, index) => <Category key={index} value={category} />)}
     </div>
   )
 }
