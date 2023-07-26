@@ -23,8 +23,6 @@ export const CodeBlock = ({ code, language }: CodeBlockProps) => {
     }
   }, [language])
 
-  require('prismjs/components/prism-python')
-
   return (
     <Highlight prism={Prism} theme={theme} code={code} language={language}>
       {({ style, tokens, getTokenProps }) => (
