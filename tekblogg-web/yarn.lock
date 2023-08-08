@@ -3980,9 +3980,9 @@ graphemer@^1.4.0:
   integrity sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==
 
 groq@^3.2.3:
-  version "3.14.5"
-  resolved "https://registry.yarnpkg.com/groq/-/groq-3.14.5.tgz#a240244cd1e28f45a486628844c2ec878d49c83e"
-  integrity sha512-1kpBA0FPgNL72G+Qj4PwyTjpNfOqO6FPzIANc8aDxdesUtg6JVMGYXF6zsvR/9nIMfuT8+TEoyyKT9V7ls8e+g==
+  version "3.15.0"
+  resolved "https://registry.yarnpkg.com/groq/-/groq-3.15.0.tgz#9d2a03790c03e7c45451e06d5968e07fd7dcf896"
+  integrity sha512-OjdYDrAHZC6Ku7LOgXUuh8DjcITJ7piz6WsuzrHUCiZEg3nEHWy2n3lU/INglVrIVp5o6QqqUh3fVlrBjp6X7A==
 
 gzip-size@^6.0.0:
   version "6.0.0"
