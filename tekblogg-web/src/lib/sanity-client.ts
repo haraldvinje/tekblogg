@@ -11,9 +11,7 @@ const client = createClient({
   useCdn: true
 })
 
-export function urlFor(source: SanityImageObject) {
-  return imageUrlBuilder(client).image(source)
-}
+export const urlFor = (source: SanityImageObject) => imageUrlBuilder(client).image(source)
 
 const getAllPostsMetadataQuery = groq`
   *[_type == "post"] | order(publishedAt desc) {
