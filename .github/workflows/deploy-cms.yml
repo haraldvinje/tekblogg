@@ -15,8 +15,6 @@ jobs:
           fetch-depth: 2
 
       - name: Deploy
-        uses: sanity-io/github-action-sanity@v0.4-alpha
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
-        with:
-          args: tekblogg-cms deploy
+        run: cd tekblogg-cms && yarn && yarn deploy
