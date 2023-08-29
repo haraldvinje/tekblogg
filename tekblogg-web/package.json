@@ -80,7 +80,7 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.0",
-    "cypress": "^12.16.0",
+    "cypress": "^13.0.0",
     "wait-on": "^7.0.1"
   }
 }
