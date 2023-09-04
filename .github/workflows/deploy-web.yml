@@ -15,7 +15,7 @@ jobs:
       run:
         working-directory: ./tekblogg-web
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Cache node modules
         id: cache-yarn
@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
