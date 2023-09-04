@@ -28,9 +28,7 @@ export function About() {
           }}
           src={harald}
           placeholder="blur"
-          blurDataURL="mountains.avif"
           priority
-          loading="eager"
           alt="Picture of Harald Vinje"
           title="Picture of Harald Vinje"
         />
