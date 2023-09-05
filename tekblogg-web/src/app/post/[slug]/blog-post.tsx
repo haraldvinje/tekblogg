@@ -60,7 +60,7 @@ export const BlogPost = ({ post }: { post: BlogPostType }) => {
             title={mainImage.title ?? 'Main image'}
           />
         ) : null}
-        <RichText value={body} />
+        <RichText className="hyphens-auto" value={body} />
         <ShareButtons className="justify-center" />
       </article>
     </>
