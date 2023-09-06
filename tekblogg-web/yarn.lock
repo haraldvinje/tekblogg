@@ -1493,9 +1493,9 @@
   integrity sha512-0xd7qez0AQ+MbHatZTlI1gu5vkG8r7MYRUJAHPAHJBmGLs16zpkrpAVLvjQKQOqaXPDUBwOiJzNc00znHSCVBw==
 
 "@sanity/client@^6.0.0":
-  version "6.4.9"
-  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-6.4.9.tgz#453fc7127cc959cbb929b91d3990cf3943362973"
-  integrity sha512-9y/exbu9kBgIuXouUWlHLGfPm3/jxRP8bSaysteILTQknLQZHExSyjFsYD/CxH3Xk43NzELqktvEXlP1/kZ6LA==
+  version "6.4.10"
+  resolved "https://registry.yarnpkg.com/@sanity/client/-/client-6.4.10.tgz#33a5946d128ec547e1114b9380465b01969f73c6"
+  integrity sha512-jJKQMVVqgrUiShrsoHzKqkrtOycKT6/UCx8XrQbOs+phZkLhkVV2gveHIb7k5EiMYv/jmoEf3OgYmDD9xBV9pQ==
   dependencies:
     "@sanity/eventsource" "^5.0.0"
     get-it "^8.4.3"
