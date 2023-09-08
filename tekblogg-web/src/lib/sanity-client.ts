@@ -58,9 +58,6 @@ export const getAllBlogPostsMetadata = async () =>
 export const getAllSlugs = async () => await client.fetch<String[]>(getAllSlugsQuery)
 
 export const getBlogPost = async (slug: string) =>
-  client
-    .fetch<BlogPost>(getPostQuery, { slug })
-    .then((post) => post)
-    .catch(() => null)
+  client.fetch<BlogPost>(getPostQuery, { slug }).catch(() => null)
 
 export default client
