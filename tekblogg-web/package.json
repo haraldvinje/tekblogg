@@ -76,7 +76,7 @@
     "webpack": "^5.74.0"
   },
   "lint-staged": {
-    "*.{ts,tsx}": "yarn prettier"
+    "*.{ts,tsx}": "bun run prettier"
   },
   "devDependencies": {
     "concurrently": "^8.2.0",
