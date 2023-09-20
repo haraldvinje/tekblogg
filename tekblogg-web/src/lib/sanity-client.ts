@@ -16,7 +16,7 @@ export const urlFor = (source: SanityImageObject) => imageUrlBuilder(client).ima
 const getAllPostsMetadataQuery = groq`
   *[_type == "post"] | order(publishedAt desc) {
     title,
-    "categories": categories[]->title,
+    "categories": categories[]->{title, slug},
     publishedAt,
     "slug": slug.current,
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
@@ -33,7 +33,7 @@ const getPostQuery = groq`
   *[_type == "post" && slug.current == $slug][0]{
     title,
     "authors": authors[]->name,
-    "categories": categories[]->title,
+    "categories": categories[]->{title, slug},
     publishedAt,
     "slug": slug.current,
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
@@ -45,7 +45,7 @@ const getPostQuery = groq`
 
 export type BlogPost = Omit<Schema.Post, 'slug' | 'categories' | 'authors'> & {
   slug: Schema.Post['slug']['current']
-  categories: Schema.Category['title'][]
+  categories: Schema.Category[]
   estimatedReadingTime: number
   authors: Schema.Author['name'][]
 }
