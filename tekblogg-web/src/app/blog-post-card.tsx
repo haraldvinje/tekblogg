@@ -46,7 +46,7 @@ export const BlogPostCard = ({ post }: { post: BlogPostMetadata }) => {
             {`${formatDate(publishedAt)} - ${estimatedReadingTime} min lesning`}
           </div>
           <RichText className="mb-2 text-sm" value={introduction} />
-          {categories?.map((category, index) => <Category key={index} value={category} />)}
+          {categories?.map((category, index) => <Category key={index} value={category.title} />)}
         </div>
       </div>
     </div>

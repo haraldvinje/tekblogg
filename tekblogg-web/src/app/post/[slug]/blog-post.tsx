@@ -43,7 +43,7 @@ export const BlogPost = ({ post }: { post: BlogPostType }) => {
                 <i>Kategorier:</i>
               </span>
               {categories.map((category, index) => (
-                <Category key={index} value={category} />
+                <Category key={index} value={category.title} />
               ))}
             </div>
           </>
