@@ -1,11 +1,11 @@
 ## Install
 
-You will need [Node](https://nodejs.org/en/download/package-manager/) and [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable) to run this web app.
+You will need [Node](https://bun.sh/docs/installation) to run this web app.
 
 Install dependencies with:
 
 ```bash
-yarn
+bun install
 ```
 
 ## Develop
@@ -13,7 +13,7 @@ yarn
 Run a development server with:
 
 ```bash
-yarn dev
+bun run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
