@@ -12,7 +12,7 @@ export type CodeBlockProps = {
 }
 
 export const CodeBlock = ({ code, language }: CodeBlockProps) => {
-  const theme = ['javascripts', 'typescript', 'jsx', 'tsx'].includes(language)
+  const theme = ['javascripts', 'typescript', 'jsx', 'tsx', 'html'].includes(language)
     ? themes.vsDark
     : themes.nightOwl
 
