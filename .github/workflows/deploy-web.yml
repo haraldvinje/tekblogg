@@ -11,9 +11,6 @@ jobs:
   lint-test-build-and-deploy:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
-    defaults:
-      run:
-        working-directory: ./tekblogg-web
     steps:
       - uses: actions/checkout@v4
 
@@ -22,12 +19,15 @@ jobs:
           bun-version: 1.0.2
 
       - name: Install dependencies
+        working-directory: ./tekblogg-web
         run: bun install && bun run cypress install #The cypress binary is not installed by default yet on bun, see https://github.com/cypress-io/github-action/issues/585
 
       - name: Lint
+        working-directory: ./tekblogg-web
         run: bun run lint && bun run ts-lint
 
       - name: Build, run and test
+        working-directory: ./tekblogg-web
         run: bun run build && bun run start-and-test:production
 
       - name: Install Vercel CLI
