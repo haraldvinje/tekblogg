@@ -17,8 +17,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: 1.0.2
+
       - name: Cache node modules
-        id: cache-yarn
+        id: cache-bun
         uses: actions/cache@v3
         env:
           cache-name: cache-node-modules
@@ -26,31 +30,27 @@ jobs:
           path: |
             ./tekblogg-web/node_modules
             /home/runner/.cache/Cypress
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('./tekblogg-web/yarn.lock') }}
-
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('./tekblogg-web/bun.lockb') }}
 
       - name: Cache next build
         id: cache-next
         uses: actions/cache@v3
         with:
           path: |
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+            ~/.bun/install/cache
             ./tekblogg-web/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('./tekblogg-web/yarn.lock') }}-${{ hashFiles('./tekblogg-web/*.[jt]s', './tekblogg-web/*.[jt]sx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('./tekblogg-web/bun.lockb') }}-${{ hashFiles('./tekblogg-web/*.[jt]s', './tekblogg-web/*.[jt]sx') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('./tekblogg-web/yarn.lock') }}-
+            ${{ runner.os }}-nextjs-${{ hashFiles('./tekblogg-web/bun.lockb') }}-
 
       - name: Install dependencies
-        run: yarn
+        run: bun install
 
       - name: Lint
-        run: yarn lint && yarn ts-lint
+        run: bun run lint && bun run ts-lint
 
       - name: Build, run and test
-        run: yarn build && yarn start-and-test:production
+        run: bun run build && bun run start-and-test:production
 
   deploy-production:
     needs: run-tests
