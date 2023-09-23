@@ -1,4 +1,4 @@
-export const Category = ({
+export function Category({
   value,
   clickable,
   clicked
@@ -6,7 +6,7 @@ export const Category = ({
   value: string
   clickable?: boolean
   clicked?: boolean
-}) => {
+}) {
   return (
     <span
       className={`mb-2 mr-2 inline-block rounded-full bg-gray-200

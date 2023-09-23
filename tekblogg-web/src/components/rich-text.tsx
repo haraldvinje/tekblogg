@@ -42,7 +42,7 @@ const ptComponents = {
   }
 }
 
-export const RichText = ({ value, className }: { value: BlockContent; className?: string }) => {
+export function RichText({ value, className }: { value: BlockContent; className?: string }) {
   return (
     <div className={className}>
       <PortableText value={value} components={ptComponents} />

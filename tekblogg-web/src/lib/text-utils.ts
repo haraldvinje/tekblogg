@@ -30,3 +30,13 @@ export const generateCanonicalUrl = (path?: string) => {
   const cleanPath = path?.replace(/^\/|\/$/g, '')
   return new URL(cleanPath ? baseUrl + '/' + cleanPath : baseUrl)
 }
+
+export const convertToStringArray = (value: string | string[] | undefined): string[] => {
+  if (value === undefined) {
+    return []
+  } else if (typeof value === 'string') {
+    return [value]
+  } else {
+    return value
+  }
+}

@@ -11,7 +11,7 @@ export type CodeBlockProps = {
   language: string
 }
 
-export const CodeBlock = ({ code, language }: CodeBlockProps) => {
+export function CodeBlock({ code, language }: CodeBlockProps) {
   const theme = ['javascript', 'typescript', 'jsx', 'tsx', 'html', 'json'].includes(language)
     ? themes.vsDark
     : themes.nightOwl

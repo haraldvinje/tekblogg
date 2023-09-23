@@ -16,14 +16,14 @@ type SanityImageProps = NextImage & {
   alt?: string
 }
 
-export const SanityImage = ({
+export function SanityImage({
   image,
   alt = 'image',
   title = 'image title',
   width = 1000,
   quality = 100,
   ...nextImageProps
-}: SanityImageProps) => {
+}: SanityImageProps) {
   const imageBuilder = useCallback(
     (imageUrlBuilder: ImageUrlBuilder) => imageUrlBuilder.width(width).quality(quality),
     [width, quality]

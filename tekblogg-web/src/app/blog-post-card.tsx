@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import type { BlogPostMetadata } from '@/lib/sanity-client'
 import { RichText } from '@/components/rich-text'
