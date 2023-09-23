@@ -1,12 +1,12 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Script from 'next/script'
 import { Partytown } from '@builder.io/partytown/react'
 import { Analytics } from '@vercel/analytics/react'
 import { Navbar } from '@/components/navbar'
 import { ThemeWrapper } from '@/components/theme-wrapper'
 import { generateCanonicalUrl } from '@/lib/text-utils'
+import { GoogleAnalytics } from '@/components/google-analytics'
 
 const title = 'TekBlogg'
 const titleObject = {
@@ -67,22 +67,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="nb" className={inter.className}>
       <body className="transition duration-500 dark:bg-dark-lighter">
+        <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? ''} />
         <ThemeWrapper>
           <Navbar />
           <main className="flex w-full justify-center px-[10%] py-10 xl:px-[20%]">{children}</main>
           <Partytown debug={true} forward={['dataLayer.push']} />
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-            strategy="worker"
-          />
-          <Script id="google-analytics" strategy="worker">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){window.dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {cookie_flags: 'SameSite=None;Secure'});
-            `}
-          </Script>
         </ThemeWrapper>
         <Analytics />
       </body>
