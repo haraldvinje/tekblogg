@@ -1,38 +1,36 @@
-'use client'
-
 import Script from 'next/script'
-import { usePathname, useSearchParams } from 'next/navigation'
-import { useEffect } from 'react'
-import { pageview } from '@/lib/gtag-helper'
 
 export function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID: string }) {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-
-  useEffect(() => {
-    const url = pathname + searchParams.toString()
-
-    pageview(GA_MEASUREMENT_ID, url)
-  }, [pathname, searchParams, GA_MEASUREMENT_ID])
   return (
     <>
       <Script
-        strategy="afterInteractive"
+        strategy="worker"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
       />
-      <Script
+      <script
         id="google-analytics"
-        strategy="afterInteractive"
+        type="text/partytown"
         dangerouslySetInnerHTML={{
           __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                
-                gtag('config', '${GA_MEASUREMENT_ID}', {
-                    page_path: window.location.pathname,
-                });
+              window.dataLayer = window.dataLayer || [];
+              window.gtag = function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              
+              gtag('config', '${GA_MEASUREMENT_ID}', {
+                  page_path: window.location.pathname,
+              });
                 `
+        }}
+      />
+      <script
+        data-partytown-config
+        dangerouslySetInnerHTML={{
+          __html: `
+          partytown = {
+            lib: "/_next/static/~partytown/",
+            forward: ["gtag"]           
+          };
+        `
         }}
       />
     </>

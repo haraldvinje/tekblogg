@@ -71,14 +71,16 @@ function GoogleAnalyticsFallback() {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="nb" className={inter.className}>
-      <body className="transition duration-500 dark:bg-dark-lighter">
+      <head>
+        <Partytown debug={true} forward={['dataLayer.push']} />
         <Suspense fallback={<GoogleAnalyticsFallback />}>
           <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? ''} />
         </Suspense>
+      </head>
+      <body className="transition duration-500 dark:bg-dark-lighter">
         <ThemeWrapper>
           <Navbar />
           <main className="flex w-full justify-center px-[10%] py-10 xl:px-[20%]">{children}</main>
-          <Partytown debug={true} forward={['dataLayer.push']} />
         </ThemeWrapper>
         <Analytics />
       </body>
