@@ -11,8 +11,8 @@ export type CodeBlockProps = {
   language: string
 }
 
-export function CodeBlock({ code, language }: CodeBlockProps) {
-  const theme = ['javascript', 'typescript', 'jsx', 'tsx', 'html', 'json'].includes(language)
+export const CodeBlock = ({ code, language }: CodeBlockProps) => {
+  const theme = ['javascripts', 'typescript', 'jsx', 'tsx'].includes(language)
     ? themes.vsDark
     : themes.nightOwl
 
@@ -24,7 +24,7 @@ export function CodeBlock({ code, language }: CodeBlockProps) {
   }, [language])
 
   return (
-    <Highlight prism={Prism} theme={theme} code={code} language={language ?? 'javascript'}>
+    <Highlight prism={Prism} theme={theme} code={code} language={language}>
       {({ style, tokens, getTokenProps }) => (
         <pre style={style}>
           {tokens.map((line, i) => (

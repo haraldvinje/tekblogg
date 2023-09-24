@@ -64,17 +64,15 @@ export default defineType({
       options: {
         language: 'javascript',
         languageAlternatives: [
-          { title: 'Javascript', value: 'javascript' },
-          { title: 'JSON', value: 'json' },
           { title: 'HTML', value: 'html' },
           { title: 'CSS', value: 'css' },
+          { title: 'Javascript', value: 'javascript' },
           { title: 'Typescript', value: 'typescript' },
           { title: 'JSX', value: 'jsx' },
           { title: 'TSX', value: 'tsx' },
           { title: 'Python', value: 'python' },
           { title: 'Shell', value: 'sh' },
         ],
-        withFilename: true
       },
     })
   ],

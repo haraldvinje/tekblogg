@@ -1,3 +1,8 @@
+'use client'
+
+import { useMemo } from 'react'
+import { usePathname } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { BlogPostMetadata } from '@/lib/sanity-client'
 import { Category } from '@/components/category'
@@ -7,33 +12,29 @@ function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
   return value !== null && value !== undefined
 }
 
-export function BlogPostList({
-  posts,
-  searchParamsCategories
-}: {
-  posts: BlogPostMetadata[]
-  searchParamsCategories: string[]
-}) {
-  const allCategories = posts
-    .flatMap((post) => post.categories)
-    .filter(
-      (category, index, categories) =>
-        categories.map((c) => c.slug.current).indexOf(category.slug.current) === index
-    )
-    .filter(notEmpty)
+export function BlogPostList({ posts }: { posts: BlogPostMetadata[] }) {
+  const pathname = usePathname()
+  const searchParamCategories = useSearchParams().getAll('category')
 
-  const invalidCategorySearch =
-    searchParamsCategories.filter((selectedCategory) =>
-      allCategories.map((category) => category.slug.current).includes(selectedCategory)
-    ).length === 0
+  const allCategories = useMemo(
+    () =>
+      posts
+        .flatMap((post) => post.categories)
+        .filter(
+          (category, index, categories) =>
+            categories.map((c) => c.slug.current).indexOf(category.slug.current) === index
+        )
+        .filter(notEmpty),
+    [posts]
+  )
 
   const filteredPosts =
-    searchParamsCategories.length === 0 || invalidCategorySearch
+    searchParamCategories.length === 0
       ? posts
       : posts.filter(
           (p) =>
             p.categories?.some((blogPostCategory) =>
-              searchParamsCategories.includes(blogPostCategory.slug.current)
+              searchParamCategories.includes(blogPostCategory.slug.current)
             )
         )
 
@@ -44,16 +45,16 @@ export function BlogPostList({
           Filtrer på kategori
         </p>
         {allCategories.map((category, index) => {
-          const newCategories = searchParamsCategories.includes(category.slug.current)
-            ? searchParamsCategories.filter(
+          const newCategories = searchParamCategories.includes(category.slug.current)
+            ? searchParamCategories.filter(
                 (searchCategory) => searchCategory !== category.slug.current
               )
-            : [...searchParamsCategories, category.slug.current]
+            : [...searchParamCategories, category.slug.current]
           return (
             <Link
               key={index}
               href={{
-                pathname: '/',
+                pathname,
                 query: {
                   category: newCategories
                 }
@@ -63,7 +64,7 @@ export function BlogPostList({
                 key={index}
                 value={category.title}
                 clickable
-                clicked={searchParamsCategories.includes(category.slug.current)}
+                clicked={searchParamCategories.includes(category.slug.current)}
               />
             </Link>
           )

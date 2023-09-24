@@ -14,11 +14,7 @@ jobs:
         with:
           fetch-depth: 2
 
-      - uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: 1.0.2
-
       - name: Deploy
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
-        run: cd tekblogg-cms && bun install && bun run deploy
+        run: cd tekblogg-cms && yarn && yarn deploy

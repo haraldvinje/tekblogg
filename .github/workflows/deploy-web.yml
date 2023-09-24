@@ -8,30 +8,59 @@ env:
   VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
 
 jobs:
-  lint-build-test-and-deploy:
+  run-tests:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    defaults:
+      run:
+        working-directory: ./tekblogg-web
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache node modules
+        id: cache-yarn
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: |
+            ./tekblogg-web/node_modules
+            /home/runner/.cache/Cypress
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('./tekblogg-web/yarn.lock') }}
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache next build
+        id: cache-next
+        uses: actions/cache@v3
+        with:
+          path: |
+            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+            ./tekblogg-web/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('./tekblogg-web/yarn.lock') }}-${{ hashFiles('./tekblogg-web/*.[jt]s', './tekblogg-web/*.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('./tekblogg-web/yarn.lock') }}-
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Lint
+        run: yarn lint && yarn ts-lint
+
+      - name: Build, run and test
+        run: yarn build && yarn start-and-test:production
+
+  deploy-production:
+    needs: run-tests
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: 1.0.2
-
-      - name: Install dependencies
-        working-directory: ./tekblogg-web
-        run: bun install && bun run cypress install # bun does not install the cypress binary for some reason
-
-      - name: Lint
-        working-directory: ./tekblogg-web
-        run: bun run lint && bun run ts-lint
-
-      - name: Build, run and test
-        working-directory: ./tekblogg-web
-        run: bun run build && bun run start-and-test:production
-
       - name: Install Vercel CLI
-        run: bun install --global vercel@latest
+        run: npm install --global vercel@latest
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}

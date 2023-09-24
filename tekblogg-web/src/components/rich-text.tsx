@@ -28,7 +28,7 @@ const ptComponents = {
   },
   marks: {
     code: ({ text }: { text: string }) => (
-      <code className="rounded-md border-gray-100 bg-slate-800 p-[0.25rem] text-amber-600 before:content-none after:content-none">
+      <code className="rounded-sm border-2 border-amber-100 bg-slate-800 p-2 text-amber-100 before:content-none after:content-none">
         {text}
       </code>
     ),
@@ -42,7 +42,7 @@ const ptComponents = {
   }
 }
 
-export function RichText({ value, className }: { value: BlockContent; className?: string }) {
+export const RichText = ({ value, className }: { value: BlockContent; className?: string }) => {
   return (
     <div className={className}>
       <PortableText value={value} components={ptComponents} />
