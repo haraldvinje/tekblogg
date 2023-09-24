@@ -79,7 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Analytics />
         <Partytown debug={true} forward={['dataLayer.push']} />
         <Suspense fallback={<GoogleAnalyticsFallback />}>
-          <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? ''} />
+          <GoogleAnalytics />
         </Suspense>
       </body>
     </html>
