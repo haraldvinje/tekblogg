@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./tekblogg-web
-        run: bun install
+        run: bun install && bun run cypress install # bun does not install the cypress binary for some reason
 
       - name: Lint
         working-directory: ./tekblogg-web
