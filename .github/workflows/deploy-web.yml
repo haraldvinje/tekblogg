@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./tekblogg-web
-        run: bun run clean && bun install && bun run cypress install #The cypress binary is not installed by default yet on bun, see https://github.com/cypress-io/github-action/issues/585
+        run: bun install && bun run cypress install #The cypress binary is not installed by default yet on bun, see https://github.com/cypress-io/github-action/issues/585
 
       - name: Lint
         working-directory: ./tekblogg-web
@@ -28,7 +28,7 @@ jobs:
 
       - name: Build, run and test
         working-directory: ./tekblogg-web
-        run: rm -rf .next && bun run build && bun run start-and-test:production
+        run: bun run build && bun run start-and-test:production
 
       - name: Install Vercel CLI
         run: bun install --global vercel@latest
