@@ -28,7 +28,7 @@ jobs:
 
       - name: Build, run and test
         working-directory: ./tekblogg-web
-        run: rm -rf .next && bun run build && bun run start-and-test:production
+        run: bun run build && bun run start-and-test:production
 
       - name: Install Vercel CLI
         run: bun install --global vercel@latest
