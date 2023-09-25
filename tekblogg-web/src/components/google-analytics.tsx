@@ -2,19 +2,23 @@
 
 import Script from 'next/script'
 
-export function GoogleAnalytics() {
+export function GoogleAnalytics({ gaMeasurementId }: { gaMeasurementId: string }) {
   return (
     <>
-      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-0EE3QF4P67" />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
+      <Script async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-          gtag('config', 'G-0EE3QF4P67');
-        `}
-      </Script>
+            gtag('config', '${gaMeasurementId}');
+          `
+        }}
+      />
     </>
   )
 }

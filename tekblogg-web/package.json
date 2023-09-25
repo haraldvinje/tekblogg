@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "yarn partytown && next build",
-    "partytown": "partytown copylib public/~partytown",
+    "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
     "test": "cypress run",
@@ -20,7 +19,6 @@
   },
   "dependencies": {
     "@babel/core": "^7.11.3",
-    "@builder.io/partytown": "^0.8.0",
     "@ducanh2912/next-pwa": "^9.0.0",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",

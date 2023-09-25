@@ -1,7 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { Partytown } from '@builder.io/partytown/react'
 import { Analytics } from '@vercel/analytics/react'
 import { Suspense } from 'react'
 import { Navbar } from '@/components/navbar'
@@ -73,14 +72,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="nb" className={inter.className}>
       <body className="transition duration-500 dark:bg-dark-lighter">
         <Suspense fallback={<GoogleAnalyticsFallback />}>
-          <GoogleAnalytics />
+          <GoogleAnalytics gaMeasurementId="G-FS8ZJJX47R" />
         </Suspense>
         <ThemeWrapper>
           <Navbar />
           <main className="flex w-full justify-center px-[10%] py-10 xl:px-[20%]">{children}</main>
         </ThemeWrapper>
         <Analytics />
-        <Partytown debug={true} forward={['dataLayer.push']} />
       </body>
     </html>
   )
