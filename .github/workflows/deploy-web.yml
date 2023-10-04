@@ -16,6 +16,10 @@ jobs:
         working-directory: ./tekblogg-web
     steps:
       - uses: actions/checkout@v4
+      
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: 1.0.4
 
       - name: Install dependencies
         run: bun install

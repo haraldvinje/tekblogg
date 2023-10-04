@@ -25,7 +25,7 @@
       "warn",
       {
         "whitelist": [
-          "fa-[a-zA-Z0-9]+"
+          "fa-.+"
         ]
       }
     ],
