@@ -1,6 +1,6 @@
 'use client'
 
-import { faLinkedin, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
+import { faLinkedin, faSquareXTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useAbsoluteUrl } from '@/lib/hooks/use-absolute-url'
 
@@ -19,7 +19,7 @@ export function ShareButtons({ className }: { className?: string }) {
         rel="noreferrer"
         aria-label="Del på Twitter"
       >
-        <FontAwesomeIcon icon={faTwitterSquare} color="#1DA1F2" size="2x" />
+        <FontAwesomeIcon icon={faSquareXTwitter} color="#000000" size="2x" />
       </a>
       <a
         href={`https://linkedin.com/share?url=${url}`}
