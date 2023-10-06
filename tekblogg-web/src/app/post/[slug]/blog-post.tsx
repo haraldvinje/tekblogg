@@ -1,24 +1,23 @@
 'use client'
 
+import { ReactNode } from 'react'
 import { useClientTheme } from '@/lib/hooks/use-client-theme'
-import type { BlogPost as BlogPostType } from '@/lib/sanity-client'
+import type { BlogPostMetadata } from '@/lib/sanity-client'
 import { formatAuthors, formatDate } from '@/lib/text-utils'
-import { RichText } from '@/components/rich-text'
 import { Category } from '@/components/category'
 import { ShareButtons } from '@/components/share-buttons'
 import { SanityImage } from '@/components/sanity-image'
 
-export const BlogPost = ({ post }: { post: BlogPostType }) => {
-  const {
-    title,
-    authors,
-    categories,
-    mainImage,
-    publishedAt,
-    estimatedReadingTime,
-    introduction,
-    body
-  } = post
+export const BlogPost = ({
+  postMetadata,
+  postIntroductionComponent,
+  postBodyComponent
+}: {
+  postMetadata: BlogPostMetadata
+  postIntroductionComponent: ReactNode
+  postBodyComponent: ReactNode
+}) => {
+  const { title, authors, categories, mainImage, publishedAt, estimatedReadingTime } = postMetadata
 
   const { textTheme } = useClientTheme()
 
@@ -48,9 +47,7 @@ export const BlogPost = ({ post }: { post: BlogPostType }) => {
             </div>
           </>
         ) : null}
-        <div className="text-xl font-bold">
-          <RichText value={introduction} />
-        </div>
+        {postIntroductionComponent}
         {mainImage ? (
           <SanityImage
             priority
@@ -60,7 +57,7 @@ export const BlogPost = ({ post }: { post: BlogPostType }) => {
             title={mainImage.title ?? 'Main image'}
           />
         ) : null}
-        <RichText className="hyphens-auto" value={body} />
+        {postBodyComponent}
         <ShareButtons className="justify-center" />
       </article>
     </>

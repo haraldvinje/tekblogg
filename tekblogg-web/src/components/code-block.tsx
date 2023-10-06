@@ -1,41 +1,15 @@
-'use client'
-
-import { useEffect } from 'react'
-import { themes, Highlight, Prism } from 'prism-react-renderer'
-
-const env = global !== undefined ? global : window
-env.Prism = Prism
+import { Code } from 'bright'
 
 export type CodeBlockProps = {
   code: string
   language: string
+  filename: string
 }
 
-export const CodeBlock = ({ code, language }: CodeBlockProps) => {
-  const theme = ['javascripts', 'typescript', 'jsx', 'tsx'].includes(language)
-    ? themes.vsDark
-    : themes.nightOwl
-
-  useEffect(() => {
-    // The prism-react-rendered package only supports certain languages by default.
-    if (language === 'python') {
-      require('prismjs/components/prism-python')
-    }
-  }, [language])
-
+export function CodeBlock({ code, language, filename }: CodeBlockProps) {
   return (
-    <Highlight prism={Prism} theme={theme} code={code} language={language}>
-      {({ style, tokens, getTokenProps }) => (
-        <pre style={style}>
-          {tokens.map((line, i) => (
-            <div key={i}>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token })} />
-              ))}
-            </div>
-          ))}
-        </pre>
-      )}
-    </Highlight>
+    <Code theme="one-dark-pro" lang={language} title={filename} lineNumbers>
+      {code}
+    </Code>
   )
 }

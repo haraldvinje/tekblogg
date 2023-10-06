@@ -4,24 +4,31 @@ import { useMemo, useState } from 'react'
 import { BlogPostMetadata } from '@/lib/sanity-client'
 import { Category } from '@/components/category'
 import { BlogPostCard } from './blog-post-card'
+import { ComponentsDictionary } from './home'
 
 function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
   return value !== null && value !== undefined
 }
 
-export function BlogPostList({ posts }: { posts: BlogPostMetadata[] }) {
+export function BlogPostList({
+  postsMetadata,
+  introductionComponentsDictionary
+}: {
+  postsMetadata: BlogPostMetadata[]
+  introductionComponentsDictionary: ComponentsDictionary
+}) {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
 
   const allCategories = useMemo(
     () =>
-      posts
+      postsMetadata
         .flatMap((post) => post.categories)
         .filter(
           (category, index, categories) =>
             categories.map((c) => c.slug.current).indexOf(category.slug.current) === index
         )
         .filter(notEmpty),
-    [posts]
+    [postsMetadata]
   )
 
   const handleCategoryClick = (category: string) => {
@@ -34,8 +41,8 @@ export function BlogPostList({ posts }: { posts: BlogPostMetadata[] }) {
 
   const filteredPosts =
     selectedCategories.length === 0
-      ? posts
-      : posts.filter(
+      ? postsMetadata
+      : postsMetadata.filter(
           (p) => p.categories?.some((category) => selectedCategories.includes(category.title))
         )
 
@@ -52,8 +59,12 @@ export function BlogPostList({ posts }: { posts: BlogPostMetadata[] }) {
             )
         )}
       </div>
-      {filteredPosts.map((post, index) => (
-        <BlogPostCard key={index} post={post} />
+      {filteredPosts.map((postMetadata, index) => (
+        <BlogPostCard
+          key={index}
+          postMetadata={postMetadata}
+          postIntroductionComponent={introductionComponentsDictionary[postMetadata.slug]}
+        />
       ))}
     </>
   )
