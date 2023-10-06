@@ -73,6 +73,7 @@ export default defineType({
           { title: 'TSX', value: 'tsx' },
           { title: 'Python', value: 'python' },
           { title: 'Shell', value: 'sh' },
+          { title: 'Terraform', value: 'hcl', mode: 'json'}
         ],
         withFilename: true
       },

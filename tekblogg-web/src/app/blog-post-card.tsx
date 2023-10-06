@@ -1,14 +1,21 @@
+'use client'
+
 import Link from 'next/link'
+import { ReactNode } from 'react'
 import type { BlogPostMetadata } from '@/lib/sanity-client'
-import { RichText } from '@/components/rich-text'
 import { Category } from '@/components/category'
 import { formatDate } from '@/lib/text-utils'
 import { useWidthMediaQuery } from '@/lib/hooks/use-width-media-query'
 import { SanityImage } from '@/components/sanity-image'
 
-export const BlogPostCard = ({ post }: { post: BlogPostMetadata }) => {
-  const { title, categories, mainImage, publishedAt, introduction, slug, estimatedReadingTime } =
-    post
+export const BlogPostCard = ({
+  postMetadata,
+  postIntroductionComponent
+}: {
+  postMetadata: BlogPostMetadata
+  postIntroductionComponent: ReactNode
+}) => {
+  const { title, categories, mainImage, publishedAt, slug, estimatedReadingTime } = postMetadata
   const wideEnough = useWidthMediaQuery(900)
   const linkRef = `/post/${slug}`
   return (
@@ -45,7 +52,7 @@ export const BlogPostCard = ({ post }: { post: BlogPostMetadata }) => {
           <div className="my-2 text-xs opacity-60">
             {`${formatDate(publishedAt)} - ${estimatedReadingTime} min lesning`}
           </div>
-          <RichText className="mb-2 text-sm" value={introduction} />
+          {postIntroductionComponent}
           {categories?.map((category, index) => <Category key={index} value={category.title} />)}
         </div>
       </div>

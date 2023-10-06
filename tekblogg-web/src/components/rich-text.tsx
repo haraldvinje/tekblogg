@@ -23,7 +23,7 @@ const ptComponents = {
       return <SanityImage image={value} loading="lazy" title={title} alt={alt} />
     },
     code: ({ value }: { value: CodeBlockProps }) => {
-      return <CodeBlock code={value.code} language={value.language} />
+      return <CodeBlock code={value.code} language={value.language} filename={value.filename} />
     }
   },
   marks: {

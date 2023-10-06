@@ -6,6 +6,7 @@ import {
   generateCanonicalUrl
 } from '@/lib/text-utils'
 import { AnimationWrapper } from '@/components/animation-wrapper'
+import { RichText } from '@/components/rich-text'
 import { BlogPost } from './blog-post'
 
 export const revalidate = 60
@@ -67,9 +68,19 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     notFound()
   }
 
+  const { introduction: _, body: __, ...postMetadata } = post
+  const postBodyServerComponent = <RichText className="hyphens-auto" value={post.body} />
+  const postIntroductionServerComponent = (
+    <RichText className="text-xl font-bold" value={post.introduction} />
+  )
+
   return (
     <AnimationWrapper>
-      <BlogPost post={post} />
+      <BlogPost
+        postMetadata={postMetadata}
+        postIntroductionComponent={postIntroductionServerComponent}
+        postBodyComponent={postBodyServerComponent}
+      />
     </AnimationWrapper>
   )
 }
