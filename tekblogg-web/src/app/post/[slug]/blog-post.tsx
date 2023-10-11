@@ -37,7 +37,7 @@ export const BlogPost = ({
         </div>
         {categories ? (
           <>
-            <div className="flex">
+            <div className="flex flex-wrap">
               <span className="mr-2">
                 <i>Kategorier:</i>
               </span>
