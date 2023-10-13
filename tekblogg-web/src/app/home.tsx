@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { BlogPostHomePageData, BlogPostMetadata } from '@/lib/sanity-client'
 import { RichText } from '@/components/rich-text'
 import { BlogPostList } from './blog-post-list'

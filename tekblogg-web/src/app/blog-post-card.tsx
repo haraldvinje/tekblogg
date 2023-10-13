@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import type { BlogPostMetadata } from '@/lib/sanity-client'
 import { Category } from '@/components/category'
 import { formatDate } from '@/lib/text-utils'

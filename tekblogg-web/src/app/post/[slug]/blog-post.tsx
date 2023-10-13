@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { useClientTheme } from '@/lib/hooks/use-client-theme'
 import type { BlogPostMetadata } from '@/lib/sanity-client'
 import { formatAuthors, formatDate } from '@/lib/text-utils'
