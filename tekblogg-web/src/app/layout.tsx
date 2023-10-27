@@ -28,7 +28,6 @@ const commonFields = {
 
 export const metadata: Metadata = {
   manifest: '/manifest.json',
-  themeColor: '#FFFFFF',
   metadataBase: url,
   alternates: {
     canonical: '/'
@@ -56,6 +55,10 @@ export const metadata: Metadata = {
   formatDetection: {
     telephone: false
   }
+}
+
+export const viewPort = {
+  themeColor: '#FFFFFF'
 }
 
 const inter = Inter({
