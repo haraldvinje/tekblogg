@@ -1,5 +1,5 @@
 import './globals.css'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { Suspense } from 'react'
@@ -57,8 +57,9 @@ export const metadata: Metadata = {
   }
 }
 
-export const viewPort = {
-  themeColor: '#FFFFFF'
+export const viewport: Viewport = {
+  themeColor: '#FFFFFF',
+  colorScheme: 'light'
 }
 
 const inter = Inter({
