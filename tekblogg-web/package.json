@@ -27,7 +27,7 @@
     "@portabletext/react": "^3.0.0",
     "@sanity/client": "^6.0.0",
     "@tailwindcss/typography": "^0.5.9",
-    "@types/node": "20.10.1",
+    "@types/node": "20.10.2",
     "@types/react": "18.2.39",
     "@types/react-dom": "18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
