@@ -1,15 +1,36 @@
 import type { ReactNode } from 'react'
 import { BlogPostHomePageData, BlogPostMetadata } from '@/lib/sanity-client'
-import { RichText } from '@/components/rich-text'
+import { richToPlainText } from '@/lib/text-utils'
 import { BlogPostList } from './blog-post-list'
 
 export type ComponentsDictionary = { [key: string]: ReactNode }
+
+function cutTextAfterNthOccurrence(text: string, character: string, n: number) {
+  let index = -1
+  for (let i = 0; i < text.length; i++) {
+    if (text[i].toLowerCase() === character.toLowerCase()) {
+      n--
+      if (n === 0) {
+        index = i
+        break
+      }
+    }
+  }
+
+  if (index !== -1) {
+    return text.substring(0, index + 1)
+  } else {
+    return text
+  }
+}
 
 export function Home({ blogPostsHomePageData }: { blogPostsHomePageData: BlogPostHomePageData[] }) {
   const blogPostIntroductionsServerComponentsDictionary: ComponentsDictionary = Object.fromEntries(
     blogPostsHomePageData.map((post) => [
       post.slug,
-      <RichText key={post.slug} className="mb-2 text-sm" value={post.introduction} />
+      <p className="text-sm" key={post.slug}>
+        {cutTextAfterNthOccurrence(richToPlainText(post.introduction), '.', 1)}
+      </p>
     ])
   )
 

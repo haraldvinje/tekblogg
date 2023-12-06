@@ -59,13 +59,11 @@ export function BlogPostList({
             )
         )}
       </div>
-      {filteredPosts.map((postMetadata, index) => (
-        <BlogPostCard
-          key={index}
-          postMetadata={postMetadata}
-          postIntroductionComponent={introductionComponentsDictionary[postMetadata.slug]}
-        />
-      ))}
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {filteredPosts.map((postMetadata, index) => (
+          <BlogPostCard key={index} postMetadata={postMetadata} />
+        ))}
+      </div>
     </>
   )
 }
