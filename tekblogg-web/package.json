@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@babel/core": "^7.11.3",
-    "@ducanh2912/next-pwa": "^9.0.0",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
@@ -26,6 +25,8 @@
     "@next/env": "^14.0.0",
     "@portabletext/react": "^3.0.0",
     "@sanity/client": "^6.0.0",
+    "@serwist/next": "^8.0.2",
+    "@serwist/sw": "^8.0.2",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "20.10.4",
     "@types/react": "18.2.45",
