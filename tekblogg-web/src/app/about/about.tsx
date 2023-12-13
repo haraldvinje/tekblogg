@@ -1,8 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import harald from 'public/harald.png'
 import { useClientTheme } from '@/lib/hooks/use-client-theme'
+import harald from '@/../public/harald.png'
 
 export function About() {
   const { textTheme } = useClientTheme()
@@ -19,16 +19,8 @@ export function About() {
       <div className="flex justify-center">
         <Image
           className="rounded-md"
-          width={200}
-          height={200}
-          sizes="100vw"
-          style={{
-            width: '80%',
-            height: 'auto'
-          }}
+          width={600}
           src={harald}
-          placeholder="blur"
-          priority
           alt="Picture of Harald Vinje"
           title="Picture of Harald Vinje"
         />
