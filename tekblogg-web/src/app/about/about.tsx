@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useClientTheme } from '@/lib/hooks/use-client-theme'
 import harald from '@/../public/harald.png'
+import haraldBlurred from '@/../public/harald_blurred.png'
 
 export function About() {
   const { textTheme } = useClientTheme()
@@ -16,11 +17,13 @@ export function About() {
         annet!
       </p>
       <h2>Om Harald</h2>
-      <div className="flex justify-center">
+      <div className="flex justify-center transition-opacity duration-500">
         <Image
-          className="rounded-md"
+          className="rounded-md transition-opacity duration-500 ease-in-out"
           width={600}
           src={harald}
+          placeholder="blur"
+          blurDataURL={haraldBlurred.blurDataURL}
           alt="Picture of Harald Vinje"
           title="Picture of Harald Vinje"
         />
