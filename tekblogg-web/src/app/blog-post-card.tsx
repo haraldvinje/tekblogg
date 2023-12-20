@@ -1,61 +1,34 @@
-'use client'
-
 import Link from 'next/link'
-import type { ReactNode } from 'react'
 import type { BlogPostMetadata } from '@/lib/sanity-client'
 import { Category } from '@/components/category'
 import { formatDate } from '@/lib/text-utils'
-import { useWidthMediaQuery } from '@/lib/hooks/use-width-media-query'
 import { SanityImage } from '@/components/sanity-image'
 
-export const BlogPostCard = ({
-  postMetadata,
-  postIntroductionComponent
-}: {
-  postMetadata: BlogPostMetadata
-  postIntroductionComponent: ReactNode
-}) => {
+export const BlogPostCard = ({ postMetadata }: { postMetadata: BlogPostMetadata }) => {
   const { title, categories, mainImage, publishedAt, slug, estimatedReadingTime } = postMetadata
-  const wideEnough = useWidthMediaQuery(900)
   const linkRef = `/post/${slug}`
   return (
-    <div
-      className="w-full scale-90 rounded-md p-4 shadow-sm transition ease-in-out hover:shadow-xl sm:mb-8 sm:scale-100"
-      data-cy="article-card"
+    <Link
+      href={linkRef}
+      className="flex justify-center rounded-md shadow-md transition ease-in-out hover:shadow-xl dark:shadow-slate-900"
     >
-      <div className="mb-2 flex items-center space-x-2 dark:text-white">
-        {wideEnough && (
-          <Link href={linkRef}>
-            <div className="w-[200px]">
-              <SanityImage
-                className="rounded-md"
-                sizes="(max-width: 500px) 100vw,
-                         (max-width: 1200px) 50vw,
-                          33wv"
-                width={200}
-                image={mainImage}
-                placeholder="blur"
-                alt={mainImage.alt ?? 'Main image'}
-                title={mainImage.title ?? 'Main image'}
-              />
-            </div>
-          </Link>
-        )}
-        <div className="overflow-hidden">
-          <Link
-            href={linkRef}
-            className="text-2xl font-bold hover:text-blue"
-            data-cy="article-link"
-          >
-            {title}
-          </Link>
+      <div className="dark:text-white">
+        <SanityImage
+          className="aspect-video rounded-md object-fill"
+          quality={100}
+          image={mainImage}
+          placeholder="blur"
+          alt={mainImage.alt ?? 'Main image'}
+          title={mainImage.title ?? 'Main image'}
+        />
+        <div className="overflow-hidden p-4">
+          <p className="text-2xl">{title}</p>
           <div className="my-2 text-xs opacity-60">
             {`${formatDate(publishedAt)} - ${estimatedReadingTime} min lesning`}
           </div>
-          {postIntroductionComponent}
           {categories?.map((category, index) => <Category key={index} value={category.title} />)}
         </div>
       </div>
-    </div>
+    </Link>
   )
 }

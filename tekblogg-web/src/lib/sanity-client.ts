@@ -13,7 +13,7 @@ const client = createClient({
 
 export const urlFor = (source: SanityImageObject) => imageUrlBuilder(client).image(source)
 
-const getAllPostsHomePageDataQuery = groq`
+const getAllPostsMetadataQuery = groq`
   *[_type == "post"] | order(publishedAt desc) {
     title,
     "categories": categories[]->{title, slug},
@@ -21,7 +21,6 @@ const getAllPostsHomePageDataQuery = groq`
     "slug": slug.current,
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
     mainImage,
-    introduction
   }
 `
 
@@ -50,12 +49,10 @@ export type BlogPost = Omit<Schema.Post, 'slug' | 'categories' | 'authors'> & {
   authors: Schema.Author['name'][]
 }
 
-export type BlogPostHomePageData = Omit<BlogPost, 'body'>
+export type BlogPostMetadata = Omit<BlogPost, 'body' | 'introduction'>
 
-export type BlogPostMetadata = Omit<BlogPostHomePageData, 'introduction'>
-
-export const getAllBlogPostsHomepageData = async () =>
-  await client.fetch<BlogPostHomePageData[]>(getAllPostsHomePageDataQuery)
+export const getAllBlogPostsMetadata = async () =>
+  await client.fetch<BlogPostMetadata[]>(getAllPostsMetadataQuery)
 
 export const getAllSlugs = async () => await client.fetch<String[]>(getAllSlugsQuery)
 

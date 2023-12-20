@@ -1,7 +1,6 @@
 {
   "name": "tekblogg-web-v2",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -72,8 +71,5 @@
   "lint-staged": {
     "*.{ts,tsx}": "bun run prettier"
   },
-  "devDependencies": {
-    "concurrently": "^8.2.0",
-    "wait-on": "^7.0.1"
-  }
+  "private": true
 }
