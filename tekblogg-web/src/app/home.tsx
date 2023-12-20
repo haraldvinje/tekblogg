@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { BlogPostHomePageData, BlogPostMetadata } from '@/lib/sanity-client'
+import { BlogPostMetadata, BlogPostMetadata } from '@/lib/sanity-client'
 import { richToPlainText } from '@/lib/text-utils'
 import { BlogPostList } from './blog-post-list'
 
@@ -24,7 +24,7 @@ function cutTextAfterNthOccurrence(text: string, character: string, n: number) {
   }
 }
 
-export function Home({ blogPostsHomePageData }: { blogPostsHomePageData: BlogPostHomePageData[] }) {
+export function Home({ blogPostsHomePageData }: { blogPostsHomePageData: BlogPostMetadata[] }) {
   const blogPostIntroductionsServerComponentsDictionary: ComponentsDictionary = Object.fromEntries(
     blogPostsHomePageData.map((post) => [
       post.slug,

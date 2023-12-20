@@ -1,7 +1,6 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { ComponentsDictionary } from './home'
 import { BlogPostCard } from './blog-post-card'
 import { BlogPostMetadata } from '@/lib/sanity-client'
 import { Category } from '@/components/category'
@@ -10,12 +9,7 @@ function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
   return value !== null && value !== undefined
 }
 
-export function BlogPostList({
-  postsMetadata
-}: {
-  postsMetadata: BlogPostMetadata[]
-  introductionComponentsDictionary: ComponentsDictionary
-}) {
+export function BlogPostList({ postsMetadata }: { postsMetadata: BlogPostMetadata[] }) {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
 
   const allCategories = useMemo(
