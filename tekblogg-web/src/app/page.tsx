@@ -8,7 +8,7 @@ export default async function Page() {
   const posts = await getAllBlogPostsMetadata()
   return (
     <AnimationWrapper>
-      <Home blogPostsHomePageData={posts} />
+      <Home blogPostsMetadata={posts} />
     </AnimationWrapper>
   )
 }

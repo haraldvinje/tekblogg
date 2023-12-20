@@ -1,9 +1,9 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { BlogPostCard } from './blog-post-card'
 import { BlogPostMetadata } from '@/lib/sanity-client'
 import { Category } from '@/components/category'
+import { BlogPostCard } from './blog-post-card'
 
 function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
   return value !== null && value !== undefined
