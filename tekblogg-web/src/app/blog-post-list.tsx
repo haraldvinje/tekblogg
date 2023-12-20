@@ -1,18 +1,17 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { ComponentsDictionary } from './home'
+import { BlogPostCard } from './blog-post-card'
 import { BlogPostMetadata } from '@/lib/sanity-client'
 import { Category } from '@/components/category'
-import { BlogPostCard } from './blog-post-card'
-import { ComponentsDictionary } from './home'
 
 function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
   return value !== null && value !== undefined
 }
 
 export function BlogPostList({
-  postsMetadata,
-  introductionComponentsDictionary
+  postsMetadata
 }: {
   postsMetadata: BlogPostMetadata[]
   introductionComponentsDictionary: ComponentsDictionary
@@ -59,7 +58,7 @@ export function BlogPostList({
             )
         )}
       </div>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {filteredPosts.map((postMetadata, index) => (
           <BlogPostCard key={index} postMetadata={postMetadata} />
         ))}

@@ -10,26 +10,19 @@ export const BlogPostCard = ({ postMetadata }: { postMetadata: BlogPostMetadata 
   return (
     <Link
       href={linkRef}
-      className="flex justify-center rounded-md shadow-md transition ease-in-out hover:shadow-xl"
+      className="flex justify-center rounded-md shadow-md transition ease-in-out hover:shadow-xl dark:shadow-slate-900"
     >
       <div className="dark:text-white">
-        <div className="w-[200px]">
-          <SanityImage
-            className="rounded-md"
-            sizes="(max-width: 500px) 100vw,
-                         (max-width: 1200px) 50vw,
-                          33wv"
-            width={200}
-            image={mainImage}
-            placeholder="blur"
-            alt={mainImage.alt ?? 'Main image'}
-            title={mainImage.title ?? 'Main image'}
-          />
-        </div>
-        <div className="overflow-hidden">
-          <Link href={linkRef} className="text-2xl hover:text-blue" data-cy="article-link">
-            {title}
-          </Link>
+        <SanityImage
+          className="aspect-video rounded-md object-fill"
+          quality={100}
+          image={mainImage}
+          placeholder="blur"
+          alt={mainImage.alt ?? 'Main image'}
+          title={mainImage.title ?? 'Main image'}
+        />
+        <div className="overflow-hidden p-4">
+          <p className="text-2xl">{title}</p>
           <div className="my-2 text-xs opacity-60">
             {`${formatDate(publishedAt)} - ${estimatedReadingTime} min lesning`}
           </div>

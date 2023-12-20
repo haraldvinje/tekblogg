@@ -14,10 +14,10 @@ export const Category = ({
 
   return (
     <span
-      className={`mb-2 mr-2 inline-block rounded-full bg-gray-200
+      className={`mb-2 mr-2 inline-block rounded-md bg-slate-100
         px-3 py-1 text-sm font-semibold text-gray-700
         ${clickable ? 'hover:cursor-pointer' : ''}
-        ${clicked ? 'bg-gray-400' : ''} `}
+        ${clicked ? 'bg-slate-400' : ''} `}
       onClick={() => {
         if (clickable && onCategoryClick) {
           onCategoryClick(value)
