@@ -35,7 +35,7 @@
     "@vercel/analytics": "^1.0.0",
     "autoprefixer": "10.4.16",
     "bright": "^0.8.4",
-    "date-fns": "^2.28.0",
+    "date-fns": "^3.0.0",
     "date-fns-tz": "^2.0.0",
     "eslint": "8.56.0",
     "eslint-config-next": "^14.0.4",
