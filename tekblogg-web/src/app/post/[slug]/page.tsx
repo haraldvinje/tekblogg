@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const { title, mainImage, introduction } = post
   const rawIntro = richToPlainText(introduction)
 
-  const imageWidth = 800
-  const imageHeight = 600
+  const imageWidth = 1200
+  const imageHeight = 630
   const imageUrl = urlFor(mainImage).width(imageWidth).height(imageHeight).url()
   const image = { url: imageUrl, alt: title, width: imageWidth, height: imageHeight }
 
