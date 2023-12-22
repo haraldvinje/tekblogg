@@ -15,7 +15,7 @@ const titleObject = {
 }
 const description =
   'Velkommen til TekBlogg 🤓 Sjekk ut det nyeste innen teknologi og programmering her!'
-const image = { url: '/harald.png', width: 200, height: 200 }
+const image = { url: '/harald_og.png', width: 800, height: 600 }
 
 const url = generateCanonicalUrl()
 

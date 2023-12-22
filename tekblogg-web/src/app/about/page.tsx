@@ -8,6 +8,9 @@ export const metadata: Metadata = {
     'TekBlogg er en blogg om teknologi og programmering. Bloggen er drevet av Harald Vinje.',
   alternates: {
     canonical: '/about'
+  },
+  openGraph: {
+    images: ['/harald_og.png']
   }
 }
 
