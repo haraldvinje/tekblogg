@@ -33,6 +33,6 @@
     "sanity-codegen": "^0.9.8"
   },
   "resolutions": {
-    "@codemirror/state": "6.3.3"
+    "@codemirror/state": "6.4.0"
   }
 }
