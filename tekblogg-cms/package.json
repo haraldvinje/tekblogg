@@ -10,7 +10,8 @@
     "start": "sanity start",
     "build": "sanity build",
     "dev": "sanity dev",
-    "deploy": "sanity deploy"
+    "deploy": "sanity deploy",
+    "clean": "rm -rf node_modules .sanity",
   },
   "keywords": [
     "sanity"
