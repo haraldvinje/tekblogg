@@ -69,11 +69,14 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   }
 
   const { introduction: _, body: __, ...postMetadata } = post
-  const postBodyServerComponent = (
-    <RichText className="overflow-hidden hyphens-auto" value={post.body} />
-  )
   const postIntroductionServerComponent = (
-    <RichText className="hyphens-auto text-xl font-bold" value={post.introduction} />
+    <RichText
+      className="hyphens-auto text-xl font-bold sm:hyphens-none"
+      value={post.introduction}
+    />
+  )
+  const postBodyServerComponent = (
+    <RichText className="overflow-hidden hyphens-auto sm:hyphens-none" value={post.body} />
   )
 
   return (
