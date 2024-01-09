@@ -1,8 +1,9 @@
 import { format } from 'date-fns'
+import { nb } from 'date-fns/locale'
 import type { BlockContent } from '@/types/sanity-schema'
 
 export const formatDate = (date: string, timeFormat: string = 'd. MMMM yyyy') =>
-  format(new Date(date), timeFormat)
+  format(new Date(date), timeFormat, { locale: nb })
 
 export const formatAuthors = (authors?: string[]) => authors?.map((author) => author)?.join(', ')
 

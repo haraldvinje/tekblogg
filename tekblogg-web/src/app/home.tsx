@@ -8,7 +8,7 @@ export function Home({
 }) {
   return (
     <div className="w-[80%]">
-      <h1 className="text-center text-2xl font-bold sm:text-4xl dark:text-white">
+      <h1 className="text-center text-2xl font-bold dark:text-white sm:text-4xl">
         Velkommen til TekBlogg!
       </h1>
       <BlogPostList postsMetadata={blogPostsMetadata} />

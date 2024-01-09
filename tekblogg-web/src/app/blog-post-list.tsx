@@ -42,7 +42,7 @@ export function BlogPostList({ postsMetadata }: { postsMetadata: BlogPostMetadat
   return (
     <>
       <div className="mb-8">
-        <p className="mb-2 mt-4 text-center text-xl font-bold text-gray-500 sm:text-2xl dark:text-gray-300">
+        <p className="mb-2 mt-4 text-center text-xl font-bold text-gray-500 dark:text-gray-300 sm:text-2xl">
           Filtrer på kategori
         </p>
         {allCategories.map(
