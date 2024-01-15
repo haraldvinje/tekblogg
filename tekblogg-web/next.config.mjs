@@ -6,6 +6,7 @@ const withSerwist = withSerwistInit({
   cacheOnFrontEndNav: true,
   swSrc: "src/app/sw.ts",
   swDest: "public/sw.js",
+  disable: process.env.NODE_ENV === "development",
 })
 
 const withBundleAnalyzer = withBundleAnalyzerInit({
@@ -29,6 +30,9 @@ const nextConfig = {
   },
   compiler: {
     styledComponents: true
+  },
+  experimental: {
+    windowHistorySupport: true,
   }
 }
 

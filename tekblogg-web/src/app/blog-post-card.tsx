@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { BlogPostMetadata } from '@/lib/sanity-client'
-import { Category } from '@/components/category'
+import { CategoryUi } from '@/components/category'
 import { formatDate } from '@/lib/text-utils'
 import { SanityImage } from '@/components/sanity-image'
 
@@ -26,7 +26,7 @@ export const BlogPostCard = ({ postMetadata }: { postMetadata: BlogPostMetadata 
           <div className="my-2 text-xs opacity-60">
             {`${formatDate(publishedAt)} - ${estimatedReadingTime} min lesning`}
           </div>
-          {categories?.map((category, index) => <Category key={index} value={category.title} />)}
+          {categories?.map((category, index) => <CategoryUi key={index} value={category.title} />)}
         </div>
       </div>
     </Link>

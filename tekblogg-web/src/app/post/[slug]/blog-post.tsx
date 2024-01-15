@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 import { useClientTheme } from '@/lib/hooks/use-client-theme'
 import type { BlogPostMetadata } from '@/lib/sanity-client'
 import { formatAuthors, formatDate } from '@/lib/text-utils'
-import { Category } from '@/components/category'
+import { CategoryUi } from '@/components/category'
 import { ShareButtons } from '@/components/share-buttons'
 import { SanityImage } from '@/components/sanity-image'
 
@@ -42,7 +42,7 @@ export const BlogPost = ({
                 <i>Kategorier:</i>
               </span>
               {categories.map((category, index) => (
-                <Category key={index} value={category.title} />
+                <CategoryUi key={index} value={category.title} />
               ))}
             </div>
           </>
