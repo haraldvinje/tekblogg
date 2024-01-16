@@ -1,5 +1,6 @@
 import './globals.css'
 import type { Metadata, Viewport } from 'next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { Suspense } from 'react'
@@ -83,6 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="flex w-full justify-center px-[10%] py-10 xl:px-[20%]">{children}</main>
         </ThemeWrapper>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
