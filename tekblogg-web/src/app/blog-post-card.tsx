@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { BlogPostMetadata } from '@/lib/sanity-client'
-import { CategoryUi } from '@/components/category'
+import { CategoryUi } from '@/components/category-ui'
 import { formatDate } from '@/lib/text-utils'
 import { SanityImage } from '@/components/sanity-image'
 

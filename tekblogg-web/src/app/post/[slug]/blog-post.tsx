@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 import { useClientTheme } from '@/lib/hooks/use-client-theme'
 import type { BlogPostMetadata } from '@/lib/sanity-client'
 import { formatAuthors, formatDate } from '@/lib/text-utils'
-import { CategoryUi } from '@/components/category'
+import { CategoryUi } from '@/components/category-ui'
 import { ShareButtons } from '@/components/share-buttons'
 import { SanityImage } from '@/components/sanity-image'
 

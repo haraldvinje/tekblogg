@@ -3,7 +3,8 @@
 import { Suspense, useCallback, useEffect, useMemo } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { BlogPostMetadata } from '@/lib/sanity-client'
-import { CategoryLink } from '@/components/category'
+import { CategoryLink } from '@/components/category-link'
+import { CategoryUi } from '@/components/category-ui'
 import { BlogPostCard } from './blog-post-card'
 
 function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
@@ -58,7 +59,7 @@ export function BlogPostList({ postsMetadata }: { postsMetadata: BlogPostMetadat
         {allCategories.map(
           (category, index) =>
             category && (
-              <Suspense key={index} fallback={<p>Loading...</p>}>
+              <Suspense key={index} fallback={<CategoryUi value={category.title} />}>
                 <CategoryLink
                   value={category.title}
                   slug={category.slug.current}
