@@ -9,16 +9,22 @@ jobs:
     name: Deploy to Sanity
     if: github.ref == 'refs/heads/master'
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - name: Checkout Repo
+        uses: actions/checkout@v2
         with:
           fetch-depth: 2
 
-      - uses: oven-sh/setup-bun@v1
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v2
         with:
-          bun-version: 1.0.4
+          node-version: 20
+
+      - name: Setup pnpm 8.x
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
 
       - name: Deploy
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
-        run: cd tekblogg-cms && bun install && bun run deploy
+        run: cd tekblogg-cms && pnpm install && pnpm run deploy
