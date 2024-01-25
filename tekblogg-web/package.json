@@ -1,5 +1,5 @@
 {
-  "name": "tekblogg-web-v2",
+  "name": "tekblogg-web",
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
@@ -11,7 +11,7 @@
     "prettier": "prettier --write src",
     "ts-lint": "tsc --noEmit --incremental",
     "clean": "rm -rf node_modules .next",
-    "prepare": "cd .. && husky install tekblogg-web/.husky"
+    "prepare": "cd .. && husky tekblogg-web/.husky"
   },
   "dependencies": {
     "@babel/core": "^7.11.3",
@@ -48,7 +48,7 @@
     "eslint-plugin-unused-imports": "^3.0.0",
     "framer-motion": "^11.0.0",
     "groq": "^3.2.3",
-    "husky": "^9.0.0",
+    "husky": "^9.0.2",
     "lint-staged": "^15.0.0",
     "next": "^14.0.4",
     "next-absolute-url": "^1.2.2",
