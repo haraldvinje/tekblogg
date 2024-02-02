@@ -8,6 +8,7 @@ import { Navbar } from '@/components/navbar'
 import { ThemeWrapper } from '@/components/theme-wrapper'
 import { generateCanonicalUrl } from '@/lib/text-utils'
 import { GoogleAnalytics } from '@/components/google-analytics'
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const title = 'TekBlogg'
 const titleObject = {
@@ -84,6 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="flex w-full justify-center px-[10%] py-10 xl:px-[20%]">{children}</main>
         </ThemeWrapper>
         <Analytics />
+        <GoogleTagManager gtmId="GTM-K9FQVVQW" />
         <SpeedInsights />
       </body>
     </html>
