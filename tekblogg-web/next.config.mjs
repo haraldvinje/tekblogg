@@ -31,9 +31,6 @@ const nextConfig = {
   compiler: {
     styledComponents: true
   },
-  experimental: {
-    windowHistorySupport: true,
-  }
 }
 
 const finalConfig = (_phase, { }) => {

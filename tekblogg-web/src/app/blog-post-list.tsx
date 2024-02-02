@@ -1,7 +1,7 @@
 'use client'
 
 import { Suspense, useCallback, useEffect, useMemo } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { BlogPostMetadata } from '@/lib/sanity-client'
 import { CategoryLink } from '@/components/category-link'
 import { CategoryUi } from '@/components/category-ui'
@@ -24,7 +24,6 @@ export function BlogPostList({ postsMetadata }: { postsMetadata: BlogPostMetadat
     [postsMetadata]
   )
 
-  const router = useRouter()
   const searchParams = useSearchParams()
   const categoryQueryKey = 'category'
   const selectedCategories = searchParams.getAll(categoryQueryKey)
@@ -36,8 +35,8 @@ export function BlogPostList({ postsMetadata }: { postsMetadata: BlogPostMetadat
     if (validCategories.length === selectedCategories.length) return
     const params = new URLSearchParams()
     validCategories.forEach((c) => params.append(categoryQueryKey, c))
-    router.replace(`/?${params.toString()}`)
-  }, [allCategories, router, selectedCategories])
+    window.history.pushState(null, '', `?${params.toString()}`)
+  }, [allCategories, selectedCategories])
 
   useEffect(() => {
     filterInvalidCategories()
