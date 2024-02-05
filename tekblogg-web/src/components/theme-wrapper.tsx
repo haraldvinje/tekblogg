@@ -2,9 +2,9 @@
 
 import { ThemeProvider } from 'next-themes'
 
-export function ThemeWrapper({ children }: { children: React.ReactNode }) {
+export function ThemeWrapper({ children, nonce }: { children: React.ReactNode; nonce: string }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableColorScheme={false}>
+    <ThemeProvider attribute="class" defaultTheme="light" enableColorScheme={false} nonce={nonce}>
       {children}
     </ThemeProvider>
   )
