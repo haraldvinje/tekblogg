@@ -3,11 +3,9 @@ import type { Metadata, Viewport } from 'next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
-import { headers } from 'next/headers'
-import { Suspense } from 'react'
+import { GoogleTagManager } from '@next/third-parties/google'
 import { Navbar } from '@/components/navbar'
 import { ThemeWrapper } from '@/components/theme-wrapper'
-import { GoogleTagManager } from '@/components/google-tag-manager'
 import { generateCanonicalUrl } from '@/lib/text-utils'
 
 const title = 'TekBlogg'
@@ -70,19 +68,15 @@ const inter = Inter({
 })
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const nonce = headers().get('x-nonce') ?? ''
-
   return (
     <html lang="nb" className={inter.className}>
       <body className="transition duration-500 dark:bg-dark-lighter">
-        <ThemeWrapper nonce={nonce}>
+        <ThemeWrapper>
           <Navbar />
           <main className="flex w-full justify-center px-[10%] py-10 xl:px-[20%]">{children}</main>
         </ThemeWrapper>
         <Analytics />
-        <Suspense fallback={<p>Google Tag Manager</p>}>
-          <GoogleTagManager nonce={nonce} />
-        </Suspense>
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_CONTAINER_ID ?? ''} />
         <SpeedInsights />
       </body>
     </html>
