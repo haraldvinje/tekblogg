@@ -3,7 +3,7 @@
 import { Suspense, useCallback, useEffect, useMemo } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { BlogPostMetadata } from '@/lib/sanity-client'
-import { CategoryLink } from '@/components/category-link'
+import { CategoryButton } from '@/components/category-button'
 import { CategoryUi } from '@/components/category-ui'
 import { BlogPostCard } from './blog-post-card'
 
@@ -59,7 +59,7 @@ export function BlogPostList({ postsMetadata }: { postsMetadata: BlogPostMetadat
           (category, index) =>
             category && (
               <Suspense key={index} fallback={<CategoryUi value={category.title} />}>
-                <CategoryLink
+                <CategoryButton
                   value={category.title}
                   slug={category.slug.current}
                   isSelected={selectedCategories.includes(category.slug.current)}
