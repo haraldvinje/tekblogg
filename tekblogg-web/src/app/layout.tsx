@@ -1,10 +1,9 @@
 import './globals.css'
 import type { Metadata, Viewport } from 'next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import Script from 'next/script'
+import { GoogleTagManager } from '@next/third-parties/google'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
-import { headers } from 'next/headers'
 import { Navbar } from '@/components/navbar'
 import { ThemeWrapper } from '@/components/theme-wrapper'
 import { generateCanonicalUrl } from '@/lib/text-utils'
@@ -69,34 +68,18 @@ const inter = Inter({
 })
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const nonce = headers().get('x-nonce') ?? ''
   const gtmId = process.env.NEXT_PUBLIC_GTM_CONTAINER_ID ?? ''
 
   return (
     <html lang="nb" className={inter.className}>
       <body className="transition duration-500 dark:bg-dark-lighter">
-        <Script id="gtmScript" nonce={nonce} strategy="afterInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;var n=d.querySelector('[nonce]');
-            n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','${gtmId}');`}
-        </Script>
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          ></iframe>
-        </noscript>
-        <ThemeWrapper nonce={nonce}>
+        <ThemeWrapper>
           <Navbar />
           <main className="flex w-full justify-center px-[10%] py-10 xl:px-[20%]">{children}</main>
         </ThemeWrapper>
         <Analytics />
         <SpeedInsights />
+        <GoogleTagManager gtmId={gtmId} />
       </body>
     </html>
   )
