@@ -34,6 +34,7 @@ export function middleware(request: NextRequest) {
     }
   })
   response.headers.set('Content-Security-Policy', contentSecurityPolicyHeaderValue)
+  response.headers.set('Cache-Control', 'public, max-age=600')
 
   return response
 }
