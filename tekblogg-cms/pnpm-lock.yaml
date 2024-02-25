@@ -45,10 +45,10 @@ devDependencies:
     version: 3.26.0
   prettier:
     specifier: ^3.0.0
-    version: 3.2.4
+    version: 3.2.5
   sanity-codegen:
     specifier: ^0.9.8
-    version: 0.9.8(@babel/core@7.23.9)(@babel/preset-env@7.23.9)(@babel/preset-react@7.23.3)(@babel/preset-typescript@7.23.3)(jsdom@24.0.0)(prettier@3.2.4)
+    version: 0.9.8(@babel/core@7.23.9)(@babel/preset-env@7.23.9)(@babel/preset-react@7.23.3)(@babel/preset-typescript@7.23.3)(jsdom@24.0.0)(prettier@3.2.5)
 
 packages:
 
@@ -7454,8 +7454,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: false
 
-  /prettier@3.2.4:
-    resolution: {integrity: sha512-FWu1oLHKCrtpO1ypU6J0SbK2d9Ckwysq6bHj/uaCP26DxrPpppCLQRGVuqAxSTvhF00AcvDRyYrLNW7ocBhFFQ==}
+  /prettier@3.2.5:
+    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
@@ -7916,7 +7916,7 @@ packages:
   /safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  /sanity-codegen@0.9.8(@babel/core@7.23.9)(@babel/preset-env@7.23.9)(@babel/preset-react@7.23.3)(@babel/preset-typescript@7.23.3)(jsdom@24.0.0)(prettier@3.2.4):
+  /sanity-codegen@0.9.8(@babel/core@7.23.9)(@babel/preset-env@7.23.9)(@babel/preset-react@7.23.3)(@babel/preset-typescript@7.23.3)(jsdom@24.0.0)(prettier@3.2.5):
     resolution: {integrity: sha512-kwyBQioWD4UJBgi1RJx8J/HQ4i753yLgnL5MUwbuAyJZrO9W33anNNawbtcePw9PK+5+IovbSLOs+xicULb2hA==}
     hasBin: true
     peerDependencies:
@@ -7940,7 +7940,7 @@ packages:
       babel-plugin-css-modules-transform: 1.6.2
       babel-plugin-module-resolver: 4.1.0
       jsdom-global: 3.0.2(jsdom@24.0.0)
-      prettier: 3.2.4
+      prettier: 3.2.5
       regenerator-runtime: 0.13.9
     transitivePeerDependencies:
       - jsdom
