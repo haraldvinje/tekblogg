@@ -29,7 +29,7 @@
     "@serwist/sw": "^8.0.2",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "20.11.20",
-    "@types/react": "18.2.58",
+    "@types/react": "18.2.59",
     "@types/react-dom": "18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
