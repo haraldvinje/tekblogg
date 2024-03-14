@@ -69,13 +69,13 @@ export function BlogPostList({ postsMetadata }: { postsMetadata: BlogPostMetadat
         )}
       </div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <BlogPosts postsMetadata={filteredPosts} />
+        <BlogPostCards postsMetadata={filteredPosts} />
       </div>
     </>
   )
 }
 
-export function BlogPosts({ postsMetadata }: { postsMetadata: BlogPostMetadata[] }) {
+export function BlogPostCards({ postsMetadata }: { postsMetadata: BlogPostMetadata[] }) {
   return (
     <>
       {postsMetadata.map((postMetadata, index) => (
