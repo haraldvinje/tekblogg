@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
-import withSerwistInit from "@serwist/next"
 import withBundleAnalyzerInit from '@next/bundle-analyzer'
+import withSerwistInit from "@serwist/next"
 
 const withSerwist = withSerwistInit({
-  cacheOnFrontEndNav: true,
   swSrc: "src/app/sw.ts",
   swDest: "public/sw.js",
-  disable: process.env.NODE_ENV === "development",
 })
 
 const withBundleAnalyzer = withBundleAnalyzerInit({
