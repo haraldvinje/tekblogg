@@ -11,7 +11,8 @@
     "build": "sanity build",
     "dev": "sanity dev",
     "deploy": "sanity deploy",
-    "clean": "rm -rf node_modules .sanity"
+    "lint": "eslint .",
+    "clean": "rm -rf node_modules .sanity dist"
   },
   "keywords": [
     "sanity"
@@ -26,12 +27,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sanity": "^3.2.3",
-    "styled-components": "^6.0.0"
+    "styled-components": "^6.1.0"
   },
   "devDependencies": {
     "@sanity/cli": "^3.26.0",
-    "prettier": "^3.0.0",
-    "sanity-codegen": "^0.9.8"
+    "prettier": "^3.0.0"
   },
   "resolutions": {
     "@codemirror/state": "6.4.1"
