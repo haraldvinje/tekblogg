@@ -28,7 +28,7 @@ const ptComponents = {
   },
   marks: {
     code: ({ text }: { text: string }) => (
-      <code className="rounded-md border-gray-100 bg-slate-800 p-[0.25rem] text-amber-600 before:content-none after:content-none">
+      <code className="rounded-md border-gray-100 bg-slate-800 p-1 text-amber-600 before:content-none after:content-none">
         {text}
       </code>
     ),
