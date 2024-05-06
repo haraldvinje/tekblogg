@@ -19,8 +19,8 @@ export function Navbar() {
     'h-4 sm:h-6 text-white transition duration-300 ease-in-out hover:scale-125 hover:opacity-70'
 
   return (
-    <nav className="sticky top-0 z-10 flex h-16 w-[100%] bg-dark text-white sm:h-20">
-      <div className="flex w-[50%] items-center justify-center space-x-4 py-3 text-white sm:space-x-12">
+    <nav className="sticky top-0 z-10 flex h-16 w-full bg-dark text-white sm:h-20">
+      <div className="flex w-1/2 items-center justify-center space-x-4 py-3 text-white sm:space-x-12">
         <Link href="/" className={navItemStyle}>
           <span>
             Blogg
@@ -31,7 +31,7 @@ export function Navbar() {
           <span>Info</span>
         </Link>
       </div>
-      <div className="flex w-[50%] items-center justify-center space-x-4 py-3 text-white">
+      <div className="flex w-1/2 items-center justify-center space-x-4 py-3 text-white">
         {isClientSide ? (
           <div className="mx-4">
             {theme === 'dark' ? (
