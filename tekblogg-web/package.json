@@ -37,7 +37,7 @@
     "autoprefixer": "10.4.19",
     "bright": "^0.8.4",
     "date-fns": "^3.0.0",
-    "eslint": "8.57.0",
+    "eslint": "9.4.0",
     "eslint-config-next": "^14.0.4",
     "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-typescript": "^3.5.5",
