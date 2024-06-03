@@ -1,11 +1,12 @@
 import { format } from 'date-fns'
 import { nb } from 'date-fns/locale'
-import type { BlockContent } from '@/types/sanity-schema'
+import type { Author, BlockContent } from '@/types/sanity.types'
 
 export const formatDate = (date: string, timeFormat: string = 'd. MMMM yyyy') =>
   format(new Date(date), timeFormat, { locale: nb })
 
-export const formatAuthors = (authors?: string[]) => authors?.map((author) => author)?.join(', ')
+export const formatAuthors = (authors?: Author[]) =>
+  authors?.map((author) => author.name)?.join(', ')
 
 export const richToPlainText = (blocks: BlockContent): string => {
   return blocks
@@ -13,7 +14,7 @@ export const richToPlainText = (blocks: BlockContent): string => {
       if (block._type !== 'block' || !block.children) {
         return ''
       }
-      return block.children.map((child: { text: string }) => child.text).join('')
+      return block.children.map((child) => child.text).join('')
     })
     .join('\n\n')
 }

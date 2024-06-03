@@ -1,15 +1,15 @@
 'use client'
 
-import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import { useCallback } from 'react'
 import { ImageUrlBuilder, useNextSanityImage } from 'next-sanity-image'
 import Image, { ImageProps } from 'next/image'
+import type { BlockContentImage, SanityImageAsset } from '@/types/sanity.types'
 import client from '@/lib/sanity-client'
 
 type NextImage = Omit<ImageProps, 'src' | 'alt'>
 
 type SanityImageProps = NextImage & {
-  image: SanityImageObject
+  image: SanityImageAsset | BlockContentImage
   width?: number
   height?: number
   quality?: number

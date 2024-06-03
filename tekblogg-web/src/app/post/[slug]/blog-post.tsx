@@ -53,7 +53,7 @@ export const BlogPost = ({
             priority
             loading="eager"
             image={mainImage}
-            alt={mainImage.alt ?? 'Main image'}
+            alt={mainImage.altText ?? 'Main image'}
             title={mainImage.title ?? 'Main image'}
           />
         ) : null}
