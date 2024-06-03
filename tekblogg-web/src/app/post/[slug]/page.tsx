@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import { BlogPost } from './blog-post'
 import { getAllSlugs, getBlogPost, urlFor } from '@/lib/sanity-client'
 import {
   richToPlainText,
@@ -7,7 +8,6 @@ import {
 } from '@/lib/text-utils'
 import { AnimationWrapper } from '@/components/animation-wrapper'
 import { RichText } from '@/components/rich-text'
-import { BlogPost } from './blog-post'
 
 export const revalidate = 60
 

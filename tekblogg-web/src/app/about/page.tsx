@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
-import { AnimationWrapper } from '@/components/animation-wrapper'
 import { About } from './about'
+import { AnimationWrapper } from '@/components/animation-wrapper'
 
 export const metadata: Metadata = {
   title: 'Om TekBlogg',
