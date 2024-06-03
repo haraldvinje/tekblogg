@@ -19,7 +19,7 @@ export function Navbar() {
     'h-4 sm:h-6 text-white transition duration-300 ease-in-out hover:scale-125 hover:opacity-70'
 
   return (
-    <nav className="sticky top-0 z-10 flex h-16 w-full bg-dark text-white sm:h-20">
+    <nav className="sticky top-0 z-20 flex h-16 w-full bg-dark text-white sm:h-20">
       <div className="flex w-1/2 items-center justify-center space-x-4 py-3 text-white sm:space-x-12">
         <Link href="/" className={navItemStyle}>
           <span>

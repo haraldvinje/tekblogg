@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
-import { BlogPostMetadata } from '@/lib/sanity-client'
 import { BlogPostList, BlogPostCards } from './blog-post-list'
+import { BlogPostMetadata } from '@/lib/sanity-client'
 
 export function Home({
   blogPostsMetadata: blogPostsMetadata

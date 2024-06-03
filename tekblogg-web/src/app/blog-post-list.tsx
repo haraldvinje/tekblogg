@@ -2,10 +2,10 @@
 
 import { Suspense, useCallback, useEffect, useMemo } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { BlogPostCard } from './blog-post-card'
 import { BlogPostMetadata } from '@/lib/sanity-client'
 import { CategoryButton } from '@/components/category-button'
 import { CategoryUi } from '@/components/category-ui'
-import { BlogPostCard } from './blog-post-card'
 
 function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
   return value !== null && value !== undefined
@@ -57,7 +57,7 @@ export function BlogPostList({ postsMetadata }: { postsMetadata: BlogPostMetadat
         </p>
         {allCategories.map(
           (category, index) =>
-            category && (
+            category.slug && (
               <Suspense key={index} fallback={<CategoryUi value={category.title} />}>
                 <CategoryButton
                   value={category.title}
