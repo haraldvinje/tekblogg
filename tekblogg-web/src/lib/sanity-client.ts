@@ -1,8 +1,7 @@
-import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 import groq from 'groq'
-import type * as Schema from '@/types/sanity-schema'
+import type * as Schema from '@/types/sanity.types'
 
 const client = createClient({
   projectId: 'jbq2yq78',
@@ -11,7 +10,8 @@ const client = createClient({
   useCdn: true
 })
 
-export const urlFor = (source: SanityImageObject) => imageUrlBuilder(client).image(source)
+export const urlFor = (source: Schema.SanityImageAsset | Schema.BlockContentImage) =>
+  imageUrlBuilder(client).image(source)
 
 const getAllPostsMetadataQuery = groq`
   *[_type == "post"] | order(publishedAt desc) {
@@ -42,11 +42,8 @@ const getPostQuery = groq`
   }
 `
 
-export type BlogPost = Omit<Schema.Post, 'slug' | 'categories' | 'authors'> & {
-  slug: Schema.Post['slug']['current']
-  categories: Schema.Category[]
+export type BlogPost = Schema.Post & {
   estimatedReadingTime: number
-  authors: Schema.Author['name'][]
 }
 
 export type BlogPostMetadata = Omit<BlogPost, 'body' | 'introduction'>
@@ -54,7 +51,7 @@ export type BlogPostMetadata = Omit<BlogPost, 'body' | 'introduction'>
 export const getAllBlogPostsMetadata = async () =>
   await client.fetch<BlogPostMetadata[]>(getAllPostsMetadataQuery)
 
-export const getAllSlugs = async () => await client.fetch<String[]>(getAllSlugsQuery)
+export const getAllSlugs = async () => await client.fetch<string[]>(getAllSlugsQuery)
 
 export const getBlogPost = async (slug: string) =>
   client.fetch<BlogPost>(getPostQuery, { slug }).catch(() => null)
