@@ -1,12 +1,18 @@
 import { format } from 'date-fns'
 import { nb } from 'date-fns/locale'
-import type { Author, BlockContent } from '@/types/sanity.types'
+import type { BlockContent } from '@/types/sanity.types'
 
 export const formatDate = (date: string, timeFormat: string = 'd. MMMM yyyy') =>
   format(new Date(date), timeFormat, { locale: nb })
 
-export const formatAuthors = (authors?: Author[]) =>
-  authors?.map((author) => author.name)?.join(', ')
+export const formatAuthors = (authors: string[]) => {
+  if (authors.length === 0) {
+    throw new Error('No authors provided')
+  }
+  return authors.length === 1
+    ? authors[0]
+    : `${authors.slice(0, -1).join(', ')} og ${authors.slice(-1)[0]}`
+}
 
 export const richToPlainText = (blocks: BlockContent): string => {
   return blocks
@@ -21,7 +27,7 @@ export const richToPlainText = (blocks: BlockContent): string => {
 
 export const getAppropriateMetaDescriptionText = (description: string) => {
   if (description.length > 160) {
-    return description.substring(0, 150) + '...'
+    return description.substring(0, 157) + '...'
   }
   return description
 }

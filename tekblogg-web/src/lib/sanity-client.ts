@@ -42,7 +42,8 @@ const getPostQuery = groq`
   }
 `
 
-export type BlogPost = Schema.Post & {
+export type BlogPost = Omit<Schema.Post, 'authors'> & {
+  authors: string[]
   estimatedReadingTime: number
 }
 
