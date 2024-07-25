@@ -25,7 +25,10 @@ jobs:
         run: bun install
 
       - name: Lint
-        run: bun run lint && bun run ts-lint && bun test
+        run: bun run lint && bun run ts-lint
+
+      - name: Unit tests
+        run: bun test
 
   deploy-production:
     needs: lint
