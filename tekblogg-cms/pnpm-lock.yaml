@@ -13,7 +13,7 @@ importers:
     dependencies:
       '@babel/preset-typescript':
         specifier: ^7.18.6
-        version: 7.24.7(@babel/core@7.24.5)
+        version: 7.24.7(@babel/core@7.25.2)
       '@sanity/code-input':
         specifier: ^4.0.0
         version: 4.1.4(@babel/runtime@7.25.0)(@codemirror/lint@6.8.1)(@codemirror/theme-one-dark@6.1.2)(@lezer/common@1.2.1)(codemirror@6.0.1(@lezer/common@1.2.1))(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1)(sanity@3.52.4(@types/node@22.0.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@6.1.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1)))(styled-components@6.1.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
@@ -44,7 +44,7 @@ importers:
     devDependencies:
       '@sanity/cli':
         specifier: ^3.26.0
-        version: 3.52.3(react@18.3.1)
+        version: 3.52.4(react@18.3.1)
       prettier:
         specifier: ^3.0.0
         version: 3.3.3
@@ -1473,11 +1473,6 @@ packages:
   '@sanity/block-tools@3.52.4':
     resolution: {integrity: sha512-Ths/my2L1LjIqnfgPCREetUroj07m6+G+hcAfrmw3vIJiRB0gdpGTLFJ6T1GibK2x3UOpDzs0nb7gSClQQ9ihA==}
 
-  '@sanity/cli@3.52.3':
-    resolution: {integrity: sha512-Y/vv3d2SSkNKpLgdKlbud5sDgpeHnrI2KassGfTgX7IfdFB8gFaVqwPOUJGsrt8O16hcuGI28E1QD5YYpNOmGA==}
-    engines: {node: '>=18'}
-    hasBin: true
-
   '@sanity/cli@3.52.4':
     resolution: {integrity: sha512-oXoH8uRf3WAPQeOX4NVLk3AgL6IWFZ2tZwutXwpvxsA/t5X74ewy5O5/tIWLL4TKstoCLY2jwnYzSOC+u35y3Q==}
     engines: {node: '>=18'}
@@ -1495,10 +1490,6 @@ packages:
       react-dom: ^18
       sanity: ^3
       styled-components: ^5.2 || ^6
-
-  '@sanity/codegen@3.52.3':
-    resolution: {integrity: sha512-kXezVzBryvfYSAyXhXdGylug2IzmzFq1HebpxIpwbahn/fC1WC+k2TexmS75Q1Y0HHc0QFAzy9WyH5Vs5WmboQ==}
-    engines: {node: '>=18'}
 
   '@sanity/codegen@3.52.4':
     resolution: {integrity: sha512-MKDAZdwsXOnJNRLnRgtpl/k+hBUQrrKyOrXRTY7njX2eziqkwWNv3rLUQw3jULZUzQ108o1TsLuC9IjLR353vA==}
@@ -1614,9 +1605,6 @@ packages:
   '@sanity/types@3.37.2':
     resolution: {integrity: sha512-1EfKkNlJ86wIDtc7oFHb79JI8lKDOxKDYrkmwhvuHgJY83GpSABc1kFdbwAtWZfrWVWyqVXUv/KlNwA3b99y/g==}
 
-  '@sanity/types@3.52.3':
-    resolution: {integrity: sha512-XV12bvDAuzQTbxWlmrKgPHeSSGQnhicTDundfsxkCnwpP/hVJ7+8mQmMhg+GmCenOaYEm8uWlGTHJptATV3RvQ==}
-
   '@sanity/types@3.52.4':
     resolution: {integrity: sha512-OUC+OuJo3G2zAIIf8znLoGMSe0U0cX/KeSBA+yNVkutBxOaRpaJbhFhiX+4zWfGUOMPwaMd8+4pATgRd2kD8jQ==}
 
@@ -1640,10 +1628,6 @@ packages:
 
   '@sanity/util@3.37.2':
     resolution: {integrity: sha512-hq0eLjyV2iaOm9ivtPw12YTQ4QsE3jnV/Ui0zhclEhu8Go5JiaEhFt2+WM2lLGRH6qcSA414QbsCNCcyhJL6rA==}
-    engines: {node: '>=18'}
-
-  '@sanity/util@3.52.3':
-    resolution: {integrity: sha512-sT8q6eSN6tTxLVhRUfatnZoiMFR/9TpkQwkyp3jFxjdUVwYSLiC96CaZucShB7Hrgyp8YIFFQdYx7VPs6kHqQQ==}
     engines: {node: '>=18'}
 
   '@sanity/util@3.52.4':
@@ -2947,10 +2931,6 @@ packages:
   groq-js@1.12.0:
     resolution: {integrity: sha512-XxMg2qX3iX+WlhCkj4FmrtDaQKRot9RyphJ0UsmxI/l2aMOdvjG7pqF003yyXppjoE0Vk1ERCDCUYRvC3w/A2Q==}
     engines: {node: '>= 14'}
-
-  groq@3.52.3:
-    resolution: {integrity: sha512-fE6Nf7AhatE+TLDnQUPAI/SvMNnf0HMcAF/a5WDw/rK9era0jVxZwE1Z9CTjRm6UBNjqMIyY1c4zbXh4/qkgUQ==}
-    engines: {node: '>=18'}
 
   groq@3.52.4:
     resolution: {integrity: sha512-EOwlT3oyp7kbBqfuPLedAvQUk4XLGGvjDzc3fBJjC2yjwQPivEbaZRslIU7WLUThy97GEpFWS7z1HKFGZTCd1A==}
@@ -4938,21 +4918,6 @@ snapshots:
       lru-cache: 5.1.1
       semver: 6.3.1
 
-  '@babel/helper-create-class-features-plugin@7.24.7(@babel/core@7.24.5)':
-    dependencies:
-      '@babel/core': 7.24.5
-      '@babel/helper-annotate-as-pure': 7.24.7
-      '@babel/helper-environment-visitor': 7.24.7
-      '@babel/helper-function-name': 7.24.7
-      '@babel/helper-member-expression-to-functions': 7.24.7
-      '@babel/helper-optimise-call-expression': 7.24.7
-      '@babel/helper-replace-supers': 7.24.7(@babel/core@7.24.5)
-      '@babel/helper-skip-transparent-expression-wrappers': 7.24.7
-      '@babel/helper-split-export-declaration': 7.24.7
-      semver: 6.3.1
-    transitivePeerDependencies:
-      - supports-color
-
   '@babel/helper-create-class-features-plugin@7.24.7(@babel/core@7.25.2)':
     dependencies:
       '@babel/core': 7.25.2
@@ -5528,11 +5493,6 @@ snapshots:
     dependencies:
       '@babel/core': 7.25.2
       '@babel/helper-plugin-utils': 7.24.8
-
-  '@babel/plugin-syntax-typescript@7.24.7(@babel/core@7.24.5)':
-    dependencies:
-      '@babel/core': 7.24.5
-      '@babel/helper-plugin-utils': 7.24.7
 
   '@babel/plugin-syntax-typescript@7.24.7(@babel/core@7.25.2)':
     dependencies:
@@ -6254,16 +6214,6 @@ snapshots:
       '@babel/core': 7.25.2
       '@babel/helper-plugin-utils': 7.24.8
 
-  '@babel/plugin-transform-typescript@7.24.7(@babel/core@7.24.5)':
-    dependencies:
-      '@babel/core': 7.24.5
-      '@babel/helper-annotate-as-pure': 7.24.7
-      '@babel/helper-create-class-features-plugin': 7.24.7(@babel/core@7.24.5)
-      '@babel/helper-plugin-utils': 7.24.7
-      '@babel/plugin-syntax-typescript': 7.24.7(@babel/core@7.24.5)
-    transitivePeerDependencies:
-      - supports-color
-
   '@babel/plugin-transform-typescript@7.24.7(@babel/core@7.25.2)':
     dependencies:
       '@babel/core': 7.25.2
@@ -6531,17 +6481,6 @@ snapshots:
       '@babel/plugin-transform-react-jsx': 7.25.2(@babel/core@7.25.2)
       '@babel/plugin-transform-react-jsx-development': 7.24.7(@babel/core@7.25.2)
       '@babel/plugin-transform-react-pure-annotations': 7.24.7(@babel/core@7.25.2)
-    transitivePeerDependencies:
-      - supports-color
-
-  '@babel/preset-typescript@7.24.7(@babel/core@7.24.5)':
-    dependencies:
-      '@babel/core': 7.24.5
-      '@babel/helper-plugin-utils': 7.24.7
-      '@babel/helper-validator-option': 7.24.7
-      '@babel/plugin-syntax-jsx': 7.24.7(@babel/core@7.24.5)
-      '@babel/plugin-transform-modules-commonjs': 7.24.7(@babel/core@7.24.5)
-      '@babel/plugin-transform-typescript': 7.24.7(@babel/core@7.24.5)
     transitivePeerDependencies:
       - supports-color
 
@@ -7184,30 +7123,6 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@sanity/cli@3.52.3(react@18.3.1)':
-    dependencies:
-      '@babel/traverse': 7.25.2
-      '@sanity/client': 6.21.1(debug@4.3.6)
-      '@sanity/codegen': 3.52.3
-      '@sanity/telemetry': 0.7.9(react@18.3.1)
-      '@sanity/util': 3.52.3(debug@4.3.6)
-      chalk: 4.1.2
-      debug: 4.3.6
-      decompress: 4.2.1
-      esbuild: 0.21.5
-      esbuild-register: 3.6.0(esbuild@0.21.5)
-      get-it: 8.6.3(debug@4.3.6)
-      groq-js: 1.12.0
-      node-machine-id: 1.1.12
-      pkg-dir: 5.0.0
-      prettier: 3.3.3
-      semver: 7.6.3
-      silver-fleece: 1.1.0
-      validate-npm-package-name: 3.0.0
-    transitivePeerDependencies:
-      - react
-      - supports-color
-
   '@sanity/cli@3.52.4(react@18.3.1)':
     dependencies:
       '@babel/traverse': 7.25.2
@@ -7273,26 +7188,6 @@ snapshots:
       - '@lezer/common'
       - codemirror
       - react-is
-
-  '@sanity/codegen@3.52.3':
-    dependencies:
-      '@babel/core': 7.25.2
-      '@babel/generator': 7.25.0
-      '@babel/preset-env': 7.25.2(@babel/core@7.25.2)
-      '@babel/preset-react': 7.24.7(@babel/core@7.25.2)
-      '@babel/preset-typescript': 7.24.7(@babel/core@7.25.2)
-      '@babel/register': 7.24.6(@babel/core@7.25.2)
-      '@babel/traverse': 7.25.2
-      '@babel/types': 7.25.2
-      debug: 4.3.6
-      globby: 10.0.2
-      groq: 3.52.3
-      groq-js: 1.12.0
-      json5: 2.2.3
-      tsconfig-paths: 4.2.0
-      zod: 3.23.8
-    transitivePeerDependencies:
-      - supports-color
 
   '@sanity/codegen@3.52.4':
     dependencies:
@@ -7521,13 +7416,6 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@sanity/types@3.52.3(debug@4.3.6)':
-    dependencies:
-      '@sanity/client': 6.21.1(debug@4.3.6)
-      '@types/react': 18.3.3
-    transitivePeerDependencies:
-      - debug
-
   '@sanity/types@3.52.4(debug@4.3.6)':
     dependencies:
       '@sanity/client': 6.21.1(debug@4.3.6)
@@ -7566,16 +7454,6 @@ snapshots:
     dependencies:
       '@sanity/client': 6.21.1(debug@4.3.6)
       '@sanity/types': 3.37.2(debug@4.3.6)
-      get-random-values-esm: 1.0.2
-      moment: 2.30.1
-      rxjs: 7.8.1
-    transitivePeerDependencies:
-      - debug
-
-  '@sanity/util@3.52.3(debug@4.3.6)':
-    dependencies:
-      '@sanity/client': 6.21.1(debug@4.3.6)
-      '@sanity/types': 3.52.3(debug@4.3.6)
       get-random-values-esm: 1.0.2
       moment: 2.30.1
       rxjs: 7.8.1
@@ -9322,8 +9200,6 @@ snapshots:
       debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
-
-  groq@3.52.3: {}
 
   groq@3.52.4: {}
 
