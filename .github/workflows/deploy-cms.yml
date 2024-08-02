@@ -5,8 +5,8 @@ on:
 
 jobs:
   sanity-deploy:
-    runs-on: ubuntu-latest
     name: Deploy to Sanity
+    runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
       - name: Checkout Repo
