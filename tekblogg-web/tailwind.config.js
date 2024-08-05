@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
