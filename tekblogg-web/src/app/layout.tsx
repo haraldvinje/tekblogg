@@ -72,7 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="nb" className={inter.className}>
-      <body className="transition duration-500 dark:bg-dark-lighter">
+      <body className="transition duration-500 dark:bg-dark">
         <ThemeWrapper>
           <Navbar />
           <main className="flex w-full justify-center px-[10%] py-10 xl:px-[20%]">{children}</main>
