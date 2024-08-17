@@ -3,14 +3,11 @@
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
-import { faBookOpen, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
-import { useWidthMediaQuery } from '@/lib/hooks/use-width-media-query'
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { useClientTheme } from '@/lib/hooks/use-client-theme'
 
 export function Navbar() {
   const { theme, setTheme, isClientSide } = useClientTheme()
-
-  const wideEnough = useWidthMediaQuery(300)
 
   const navItemStyle = `flex items-center rounded-md p-1 text-center font-bold leading-snug 
                           transition duration-300 ease-in-out hover:bg-white hover:text-dark
@@ -22,13 +19,10 @@ export function Navbar() {
     <nav className="sticky top-0 z-20 flex h-16 w-full bg-dark text-white sm:h-20">
       <div className="flex w-1/2 items-center justify-center space-x-4 py-3 text-white sm:space-x-12">
         <Link href="/" className={navItemStyle}>
-          <span>
-            Blogg
-            {wideEnough && <FontAwesomeIcon icon={faBookOpen} className="fa-xs px-2" />}
-          </span>
+          Blogg
         </Link>
         <Link href="/about" className={navItemStyle}>
-          <span>Info</span>
+          Info
         </Link>
       </div>
       <div className="flex w-1/2 items-center justify-center space-x-4 py-3 text-white">
