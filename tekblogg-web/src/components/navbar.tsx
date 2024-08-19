@@ -14,18 +14,18 @@ export function Navbar() {
     'h-4 sm:h-6 text-white transition duration-300 ease-in-out hover:scale-125 hover:opacity-70 mx-8'
 
   return (
-    <nav className="sticky top-0 z-20 flex h-16 w-full justify-between bg-dark text-white sm:h-20">
+    <nav className="top-0 z-20 flex h-16 w-full justify-between bg-dark text-white sm:h-20">
       <div className="w-1/3"></div>
-      <div className="flex w-1/3 justify-center space-x-8">
+      <div className="flex w-1/3 justify-between space-x-16">
         <Link
           href="/"
-          className={`flex items-center text-center text-2xl font-bold leading-snug transition duration-300 ease-in-out hover:opacity-60 sm:p-2 ${path === '/' && 'underline'}`}
+          className={`flex items-center text-2xl leading-snug transition duration-300 ease-in-out hover:opacity-60 sm:p-2 ${path === '/' && 'font-extrabold'}`}
         >
           Blogg
         </Link>
         <Link
           href="/about"
-          className={`flex items-center text-center text-2xl font-bold leading-snug transition duration-300 ease-in-out hover:opacity-60 sm:p-2 ${path === '/about' && 'underline'}`}
+          className={`flex items-center text-2xl leading-snug transition duration-300 ease-in-out hover:opacity-60 sm:p-2 ${path === '/about' && 'font-extrabold'}`}
         >
           Info
         </Link>
