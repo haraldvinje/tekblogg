@@ -14,9 +14,9 @@ export function Navbar() {
     'h-4 sm:h-6 text-white transition duration-300 ease-in-out hover:scale-125 hover:opacity-70 mx-8'
 
   return (
-    <nav className="top-0 z-20 flex h-16 w-full justify-between bg-dark text-white sm:h-20">
-      <div className="w-1/3"></div>
-      <div className="flex w-1/3 justify-between space-x-16">
+    <nav className="top-0 z-20 flex h-16 w-full bg-dark text-white sm:h-20">
+      <div className="w-[15%] xl:w-[20%]"></div>
+      <div className="flex grow justify-between space-x-2">
         <Link
           href="/"
           className={`flex items-center text-2xl leading-snug transition duration-300 ease-in-out hover:opacity-60 sm:p-2 ${path === '/' && 'font-extrabold'}`}
@@ -30,7 +30,7 @@ export function Navbar() {
           Info
         </Link>
       </div>
-      <div className="flex w-1/3 items-center justify-end">
+      <div className="flex w-[15%] items-center justify-end xl:w-[20%]">
         {isClientSide ? (
           <>
             {theme === 'dark' ? (

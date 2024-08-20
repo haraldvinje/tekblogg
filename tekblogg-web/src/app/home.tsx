@@ -8,7 +8,7 @@ export function Home({
   blogPostsMetadata: BlogPostMetadata[]
 }) {
   return (
-    <div className="w-4/5">
+    <div>
       <h1 className="text-center text-2xl font-bold dark:text-white sm:text-4xl">
         Velkommen til TekBlogg!
       </h1>

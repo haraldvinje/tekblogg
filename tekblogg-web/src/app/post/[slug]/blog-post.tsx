@@ -23,7 +23,7 @@ export const BlogPost = ({
 
   return (
     <>
-      <article className={`prose w-full lg:prose-xl ${textTheme}`}>
+      <article className={`prose w-full lg:prose-xl${textTheme}`}>
         <h1 className="flex justify-center">{title}</h1>
         <div className="flex flex-col space-y-2">
           <span className="flex items-center justify-between">

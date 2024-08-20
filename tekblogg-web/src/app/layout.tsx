@@ -76,7 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="transition duration-500 dark:bg-dark">
         <ThemeWrapper>
           <Navbar />
-          <main className="flex w-full justify-center px-[10%] py-10 xl:px-[20%]">{children}</main>
+          <main className="m-auto my-10 flex w-[70%] justify-center xl:w-[60%]">{children}</main>
         </ThemeWrapper>
         <Analytics />
         <SpeedInsights />
