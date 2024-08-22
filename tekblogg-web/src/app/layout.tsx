@@ -49,12 +49,14 @@ export const metadata: Metadata = {
     ...titleObject
   },
   appleWebApp: {
-    capable: true,
     statusBarStyle: 'default',
     title
   },
   formatDetection: {
     telephone: false
+  },
+  other: {
+    'mobile-web-app-capable': ['yes']
   }
 }
 
