@@ -11,7 +11,6 @@ export function CategoryButton({
   value: string
   slug: string
   isSelected: boolean
-  onCategoryClick?: (slug: string) => void
 }) {
   const params = new URLSearchParams(useSearchParams())
 
