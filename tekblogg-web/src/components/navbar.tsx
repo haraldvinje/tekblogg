@@ -10,8 +10,7 @@ export function Navbar() {
   const { theme, setTheme, isClientSide } = useClientTheme()
   const path = usePathname()
 
-  const iconStyle =
-    'h-4 sm:h-6 text-white transition duration-300 ease-in-out hover:scale-125 hover:opacity-70 mx-8'
+  const iconStyle = 'h-4 sm:h-6 text-white transition duration-300 ease-in-out hover:opacity-70 p-2'
 
   return (
     <nav className="top-0 z-20 flex h-16 w-full bg-dark text-white sm:h-20">
@@ -26,19 +25,21 @@ export function Navbar() {
         {isClientSide ? (
           <>
             {theme === 'dark' ? (
-              <FontAwesomeIcon
-                className={iconStyle}
-                icon={faSun}
-                color="white"
+              <button
+                className="flex flex-col items-center"
                 onClick={() => setTheme('light')}
-              />
+                aria-label="Switch to light mode"
+              >
+                <FontAwesomeIcon className={iconStyle} icon={faSun} color="white" />
+              </button>
             ) : (
-              <FontAwesomeIcon
-                className={iconStyle}
-                icon={faMoon}
-                color="white"
+              <button
+                className="flex flex-col items-center"
                 onClick={() => setTheme('dark')}
-              />
+                aria-label="Switch to dark mode"
+              >
+                <FontAwesomeIcon className={iconStyle} icon={faMoon} color="white" />
+              </button>
             )}
           </>
         ) : null}
