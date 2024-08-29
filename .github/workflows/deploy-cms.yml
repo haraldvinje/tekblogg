@@ -14,10 +14,10 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Setup Node.js 22
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: './tekblogg-cms/tool-versions'
 
       - name: Setup pnpm 9
         uses: pnpm/action-setup@v4
