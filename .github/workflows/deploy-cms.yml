@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: './tekblogg-cms/tool-versions'
+          node-version-file: './tekblogg-cms/.tool-versions'
 
       - name: Setup pnpm 9
         uses: pnpm/action-setup@v4
