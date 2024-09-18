@@ -24,8 +24,8 @@ export function About() {
           src={harald}
           placeholder="blur"
           blurDataURL={haraldBlurred.blurDataURL}
-          alt="Picture of Harald Vinje"
-          title="Picture of Harald Vinje"
+          alt="Portrettbilde av Harald Vinje"
+          title="Portrettbilde av Harald Vinje"
         />
       </div>
       <p>

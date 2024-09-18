@@ -18,8 +18,8 @@ export const BlogPostCard = ({ postMetadata }: { postMetadata: BlogPostMetadata 
           quality={100}
           image={mainImage}
           placeholder="blur"
-          alt={mainImage.altText ?? 'Main image'}
-          title={mainImage.title ?? 'Main image'}
+          alt={mainImage.altText ?? 'Artikkelbilde'}
+          title={mainImage.title ?? 'Artikkelbilde'}
         />
         <div className="overflow-hidden p-4">
           <p className="text-2xl">{title}</p>

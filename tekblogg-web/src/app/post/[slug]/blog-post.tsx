@@ -53,8 +53,8 @@ export const BlogPost = ({
             priority
             loading="eager"
             image={mainImage}
-            alt={mainImage.altText ?? 'Main image'}
-            title={mainImage.title ?? 'Main image'}
+            alt={mainImage.altText ?? 'Artikkelbilde'}
+            title={mainImage.title ?? 'Artikkelbilde'}
           />
         ) : null}
         {postBodyComponent}
