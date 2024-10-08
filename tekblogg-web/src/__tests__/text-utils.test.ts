@@ -39,8 +39,9 @@ describe('formatAuthors', () => {
 describe('getAppropriateMetaDescriptionText', () => {
   test("should return the full description if it's less than 160 characters", () => {
     const description = 'This is a short description.'
+    const expected = description
     const result = getAppropriateMetaDescriptionText(description)
-    expect(result).toBe(description)
+    expect(result).toBe(expected)
   })
   test("should return the truncated description if it's more than 160 characters", () => {
     const description =
