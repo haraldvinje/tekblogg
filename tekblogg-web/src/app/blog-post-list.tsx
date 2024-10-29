@@ -3,7 +3,7 @@
 import { Suspense, useCallback, useEffect, useMemo } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { BlogPostCard } from './blog-post-card'
-import { BlogPostMetadata } from '@/lib/sanity-client'
+import { BlogPostCardData } from '@/lib/sanity-client'
 import { CategoryButton } from '@/components/category-button'
 import { CategoryUi } from '@/components/category-ui'
 
@@ -11,17 +11,17 @@ function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
   return value !== null && value !== undefined
 }
 
-export function BlogPostList({ postsMetadata }: { postsMetadata: BlogPostMetadata[] }) {
+export function BlogPostList({ postsCardData }: { postsCardData: BlogPostCardData[] }) {
   const allCategories = useMemo(
     () =>
-      postsMetadata
+      postsCardData
         .flatMap((post) => post.categories)
         .filter(
           (category, index, categories) =>
             categories.map((c) => c.slug.current).indexOf(category.slug.current) === index
         )
         .filter(notEmpty),
-    [postsMetadata]
+    [postsCardData]
   )
 
   const searchParams = useSearchParams()
@@ -44,8 +44,8 @@ export function BlogPostList({ postsMetadata }: { postsMetadata: BlogPostMetadat
 
   const filteredPosts =
     selectedCategories.length === 0
-      ? postsMetadata
-      : postsMetadata.filter((p) =>
+      ? postsCardData
+      : postsCardData.filter((p) =>
           p.categories?.some((category) => selectedCategories.includes(category.slug.current))
         )
 
@@ -69,17 +69,17 @@ export function BlogPostList({ postsMetadata }: { postsMetadata: BlogPostMetadat
         )}
       </div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <BlogPostCards postsMetadata={filteredPosts} />
+        <BlogPostCards postsCardData={filteredPosts} />
       </div>
     </>
   )
 }
 
-export function BlogPostCards({ postsMetadata }: { postsMetadata: BlogPostMetadata[] }) {
+export function BlogPostCards({ postsCardData }: { postsCardData: BlogPostCardData[] }) {
   return (
     <>
-      {postsMetadata.map((postMetadata, index) => (
-        <BlogPostCard key={index} postMetadata={postMetadata} />
+      {postsCardData.map((postCardData, index) => (
+        <BlogPostCard key={index} postCardData={postCardData} />
       ))}
     </>
   )
