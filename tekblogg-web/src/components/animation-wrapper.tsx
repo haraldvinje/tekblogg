@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
-import { AnimatePresence, motion } from 'framer-motion'
-import { fadeIn } from '@/lib/animations'
+import { AnimatePresence, motion } from "framer-motion";
+import { fadeIn } from "@/lib/animations";
 
 export function AnimationWrapper({ children }: { children: React.ReactNode }) {
-  const { variants, transition } = fadeIn
-  const { initial, animate, exit } = variants
+  const { variants, transition } = fadeIn;
+  const { initial, animate, exit } = variants;
 
   return (
     <>
@@ -21,5 +21,5 @@ export function AnimationWrapper({ children }: { children: React.ReactNode }) {
         </motion.div>
       </AnimatePresence>
     </>
-  )
+  );
 }

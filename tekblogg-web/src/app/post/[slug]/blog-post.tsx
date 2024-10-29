@@ -1,20 +1,27 @@
-import type { ReactNode } from 'react'
-import type { BlogPostCardData } from '@/lib/sanity-client'
-import { formatAuthors, formatDate } from '@/lib/text-utils'
-import { CategoryUi } from '@/components/category-ui'
-import { ShareButtons } from '@/components/share-buttons'
-import { SanityImage } from '@/components/sanity-image'
+import type { ReactNode } from "react";
+import type { BlogPostCardData } from "@/lib/sanity-client";
+import { formatAuthors, formatDate } from "@/lib/text-utils";
+import { CategoryUi } from "@/components/category-ui";
+import { ShareButtons } from "@/components/share-buttons";
+import { SanityImage } from "@/components/sanity-image";
 
 export const BlogPost = ({
   postMetadata,
   postIntroductionComponent,
-  postBodyComponent
+  postBodyComponent,
 }: {
-  postMetadata: BlogPostCardData
-  postIntroductionComponent: ReactNode
-  postBodyComponent: ReactNode
+  postMetadata: BlogPostCardData;
+  postIntroductionComponent: ReactNode;
+  postBodyComponent: ReactNode;
 }) => {
-  const { title, authors, categories, mainImage, publishedAt, estimatedReadingTime } = postMetadata
+  const {
+    title,
+    authors,
+    categories,
+    mainImage,
+    publishedAt,
+    estimatedReadingTime,
+  } = postMetadata;
 
   return (
     <>
@@ -48,13 +55,13 @@ export const BlogPost = ({
             priority
             loading="eager"
             image={mainImage}
-            alt={mainImage.altText ?? 'Artikkelbilde'}
-            title={mainImage.title ?? 'Artikkelbilde'}
+            alt={mainImage.altText ?? "Artikkelbilde"}
+            title={mainImage.title ?? "Artikkelbilde"}
           />
         ) : null}
         {postBodyComponent}
         <ShareButtons className="justify-center" />
       </article>
     </>
-  )
-}
+  );
+};

@@ -1,11 +1,11 @@
-import { Suspense } from 'react'
-import { BlogPostList, BlogPostCards } from './blog-post-list'
-import { BlogPostCardData } from '@/lib/sanity-client'
+import { Suspense } from "react";
+import { BlogPostList, BlogPostCards } from "./blog-post-list";
+import { BlogPostCardData } from "@/lib/sanity-client";
 
 export function Home({
-  blogPostsMetadata: blogPostsMetadata
+  blogPostsMetadata: blogPostsMetadata,
 }: {
-  blogPostsMetadata: BlogPostCardData[]
+  blogPostsMetadata: BlogPostCardData[];
 }) {
   return (
     <div>
@@ -16,5 +16,5 @@ export function Home({
         <BlogPostList postsCardData={blogPostsMetadata} />
       </Suspense>
     </div>
-  )
+  );
 }
