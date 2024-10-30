@@ -1,14 +1,14 @@
-import { Home } from './home'
-import { AnimationWrapper } from '@/components/animation-wrapper'
-import { getAllBlogPostsMetadata } from '@/lib/sanity-client'
+import { Home } from "./home";
+import { AnimationWrapper } from "@/components/animation-wrapper";
+import { getAllBlogPostsCardData } from "@/lib/sanity-client";
 
-export const revalidate = 60
+export const revalidate = 60;
 
 export default async function Page() {
-  const posts = await getAllBlogPostsMetadata()
+  const posts = await getAllBlogPostsCardData();
   return (
     <AnimationWrapper>
       <Home blogPostsMetadata={posts} />
     </AnimationWrapper>
-  )
+  );
 }

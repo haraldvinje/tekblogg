@@ -1,29 +1,31 @@
-'use client'
-
-import type { ReactNode } from 'react'
-import { useClientTheme } from '@/lib/hooks/use-client-theme'
-import type { BlogPostMetadata } from '@/lib/sanity-client'
-import { formatAuthors, formatDate } from '@/lib/text-utils'
-import { CategoryUi } from '@/components/category-ui'
-import { ShareButtons } from '@/components/share-buttons'
-import { SanityImage } from '@/components/sanity-image'
+import type { ReactNode } from "react";
+import type { BlogPostCardData } from "@/lib/sanity-client";
+import { formatAuthors, formatDate } from "@/lib/text-utils";
+import { CategoryUi } from "@/components/category-ui";
+import { ShareButtons } from "@/components/share-buttons";
+import { SanityImage } from "@/components/sanity-image";
 
 export const BlogPost = ({
   postMetadata,
   postIntroductionComponent,
-  postBodyComponent
+  postBodyComponent,
 }: {
-  postMetadata: BlogPostMetadata
-  postIntroductionComponent: ReactNode
-  postBodyComponent: ReactNode
+  postMetadata: BlogPostCardData;
+  postIntroductionComponent: ReactNode;
+  postBodyComponent: ReactNode;
 }) => {
-  const { title, authors, categories, mainImage, publishedAt, estimatedReadingTime } = postMetadata
-
-  const { textTheme } = useClientTheme()
+  const {
+    title,
+    authors,
+    categories,
+    mainImage,
+    publishedAt,
+    estimatedReadingTime,
+  } = postMetadata;
 
   return (
     <>
-      <article className={`prose w-full lg:prose-xl${textTheme}`}>
+      <article className="prose w-full dark:prose-invert">
         <h1 className="flex justify-center">{title}</h1>
         <div className="flex flex-col space-y-2">
           <span className="flex items-center justify-between">
@@ -53,13 +55,13 @@ export const BlogPost = ({
             priority
             loading="eager"
             image={mainImage}
-            alt={mainImage.altText ?? 'Artikkelbilde'}
-            title={mainImage.title ?? 'Artikkelbilde'}
+            alt={mainImage.altText ?? "Artikkelbilde"}
+            title={mainImage.title ?? "Artikkelbilde"}
           />
         ) : null}
         {postBodyComponent}
         <ShareButtons className="justify-center" />
       </article>
     </>
-  )
-}
+  );
+};

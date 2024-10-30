@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 export default async function NotFound() {
   return (
@@ -8,5 +8,5 @@ export default async function NotFound() {
         Tilbake til forsiden
       </Link>
     </text>
-  )
+  );
 }
