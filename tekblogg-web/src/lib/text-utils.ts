@@ -32,10 +32,10 @@ export const getAppropriateMetaDescriptionText = (description: string) => {
   return description;
 };
 
-export const generateCanonicalUrl = (path?: string) => {
-  const baseUrl = process.env.NEXT_PUBLIC_DOMAIN ?? "https://www.tekblogg.dev";
-  const cleanPath = path?.replace(/^\/|\/$/g, "");
-  return new URL(cleanPath ? baseUrl + "/" + cleanPath : baseUrl);
-};
+export const BASE_URL =
+  process.env.NEXT_PUBLIC_DOMAIN ?? "https://www.tekblogg.dev";
 
-export const BASE_URL = generateCanonicalUrl().toString();
+export const generateCanonicalUrl = (path?: string) => {
+  const cleanPath = path?.replace(/^\/|\/$/g, "");
+  return new URL(cleanPath ? BASE_URL + "/" + cleanPath : BASE_URL);
+};
