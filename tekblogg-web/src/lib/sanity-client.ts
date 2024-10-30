@@ -1,20 +1,19 @@
-import { createClient } from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
-import groq from "groq";
-import type * as Schema from "@/types/sanity.types";
+import { createClient } from '@sanity/client'
+import imageUrlBuilder from '@sanity/image-url'
+import groq from 'groq'
+import type * as Schema from '@/types/sanity.types'
 
 const client = createClient({
-  projectId: "jbq2yq78",
-  dataset: "production",
-  apiVersion: "v2021-10-21",
-  useCdn: true,
-});
+  projectId: 'jbq2yq78',
+  dataset: 'production',
+  apiVersion: 'v2021-10-21',
+  useCdn: true
+})
 
-export const urlFor = (
-  source: Schema.SanityImageAsset | Schema.BlockContentImage,
-) => imageUrlBuilder(client).image(source);
+export const urlFor = (source: Schema.SanityImageAsset | Schema.BlockContentImage) =>
+  imageUrlBuilder(client).image(source)
 
-const getAllPostsCardDataQuery = groq`
+const getAllPostsMetadataQuery = groq`
   *[_type == "post"] | order(publishedAt desc) {
     title,
     "categories": categories[]->{title, slug},
@@ -23,11 +22,11 @@ const getAllPostsCardDataQuery = groq`
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
     mainImage,
   }
-`;
+`
 
 const getAllSlugsQuery = groq`
   *[_type == "post" && defined(slug.current)][].slug.current
-`;
+`
 
 const getPostQuery = groq`
   *[_type == "post" && slug.current == $slug][0]{
@@ -41,22 +40,21 @@ const getPostQuery = groq`
     introduction,
     body
   }
-`;
+`
 
-export type BlogPost = Omit<Schema.Post, "authors"> & {
-  authors: string[];
-  estimatedReadingTime: number;
-};
+export type BlogPost = Omit<Schema.Post, 'authors'> & {
+  authors: string[]
+  estimatedReadingTime: number
+}
 
-export type BlogPostCardData = Omit<BlogPost, "body" | "introduction">;
+export type BlogPostMetadata = Omit<BlogPost, 'body' | 'introduction'>
 
-export const getAllBlogPostsCardData = async () =>
-  await client.fetch<BlogPostCardData[]>(getAllPostsCardDataQuery);
+export const getAllBlogPostsMetadata = async () =>
+  await client.fetch<BlogPostMetadata[]>(getAllPostsMetadataQuery)
 
-export const getAllSlugs = async () =>
-  await client.fetch<string[]>(getAllSlugsQuery);
+export const getAllSlugs = async () => await client.fetch<string[]>(getAllSlugsQuery)
 
 export const getBlogPost = async (slug: string) =>
-  client.fetch<BlogPost>(getPostQuery, { slug }).catch(() => null);
+  client.fetch<BlogPost>(getPostQuery, { slug }).catch(() => null)
 
-export default client;
+export default client

@@ -1,61 +1,53 @@
-"use client";
+'use client'
 
-import { Suspense, useCallback, useEffect, useMemo } from "react";
-import { useSearchParams } from "next/navigation";
-import { BlogPostCard } from "./blog-post-card";
-import { BlogPostCardData } from "@/lib/sanity-client";
-import { CategoryButton } from "@/components/category-button";
-import { CategoryUi } from "@/components/category-ui";
+import { Suspense, useCallback, useEffect, useMemo } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { BlogPostCard } from './blog-post-card'
+import { BlogPostMetadata } from '@/lib/sanity-client'
+import { CategoryButton } from '@/components/category-button'
+import { CategoryUi } from '@/components/category-ui'
 
 function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
-  return value !== null && value !== undefined;
+  return value !== null && value !== undefined
 }
 
-export function BlogPostList({
-  postsCardData,
-}: {
-  postsCardData: BlogPostCardData[];
-}) {
+export function BlogPostList({ postsMetadata }: { postsMetadata: BlogPostMetadata[] }) {
   const allCategories = useMemo(
     () =>
-      postsCardData
+      postsMetadata
         .flatMap((post) => post.categories)
         .filter(
           (category, index, categories) =>
-            categories
-              .map((c) => c.slug.current)
-              .indexOf(category.slug.current) === index,
+            categories.map((c) => c.slug.current).indexOf(category.slug.current) === index
         )
         .filter(notEmpty),
-    [postsCardData],
-  );
+    [postsMetadata]
+  )
 
-  const searchParams = useSearchParams();
-  const categoryQueryKey = "category";
-  const selectedCategories = searchParams.getAll(categoryQueryKey);
+  const searchParams = useSearchParams()
+  const categoryQueryKey = 'category'
+  const selectedCategories = searchParams.getAll(categoryQueryKey)
 
   const filterInvalidCategories = useCallback(() => {
     const validCategories = selectedCategories.filter((selectedCategory) =>
-      allCategories.map((c) => c.slug.current).includes(selectedCategory),
-    );
-    if (validCategories.length === selectedCategories.length) return;
-    const params = new URLSearchParams();
-    validCategories.forEach((c) => params.append(categoryQueryKey, c));
-    window.history.pushState(null, "", `?${params.toString()}`);
-  }, [allCategories, selectedCategories]);
+      allCategories.map((c) => c.slug.current).includes(selectedCategory)
+    )
+    if (validCategories.length === selectedCategories.length) return
+    const params = new URLSearchParams()
+    validCategories.forEach((c) => params.append(categoryQueryKey, c))
+    window.history.pushState(null, '', `?${params.toString()}`)
+  }, [allCategories, selectedCategories])
 
   useEffect(() => {
-    filterInvalidCategories();
-  }, [filterInvalidCategories]);
+    filterInvalidCategories()
+  }, [filterInvalidCategories])
 
   const filteredPosts =
     selectedCategories.length === 0
-      ? postsCardData
-      : postsCardData.filter((p) =>
-          p.categories?.some((category) =>
-            selectedCategories.includes(category.slug.current),
-          ),
-        );
+      ? postsMetadata
+      : postsMetadata.filter((p) =>
+          p.categories?.some((category) => selectedCategories.includes(category.slug.current))
+        )
 
   return (
     <>
@@ -66,38 +58,29 @@ export function BlogPostList({
         {allCategories.map(
           (category, index) =>
             category.slug && (
-              <Suspense
-                key={index}
-                fallback={<CategoryUi value={category.title} />}
-              >
+              <Suspense key={index} fallback={<CategoryUi value={category.title} />}>
                 <CategoryButton
                   value={category.title}
                   slug={category.slug.current}
-                  isSelected={selectedCategories.includes(
-                    category.slug.current,
-                  )}
+                  isSelected={selectedCategories.includes(category.slug.current)}
                 />
               </Suspense>
-            ),
+            )
         )}
       </div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <BlogPostCards postsCardData={filteredPosts} />
+        <BlogPostCards postsMetadata={filteredPosts} />
       </div>
     </>
-  );
+  )
 }
 
-export function BlogPostCards({
-  postsCardData,
-}: {
-  postsCardData: BlogPostCardData[];
-}) {
+export function BlogPostCards({ postsMetadata }: { postsMetadata: BlogPostMetadata[] }) {
   return (
     <>
-      {postsCardData.map((postCardData, index) => (
-        <BlogPostCard key={index} postCardData={postCardData} />
+      {postsMetadata.map((postMetadata, index) => (
+        <BlogPostCard key={index} postMetadata={postMetadata} />
       ))}
     </>
-  );
+  )
 }

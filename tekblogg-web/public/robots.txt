@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.tekblogg.dev
+
+# Sitemaps
+Sitemap: https://www.tekblogg.dev/sitemap.xml
