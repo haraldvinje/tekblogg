@@ -3,7 +3,7 @@ import { getImageDimensions } from "@sanity/asset-utils";
 import { imageUrlBuilder } from "@/lib/sanity-client";
 import type { SanityImageType } from "@/lib/sanity-client";
 
-export async function SanityImage({
+export function SanityImage({
   image,
   className,
   priority = false,

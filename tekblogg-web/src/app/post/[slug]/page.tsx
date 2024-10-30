@@ -18,7 +18,7 @@ export async function generateMetadata(props: { params: Params }) {
 
   const post = await getBlogPost(params.slug);
 
-  if (!post || !post.mainImage?.url) {
+  if (!post) {
     notFound();
   }
 

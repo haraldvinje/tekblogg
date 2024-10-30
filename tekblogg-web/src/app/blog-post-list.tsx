@@ -12,13 +12,13 @@ function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
 }
 
 export function BlogPostList({
-  postsCardData,
+  blogPostCards,
 }: {
-  postsCardData: BlogPostCardData[];
+  blogPostCards: BlogPostCardData[];
 }) {
   const allCategories = useMemo(
     () =>
-      postsCardData
+      blogPostCards
         .flatMap((post) => post.categories)
         .filter(
           (category, index, categories) =>
@@ -27,7 +27,7 @@ export function BlogPostList({
               .indexOf(category.slug.current) === index,
         )
         .filter(notEmpty),
-    [postsCardData],
+    [blogPostCards],
   );
 
   const searchParams = useSearchParams();
@@ -50,8 +50,8 @@ export function BlogPostList({
 
   const filteredPosts =
     selectedCategories.length === 0
-      ? postsCardData
-      : postsCardData.filter((p) =>
+      ? blogPostCards
+      : blogPostCards.filter((p) =>
           p.categories?.some((category) =>
             selectedCategories.includes(category.slug.current),
           ),

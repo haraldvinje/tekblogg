@@ -9,7 +9,7 @@ export function Home({ blogPostCards }: { blogPostCards: BlogPostCardData[] }) {
         Velkommen til TekBlogg!
       </h1>
       <Suspense fallback={<BlogPostCards blogPostCards={blogPostCards} />}>
-        <BlogPostList postsCardData={blogPostCards} />
+        <BlogPostList blogPostCards={blogPostCards} />
       </Suspense>
     </div>
   );
