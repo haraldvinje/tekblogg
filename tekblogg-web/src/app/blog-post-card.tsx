@@ -25,6 +25,8 @@ export const BlogPostCard = ({
     >
       <div className="dark:text-white">
         <SanityImage
+          priority
+          className="rounded-md"
           image={mainImage}
           alt={mainImage.altText ?? "Artikkelbilde"}
           title={mainImage.title ?? "Artikkelbilde"}

@@ -53,7 +53,6 @@ export const BlogPost = ({
         {mainImage ? (
           <SanityImage
             priority
-            loading="eager"
             image={mainImage}
             alt={mainImage.altText ?? "Artikkelbilde"}
             title={mainImage.title ?? "Artikkelbilde"}

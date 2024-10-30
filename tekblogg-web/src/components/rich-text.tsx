@@ -18,7 +18,11 @@ const ptComponents = {
     image: ({ value }: { value: BlockContentImage }) => {
       const { title, alt } = value;
       return (
-        <SanityImage image={value} loading="lazy" title={title} alt={alt} />
+        <SanityImage
+          image={value}
+          title={title ?? "Artikkelbilde"}
+          alt={alt ?? "Artikkelbilde"}
+        />
       );
     },
     code: ({ value }: { value: CodeBlockProps }) => {

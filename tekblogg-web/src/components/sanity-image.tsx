@@ -8,14 +8,19 @@ export function SanityImage({
   image,
   alt,
   title,
+  className,
+  priority = false,
 }: {
   image: SanityImageAsset | BlockContentImage;
   alt: string;
   title: string;
+  className?: string;
+  priority?: boolean;
 }) {
   return (
     <Image
-      className="rounded-md"
+      priority={priority}
+      className={className}
       src={urlFor(image).url()}
       alt={alt}
       title={title}
