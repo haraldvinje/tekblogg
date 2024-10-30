@@ -1,48 +1,32 @@
-"use client";
-
-import { useCallback } from "react";
-import { ImageUrlBuilder, useNextSanityImage } from "next-sanity-image";
-import Image, { ImageProps } from "next/image";
+import Image from "next/image";
+import { getImageDimensions } from "@sanity/asset-utils";
+import type { SanityImageSource } from "@sanity/asset-utils";
 import type { BlockContentImage, SanityImageAsset } from "@/types/sanity.types";
-import client from "@/lib/sanity-client";
+import { urlFor } from "@/lib/sanity-client";
 
-type NextImage = Omit<ImageProps, "src" | "alt">;
-
-type SanityImageProps = NextImage & {
-  image: SanityImageAsset | BlockContentImage;
-  width?: number;
-  height?: number;
-  quality?: number;
-  alt?: string;
-};
-
-export const SanityImage = ({
+export function SanityImage({
   image,
-  alt = "image",
-  title = "image title",
-  width = 1000,
-  quality = 100,
-  ...nextImageProps
-}: SanityImageProps) => {
-  const imageBuilder = useCallback(
-    (imageUrlBuilder: ImageUrlBuilder) =>
-      imageUrlBuilder.width(width).quality(quality),
-    [width, quality],
-  );
-
-  const imageProps = useNextSanityImage(client, image, { imageBuilder });
-
+  alt,
+  title,
+}: {
+  image: SanityImageAsset | BlockContentImage;
+  alt: string;
+  title: string;
+}) {
   return (
     <Image
-      style={{ width: "100%", height: "auto" }}
-      sizes="(max-width: 800px) 100vw, 800px"
+      className="rounded-md"
+      src={urlFor(image).url()}
       alt={alt}
       title={title}
+      width={getImageDimensions(image as SanityImageSource).width}
+      height={getImageDimensions(image as SanityImageSource).height}
       placeholder="blur"
-      blurDataURL="mountains.avif"
-      unoptimized
-      {...imageProps}
-      {...nextImageProps}
+      blurDataURL={urlFor(image).width(24).height(24).blur(10).url()}
+      sizes="
+            (max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            40vw"
     />
   );
-};
+}
