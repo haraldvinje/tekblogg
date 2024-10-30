@@ -25,7 +25,7 @@ export const BlogPostCard = ({
     >
       <div className="dark:text-white">
         <SanityImage
-          className="aspect-video rounded-md object-fill"
+          className="rounded-md"
           quality={100}
           image={mainImage}
           placeholder="blur"
