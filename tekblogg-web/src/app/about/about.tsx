@@ -1,10 +1,7 @@
-"use client";
-
 import Image from "next/image";
 import harald from "@/../public/harald.png";
-import haraldBlurred from "@/../public/harald_blurred.png";
 
-export function About() {
+export async function About() {
   return (
     <div className="prose w-full lg:prose-xl dark:text-white">
       <h1 className="flex justify-center dark:text-white">
@@ -24,7 +21,7 @@ export function About() {
           width={600}
           src={harald}
           placeholder="blur"
-          blurDataURL={haraldBlurred.blurDataURL}
+          blurDataURL={harald.blurDataURL}
           alt="Portrettbilde av Harald Vinje"
           title="Portrettbilde av Harald Vinje"
         />

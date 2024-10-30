@@ -24,13 +24,7 @@ export const BlogPostCard = ({
       className="flex justify-center rounded-md shadow-md transition ease-in-out hover:shadow-xl dark:shadow-slate-900"
     >
       <div className="dark:text-white">
-        <SanityImage
-          priority
-          className="rounded-md"
-          image={mainImage}
-          alt={mainImage.altText ?? "Artikkelbilde"}
-          title={mainImage.title ?? "Artikkelbilde"}
-        />
+        <SanityImage priority className="rounded-md" image={mainImage} />
         <div className="overflow-hidden p-4">
           <p className="text-2xl">{title}</p>
           <div className="my-2 text-xs opacity-60">

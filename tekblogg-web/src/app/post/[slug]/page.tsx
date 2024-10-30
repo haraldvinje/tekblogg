@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { BlogPost } from "./blog-post";
-import { getAllSlugs, getBlogPost, urlFor } from "@/lib/sanity-client";
+import { getAllSlugs, getBlogPost, imageUrlBuilder } from "@/lib/sanity-client";
 import {
   richToPlainText,
   getAppropriateMetaDescriptionText,
@@ -18,19 +18,24 @@ export async function generateMetadata(props: { params: Params }) {
 
   const post = await getBlogPost(params.slug);
 
-  if (!post) {
+  if (!post || !post.mainImage?.url) {
     notFound();
   }
 
-  const { title, mainImage, introduction } = post;
+  const {
+    title,
+    mainImage: { url: mainImageUrl },
+    introduction,
+  } = post;
   const rawIntro = richToPlainText(introduction);
 
   const imageWidth = 1200;
   const imageHeight = 630;
-  const imageUrl = urlFor(mainImage)
+  const imageUrl = imageUrlBuilder(mainImageUrl)
     .width(imageWidth)
     .height(imageHeight)
     .url();
+
   const image = {
     url: imageUrl,
     alt: title,

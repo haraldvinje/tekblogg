@@ -82,20 +82,20 @@ export function BlogPostList({
         )}
       </div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <BlogPostCards postsCardData={filteredPosts} />
+        <BlogPostCards blogPostCards={filteredPosts} />
       </div>
     </>
   );
 }
 
 export function BlogPostCards({
-  postsCardData,
+  blogPostCards,
 }: {
-  postsCardData: BlogPostCardData[];
+  blogPostCards: BlogPostCardData[];
 }) {
   return (
     <>
-      {postsCardData.map((postCardData, index) => (
+      {blogPostCards.map((postCardData, index) => (
         <BlogPostCard key={index} postCardData={postCardData} />
       ))}
     </>

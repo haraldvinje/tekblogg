@@ -1,0 +1,5 @@
+{
+  "path": "'../tekblogg-web/src/**/*.{ts,tsx,js,jsx}'",
+  "schema": "schema.json",
+  "generates": "../tekblogg-web/src/types/sanity.types.ts"
+}

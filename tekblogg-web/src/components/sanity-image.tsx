@@ -1,19 +1,14 @@
 import Image from "next/image";
 import { getImageDimensions } from "@sanity/asset-utils";
-import type { SanityImageSource } from "@sanity/asset-utils";
-import type { BlockContentImage, SanityImageAsset } from "@/types/sanity.types";
-import { urlFor } from "@/lib/sanity-client";
+import { imageUrlBuilder } from "@/lib/sanity-client";
+import type { SanityImageType } from "@/lib/sanity-client";
 
-export function SanityImage({
+export async function SanityImage({
   image,
-  alt,
-  title,
   className,
   priority = false,
 }: {
-  image: SanityImageAsset | BlockContentImage;
-  alt: string;
-  title: string;
+  image: SanityImageType;
   className?: string;
   priority?: boolean;
 }) {
@@ -21,13 +16,13 @@ export function SanityImage({
     <Image
       priority={priority}
       className={className}
-      src={urlFor(image).url()}
-      alt={alt}
-      title={title}
-      width={getImageDimensions(image as SanityImageSource).width}
-      height={getImageDimensions(image as SanityImageSource).height}
+      src={imageUrlBuilder(image.url).url()}
+      alt={image.alt}
+      title={image.title}
+      width={getImageDimensions(image.url).width}
+      height={getImageDimensions(image.url).height}
       placeholder="blur"
-      blurDataURL={urlFor(image).width(24).height(24).blur(10).url()}
+      blurDataURL={image.lqip}
       sizes="
             (max-width: 768px) 100vw,
             (max-width: 1200px) 50vw,

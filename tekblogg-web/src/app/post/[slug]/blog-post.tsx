@@ -1,16 +1,16 @@
 import type { ReactNode } from "react";
-import type { BlogPostCardData } from "@/lib/sanity-client";
 import { formatAuthors, formatDate } from "@/lib/text-utils";
 import { CategoryUi } from "@/components/category-ui";
 import { ShareButtons } from "@/components/share-buttons";
 import { SanityImage } from "@/components/sanity-image";
+import type { BlogPostMetadata } from "@/lib/sanity-client";
 
 export const BlogPost = ({
   postMetadata,
   postIntroductionComponent,
   postBodyComponent,
 }: {
-  postMetadata: BlogPostCardData;
+  postMetadata: BlogPostMetadata;
   postIntroductionComponent: ReactNode;
   postBodyComponent: ReactNode;
 }) => {
@@ -50,14 +50,7 @@ export const BlogPost = ({
           </>
         ) : null}
         {postIntroductionComponent}
-        {mainImage ? (
-          <SanityImage
-            priority
-            image={mainImage}
-            alt={mainImage.altText ?? "Artikkelbilde"}
-            title={mainImage.title ?? "Artikkelbilde"}
-          />
-        ) : null}
+        {mainImage ? <SanityImage priority image={mainImage} /> : null}
         {postBodyComponent}
         <ShareButtons className="justify-center" />
       </article>

@@ -1,7 +1,10 @@
 import { createClient } from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
-import groq from "groq";
-import type * as Schema from "@/types/sanity.types";
+import { defineQuery } from "next-sanity";
+import urlBuilder from "@sanity/image-url";
+import type {
+  GetAllPostsCardDataQueryResult,
+  GetPostQueryResult,
+} from "@/types/sanity.types";
 
 const client = createClient({
   projectId: "jbq2yq78",
@@ -10,26 +13,30 @@ const client = createClient({
   useCdn: true,
 });
 
-export const urlFor = (
-  source: Schema.SanityImageAsset | Schema.BlockContentImage,
-) => imageUrlBuilder(client).image(source);
+export const imageUrlBuilder = (source: string) =>
+  urlBuilder(client).image(source);
 
-const getAllPostsCardDataQuery = groq`
+const getAllPostsCardDataQuery = defineQuery(`
   *[_type == "post"] | order(publishedAt desc) {
     title,
     "categories": categories[]->{title, slug},
     publishedAt,
     "slug": slug.current,
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
-    mainImage,
+    mainImage {
+      "url": asset->url,
+      "lqip": asset->metadata.lqip,
+        title,
+        alt
+    }
   }
-`;
+`);
 
-const getAllSlugsQuery = groq`
+const getAllSlugsQuery = defineQuery(`
   *[_type == "post" && defined(slug.current)][].slug.current
-`;
+`);
 
-const getPostQuery = groq`
+const getPostQuery = defineQuery(`
   *[_type == "post" && slug.current == $slug][0]{
     title,
     "authors": authors[]->name,
@@ -37,18 +44,41 @@ const getPostQuery = groq`
     publishedAt,
     "slug": slug.current,
     "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
-    mainImage,
+    mainImage {
+      "url": asset->url,
+      "lqip": asset->metadata.lqip,
+        title,
+        alt
+    },
     introduction,
-    body
+    body[]{
+      ...,
+      "url": asset->url,
+      "lqip": asset->metadata.lqip,
+    }
   }
-`;
+`);
 
-export type BlogPost = Omit<Schema.Post, "authors"> & {
-  authors: string[];
-  estimatedReadingTime: number;
+type Defined<T> = {
+  [K in keyof T]-?: Exclude<T[K], null>;
 };
 
-export type BlogPostCardData = Omit<BlogPost, "body" | "introduction">;
+export type SanityImageType = Defined<
+  NonNullable<GetPostQueryResult>["mainImage"]
+>;
+
+export type BlogPost = Omit<NonNullable<GetPostQueryResult>, "mainImage"> & {
+  mainImage: SanityImageType;
+};
+
+export type BlogPostMetadata = Omit<BlogPost, "introduction" | "body">;
+
+export type BlogPostCardData = Omit<
+  NonNullable<GetAllPostsCardDataQueryResult[number]>,
+  "mainImage"
+> & {
+  mainImage: SanityImageType;
+};
 
 export const getAllBlogPostsCardData = async () =>
   await client.fetch<BlogPostCardData[]>(getAllPostsCardDataQuery);
@@ -57,6 +87,6 @@ export const getAllSlugs = async () =>
   await client.fetch<string[]>(getAllSlugsQuery);
 
 export const getBlogPost = async (slug: string) =>
-  client.fetch<BlogPost>(getPostQuery, { slug }).catch(() => null);
+  await client.fetch<BlogPost>(getPostQuery, { slug }).catch(() => null);
 
 export default client;
