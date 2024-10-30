@@ -5,7 +5,7 @@ import { ShareButtons } from "@/components/share-buttons";
 import { SanityImage } from "@/components/sanity-image";
 import type { BlogPostMetadata } from "@/lib/sanity-client";
 
-export const BlogPost = ({
+export function BlogPost({
   postMetadata,
   postIntroductionComponent,
   postBodyComponent,
@@ -13,7 +13,7 @@ export const BlogPost = ({
   postMetadata: BlogPostMetadata;
   postIntroductionComponent: ReactNode;
   postBodyComponent: ReactNode;
-}) => {
+}) {
   const {
     title,
     authors,
@@ -56,4 +56,4 @@ export const BlogPost = ({
       </article>
     </>
   );
-};
+}
