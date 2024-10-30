@@ -37,3 +37,5 @@ export const generateCanonicalUrl = (path?: string) => {
   const cleanPath = path?.replace(/^\/|\/$/g, "");
   return new URL(cleanPath ? baseUrl + "/" + cleanPath : baseUrl);
 };
+
+export const BASE_URL = generateCanonicalUrl().toString();
