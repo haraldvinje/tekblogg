@@ -1,5 +1,6 @@
 import globals from 'globals'
 import pluginJs from '@eslint/js'
+import pluginNext from '@next/eslint-plugin-next'
 import tailwindcss from 'eslint-plugin-tailwindcss'
 import importPlugin from 'eslint-plugin-import'
 import noRelativeImportsPlugin from 'eslint-plugin-no-relative-import-paths'
@@ -8,7 +9,8 @@ import pluginReactConfig from 'eslint-plugin-react/configs/recommended.js'
 import { fixupConfigRules } from '@eslint/compat'
 
 export default [
-  pluginJs.configs.recommended,
+  pluginNext.configs.recommended,
+  ...pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   ...fixupConfigRules(pluginReactConfig),
   {

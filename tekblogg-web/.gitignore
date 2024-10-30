@@ -38,3 +38,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# editor
+.vscode
+.idea
+
+# sitemap
+sitemap.xml
+sitemap-0.xml
+
+# service workers
+**/public/workbox-*.js
+**/public/sw.js
+**/public/worker-*.js
+**/public/~partytown/
+**/public/swe-*.js
