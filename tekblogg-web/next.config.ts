@@ -12,10 +12,6 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "nextjs.gallery",
       },
-      {
-        protocol: "http",
-        hostname: "localhost",
-      },
     ],
   },
   compiler: {
