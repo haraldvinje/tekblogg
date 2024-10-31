@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import type { ImageProps } from "next/image";
 import { getImageDimensions } from "@sanity/asset-utils";
@@ -16,11 +18,16 @@ export function SanityImage({
   className?: string;
   priority?: boolean;
 } & NextImage) {
+  const width =
+    (nextImageProps.width as number) ?? getImageDimensions(image).width;
+  const url = imageUrlBuilder(image.url).width(width).dpr(2).quality(100).url();
+
   return (
     <Image
       priority={priority}
       className={className}
-      src={imageUrlBuilder(image.url).url()}
+      src={image.url}
+      loader={() => url}
       alt={image.alt}
       title={image.title}
       width={getImageDimensions(image.url).width}
@@ -28,10 +35,6 @@ export function SanityImage({
       placeholder="blur"
       blurDataURL={image.lqip}
       {...nextImageProps}
-      sizes="
-            (max-width: 768px) 100vw,
-            (max-width: 1200px) 50vw,
-            40vw"
     />
   );
 }

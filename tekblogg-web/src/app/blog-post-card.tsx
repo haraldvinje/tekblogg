@@ -27,6 +27,7 @@ export function BlogPostCard({
         <SanityImage
           priority
           width={600}
+          height={400}
           className="rounded-md"
           image={mainImage}
         />
