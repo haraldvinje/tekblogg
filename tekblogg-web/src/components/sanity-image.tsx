@@ -11,28 +11,33 @@ type NextImage = Omit<ImageProps, "src" | "alt">;
 export function SanityImage({
   image,
   className,
-  priority = false,
+  maxWidth = 1000,
   ...nextImageProps
 }: {
   image: SanityImageType;
   className?: string;
+  maxWidth?: number;
   priority?: boolean;
 } & NextImage) {
-  const width = (nextImageProps.width as number) ?? 600;
-  const url = imageUrlBuilder(image.url).width(width).dpr(2).quality(100).url();
-
   return (
     <Image
-      priority={priority}
       className={className}
       src={image.url}
-      loader={() => url}
+      loader={({ width }) => {
+        const finalWidth = width > maxWidth ? maxWidth : width;
+        return imageUrlBuilder(image.url)
+          .width(finalWidth)
+          .dpr(2)
+          .quality(100)
+          .url();
+      }}
       alt={image.alt}
       title={image.title}
       width={getImageDimensions(image.url).width}
       height={getImageDimensions(image.url).height}
       placeholder="blur"
       blurDataURL={image.lqip}
+      sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 30vw"
       {...nextImageProps}
     />
   );

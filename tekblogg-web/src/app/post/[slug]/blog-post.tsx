@@ -39,9 +39,10 @@ export function BlogPost({
         </div>
         {categories ? (
           <>
-            <div className="flex flex-wrap">
+            <div className="my-2 flex flex-wrap">
               <span className="mr-2">
-                <i>Kategorier:</i>
+                {categories.length > 1 && <i>Kategorier:</i>}
+                {categories.length == 1 && <i>Kategori:</i>}
               </span>
               {categories.map((category, index) => (
                 <CategoryUi key={index} value={category.title} />
@@ -50,7 +51,9 @@ export function BlogPost({
           </>
         ) : null}
         {postIntroductionComponent}
-        {mainImage ? <SanityImage priority image={mainImage} /> : null}
+        {mainImage ? (
+          <SanityImage priority maxWidth={500} image={mainImage} />
+        ) : null}
         {postBodyComponent}
         <ShareButtons className="justify-center" />
       </article>

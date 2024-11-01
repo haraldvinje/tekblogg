@@ -28,6 +28,7 @@ export function BlogPostCard({
           priority
           width={600}
           height={400}
+          maxWidth={256}
           className="rounded-md"
           image={mainImage}
         />
