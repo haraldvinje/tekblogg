@@ -18,8 +18,7 @@ export function SanityImage({
   className?: string;
   priority?: boolean;
 } & NextImage) {
-  const width =
-    (nextImageProps.width as number) ?? getImageDimensions(image).width;
+  const width = (nextImageProps.width as number) ?? 600;
   const url = imageUrlBuilder(image.url).width(width).dpr(2).quality(100).url();
 
   return (
