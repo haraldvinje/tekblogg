@@ -17,7 +17,7 @@ type SanityLink = {
 const ptComponents = {
   types: {
     image: ({ value }: { value: SanityImageType }) => {
-      return <SanityImage image={value} />;
+      return <SanityImage className="m-auto" image={value} />;
     },
     code: ({ value }: { value: CodeBlockProps }) => {
       return (
