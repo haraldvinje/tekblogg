@@ -1,5 +1,6 @@
 import "normalize.css";
 import "./globals.css";
+import type { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import localFont from "next/font/local";
@@ -79,7 +80,7 @@ export const viewport: Viewport = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   const gtmId = process.env.NEXT_PUBLIC_GTM_CONTAINER_ID ?? "";
 
