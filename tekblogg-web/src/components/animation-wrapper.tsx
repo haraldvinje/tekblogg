@@ -9,18 +9,16 @@ export function AnimationWrapper({ children }: { children: ReactNode }) {
   const { initial, animate, exit } = variants;
 
   return (
-    <>
-      <AnimatePresence>
-        <motion.div
-          className="flex w-full flex-col items-center justify-center"
-          initial={initial}
-          animate={animate}
-          exit={exit}
-          transition={transition}
-        >
-          {children}
-        </motion.div>
-      </AnimatePresence>
-    </>
+    <AnimatePresence>
+      <motion.div
+        className="flex w-full flex-col items-center justify-center"
+        initial={initial}
+        animate={animate}
+        exit={exit}
+        transition={transition}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
   );
 }
