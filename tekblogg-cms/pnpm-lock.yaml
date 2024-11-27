@@ -45,7 +45,7 @@ importers:
     devDependencies:
       '@sanity/cli':
         specifier: ^3.26.0
-        version: 3.64.3(react@18.3.1)
+        version: 3.65.0(react@18.3.1)
       prettier:
         specifier: ^3.0.0
         version: 3.4.1
@@ -1333,11 +1333,6 @@ packages:
   '@sanity/block-tools@3.65.0':
     resolution: {integrity: sha512-0YgZAU0rX1MjWli5QF+KHWLN41pIahtt62kS+05Y6yJ539e0c89Az+vzmqaYwvaeNPRcoJR0NU1iPoB64eaAUg==}
 
-  '@sanity/cli@3.64.3':
-    resolution: {integrity: sha512-+pXEOs7Ood+xrFU3OJP3Dp5aGb6ek9J+YjmMKWCal04VSeiqKCzIK36Yulu6m7yYxACHlDitxOAPWkfIZE3VKg==}
-    engines: {node: '>=18'}
-    hasBin: true
-
   '@sanity/cli@3.65.0':
     resolution: {integrity: sha512-JZ3zBLYODY9Q4pNH3jCenrF390+JwsYbP9WDQp1gVxvtQuii9QljDPV70rumRrwVeE9JdzOIjBiZUBFUt8lRZQ==}
     engines: {node: '>=18'}
@@ -1355,10 +1350,6 @@ packages:
       react-dom: ^18
       sanity: ^3
       styled-components: ^5.2 || ^6
-
-  '@sanity/codegen@3.64.3':
-    resolution: {integrity: sha512-N9DMm9qyVYeBYXcWD1S21eyqhBlKLnQiWToeYBviCs7VUsNz7CaXkaF1t5rG0iOexZoAjipvPAIIvfTXckyx/Q==}
-    engines: {node: '>=18'}
 
   '@sanity/codegen@3.65.0':
     resolution: {integrity: sha512-UE4aHCE5YXxI8H4lDm4qBW8w0Xzl+8a0l10KQ67fWyTd7MhRF+7smnbNOJ170iDxwRZXo/KwrXKBgqny+DWang==}
@@ -1479,9 +1470,6 @@ packages:
   '@sanity/types@3.37.2':
     resolution: {integrity: sha512-1EfKkNlJ86wIDtc7oFHb79JI8lKDOxKDYrkmwhvuHgJY83GpSABc1kFdbwAtWZfrWVWyqVXUv/KlNwA3b99y/g==}
 
-  '@sanity/types@3.64.3':
-    resolution: {integrity: sha512-xO3vH+eBt8LvX5/Ujk7i6Y39bsmV1KfY1RCuXb4h+KlyRzt+ercum80W0ScMFbuazM8IaPSIkj1KVkKmMwBgpQ==}
-
   '@sanity/types@3.65.0':
     resolution: {integrity: sha512-UHpxt//qXWeNSauOFRzZbtSZ9wRGJ92L/DKzFZBEvAdqZkotKmgl7qgbmXwwOw4Gjm1bmf5H/14cKoB+Af0mZw==}
 
@@ -1505,10 +1493,6 @@ packages:
 
   '@sanity/util@3.37.2':
     resolution: {integrity: sha512-hq0eLjyV2iaOm9ivtPw12YTQ4QsE3jnV/Ui0zhclEhu8Go5JiaEhFt2+WM2lLGRH6qcSA414QbsCNCcyhJL6rA==}
-    engines: {node: '>=18'}
-
-  '@sanity/util@3.64.3':
-    resolution: {integrity: sha512-Y1YbycCXWwpFz4KoOCDPv0ly5CVOyqkqmFE3U7rafnYhdBLkDhFgMAv2u0L5DOcj2oyZ2OWnsvcc1Ffwv/7+LQ==}
     engines: {node: '>=18'}
 
   '@sanity/util@3.65.0':
@@ -2822,10 +2806,6 @@ packages:
   groq-js@1.14.0:
     resolution: {integrity: sha512-nrrEswAovzFcG2nXWHCwbXq0ciavKSq8ZvuqT93zxIHWGX3FYCN+MkvHyYRTVuM4SuQAjU7FXkcN3DBt4BHTxA==}
     engines: {node: '>= 14'}
-
-  groq@3.64.3:
-    resolution: {integrity: sha512-z9Qa8fHAOC3tdNJrlPAqWF0L1dVvss0r4E0lvijLPHrEmR03VuzIcc3f4Fk1/Plwabj5GwZmGwHecc9te7KJ5A==}
-    engines: {node: '>=18'}
 
   groq@3.65.0:
     resolution: {integrity: sha512-oUduPA88LIINjOJRCdwY7o5CD7rp6xnaDpSvtIe84Q/cr94KYqXPO6BShRVrKQ/I2OJdGA3Jrcu3SfV4oJuMJw==}
@@ -6784,29 +6764,6 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@sanity/cli@3.64.3(react@18.3.1)':
-    dependencies:
-      '@babel/traverse': 7.25.9
-      '@sanity/client': 6.22.5(debug@4.3.7)
-      '@sanity/codegen': 3.64.3
-      '@sanity/telemetry': 0.7.9(react@18.3.1)
-      '@sanity/util': 3.64.3(debug@4.3.7)
-      chalk: 4.1.2
-      debug: 4.3.7
-      decompress: 4.2.1
-      esbuild: 0.21.5
-      esbuild-register: 3.6.0(esbuild@0.21.5)
-      get-it: 8.6.5(debug@4.3.7)
-      groq-js: 1.14.0
-      pkg-dir: 5.0.0
-      prettier: 3.4.1
-      semver: 7.6.3
-      silver-fleece: 1.1.0
-      validate-npm-package-name: 3.0.0
-    transitivePeerDependencies:
-      - react
-      - supports-color
-
   '@sanity/cli@3.65.0(react@18.3.1)':
     dependencies:
       '@babel/traverse': 7.25.9
@@ -6871,26 +6828,6 @@ snapshots:
       - '@lezer/common'
       - codemirror
       - react-is
-
-  '@sanity/codegen@3.64.3':
-    dependencies:
-      '@babel/core': 7.26.0
-      '@babel/generator': 7.26.2
-      '@babel/preset-env': 7.26.0(@babel/core@7.26.0)
-      '@babel/preset-react': 7.25.9(@babel/core@7.26.0)
-      '@babel/preset-typescript': 7.26.0(@babel/core@7.26.0)
-      '@babel/register': 7.25.9(@babel/core@7.26.0)
-      '@babel/traverse': 7.25.9
-      '@babel/types': 7.26.0
-      debug: 4.3.7
-      globby: 10.0.2
-      groq: 3.64.3
-      groq-js: 1.14.0
-      json5: 2.2.3
-      tsconfig-paths: 4.2.0
-      zod: 3.23.8
-    transitivePeerDependencies:
-      - supports-color
 
   '@sanity/codegen@3.65.0':
     dependencies:
@@ -7132,13 +7069,6 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@sanity/types@3.64.3(debug@4.3.7)':
-    dependencies:
-      '@sanity/client': 6.22.5(debug@4.3.7)
-      '@types/react': 18.3.12
-    transitivePeerDependencies:
-      - debug
-
   '@sanity/types@3.65.0(debug@4.3.7)':
     dependencies:
       '@sanity/client': 6.22.5(debug@4.3.7)
@@ -7178,16 +7108,6 @@ snapshots:
     dependencies:
       '@sanity/client': 6.22.5(debug@4.3.7)
       '@sanity/types': 3.37.2(debug@4.3.7)
-      get-random-values-esm: 1.0.2
-      moment: 2.30.1
-      rxjs: 7.8.1
-    transitivePeerDependencies:
-      - debug
-
-  '@sanity/util@3.64.3(debug@4.3.7)':
-    dependencies:
-      '@sanity/client': 6.22.5(debug@4.3.7)
-      '@sanity/types': 3.64.3(debug@4.3.7)
       get-random-values-esm: 1.0.2
       moment: 2.30.1
       rxjs: 7.8.1
@@ -8937,8 +8857,6 @@ snapshots:
       debug: 4.3.7
     transitivePeerDependencies:
       - supports-color
-
-  groq@3.64.3: {}
 
   groq@3.65.0: {}
 
