@@ -6,10 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src/**",
+    "lint": "eslint src/** && tsc --noEmit --incremental",
     "lint:fix": "eslint src/** --fix",
     "prettier": "prettier --write src",
-    "ts-lint": "tsc --noEmit --incremental",
     "clean": "rm -rf node_modules .next",
     "prepare": "cd .. && husky tekblogg-web/.husky",
     "test": "jest"

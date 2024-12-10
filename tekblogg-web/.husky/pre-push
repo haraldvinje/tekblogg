@@ -1,2 +1,2 @@
 cd tekblogg-web
-bun ts-lint
+bun lint
