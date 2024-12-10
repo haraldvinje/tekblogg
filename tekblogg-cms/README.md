@@ -8,7 +8,6 @@ Tekblogg uses [Sanity](https://www.sanity.io/) as a CMS.
 
 ## Getting started
 
-
 1. Install dependencies: `pnpm install`
 
 2. Develop studio locally: `pnpm dev`

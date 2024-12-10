@@ -8,6 +8,9 @@ jobs:
     name: Deploy to Sanity
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
+    defaults:
+      run:
+        working-directory: ./tekblogg-cms
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -24,7 +27,10 @@ jobs:
         with:
           version: 9
 
+      - name: Install and lint
+        run: pnpm install && pnpm lint
+
       - name: Deploy
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
-        run: cd tekblogg-cms && pnpm install && pnpm run deploy
+        run: pnpm run deploy
