@@ -38,7 +38,7 @@
     "prettier": "^3.4.2"
   },
   "resolutions": {
-    "@codemirror/state": "6.5.0",
+    "@codemirror/state": "6.5.1",
     "glob": "^11.0.0"
   }
 }
