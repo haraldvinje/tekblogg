@@ -8,8 +8,10 @@ export type CodeBlockProps = {
 
 export function CodeBlock({ code, language, filename }: CodeBlockProps) {
   return (
-    <Code theme="one-dark-pro" lang={language} title={filename} lineNumbers>
-      {code}
-    </Code>
+    <div className="max-w-[calc(100vw-2rem)] overflow-x-auto">
+      <Code theme="one-dark-pro" lang={language} title={filename} lineNumbers>
+        {code}
+      </Code>
+    </div>
   );
 }

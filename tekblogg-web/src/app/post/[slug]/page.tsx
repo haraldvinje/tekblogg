@@ -89,13 +89,13 @@ export default async function BlogPostPage(props: { params: Params }) {
   const { introduction: _, body: __, ...postMetadata } = post;
   const postIntroductionServerComponent = (
     <RichText
-      className="prose hyphens-auto text-xl font-bold dark:prose-invert sm:hyphens-none"
+      className="prose max-w-none hyphens-auto text-xl font-bold dark:prose-invert sm:hyphens-none"
       value={post.introduction}
     />
   );
   const postBodyServerComponent = (
     <RichText
-      className="prose overflow-hidden hyphens-auto dark:prose-invert sm:hyphens-none"
+      className="prose max-w-none overflow-hidden hyphens-auto dark:prose-invert sm:hyphens-none"
       value={post.body}
     />
   );

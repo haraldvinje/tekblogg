@@ -9,7 +9,7 @@ export function Navbar() {
 
   return (
     <nav className="top-0 z-20 flex h-16 w-full bg-dark text-white sm:h-20">
-      <div className="w-[15%] xl:w-[20%]"></div>
+      <div className="w-[5%] xl:w-[20%]"></div>
       <div className="flex grow items-center justify-between space-x-2">
         <Link
           href="/"
@@ -29,7 +29,7 @@ export function Navbar() {
           Info
         </Link>
       </div>
-      <div className="flex w-[15%] xl:w-[20%]"></div>
+      <div className="flex w-[5%] xl:w-[20%]"></div>
     </nav>
   );
 }

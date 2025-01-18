@@ -95,7 +95,7 @@ export default function RootLayout({
           enableColorScheme={false}
         >
           <Navbar />
-          <main className="m-auto my-10 flex w-[70%] justify-center xl:w-[60%]">
+          <main className="m-auto my-10 flex w-[calc(100vw-2rem)] justify-center xl:w-[60%]">
             {children}
           </main>
         </ThemeProvider>
