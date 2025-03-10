@@ -1,7 +1,6 @@
 import globals from "globals";
 import jsPlugin from "@eslint/js";
 import nextPlugin from "@next/eslint-plugin-next";
-import tailwindcssPlugin from "eslint-plugin-tailwindcss";
 import importPlugin from "eslint-plugin-import";
 import noRelativeImportsPlugin from "eslint-plugin-no-relative-import-paths";
 import tseslint from "typescript-eslint";
@@ -23,7 +22,6 @@ export default [
   },
   {
     plugins: {
-      tailwindcss: tailwindcssPlugin,
       import: importPlugin,
       "no-relative-import-paths": noRelativeImportsPlugin,
     },
@@ -46,18 +44,6 @@ export default [
         },
       ],
       "react/react-in-jsx-scope": "off",
-      "tailwindcss/classnames-order": [
-        "warn",
-        {
-          officialSorting: true,
-        },
-      ],
-      "tailwindcss/no-custom-classname": [
-        "warn",
-        {
-          whitelist: ["fa-.+"],
-        },
-      ],
       "import/order": [
         "warn",
         {
