@@ -101,7 +101,7 @@ export default async function BlogPostPage(props: { params: Params }) {
   );
 
   return (
-    <AnimationWrapper>
+    <AnimationWrapper className="flex flex-col items-center">
       <BlogPost
         postMetadata={postMetadata}
         postIntroductionComponent={postIntroductionServerComponent}
