@@ -21,7 +21,7 @@
     "@next/third-parties": "15.2.4",
     "@portabletext/react": "3.2.1",
     "@sanity/asset-utils": "2.2.1",
-    "@sanity/client": "6.28.3",
+    "@sanity/client": "6.28.4",
     "@sanity/image-url": "1.1.0",
     "@vercel/analytics": "1.5.0",
     "@vercel/speed-insights": "1.2.0",
