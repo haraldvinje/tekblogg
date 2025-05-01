@@ -38,7 +38,7 @@
     "styled-components": "6.1.17"
   },
   "devDependencies": {
-    "@eslint/compat": "1.2.8",
+    "@eslint/compat": "1.2.9",
     "@next/eslint-plugin-next": "15.3.1",
     "@tailwindcss/postcss": "4.1.4",
     "@tailwindcss/typography": "0.5.16",
