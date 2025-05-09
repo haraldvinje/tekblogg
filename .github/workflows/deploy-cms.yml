@@ -20,12 +20,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: './tekblogg-cms/.tool-versions'
+          node-version-file: '.tool-versions'
 
-      - name: Setup pnpm 9
+      - name: Setup pnpm 10
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
 
       - name: Install and lint
         run: pnpm install && pnpm lint

@@ -41,7 +41,7 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version-file: ./tekblogg-web/.tool-versions
+          bun-version-file: .tool-versions
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
