@@ -29,14 +29,14 @@ export async function About() {
       <p>
         Harald Vinje fullførte sivilingeniørgrad i Datateknologi fra NTNU i
         2020, og har jobbet både som konsulent og in house-utvikler. For tiden
-        jobber Harald som seniorkonsulent hos{" "}
+        jobber Harald som selvstendig IT-konsulent i sitt eget selskap,{" "}
         <a
           className="dark:text-white"
-          href="https://item.no/"
+          href="https://www.vintech.no/"
           target="_blank"
           rel="noreferrer"
         >
-          Item Consulting
+          VinTech AS
         </a>
         .
       </p>
