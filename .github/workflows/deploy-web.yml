@@ -43,6 +43,10 @@ jobs:
         with:
           bun-version-file: .tool-versions
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .tool-versions
+
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
