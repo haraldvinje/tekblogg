@@ -20,7 +20,7 @@
         "framer-motion": "12.23.12",
         "next": "15.5.2",
         "next-absolute-url": "1.2.2",
-        "next-sanity": "10.0.14",
+        "next-sanity": "10.0.15",
         "next-themes": "0.4.6",
         "normalize.css": "8.0.1",
         "react": "19.1.1",
@@ -1530,7 +1530,7 @@
 
     "graphemer": ["graphemer@1.4.0", "", {}, "sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag=="],
 
-    "groq": ["groq@4.5.0", "", {}, "sha512-gAvcn4Y6KUwH/DVS59vIBw5kxzFlV8KDaKqa0M+BOa6EdzuoTeXSpGIH1wmKT+Yv6w3XqPVw5ArKQWsG810hog=="],
+    "groq": ["groq@4.6.0", "", {}, "sha512-nQdkN9z5cCS51qOFk7wP+BpPgCOqVRpQF+U4hPezO5PrIA0HBIuPwwZayjnvP93CXsMnNJa0GnQn7/Xlam8DiQ=="],
 
     "groq-js": ["groq-js@1.17.0", "", { "dependencies": { "debug": "^4.3.4" } }, "sha512-aFotRl41jeRY4jg5G+Bjbsn/GmrKYa6amDQc+YiZP7Wg6pNfVtfF8Q/a99VGdT5PCzzQ7wM9YI8CKJaW4SQlKQ=="],
 
@@ -1964,7 +1964,7 @@
 
     "next-absolute-url": ["next-absolute-url@1.2.2", "", {}, "sha512-Z2+LZXQTthhw2je9u4eq8QWXxXd57a6b54x9exBfQX4Dct6YxaMjcXZWNLHd9AOlCue84EsMpdSGP7wACqUnPg=="],
 
-    "next-sanity": ["next-sanity@10.0.14", "", { "dependencies": { "@portabletext/react": "^3.2.4", "@sanity/client": "^7.9.0", "@sanity/next-loader": "^2.1.0", "@sanity/preview-url-secret": "^2.1.14", "@sanity/visual-editing": "^3.0.3", "groq": "^4.5.0", "history": "^5.3.0" }, "peerDependencies": { "next": "^15.1", "react": "^19", "react-dom": "^19", "sanity": "^4.5.0", "styled-components": "^6.1" } }, "sha512-M+OlW5br8BkvZXeWE2kXBw3nT5bAuN2B3t3Sa3/ZyOBSEMFbupCEDn7W7cEO0d9bcVJfn/Y4xCvhr6+wn4ezsQ=="],
+    "next-sanity": ["next-sanity@10.0.15", "", { "dependencies": { "@portabletext/react": "^4.0.1", "@sanity/client": "^7.10.0", "@sanity/next-loader": "^2.1.0", "@sanity/preview-url-secret": "^2.1.14", "@sanity/visual-editing": "^3.0.3", "groq": "^4.6.0", "history": "^5.3.0" }, "peerDependencies": { "next": "^15.1", "react": "^19", "react-dom": "^19", "sanity": "^4.6.0", "styled-components": "^6.1" } }, "sha512-tAiq2IelI8jqNvUFZEFtYro5Mn5+jYEJWNkqn81rTSWYpNN2aSNFrB3ahqXctpeJr2Dq7zRqABOi+qfkwLUzHg=="],
 
     "next-themes": ["next-themes@0.4.6", "", { "peerDependencies": { "react": "^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc", "react-dom": "^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc" } }, "sha512-pZvgD5L0IEvX5/9GWyHMf3m8BKiVQwsCMHfoFosXtXBMnaS0ZnIJ9ST4b4NqLVKDEm8QBxoNNGNaBv2JNF6XNA=="],
 
@@ -2980,7 +2980,7 @@
 
     "next/postcss": ["postcss@8.4.31", "", { "dependencies": { "nanoid": "^3.3.6", "picocolors": "^1.0.0", "source-map-js": "^1.0.2" } }, "sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ=="],
 
-    "next-sanity/@sanity/client": ["@sanity/client@7.9.0", "", { "dependencies": { "@sanity/eventsource": "^5.0.2", "get-it": "^8.6.9", "nanoid": "^3.3.11", "rxjs": "^7.0.0" } }, "sha512-CTkelmFDylaIXw8M76GkkfJyYd/f9NFcsLwhuLU0NOqNcnwqlTqUWyy6MY7h5IJC9IJbDttZeRhMwnc/WGcLXg=="],
+    "next-sanity/@portabletext/react": ["@portabletext/react@4.0.1", "", { "dependencies": { "@portabletext/toolkit": "^3.0.0", "@portabletext/types": "^2.0.15" }, "peerDependencies": { "react": "^18.2 || ^19" } }, "sha512-S1MNyGQERpdU5bVUYGDWyyHkTiedwnuOHSMPgLr96yJmLKGcyHTcwPktqcgPuaCxsRUrqPVR89IYFsGW2JKn3w=="],
 
     "normalize-package-data/semver": ["semver@7.7.2", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA=="],
 
@@ -3349,6 +3349,8 @@
     "log-update/slice-ansi/ansi-styles": ["ansi-styles@6.2.1", "", {}, "sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug=="],
 
     "log-update/slice-ansi/is-fullwidth-code-point": ["is-fullwidth-code-point@5.0.0", "", { "dependencies": { "get-east-asian-width": "^1.0.0" } }, "sha512-OVa3u9kkBbw7b8Xw5F9P+D/T9X+Z4+JruYVNapTjPYZYUznQ5YfWeFkOj606XYYW8yugTfC8Pj0hYqvi4ryAhA=="],
+
+    "next-sanity/@portabletext/react/@portabletext/toolkit": ["@portabletext/toolkit@3.0.0", "", { "dependencies": { "@portabletext/types": "^2.0.13" } }, "sha512-50otiRkac8unAAU+U9VdhpkZ4FqTG64kzz/6ckeBigKG/cGSU8YZLfmvDhdMH8tw+/uTI7d9Skwqm8RnTHZwDw=="],
 
     "ora/cli-cursor/restore-cursor": ["restore-cursor@3.1.0", "", { "dependencies": { "onetime": "^5.1.0", "signal-exit": "^3.0.2" } }, "sha512-l+sSefzHpj5qimhFSE5a8nufZYAM3sBSVMAPtYkmC+4EH2anSGaEMXSD0izRQbu9nfyQ9y5JrVmp7E8oZrUjvA=="],
 
