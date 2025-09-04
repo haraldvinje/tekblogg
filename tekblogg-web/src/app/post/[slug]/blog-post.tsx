@@ -1,3 +1,5 @@
+"use client";
+
 import type { ReactNode } from "react";
 import { formatAuthors, formatDate } from "@/lib/text-utils";
 import { CategoryUi } from "@/components/category-ui";
@@ -24,39 +26,95 @@ export function BlogPost({
   } = postMetadata;
 
   return (
-    <>
-      <article className="prose w-full dark:prose-invert">
-        <h1 className="flex justify-center">{title}</h1>
-        <div className="flex flex-col space-y-2">
-          <span className="flex items-center justify-between">
-            {formatAuthors(authors)}
-            <ShareButtons />
-          </span>
-          <p>
-            <b>{formatDate(publishedAt)}</b>
-          </p>
-          <p>{`${estimatedReadingTime} min lesning`}</p>
-        </div>
-        {categories ? (
-          <>
-            <div className="my-2 flex flex-wrap">
-              <span className="mr-2">
-                {categories.length > 1 && <i>Kategorier:</i>}
-                {categories.length == 1 && <i>Kategori:</i>}
-              </span>
-              {categories.map((category, index) => (
-                <CategoryUi key={index} value={category.title} />
-              ))}
+    <div className="relative">
+      <div className="mx-auto max-w-4xl">
+        <header className="mb-12 text-center">
+          <h1 className="mb-6 text-4xl font-bold tracking-tight text-primary sm:text-5xl lg:text-6xl">
+            {title}
+          </h1>
+
+          <div className="mx-auto max-w-2xl">
+            <div className="mb-6 flex flex-col items-center space-y-4 sm:flex-row sm:justify-center sm:space-x-8 sm:space-y-0">
+              <div className="flex items-center space-x-4">
+                <span className="text-lg font-medium text-primary">
+                  {formatAuthors(authors)}
+                </span>
+                <span className="h-1 w-1 rounded-full bg-gray-400"></span>
+                <time
+                  dateTime={publishedAt}
+                  className="text-lg font-medium text-secondary"
+                >
+                  {formatDate(publishedAt)}
+                </time>
+              </div>
+              <div className="flex items-center space-x-1 text-secondary">
+                <svg
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span className="text-lg">
+                  {estimatedReadingTime} min lesning
+                </span>
+              </div>
             </div>
-          </>
-        ) : null}
-        {postIntroductionComponent}
-        {mainImage ? (
-          <SanityImage priority maxWidth={500} image={mainImage} />
-        ) : null}
-        {postBodyComponent}
-        <ShareButtons className="justify-center" />
-      </article>
-    </>
+
+            {categories && categories.length > 0 && (
+              <div className="mb-6 flex flex-wrap justify-center gap-2">
+                {categories.map((category, index) => (
+                  <CategoryUi key={index} value={category.title} />
+                ))}
+              </div>
+            )}
+
+            <ShareButtons className="justify-center" />
+          </div>
+
+          <div className="mx-auto mt-8 h-px w-24 bg-gradient-to-r from-primary-300 to-accent-300 dark:from-primary-600 dark:to-accent-600" />
+        </header>
+
+        <article className="mx-auto max-w-3xl">
+          <div className="mb-8 rounded-2xl bg-surface-elevated p-8 ring-1 ring-gray-200 dark:ring-gray-700">
+            <div className="prose prose-lg max-w-none text-secondary dark:prose-invert">
+              {postIntroductionComponent}
+            </div>
+          </div>
+
+          {mainImage && (
+            <div className="mb-12">
+              <div className="overflow-hidden rounded-2xl shadow-lg">
+                <SanityImage
+                  priority
+                  maxWidth={800}
+                  image={mainImage}
+                  className="w-full"
+                />
+              </div>
+            </div>
+          )}
+
+          <div className="prose prose-lg max-w-none text-primary dark:prose-invert">
+            {postBodyComponent}
+          </div>
+
+          <div className="mt-16 border-t border-gray-200 pt-8 dark:border-gray-700">
+            <div className="text-center">
+              <p className="mb-4 text-lg font-medium text-secondary">
+                Fant du artikkelen nyttig? Del den gjerne!
+              </p>
+              <ShareButtons className="justify-center" />
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
   );
 }
