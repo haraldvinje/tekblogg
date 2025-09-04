@@ -88,20 +88,17 @@ export default async function BlogPostPage(props: { params: Params }) {
 
   const { introduction: _, body: __, ...postMetadata } = post;
   const postIntroductionServerComponent = (
-    <RichText
-      className="prose max-w-none hyphens-auto text-xl font-bold dark:prose-invert sm:hyphens-none"
-      value={post.introduction}
-    />
+    <RichText className="text-lg leading-relaxed" value={post.introduction} />
   );
   const postBodyServerComponent = (
     <RichText
-      className="prose max-w-none overflow-hidden hyphens-auto dark:prose-invert sm:hyphens-none"
+      className="overflow-hidden hyphens-auto sm:hyphens-none"
       value={post.body}
     />
   );
 
   return (
-    <AnimationWrapper className="flex flex-col items-center">
+    <AnimationWrapper className="min-h-screen py-8">
       <BlogPost
         postMetadata={postMetadata}
         postIntroductionComponent={postIntroductionServerComponent}

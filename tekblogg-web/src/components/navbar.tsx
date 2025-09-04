@@ -8,28 +8,56 @@ export function Navbar() {
   const path = usePathname();
 
   return (
-    <nav className="top-0 z-20 flex h-16 w-full bg-dark text-white sm:h-20">
-      <div className="w-[5%] xl:w-[20%]"></div>
-      <div className="flex grow items-center justify-between space-x-2">
-        <Link
-          href="/"
-          className={`flex items-center text-2xl leading-snug transition duration-300 ease-in-out hover:opacity-60 sm:p-2 ${
-            path === "/" && "font-extrabold"
-          }`}
-        >
-          Blogg
-        </Link>
-        <ThemeSwitcher />
-        <Link
-          href="/about"
-          className={`flex items-center text-2xl leading-snug transition duration-300 ease-in-out hover:opacity-60 sm:p-2 ${
-            path === "/about" && "font-extrabold"
-          }`}
-        >
-          Info
-        </Link>
+    <nav className="sticky top-0 z-50 border-b border-default bg-surface/80 backdrop-blur-md">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <Link
+            href="/"
+            className={`flex items-center space-x-2 transition-all duration-200 hover:opacity-80 ${
+              path === "/" ? "opacity-100" : "opacity-90"
+            }`}
+          >
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary-800 to-primary-900 text-white shadow-lg">
+              <span className="text-sm font-bold">T</span>
+            </div>
+            <span className="text-xl font-bold tracking-tight text-primary">
+              TekBlogg
+            </span>
+          </Link>
+
+          <div className="flex items-center space-x-8">
+            <Link
+              href="/"
+              className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                path === "/"
+                  ? "text-accent-600 dark:text-accent-400"
+                  : "text-secondary hover:text-accent-600 dark:hover:text-accent-400"
+              }`}
+            >
+              Hjem
+              {path === "/" && (
+                <div className="absolute bottom-0 left-0 h-0.5 w-full bg-accent-600 dark:bg-accent-400" />
+              )}
+            </Link>
+
+            <Link
+              href="/about"
+              className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                path === "/about"
+                  ? "text-accent-600 dark:text-accent-400"
+                  : "text-secondary hover:text-accent-600 dark:hover:text-accent-400"
+              }`}
+            >
+              Om
+              {path === "/about" && (
+                <div className="absolute bottom-0 left-0 h-0.5 w-full bg-accent-600 dark:bg-accent-400" />
+              )}
+            </Link>
+
+            <ThemeSwitcher />
+          </div>
+        </div>
       </div>
-      <div className="flex w-[5%] xl:w-[20%]"></div>
     </nav>
   );
 }

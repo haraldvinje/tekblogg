@@ -86,17 +86,19 @@ export default function RootLayout({
   return (
     <html lang="nb" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased transition duration-500 dark:bg-dark`}
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-surface antialiased transition-colors duration-300`}
       >
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
           enableColorScheme={false}
         >
-          <Navbar />
-          <main className="m-auto my-10 flex w-[calc(100vw-2rem)] justify-center xl:w-[60%]">
-            {children}
-          </main>
+          <div className="flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex-1 px-4 py-12 sm:px-6 lg:px-8">
+              <div className="mx-auto max-w-7xl">{children}</div>
+            </main>
+          </div>
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />

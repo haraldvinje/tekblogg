@@ -7,32 +7,21 @@ import { useClientTheme } from "@/lib/hooks/use-client-theme";
 export function ThemeSwitcher() {
   const { theme, setTheme, isClientSide } = useClientTheme();
 
-  const iconStyle =
-    "h-4 sm:h-6 text-white transition duration-300 ease-in-out hover:opacity-70 p-2";
-
   if (!isClientSide) {
     return null;
   }
 
   return (
-    <>
+    <button
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      className="flex h-9 w-9 items-center justify-center rounded-lg border border-default bg-surface-elevated backdrop-blur-sm transition-all duration-200 hover:bg-primary-50 dark:hover:bg-primary-900"
+      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+    >
       {theme === "dark" ? (
-        <button
-          className="flex flex-col items-center"
-          onClick={() => setTheme("light")}
-          aria-label="Switch to light mode"
-        >
-          <FontAwesomeIcon className={iconStyle} icon={faSun} color="white" />
-        </button>
+        <FontAwesomeIcon className="h-4 w-4 text-secondary" icon={faSun} />
       ) : (
-        <button
-          className="flex flex-col items-center"
-          onClick={() => setTheme("dark")}
-          aria-label="Switch to dark mode"
-        >
-          <FontAwesomeIcon className={iconStyle} icon={faMoon} color="white" />
-        </button>
+        <FontAwesomeIcon className="h-4 w-4 text-secondary" icon={faMoon} />
       )}
-    </>
+    </button>
   );
 }
