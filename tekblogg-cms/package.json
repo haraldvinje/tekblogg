@@ -22,17 +22,17 @@
   "dependencies": {
     "@babel/preset-typescript": "7.27.1",
     "@sanity/code-input": "6.0.1",
-    "@sanity/vision": "4.8.0",
+    "@sanity/vision": "4.8.1",
     "prop-types": "15.8.1",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "sanity": "4.8.0",
+    "sanity": "4.8.1",
     "styled-components": "6.1.19"
   },
   "devDependencies": {
     "@babel/preset-env": "7.28.3",
     "@babel/preset-react": "7.27.1",
-    "@sanity/cli": "4.8.0",
+    "@sanity/cli": "4.8.1",
     "@sanity/eslint-config-studio": "5.0.2",
     "eslint": "9.35.0",
     "prettier": "3.6.2"
