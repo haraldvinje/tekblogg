@@ -27,7 +27,7 @@
     "@vercel/speed-insights": "1.2.0",
     "bright": "1.0.0",
     "date-fns": "4.1.0",
-    "framer-motion": "12.23.21",
+    "framer-motion": "12.23.22",
     "next": "15.5.4",
     "next-absolute-url": "1.2.2",
     "next-sanity": "11.1.3",
