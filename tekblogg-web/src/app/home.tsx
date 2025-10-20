@@ -8,9 +8,7 @@ export function Home({ blogPostCards }: { blogPostCards: BlogPostCardData[] }) {
       <section className="mb-16 text-center">
         <div className="mx-auto max-w-4xl">
           <h1 className="mb-4 text-4xl font-bold tracking-tight text-primary sm:text-6xl lg:text-7xl">
-            <span className="bg-gradient-to-r from-primary-700 via-accent-600 to-primary-600 bg-clip-text text-transparent dark:from-primary-200 dark:via-accent-300 dark:to-primary-100">
-              TekBlogg
-            </span>
+            <span>TekBlogg</span>
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-8 text-secondary sm:text-xl">
             Utforsk det nyeste innen teknologi og programmering. Dybdeartikler,

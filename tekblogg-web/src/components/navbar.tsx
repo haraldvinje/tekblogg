@@ -17,9 +17,6 @@ export function Navbar() {
               path === "/" ? "opacity-100" : "opacity-90"
             }`}
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary-800 to-primary-900 text-white shadow-lg">
-              <span className="text-sm font-bold">T</span>
-            </div>
             <span className="text-xl font-bold tracking-tight text-primary">
               TekBlogg
             </span>
