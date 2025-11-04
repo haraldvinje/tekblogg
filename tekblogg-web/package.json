@@ -61,7 +61,7 @@
     "tailwindcss": "4.1.16",
     "ts-node": "10.9.2",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.46.2"
+    "typescript-eslint": "8.46.3"
   },
   "lint-staged": {
     "*.{ts,tsx}": "bun run prettier"
