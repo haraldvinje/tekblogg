@@ -1,6 +1,7 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useCallback } from "react";
 import { CategoryUi } from "@/components/category-ui";
 
 export function CategoryButton({
@@ -12,20 +13,21 @@ export function CategoryButton({
   slug: string;
   isSelected: boolean;
 }) {
-  const params = new URLSearchParams(useSearchParams());
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
-  const updateCategories = () => {
-    if (typeof window !== "undefined") {
-      window.history.pushState(null, "", `?${params.toString()}`);
+  const updateCategories = useCallback(() => {
+    const params = new URLSearchParams(searchParams.toString());
+    const categoryQueryKey = "category";
+
+    if (isSelected) {
+      params.delete(categoryQueryKey, slug);
+    } else {
+      params.append(categoryQueryKey, slug);
     }
-  };
 
-  const categoryQueryKey = "category";
-  if (isSelected) {
-    params.delete(categoryQueryKey, slug);
-  } else {
-    params.append(categoryQueryKey, slug);
-  }
+    router.push(`?${params.toString()}`, { scroll: false });
+  }, [searchParams, isSelected, slug, router]);
 
   return (
     <CategoryUi

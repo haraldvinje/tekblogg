@@ -53,11 +53,10 @@ export async function About() {
 
             <div className="order-1 flex justify-center lg:order-2">
               <div className="relative">
-                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary-700 to-accent-700 opacity-20 blur-lg" />
+                <div className="absolute -inset-1 rounded-2xl bg-linear-to-r from-primary-700 to-accent-700 opacity-20 blur-lg" />
                 <Image
                   className="relative rounded-2xl shadow-lg"
                   width={400}
-                  height={400}
                   src={harald}
                   placeholder="blur"
                   blurDataURL={harald.blurDataURL}

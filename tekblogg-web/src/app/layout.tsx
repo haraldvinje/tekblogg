@@ -81,7 +81,7 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const gtmId = process.env.NEXT_PUBLIC_GTM_CONTAINER_ID ?? "";
+  const gtmId = process.env.NEXT_PUBLIC_GTM_CONTAINER_ID || "";
 
   return (
     <html lang="nb" suppressHydrationWarning>
@@ -102,7 +102,7 @@ export default function RootLayout({
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
-        <GoogleTagManager gtmId={gtmId} />
+        {gtmId && <GoogleTagManager gtmId={gtmId} />}
       </body>
     </html>
   );

@@ -2,8 +2,18 @@ import { format } from "date-fns";
 import { nb } from "date-fns/locale";
 import type { BlockContent } from "@/types/sanity.types";
 
-export const formatDate = (date: string, timeFormat: string = "d. MMMM yyyy") =>
-  format(new Date(date), timeFormat, { locale: nb });
+export const formatDate = (
+  date: string,
+  timeFormat: string = "d. MMMM yyyy",
+) => {
+  try {
+    const dateObj = new Date(date);
+    return format(dateObj, timeFormat, { locale: nb });
+  } catch (error) {
+    console.warn("Date formatting error:", error);
+    return new Date(date).toLocaleDateString("nb-NO");
+  }
+};
 
 export const formatAuthors = (authors: string[]) => {
   if (authors.length === 0) {
