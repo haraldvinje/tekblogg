@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { BlogPostList, BlogPostCards } from "./blog-post-list";
+import { BlogPostCards } from "./blog-post-list";
 import { BlogPostCardData } from "@/lib/sanity-client";
 
 export function Home({ blogPostCards }: { blogPostCards: BlogPostCardData[] }) {
@@ -14,14 +14,14 @@ export function Home({ blogPostCards }: { blogPostCards: BlogPostCardData[] }) {
             Utforsk det nyeste innen teknologi og programmering. Dybdeartikler,
             tutorials og innsikt fra utviklingsmiljøet.
           </p>
-          <div className="mt-8 h-px bg-gradient-to-r from-transparent via-primary-300 to-transparent dark:via-primary-700" />
+          <div className="mt-8 h-px bg-linear-to-r from-transparent via-primary-300 to-transparent dark:via-primary-700" />
         </div>
       </section>
 
       <section>
-        <Suspense fallback={<BlogPostCards blogPostCards={blogPostCards} />}>
-          <BlogPostList blogPostCards={blogPostCards} />
-        </Suspense>
+        <Suspense
+          fallback={<BlogPostCards blogPostCards={blogPostCards} />}
+        ></Suspense>
       </section>
     </div>
   );
