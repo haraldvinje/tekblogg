@@ -1,8 +1,8 @@
 import Link from "next/link";
 import type { BlogPostCardData } from "@/lib/sanity-client";
 import { CategoryUi } from "@/components/category-ui";
-import { formatDate } from "@/lib/text-utils";
 import { SanityImage } from "@/components/sanity-image";
+import { ClientDate } from "@/components/client-date";
 
 export function FeaturedBlogPostCard({
   postCardData,
@@ -23,7 +23,7 @@ export function FeaturedBlogPostCard({
     <article className="group relative mb-16 overflow-hidden rounded-2xl bg-surface-elevated shadow-lg ring-1 ring-gray-200 transition-all duration-300 hover:shadow-2xl hover:ring-primary-300 dark:bg-surface-elevated-dark dark:ring-gray-700 dark:hover:ring-primary-600">
       <Link href={linkRef} className="block">
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-          <div className="relative aspect-[16/10] overflow-hidden lg:aspect-[4/3]">
+          <div className="relative aspect-16/10 overflow-hidden lg:aspect-4/3">
             <SanityImage
               priority
               width={800}
@@ -55,12 +55,11 @@ export function FeaturedBlogPostCard({
             </h2>
 
             <div className="mb-6 flex flex-col space-y-2 sm:flex-row sm:items-center sm:space-x-6 sm:space-y-0">
-              <time
-                dateTime={publishedAt}
+              <ClientDate
+                date={publishedAt}
                 className="text-lg font-medium text-gray-600 dark:text-gray-400"
-              >
-                {formatDate(publishedAt)}
-              </time>
+                skeleton={true}
+              />
               <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
                 <svg
                   className="h-5 w-5"

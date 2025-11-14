@@ -1,7 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { formatAuthors, formatDate } from "@/lib/text-utils";
+import { formatAuthors } from "@/lib/text-utils";
+import { ClientDate } from "@/components/client-date";
 import { CategoryUi } from "@/components/category-ui";
 import { ShareButtons } from "@/components/share-buttons";
 import { SanityImage } from "@/components/sanity-image";
@@ -40,12 +41,10 @@ export function BlogPost({
                   {formatAuthors(authors)}
                 </span>
                 <span className="h-1 w-1 rounded-full bg-gray-400"></span>
-                <time
-                  dateTime={publishedAt}
+                <ClientDate
+                  date={publishedAt}
                   className="text-lg font-medium text-secondary"
-                >
-                  {formatDate(publishedAt)}
-                </time>
+                />
               </div>
               <div className="flex items-center space-x-1 text-secondary">
                 <svg

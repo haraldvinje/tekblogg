@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { BlogPostCardData } from "@/lib/sanity-client";
 import { CategoryUi } from "@/components/category-ui";
-import { formatDate } from "@/lib/text-utils";
+import { ClientDate } from "@/components/client-date";
 import { SanityImage } from "@/components/sanity-image";
 
 export function BlogPostCard({
@@ -22,7 +22,7 @@ export function BlogPostCard({
   return (
     <article className="group relative overflow-hidden rounded-xl bg-surface-elevated shadow-sm transition-all duration-300 hover:shadow-lg hover:ring-primary-300 dark:bg-surface-elevated-dark dark:ring-gray-700 dark:hover:ring-primary-600 dark:shadow-xl">
       <Link href={linkRef} className="block">
-        <div className="relative aspect-[16/10] overflow-hidden">
+        <div className="relative aspect-16/10 overflow-hidden">
           <SanityImage
             priority
             width={600}
@@ -31,7 +31,7 @@ export function BlogPostCard({
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
             image={mainImage}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         </div>
 
         <div className="p-6">
@@ -48,9 +48,7 @@ export function BlogPostCard({
           </h2>
 
           <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-            <time dateTime={publishedAt} className="font-medium">
-              {formatDate(publishedAt)}
-            </time>
+            <ClientDate date={publishedAt} className="font-medium" />
             <span className="flex items-center space-x-1">
               <svg
                 className="h-4 w-4"
