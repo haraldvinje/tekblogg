@@ -1,7 +1,7 @@
 "use client";
 
-import { Suspense, useCallback, useEffect, useMemo } from "react";
-import { useSearchParams, usePathname } from "next/navigation";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { BlogPostCard } from "./blog-post-card";
 import { FeaturedBlogPostCard } from "./featured-blog-post-card";
 import { BlogPostCardData } from "@/lib/sanity-client";
@@ -17,8 +17,14 @@ export function BlogPostList({
 }: {
   blogPostCards: BlogPostCardData[];
 }) {
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const router = useRouter();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const allCategories = useMemo(
     () =>
@@ -38,14 +44,17 @@ export function BlogPostList({
   const selectedCategories = searchParams.getAll(categoryQueryKey);
 
   const filterInvalidCategories = useCallback(() => {
+    if (!mounted) return;
+
     const validCategories = selectedCategories.filter((selectedCategory) =>
       allCategories.map((c) => c.slug.current).includes(selectedCategory),
     );
     if (validCategories.length === selectedCategories.length) return;
+
     const params = new URLSearchParams();
     validCategories.forEach((c) => params.append(categoryQueryKey, c));
-    window.history.pushState(null, "", `?${params.toString()}`);
-  }, [allCategories, selectedCategories]);
+    router.replace(`?${params.toString()}`, { scroll: false });
+  }, [allCategories, selectedCategories, mounted, router]);
 
   useEffect(() => {
     filterInvalidCategories();
@@ -97,8 +106,9 @@ export function BlogPostList({
           {hasFilters && (
             <button
               onClick={() => {
+                if (!mounted) return;
                 const scrollY = window.scrollY;
-                window.history.replaceState({}, "", pathname);
+                router.replace(pathname, { scroll: false });
                 setTimeout(() => {
                   window.scrollTo(0, scrollY);
                 }, 0);
