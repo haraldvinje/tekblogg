@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { BlogPostCards } from "./blog-post-list";
+import { BlogPostList, BlogPostCards } from "./blog-post-list";
 import { BlogPostCardData } from "@/lib/sanity-client";
 
 export function Home({ blogPostCards }: { blogPostCards: BlogPostCardData[] }) {
@@ -19,9 +19,9 @@ export function Home({ blogPostCards }: { blogPostCards: BlogPostCardData[] }) {
       </section>
 
       <section>
-        <Suspense
-          fallback={<BlogPostCards blogPostCards={blogPostCards} />}
-        ></Suspense>
+        <Suspense fallback={<BlogPostCards blogPostCards={blogPostCards} />}>
+          <BlogPostList blogPostCards={blogPostCards} />
+        </Suspense>
       </section>
     </div>
   );
