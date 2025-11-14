@@ -1,8 +1,8 @@
 import Link from "next/link";
 import type { BlogPostCardData } from "@/lib/sanity-client";
 import { CategoryUi } from "@/components/category-ui";
-import { ClientDate } from "@/components/client-date";
 import { SanityImage } from "@/components/sanity-image";
+import { formatDate } from "@/lib/text-utils";
 
 export function BlogPostCard({
   postCardData,
@@ -48,7 +48,9 @@ export function BlogPostCard({
           </h2>
 
           <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-            <ClientDate date={publishedAt} className="font-medium" />
+            <time dateTime={publishedAt} className="font-medium">
+              {formatDate(publishedAt)}
+            </time>
             <span className="flex items-center space-x-1">
               <svg
                 className="h-4 w-4"

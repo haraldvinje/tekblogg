@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { BlogPostCardData } from "@/lib/sanity-client";
 import { CategoryUi } from "@/components/category-ui";
 import { SanityImage } from "@/components/sanity-image";
-import { ClientDate } from "@/components/client-date";
+import { formatDate } from "@/lib/text-utils";
 
 export function FeaturedBlogPostCard({
   postCardData,
@@ -32,7 +32,7 @@ export function FeaturedBlogPostCard({
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               image={mainImage}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
             <div className="absolute left-6 top-6">
               <span className="inline-flex items-center rounded-full bg-accent-600 px-3 py-1 text-sm font-medium text-white shadow-lg">
@@ -55,11 +55,12 @@ export function FeaturedBlogPostCard({
             </h2>
 
             <div className="mb-6 flex flex-col space-y-2 sm:flex-row sm:items-center sm:space-x-6 sm:space-y-0">
-              <ClientDate
-                date={publishedAt}
+              <time
+                dateTime={publishedAt}
                 className="text-lg font-medium text-gray-600 dark:text-gray-400"
-                skeleton={true}
-              />
+              >
+                {formatDate(publishedAt)}
+              </time>
               <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
                 <svg
                   className="h-5 w-5"
