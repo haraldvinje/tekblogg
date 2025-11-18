@@ -88,7 +88,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-surface antialiased transition-colors duration-300`}
       >
-        <ThemeProvider
+        Hello
+        {/* <ThemeProvider
           attribute="class"
           defaultTheme="light"
           enableColorScheme={false}
@@ -101,7 +102,7 @@ export default function RootLayout({
           </div>
         </ThemeProvider>
         <Analytics />
-        <SpeedInsights />
+        <SpeedInsights /> */}
         {/* {gtmId && <GoogleTagManager gtmId={gtmId} />} */}
       </body>
     </html>
