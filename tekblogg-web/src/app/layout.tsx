@@ -86,7 +86,7 @@ export default function RootLayout({
   return (
     <html lang="nb">
       <body
-        className={`min-h-screen bg-surface antialiased transition-colors duration-300`}
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-surface antialiased transition-colors duration-300`}
       >
         <ThemeProvider
           attribute="class"
