@@ -102,7 +102,7 @@ export default function RootLayout({
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
-        {gtmId && <GoogleTagManager gtmId={gtmId} />}
+        {/* {gtmId && <GoogleTagManager gtmId={gtmId} />} */}
       </body>
     </html>
   );

@@ -18,11 +18,11 @@ export function Home({ blogPostCards }: { blogPostCards: BlogPostCardData[] }) {
         </div>
       </section>
 
-      {/* <section>
+      <section>
         <Suspense fallback={<BlogPostCards blogPostCards={blogPostCards} />}>
           <BlogPostList blogPostCards={blogPostCards} />
         </Suspense>
-      </section> */}
+      </section>
     </div>
   );
 }
