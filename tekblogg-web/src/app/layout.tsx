@@ -84,12 +84,11 @@ export default function RootLayout({
   const gtmId = process.env.NEXT_PUBLIC_GTM_CONTAINER_ID || "";
 
   return (
-    <html lang="nb" suppressHydrationWarning>
+    <html lang="nb">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-surface antialiased transition-colors duration-300`}
+        className={`min-h-screen bg-surface antialiased transition-colors duration-300`}
       >
-        Hello
-        {/* <ThemeProvider
+        <ThemeProvider
           attribute="class"
           defaultTheme="light"
           enableColorScheme={false}
@@ -102,8 +101,8 @@ export default function RootLayout({
           </div>
         </ThemeProvider>
         <Analytics />
-        <SpeedInsights /> */}
-        {/* {gtmId && <GoogleTagManager gtmId={gtmId} />} */}
+        <SpeedInsights />
+        {gtmId && <GoogleTagManager gtmId={gtmId} />}
       </body>
     </html>
   );
