@@ -13,7 +13,7 @@ jobs:
         working-directory: ./tekblogg-cms
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 2
 
