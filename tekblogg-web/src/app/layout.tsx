@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { ThemeProvider } from "next-themes";
 import { generateCanonicalUrl } from "@/lib/text-utils";
+import { Navbar } from "@/components/navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -95,6 +96,7 @@ export default function RootLayout({
           enableColorScheme={false}
         >
           <div className="flex min-h-screen flex-col">
+            <Navbar />
             <main className="flex-1 px-4 py-12 sm:px-6 lg:px-8">
               <div className="mx-auto max-w-7xl">{children}</div>
             </main>

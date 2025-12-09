@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ThemeSwitcher } from "./theme-switcher";
 
 export function Navbar() {
   const path = usePathname();
@@ -50,8 +49,6 @@ export function Navbar() {
                 <div className="absolute bottom-0 left-0 h-0.5 w-full bg-accent-600 dark:bg-accent-400" />
               )}
             </Link>
-
-            <ThemeSwitcher />
           </div>
         </div>
       </div>
