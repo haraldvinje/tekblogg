@@ -2,9 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { ThemeSwitcher } from "./theme-switcher";
 
 export function Navbar() {
-  const path = usePathname();
+  const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const path = mounted ? pathname : "/";
 
   return (
     <nav className="sticky top-0 z-50 border-b border-default bg-surface/80 backdrop-blur-md">
@@ -49,6 +58,8 @@ export function Navbar() {
                 <div className="absolute bottom-0 left-0 h-0.5 w-full bg-accent-600 dark:bg-accent-400" />
               )}
             </Link>
+
+            <ThemeSwitcher />
           </div>
         </div>
       </div>
