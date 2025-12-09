@@ -1,9 +1,12 @@
 import "./globals.css";
 import type { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/react";
+import { GoogleTagManager } from "@next/third-parties/google";
+import { ThemeProvider } from "next-themes";
 import { generateCanonicalUrl } from "@/lib/text-utils";
-import { Navbar } from "@/components/navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -79,15 +82,27 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const gtmId = process.env.NEXT_PUBLIC_GTM_CONTAINER_ID || "";
+
   return (
     <html lang="nb">
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-surface antialiased transition-colors duration-300`}
       >
-        <div className="flex min-h-screen flex-col">
-          <Navbar />
-          <main className="flex-1 px-4 py-12 sm:px-6 lg:px-8">{children}</main>
-        </div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableColorScheme={false}
+        >
+          <div className="flex min-h-screen flex-col">
+            <main className="flex-1 px-4 py-12 sm:px-6 lg:px-8">
+              <div className="mx-auto max-w-7xl">{children}</div>
+            </main>
+          </div>
+        </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
+        {gtmId && <GoogleTagManager gtmId={gtmId} />}
       </body>
     </html>
   );
