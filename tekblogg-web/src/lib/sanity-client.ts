@@ -1,6 +1,6 @@
 import { createClient } from "@sanity/client";
 import { defineQuery } from "next-sanity";
-import urlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 import type {
   GetAllPostsCardDataQueryResult,
   GetPostQueryResult,
@@ -14,7 +14,7 @@ const client = createClient({
 });
 
 export const imageUrlBuilder = (source: string) =>
-  urlBuilder(client).image(source);
+  createImageUrlBuilder(client).image(source);
 
 const getAllPostsCardDataQuery = defineQuery(`
   *[_type == "post"] | order(publishedAt desc) {
