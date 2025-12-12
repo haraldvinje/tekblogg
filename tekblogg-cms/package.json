@@ -24,8 +24,8 @@
     "@sanity/code-input": "6.0.3",
     "@sanity/vision": "4.21.0",
     "prop-types": "15.8.1",
-    "react": "19.2.1",
-    "react-dom": "19.2.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
     "sanity": "4.21.0",
     "styled-components": "6.1.19"
   },
