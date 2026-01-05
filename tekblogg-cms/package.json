@@ -33,7 +33,7 @@
     "@babel/preset-env": "7.28.5",
     "@babel/preset-react": "7.28.5",
     "@sanity/cli": "4.22.0",
-    "@sanity/eslint-config-studio": "5.0.2",
+    "@sanity/eslint-config-studio": "6.0.0",
     "eslint": "9.39.2",
     "prettier": "3.7.4"
   }
