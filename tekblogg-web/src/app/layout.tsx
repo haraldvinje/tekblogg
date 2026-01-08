@@ -84,15 +84,16 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   const gtmId = process.env.NEXT_PUBLIC_GTM_CONTAINER_ID || "";
+  const defaultTheme = "light";
 
   return (
-    <html lang="nb">
+    <html lang="nb" className={defaultTheme}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-surface antialiased transition-colors duration-300`}
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme={defaultTheme}
           enableColorScheme={false}
         >
           <div className="flex min-h-screen flex-col">

@@ -24,7 +24,6 @@ export function BlogPostCard({
       <Link href={linkRef} className="block">
         <div className="relative aspect-16/10 overflow-hidden">
           <SanityImage
-            priority
             width={600}
             height={400}
             maxWidth={400}

@@ -21,18 +21,18 @@
   ],
   "dependencies": {
     "@babel/preset-typescript": "7.28.5",
-    "@sanity/code-input": "6.0.4",
-    "@sanity/vision": "4.22.0",
+    "@sanity/code-input": "7.0.4",
+    "@sanity/vision": "5.2.0",
     "prop-types": "15.8.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "sanity": "4.22.0",
+    "sanity": "5.2.0",
     "styled-components": "6.2.0"
   },
   "devDependencies": {
     "@babel/preset-env": "7.28.5",
     "@babel/preset-react": "7.28.5",
-    "@sanity/cli": "4.22.0",
+    "@sanity/cli": "5.2.0",
     "@sanity/eslint-config-studio": "6.0.0",
     "eslint": "9.39.2",
     "prettier": "3.7.4"

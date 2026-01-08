@@ -1,6 +1,6 @@
 import { createClient } from "@sanity/client";
-import { defineQuery } from "next-sanity";
 import { createImageUrlBuilder } from "@sanity/image-url";
+import { defineQuery } from "next-sanity";
 import type {
   GetAllPostsCardDataQueryResult,
   GetPostQueryResult,
