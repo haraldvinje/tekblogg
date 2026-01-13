@@ -12,8 +12,8 @@ importers:
         specifier: 7.28.5
         version: 7.28.5(@babel/core@7.28.5)
       '@sanity/code-input':
-        specifier: 7.0.4
-        version: 7.0.4(@babel/runtime@7.28.4)(@codemirror/lint@6.9.2)(@codemirror/theme-one-dark@6.1.2)(@emotion/is-prop-valid@1.4.0)(codemirror@6.0.1)(react-dom@19.2.3(react@19.2.3))(react-is@19.2.3)(react@19.2.3)(sanity@5.2.0(@emotion/is-prop-valid@1.4.0)(@portabletext/sanity-bridge@2.0.0(@types/react@19.2.7))(@types/node@25.0.3)(@types/react@19.2.7)(babel-plugin-react-compiler@1.0.0)(immer@11.0.1)(jiti@2.6.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(styled-components@6.3.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(terser@5.39.0)(tsx@4.21.0)(typescript@5.7.2)(yaml@2.8.2))(styled-components@6.3.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
+        specifier: 7.0.5
+        version: 7.0.5(@babel/runtime@7.28.4)(@codemirror/lint@6.9.2)(@codemirror/theme-one-dark@6.1.2)(@emotion/is-prop-valid@1.4.0)(codemirror@6.0.1)(react-dom@19.2.3(react@19.2.3))(react-is@19.2.3)(react@19.2.3)(sanity@5.2.0(@emotion/is-prop-valid@1.4.0)(@portabletext/sanity-bridge@2.0.0(@types/react@19.2.7))(@types/node@25.0.3)(@types/react@19.2.7)(babel-plugin-react-compiler@1.0.0)(immer@11.0.1)(jiti@2.6.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(styled-components@6.3.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(terser@5.39.0)(tsx@4.21.0)(typescript@5.7.2)(yaml@2.8.2))(styled-components@6.3.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
       '@sanity/vision':
         specifier: 5.2.0
         version: 5.2.0(@babel/runtime@7.28.4)(@codemirror/lint@6.9.2)(@codemirror/theme-one-dark@6.1.2)(@emotion/is-prop-valid@1.4.0)(codemirror@6.0.1)(react-dom@19.2.3(react@19.2.3))(react-is@19.2.3)(react@19.2.3)(sanity@5.2.0(@emotion/is-prop-valid@1.4.0)(@portabletext/sanity-bridge@2.0.0(@types/react@19.2.7))(@types/node@25.0.3)(@types/react@19.2.7)(babel-plugin-react-compiler@1.0.0)(immer@11.0.1)(jiti@2.6.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(styled-components@6.3.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(terser@5.39.0)(tsx@4.21.0)(typescript@5.7.2)(yaml@2.8.2))(styled-components@6.3.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
@@ -1833,8 +1833,8 @@ packages:
     resolution: {integrity: sha512-eXue3rc4MqJh89mvuTC0h0pdoY8lwXjlV8odFB3EF7aSFKF7F5BL0NU2mlTrCZYbPAlV3JTvMPPLGJCORqOKDw==}
     engines: {node: '>=20'}
 
-  '@sanity/code-input@7.0.4':
-    resolution: {integrity: sha512-yALM+eaKxjlohkqFBsskqzcZFfJBZjDebEW1wABW/s9E8IA5/yP5U+blmam/hmPxokZ2x3SbJyAGNPEh7s1NXA==}
+  '@sanity/code-input@7.0.5':
+    resolution: {integrity: sha512-IrZt2f291WDS1w3czILgZ8843RvTPkFov/98xpmuKO7edkBiNr6+MnUGebfh85t+oEfbbIFcwoRLTlF9j9KzbA==}
     engines: {node: '>=20.19 <22 || >=22.12'}
     peerDependencies:
       react: ^19.2
@@ -7439,7 +7439,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  '@sanity/code-input@7.0.4(@babel/runtime@7.28.4)(@codemirror/lint@6.9.2)(@codemirror/theme-one-dark@6.1.2)(@emotion/is-prop-valid@1.4.0)(codemirror@6.0.1)(react-dom@19.2.3(react@19.2.3))(react-is@19.2.3)(react@19.2.3)(sanity@5.2.0(@emotion/is-prop-valid@1.4.0)(@portabletext/sanity-bridge@2.0.0(@types/react@19.2.7))(@types/node@25.0.3)(@types/react@19.2.7)(babel-plugin-react-compiler@1.0.0)(immer@11.0.1)(jiti@2.6.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(styled-components@6.3.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(terser@5.39.0)(tsx@4.21.0)(typescript@5.7.2)(yaml@2.8.2))(styled-components@6.3.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3))':
+  '@sanity/code-input@7.0.5(@babel/runtime@7.28.4)(@codemirror/lint@6.9.2)(@codemirror/theme-one-dark@6.1.2)(@emotion/is-prop-valid@1.4.0)(codemirror@6.0.1)(react-dom@19.2.3(react@19.2.3))(react-is@19.2.3)(react@19.2.3)(sanity@5.2.0(@emotion/is-prop-valid@1.4.0)(@portabletext/sanity-bridge@2.0.0(@types/react@19.2.7))(@types/node@25.0.3)(@types/react@19.2.7)(babel-plugin-react-compiler@1.0.0)(immer@11.0.1)(jiti@2.6.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(styled-components@6.3.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(terser@5.39.0)(tsx@4.21.0)(typescript@5.7.2)(yaml@2.8.2))(styled-components@6.3.3(react-dom@19.2.3(react@19.2.3))(react@19.2.3))':
     dependencies:
       '@codemirror/autocomplete': 6.20.0
       '@codemirror/commands': 6.10.1
