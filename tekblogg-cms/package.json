@@ -27,7 +27,7 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "sanity": "5.9.0",
-    "styled-components": "6.3.9"
+    "styled-components": "6.3.11"
   },
   "devDependencies": {
     "@babel/preset-env": "7.29.0",
