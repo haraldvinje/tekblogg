@@ -13,7 +13,7 @@
         "@portabletext/react": "6.0.3",
         "@sanity/asset-utils": "2.3.0",
         "@sanity/client": "7.14.0",
-        "@sanity/image-url": "2.1.0",
+        "@sanity/image-url": "2.1.1",
         "@vercel/analytics": "2.0.1",
         "@vercel/speed-insights": "2.0.0",
         "bright": "1.0.0",
@@ -840,7 +840,7 @@
 
     "@sanity/id-utils": ["@sanity/id-utils@1.0.0", "", { "dependencies": { "@sanity/uuid": "^3.0.2", "lodash": "^4.17.21", "ts-brand": "^0.2.0" } }, "sha512-2sb7tbdMDuUuVyocJPKG0gZBiOML/ovCe+mJiLrv1j69ODOfa2LfUjDVR+dRw/A/+XuxoJSSP8ebG7NiwTOgIA=="],
 
-    "@sanity/image-url": ["@sanity/image-url@2.1.0", "", { "dependencies": { "@sanity/signed-urls": "^2.0.2" } }, "sha512-U6M8EF6i4HjzBLcpOie6JZuSj3PLUTK7mAkjK/ugVWm2xCo2BSW0kr5BQfcR5As1mW+uaRvXLVfN/xEVxppTTQ=="],
+    "@sanity/image-url": ["@sanity/image-url@2.1.1", "", { "dependencies": { "@sanity/signed-urls": "^2.0.2" } }, "sha512-qVXsF1teWR6FO3ZFAz46HDcRU+E6EQkpyncPnkGOzeJ1PgnaOiWMVbiSrZtX10s3txzzu/tAjKwbxbGHfDWgGw=="],
 
     "@sanity/import": ["@sanity/import@5.0.1", "", { "dependencies": { "@sanity/asset-utils": "^2.3.0", "@sanity/generate-help-url": "^4.0.0", "@sanity/mutator": "^5.14.1", "debug": "^4.4.3", "get-it": "^8.7.0", "get-uri": "^7.0.0", "gunzip-maybe": "^1.4.2", "lodash-es": "^4.17.23", "p-map": "^7.0.3", "split2": "^4.2.0", "tar-fs": "^3.1.2", "tinyglobby": "^0.2.15" }, "peerDependencies": { "@sanity/client": "^5.0.0 || ^6.0.0 || ^7.0.0" } }, "sha512-IZt7+yEdWj29BRc+36RVsqYxTXMdKj+qTxmnME/I+Y3kv52d/fL77MgSNvtVMdoUktNFuw3Hf8WS9muspmzpww=="],
 
