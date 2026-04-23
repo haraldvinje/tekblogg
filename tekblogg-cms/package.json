@@ -32,7 +32,7 @@
   "devDependencies": {
     "@babel/preset-env": "7.29.2",
     "@babel/preset-react": "7.28.5",
-    "@sanity/cli": "6.3.2",
+    "@sanity/cli": "6.4.0",
     "@sanity/eslint-config-studio": "6.0.0",
     "eslint": "10.2.1",
     "prettier": "3.8.3"
