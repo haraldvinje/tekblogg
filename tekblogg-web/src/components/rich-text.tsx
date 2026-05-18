@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { PortableText } from "@portabletext/react";
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import type { BlockContent } from "@/types/sanity.types";
 import { SanityImage } from "@/components/sanity-image";
 import type { SanityImageType } from "@/lib/sanity-client";
@@ -14,7 +14,7 @@ type SanityLink = {
   children: ReactNode;
 };
 
-const ptComponents = {
+const ptComponents: PortableTextComponents = {
   types: {
     image: ({ value }: { value: SanityImageType }) => {
       return <SanityImage className="m-auto" image={value} />;
