@@ -58,7 +58,7 @@
     "jest": "30.4.2",
     "jest-environment-jsdom": "30.4.1",
     "lint-staged": "17.0.5",
-    "postcss": "8.5.14",
+    "postcss": "8.5.15",
     "tailwindcss": "4.3.0",
     "ts-node": "10.9.2",
     "typescript": "6.0.3",
