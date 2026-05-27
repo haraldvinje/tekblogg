@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "@babel/preset-typescript": "7.29.7",
-    "@sanity/code-input": "7.1.1",
+    "@sanity/code-input": "7.1.2",
     "@sanity/vision": "5.27.0",
     "prop-types": "15.8.1",
     "react": "19.2.6",
