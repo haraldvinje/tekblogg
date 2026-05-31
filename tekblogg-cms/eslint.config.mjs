@@ -1,3 +1,4 @@
 import sanityStudioConfig from "@sanity/eslint-config-studio";
+import { fixupConfigRules } from "@eslint/compat";
 
-export default [...sanityStudioConfig];
+export default [...fixupConfigRules(sanityStudioConfig)];
