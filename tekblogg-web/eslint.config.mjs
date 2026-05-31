@@ -5,7 +5,7 @@ import importPlugin from "eslint-plugin-import";
 import noRelativeImportsPlugin from "eslint-plugin-no-relative-import-paths";
 import tseslint from "typescript-eslint";
 import reactPluginConfig from "eslint-plugin-react/configs/recommended.js";
-import { fixupConfigRules } from "@eslint/compat";
+import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
 
 export default [
   jsPlugin.configs.recommended,
@@ -23,7 +23,7 @@ export default [
   {
     plugins: {
       import: importPlugin,
-      "no-relative-import-paths": noRelativeImportsPlugin,
+      "no-relative-import-paths": fixupPluginRules(noRelativeImportsPlugin),
     },
     languageOptions: {
       globals: { ...globals.browser, ...globals.node },
