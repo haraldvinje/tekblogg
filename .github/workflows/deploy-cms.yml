@@ -25,7 +25,7 @@ jobs:
       - name: Setup pnpm 10
         uses: pnpm/action-setup@v6
         with:
-          version: 10
+          version: 11
 
       - name: Install and lint
         run: pnpm install && pnpm lint
