@@ -5,4 +5,5 @@ export default defineCliConfig({
     projectId: "jbq2yq78",
     dataset: "production",
   },
+  studioHost: "tekblogg",
 });

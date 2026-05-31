@@ -10,7 +10,7 @@
     "start": "sanity start",
     "build": "sanity build",
     "dev": "sanity dev",
-    "deploy": "sanity deploy",
+    "deploy": "sanity deploy -y",
     "generate-types": "sanity schema extract --enforce-required-fields && sanity typegen generate && rm schema.json",
     "lint": "prettier . --check; eslint .; tsc --noEmit --incremental",
     "format": "prettier . --write",
