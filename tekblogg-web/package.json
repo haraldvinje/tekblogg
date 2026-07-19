@@ -36,7 +36,7 @@
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "react-error-boundary": "^6.0.0",
-    "styled-components": "6.4.3"
+    "styled-components": "6.4.4"
   },
   "devDependencies": {
     "@eslint/compat": "2.1.0",
