@@ -36,6 +36,6 @@
     "@sanity/cli": "7.11.0",
     "@sanity/eslint-config-studio": "6.0.0",
     "eslint": "10.7.0",
-    "prettier": "3.9.5"
+    "prettier": "3.9.6"
   }
 }
