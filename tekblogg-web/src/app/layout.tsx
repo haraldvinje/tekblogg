@@ -87,7 +87,7 @@ export default function RootLayout({
   const defaultTheme = "light";
 
   return (
-    <html lang="nb" className={defaultTheme}>
+    <html lang="nb" className={defaultTheme} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-surface antialiased transition-colors duration-300`}
       >
