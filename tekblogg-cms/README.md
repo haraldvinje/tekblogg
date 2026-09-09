@@ -4,7 +4,7 @@ Tekblogg uses [Sanity](https://www.sanity.io/) as a CMS.
 
 ## Prerequisites
 
-[pnpm](https://pnpm.io/installation) version 9.
+[pnpm](https://pnpm.io/installation).
 
 ## Getting started
 

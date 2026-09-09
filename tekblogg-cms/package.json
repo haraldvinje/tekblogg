@@ -6,6 +6,7 @@
   "main": "package.json",
   "author": "Harald Vinje <haraldvinje@gmail.com>",
   "license": "UNLICENSED",
+  "packageManager": "pnpm@12.3.4",
   "scripts": {
     "start": "sanity start",
     "build": "sanity build",
@@ -20,22 +21,19 @@
     "sanity"
   ],
   "dependencies": {
-    "@babel/preset-typescript": "7.29.7",
-    "@sanity/code-input": "7.3.3",
-    "@sanity/vision": "6.9.1",
+    "@sanity/code-input": "7.3.8",
+    "@sanity/vision": "6.12.0",
     "prop-types": "15.8.1",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "sanity": "6.9.1",
-    "styled-components": "6.5.0"
+    "sanity": "6.12.0",
+    "styled-components": "6.5.3"
   },
   "devDependencies": {
-    "@babel/preset-env": "7.29.7",
-    "@babel/preset-react": "7.29.7",
-    "@eslint/compat": "2.1.0",
-    "@sanity/cli": "7.18.0",
-    "@sanity/eslint-config-studio": "6.0.0",
-    "eslint": "10.8.0",
+    "@eslint/compat": "2.1.1",
+    "@sanity/cli": "8.9.1",
+    "@sanity/eslint-config-studio": "7.0.0",
+    "eslint": "10.10.0",
     "prettier": "3.9.6"
   }
 }

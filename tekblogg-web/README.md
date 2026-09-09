@@ -1,11 +1,11 @@
 ## Install
 
-You will need [Bun](https://bun.sh/docs/installation) to run this web app.
+You will need [pnpm](https://pnpm.io/installation) to run this web app.
 
 Install dependencies with:
 
 ```bash
-bun install
+pnpm install
 ```
 
 ## Develop
@@ -13,7 +13,7 @@ bun install
 Run a development server with:
 
 ```bash
-bun run dev
+pnpm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

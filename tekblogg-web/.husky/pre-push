@@ -1,2 +1,2 @@
 cd tekblogg-web
-bun lint
+pnpm lint

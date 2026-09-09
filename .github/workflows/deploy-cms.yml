@@ -22,10 +22,10 @@ jobs:
         with:
           node-version-file: '.tool-versions'
 
-      - name: Setup pnpm 10
+      - name: Setup pnpm
         uses: pnpm/action-setup@v6
         with:
-          version: 11
+          package_json_file: tekblogg-cms/package.json
 
       - name: Install and lint
         run: pnpm install && pnpm lint
