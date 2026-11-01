@@ -67,7 +67,7 @@
     "jest-environment-jsdom": "30.5.1",
     "lint-staged": "17.5.0",
     "postcss": "8.5.32",
-    "prettier": "3.9.6",
+    "prettier": "3.9.10",
     "tailwindcss": "4.3.3",
     "ts-node": "10.9.2",
     "typescript": "6.0.3",
