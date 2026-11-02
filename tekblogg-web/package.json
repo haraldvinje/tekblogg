@@ -13,9 +13,11 @@
     "lint": "eslint src/** && tsc --noEmit --incremental",
     "lint:fix": "eslint src/** --fix",
     "prettier": "prettier --write src",
+    "format:check": "prettier --check src",
     "clean": "rm -rf node_modules .next",
     "prepare": "cd .. && husky tekblogg-web/.husky",
-    "test": "jest"
+    "test": "jest",
+    "verify": "pnpm format:check && pnpm lint && pnpm test && pnpm build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "7.3.1",
@@ -65,7 +67,7 @@
     "husky": "9.1.7",
     "jest": "30.5.2",
     "jest-environment-jsdom": "30.5.2",
-    "lint-staged": "17.5.0",
+    "lint-staged": "17.6.0",
     "postcss": "8.5.32",
     "prettier": "3.9.10",
     "tailwindcss": "4.3.3",
