@@ -6,7 +6,7 @@
   "main": "package.json",
   "author": "Harald Vinje <haraldvinje@gmail.com>",
   "license": "UNLICENSED",
-  "packageManager": "pnpm@12.3.4",
+  "packageManager": "pnpm@12.16.1",
   "scripts": {
     "start": "sanity start",
     "build": "sanity build",
