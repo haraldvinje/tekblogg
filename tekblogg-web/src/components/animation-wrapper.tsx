@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { fadeIn } from "@/lib/animations";
 
 export function AnimationWrapper({
