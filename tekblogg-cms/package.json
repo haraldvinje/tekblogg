@@ -13,9 +13,10 @@
     "dev": "sanity dev",
     "deploy": "sanity deploy -y",
     "generate-types": "sanity schema extract --enforce-required-fields && sanity typegen generate && rm schema.json",
-    "lint": "prettier . --check; eslint .; tsc --noEmit --incremental",
+    "lint": "prettier . --check && eslint . && tsc --noEmit --incremental",
     "format": "prettier . --write",
-    "clean": "rm -rf node_modules .sanity dist"
+    "clean": "rm -rf node_modules .sanity dist",
+    "verify": "pnpm lint && pnpm build"
   },
   "keywords": [
     "sanity"
