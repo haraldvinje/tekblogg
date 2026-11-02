@@ -61,15 +61,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Run separately: the "lint" script chains these with ";", so only tsc's exit code counts there.
-      - name: Prettier
-        run: pnpm exec prettier . --check
-
-      - name: ESLint
-        run: pnpm exec eslint .
-
-      - name: Typecheck
-        run: pnpm exec tsc --noEmit
+      - name: Lint
+        run: pnpm run lint
 
       - name: Build
         run: pnpm run build
