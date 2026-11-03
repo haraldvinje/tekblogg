@@ -1,8 +1,13 @@
+import { ViewTransition } from "react";
 import Link from "next/link";
 import type { BlogPostCardData } from "@/lib/sanity-client";
 import { CategoryUi } from "@/components/category-ui";
 import { SanityImage } from "@/components/sanity-image";
 import { formatDate } from "@/lib/text-utils";
+import {
+  postImageTransitionName,
+  postTitleTransitionName,
+} from "@/lib/view-transitions";
 
 export function FeaturedBlogPostCard({
   postCardData,
@@ -24,14 +29,20 @@ export function FeaturedBlogPostCard({
       <Link href={linkRef} className="block">
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
           <div className="relative aspect-16/10 overflow-hidden lg:aspect-4/3">
-            <SanityImage
-              priority
-              width={800}
-              height={600}
-              maxWidth={800}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              image={mainImage}
-            />
+            <ViewTransition
+              name={postImageTransitionName(slug)}
+              share="morph"
+              default="none"
+            >
+              <SanityImage
+                priority
+                width={800}
+                height={600}
+                maxWidth={800}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                image={mainImage}
+              />
+            </ViewTransition>
             <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
             <div className="absolute left-6 top-6">
@@ -50,9 +61,15 @@ export function FeaturedBlogPostCard({
               </div>
             )}
 
-            <h2 className="mb-4 text-3xl font-bold leading-tight text-gray-900 transition-colors duration-200 group-hover:text-accent-600 dark:text-gray-100 dark:group-hover:text-accent-400 lg:text-4xl">
-              {title}
-            </h2>
+            <ViewTransition
+              name={postTitleTransitionName(slug)}
+              share="morph"
+              default="none"
+            >
+              <h2 className="mb-4 text-3xl font-bold leading-tight text-gray-900 transition-colors duration-200 group-hover:text-accent-600 dark:text-gray-100 dark:group-hover:text-accent-400 lg:text-4xl">
+                {title}
+              </h2>
+            </ViewTransition>
 
             <div className="mb-6 flex flex-col space-y-2 sm:flex-row sm:items-center sm:space-x-6 sm:space-y-0">
               <time

@@ -1,11 +1,16 @@
 "use client";
 
+import { ViewTransition } from "react";
 import type { ReactNode } from "react";
 import { formatAuthors, formatDate } from "@/lib/text-utils";
 import { CategoryUi } from "@/components/category-ui";
 import { ShareButtons } from "@/components/share-buttons";
 import { SanityImage } from "@/components/sanity-image";
 import type { BlogPostMetadata } from "@/lib/sanity-client";
+import {
+  postImageTransitionName,
+  postTitleTransitionName,
+} from "@/lib/view-transitions";
 
 export function BlogPost({
   postMetadata,
@@ -23,15 +28,22 @@ export function BlogPost({
     mainImage,
     publishedAt,
     estimatedReadingTime,
+    slug,
   } = postMetadata;
 
   return (
     <div className="relative">
       <div className="mx-auto max-w-4xl">
         <header className="mb-12 text-center">
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-primary sm:text-5xl lg:text-6xl">
-            {title}
-          </h1>
+          <ViewTransition
+            name={postTitleTransitionName(slug)}
+            share="morph"
+            default="none"
+          >
+            <h1 className="mb-6 text-4xl font-bold tracking-tight text-primary sm:text-5xl lg:text-6xl">
+              {title}
+            </h1>
+          </ViewTransition>
 
           <div className="mx-auto max-w-2xl">
             <div className="mb-6 flex flex-col items-center space-y-4 sm:flex-row sm:justify-center sm:space-x-8 sm:space-y-0">
@@ -90,14 +102,20 @@ export function BlogPost({
 
           {mainImage && (
             <div className="mb-12">
-              <div className="overflow-hidden rounded-2xl shadow-lg">
-                <SanityImage
-                  priority
-                  maxWidth={800}
-                  image={mainImage}
-                  className="w-full"
-                />
-              </div>
+              <ViewTransition
+                name={postImageTransitionName(slug)}
+                share="morph"
+                default="none"
+              >
+                <div className="overflow-hidden rounded-2xl shadow-lg">
+                  <SanityImage
+                    priority
+                    maxWidth={800}
+                    image={mainImage}
+                    className="w-full"
+                  />
+                </div>
+              </ViewTransition>
             </div>
           )}
 

@@ -138,3 +138,56 @@
     -webkit-line-clamp: 3;
   }
 }
+
+/* View transitions (React <ViewTransition>) */
+
+/* Clicks pass through to the live page while a transition runs. */
+::view-transition {
+  pointer-events: none;
+}
+
+/* Post card <-> post page: image and title morph between the two pages. */
+::view-transition-group(.morph) {
+  animation-duration: 400ms;
+}
+::view-transition-image-pair(.morph) {
+  animation-name: vt-via-blur;
+}
+/* Card images are cropped (object-cover); keep that crop while morphing
+   instead of squashing the image into the new aspect ratio. */
+::view-transition-old(.morph),
+::view-transition-new(.morph) {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Page content cross-fade on navigation. */
+::view-transition-old(.page-exit) {
+  animation: 150ms ease-out both vt-fade reverse;
+}
+::view-transition-new(.page-enter) {
+  animation: 210ms ease-in 150ms both vt-fade;
+}
+
+@keyframes vt-via-blur {
+  30% {
+    filter: blur(3px);
+  }
+}
+@keyframes vt-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
