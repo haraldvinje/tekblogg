@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { About } from "./about";
-import { AnimationWrapper } from "@/components/animation-wrapper";
+import { PageTransition } from "@/components/page-transition";
 
 export const metadata: Metadata = {
   title: "Om TekBlogg",
@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 
 export default async function AboutPage() {
   return (
-    <AnimationWrapper>
+    <PageTransition>
       <About />
-    </AnimationWrapper>
+    </PageTransition>
   );
 }

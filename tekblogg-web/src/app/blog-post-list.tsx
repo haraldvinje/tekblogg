@@ -1,12 +1,22 @@
 "use client";
 
-import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import {
+  Suspense,
+  ViewTransition,
+  addTransitionType,
+  startTransition,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { BlogPostCard } from "./blog-post-card";
 import { FeaturedBlogPostCard } from "./featured-blog-post-card";
 import { BlogPostCardData } from "@/lib/sanity-client";
 import { CategoryButton } from "@/components/category-button";
 import { CategoryUi } from "@/components/category-ui";
+import { FILTER_POSTS_TRANSITION } from "@/lib/view-transitions";
 
 function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
   return value !== null && value !== undefined;
@@ -108,7 +118,10 @@ export function BlogPostList({
               onClick={() => {
                 if (!mounted) return;
                 const scrollY = window.scrollY;
-                router.replace(pathname, { scroll: false });
+                startTransition(() => {
+                  addTransitionType(FILTER_POSTS_TRANSITION);
+                  router.replace(pathname, { scroll: false });
+                });
                 setTimeout(() => {
                   window.scrollTo(0, scrollY);
                 }, 0);
@@ -136,7 +149,12 @@ export function BlogPostList({
       </div>
 
       {!hasFilters && featuredPost && (
-        <FeaturedBlogPostCard postCardData={featuredPost} />
+        <ViewTransition
+          key={featuredPost.slug}
+          default={{ [FILTER_POSTS_TRANSITION]: "auto", default: "none" }}
+        >
+          <FeaturedBlogPostCard postCardData={featuredPost} />
+        </ViewTransition>
       )}
 
       {(hasFilters ? filteredPosts : regularPosts).length > 0 && (
@@ -167,8 +185,15 @@ export function BlogPostCards({
 }) {
   return (
     <>
-      {blogPostCards.map((postCardData, index) => (
-        <BlogPostCard key={index} postCardData={postCardData} />
+      {blogPostCards.map((postCardData) => (
+        // Keyed by slug so cards move to their new grid slot when filtering,
+        // instead of being re-used by position.
+        <ViewTransition
+          key={postCardData.slug}
+          default={{ [FILTER_POSTS_TRANSITION]: "auto", default: "none" }}
+        >
+          <BlogPostCard postCardData={postCardData} />
+        </ViewTransition>
       ))}
     </>
   );

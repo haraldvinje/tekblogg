@@ -1,8 +1,9 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { addTransitionType, startTransition, useCallback } from "react";
 import { CategoryUi } from "@/components/category-ui";
+import { FILTER_POSTS_TRANSITION } from "@/lib/view-transitions";
 
 export function CategoryButton({
   value,
@@ -26,7 +27,10 @@ export function CategoryButton({
       params.append(categoryQueryKey, slug);
     }
 
-    router.push(`?${params.toString()}`, { scroll: false });
+    startTransition(() => {
+      addTransitionType(FILTER_POSTS_TRANSITION);
+      router.push(`?${params.toString()}`, { scroll: false });
+    });
   }, [searchParams, isSelected, slug, router]);
 
   return (

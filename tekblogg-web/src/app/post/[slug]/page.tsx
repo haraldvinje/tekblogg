@@ -6,7 +6,7 @@ import {
   getAppropriateMetaDescriptionText,
   generateCanonicalUrl,
 } from "@/lib/text-utils";
-import { AnimationWrapper } from "@/components/animation-wrapper";
+import { PageTransition } from "@/components/page-transition";
 import { RichText } from "@/components/rich-text";
 
 export const revalidate = 60;
@@ -98,12 +98,12 @@ export default async function BlogPostPage(props: { params: Params }) {
   );
 
   return (
-    <AnimationWrapper className="min-h-screen py-8">
+    <PageTransition className="min-h-screen py-8">
       <BlogPost
         postMetadata={postMetadata}
         postIntroductionComponent={postIntroductionServerComponent}
         postBodyComponent={postBodyServerComponent}
       />
-    </AnimationWrapper>
+    </PageTransition>
   );
 }
