@@ -27,8 +27,11 @@ jobs:
         with:
           package_json_file: tekblogg-cms/package.json
 
-      - name: Install and lint
-        run: pnpm install && pnpm lint
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Verify
+        run: pnpm run verify
 
       - name: Deploy
         env:
