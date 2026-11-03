@@ -48,7 +48,7 @@
     "@eslint/js": "10.0.1",
     "@jest/globals": "30.5.2",
     "@next/eslint-plugin-next": "16.4.4",
-    "@tailwindcss/postcss": "4.3.3",
+    "@tailwindcss/postcss": "4.3.4",
     "@tailwindcss/typography": "0.5.20",
     "@testing-library/dom": "10.4.2",
     "@testing-library/jest-dom": "7.0.1",
@@ -69,7 +69,7 @@
     "lint-staged": "17.6.0",
     "postcss": "8.5.32",
     "prettier": "3.9.10",
-    "tailwindcss": "4.3.3",
+    "tailwindcss": "4.3.4",
     "ts-node": "10.9.2",
     "typescript": "6.0.3",
     "typescript-eslint": "8.72.1"
