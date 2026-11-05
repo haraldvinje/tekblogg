@@ -51,6 +51,15 @@ const eslintConfig = [
         }
       ]
     }
+  },
+  {
+    // lint-staged runs ESLint from the workspace root; without this, Next's
+    // rules look for a pages/ directory there instead of in this package.
+    settings: {
+      next: {
+        rootDir: import.meta.dirname
+      }
+    }
   }
 ]
 
