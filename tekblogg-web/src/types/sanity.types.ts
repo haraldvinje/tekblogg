@@ -12,287 +12,287 @@
  * ---------------------------------------------------------------------------------
  */
 
-export declare const internalGroqTypeReferenceTo: unique symbol;
+export declare const internalGroqTypeReferenceTo: unique symbol
 
 // Source: schema.json
 export type SanityImageAssetReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-};
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+}
 
 export type BlockContent = Array<
   | {
       children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-      listItem?: "bullet";
+        marks?: Array<string>
+        text?: string
+        _type: 'span'
+        _key: string
+      }>
+      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote'
+      listItem?: 'bullet'
       markDefs?: Array<{
-        href?: string;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
+        href?: string
+        _type: 'link'
+        _key: string
+      }>
+      level?: number
+      _type: 'block'
+      _key: string
     }
   | {
-      asset?: SanityImageAssetReference;
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      title?: string;
-      alt?: string;
-      _type: "image";
-      _key: string;
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      title?: string
+      alt?: string
+      _type: 'image'
+      _key: string
     }
   | ({
-      _key: string;
+      _key: string
     } & Code)
->;
+>
 
 export type Category = {
-  _id: string;
-  _type: "category";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title: string;
-  slug: Slug;
-  description?: string;
-};
+  _id: string
+  _type: 'category'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title: string
+  slug: Slug
+  description?: string
+}
 
 export type Slug = {
-  _type: "slug";
-  current: string;
-  source?: string;
-};
+  _type: 'slug'
+  current: string
+  source?: string
+}
 
 export type Author = {
-  _id: string;
-  _type: "author";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name: string;
-  slug?: Slug;
+  _id: string
+  _type: 'author'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  slug?: Slug
   image?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
   bio?: Array<{
     children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal";
-    listItem?: never;
+      marks?: Array<string>
+      text?: string
+      _type: 'span'
+      _key: string
+    }>
+    style?: 'normal'
+    listItem?: never
     markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-};
+      href?: string
+      _type: 'link'
+      _key: string
+    }>
+    level?: number
+    _type: 'block'
+    _key: string
+  }>
+}
 
 export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-};
+  _type: 'sanity.imageCrop'
+  top: number
+  bottom: number
+  left: number
+  right: number
+}
 
 export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
-};
+  _type: 'sanity.imageHotspot'
+  x: number
+  y: number
+  height: number
+  width: number
+}
 
 export type AuthorReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "author";
-};
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'author'
+}
 
 export type CategoryReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "category";
-};
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'category'
+}
 
 export type Post = {
-  _id: string;
-  _type: "post";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title: string;
-  slug: Slug;
+  _id: string
+  _type: 'post'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title: string
+  slug: Slug
   authors: Array<
     {
-      _key: string;
+      _key: string
     } & AuthorReference
-  >;
+  >
   mainImage: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    title?: string;
-    alt?: string;
-    _type: "image";
-  };
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    title?: string
+    alt?: string
+    _type: 'image'
+  }
   categories: Array<
     {
-      _key: string;
+      _key: string
     } & CategoryReference
-  >;
-  introduction: PostIntroduction;
-  publishedAt: string;
-  body: BlockContent;
-};
+  >
+  introduction: PostIntroduction
+  publishedAt: string
+  body: BlockContent
+}
 
 export type PostIntroduction = Array<{
   children?: Array<{
-    marks?: Array<string>;
-    text?: string;
-    _type: "span";
-    _key: string;
-  }>;
-  style?: "normal";
-  listItem?: "bullet";
+    marks?: Array<string>
+    text?: string
+    _type: 'span'
+    _key: string
+  }>
+  style?: 'normal'
+  listItem?: 'bullet'
   markDefs?: Array<{
-    href?: string;
-    _type: "link";
-    _key: string;
-  }>;
-  level?: number;
-  _type: "block";
-  _key: string;
-}>;
+    href?: string
+    _type: 'link'
+    _key: string
+  }>
+  level?: number
+  _type: 'block'
+  _key: string
+}>
 
 export type Code = {
-  _type: "code";
-  language?: string;
-  filename?: string;
-  code?: string;
-  highlightedLines?: Array<number>;
-};
+  _type: 'code'
+  language?: string
+  filename?: string
+  code?: string
+  highlightedLines?: Array<number>
+}
 
 export type SanityImagePaletteSwatch = {
-  _type: "sanity.imagePaletteSwatch";
-  background?: string;
-  foreground?: string;
-  population?: number;
-  title?: string;
-};
+  _type: 'sanity.imagePaletteSwatch'
+  background?: string
+  foreground?: string
+  population?: number
+  title?: string
+}
 
 export type SanityImagePalette = {
-  _type: "sanity.imagePalette";
-  darkMuted?: SanityImagePaletteSwatch;
-  lightVibrant?: SanityImagePaletteSwatch;
-  darkVibrant?: SanityImagePaletteSwatch;
-  vibrant?: SanityImagePaletteSwatch;
-  dominant?: SanityImagePaletteSwatch;
-  lightMuted?: SanityImagePaletteSwatch;
-  muted?: SanityImagePaletteSwatch;
-};
+  _type: 'sanity.imagePalette'
+  darkMuted?: SanityImagePaletteSwatch
+  lightVibrant?: SanityImagePaletteSwatch
+  darkVibrant?: SanityImagePaletteSwatch
+  vibrant?: SanityImagePaletteSwatch
+  dominant?: SanityImagePaletteSwatch
+  lightMuted?: SanityImagePaletteSwatch
+  muted?: SanityImagePaletteSwatch
+}
 
 export type SanityImageDimensions = {
-  _type: "sanity.imageDimensions";
-  height: number;
-  width: number;
-  aspectRatio: number;
-};
+  _type: 'sanity.imageDimensions'
+  height: number
+  width: number
+  aspectRatio: number
+}
 
 export type SanityImageMetadata = {
-  _type: "sanity.imageMetadata";
-  location?: Geopoint;
-  dimensions?: SanityImageDimensions;
-  palette?: SanityImagePalette;
-  lqip?: string;
-  blurHash?: string;
-  thumbHash?: string;
-  hasAlpha?: boolean;
-  isOpaque?: boolean;
-};
+  _type: 'sanity.imageMetadata'
+  location?: Geopoint
+  dimensions?: SanityImageDimensions
+  palette?: SanityImagePalette
+  lqip?: string
+  blurHash?: string
+  thumbHash?: string
+  hasAlpha?: boolean
+  isOpaque?: boolean
+}
 
 export type SanityFileAsset = {
-  _id: string;
-  _type: "sanity.fileAsset";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  originalFilename?: string;
-  label?: string;
-  title?: string;
-  description?: string;
-  altText?: string;
-  sha1hash: string;
-  extension: string;
-  mimeType: string;
-  size: number;
-  assetId: string;
-  uploadId?: string;
-  path: string;
-  url: string;
-  source?: SanityAssetSourceData;
-};
+  _id: string
+  _type: 'sanity.fileAsset'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  originalFilename?: string
+  label?: string
+  title?: string
+  description?: string
+  altText?: string
+  sha1hash: string
+  extension: string
+  mimeType: string
+  size: number
+  assetId: string
+  uploadId?: string
+  path: string
+  url: string
+  source?: SanityAssetSourceData
+}
 
 export type SanityAssetSourceData = {
-  _type: "sanity.assetSourceData";
-  name?: string;
-  id?: string;
-  url?: string;
-};
+  _type: 'sanity.assetSourceData'
+  name?: string
+  id?: string
+  url?: string
+}
 
 export type SanityImageAsset = {
-  _id: string;
-  _type: "sanity.imageAsset";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  originalFilename?: string;
-  label?: string;
-  title?: string;
-  description?: string;
-  altText?: string;
-  sha1hash: string;
-  extension: string;
-  mimeType: string;
-  size: number;
-  assetId: string;
-  uploadId?: string;
-  path: string;
-  url: string;
-  metadata?: SanityImageMetadata;
-  source?: SanityAssetSourceData;
-};
+  _id: string
+  _type: 'sanity.imageAsset'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  originalFilename?: string
+  label?: string
+  title?: string
+  description?: string
+  altText?: string
+  sha1hash: string
+  extension: string
+  mimeType: string
+  size: number
+  assetId: string
+  uploadId?: string
+  path: string
+  url: string
+  metadata?: SanityImageMetadata
+  source?: SanityAssetSourceData
+}
 
 export type Geopoint = {
-  _type: "geopoint";
-  lat?: number;
-  lng?: number;
-  alt?: number;
-};
+  _type: 'geopoint'
+  lat?: number
+  lng?: number
+  alt?: number
+}
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
@@ -314,105 +314,105 @@ export type AllSanitySchemaTypes =
   | SanityFileAsset
   | SanityAssetSourceData
   | SanityImageAsset
-  | Geopoint;
+  | Geopoint
 
 // Source: ../tekblogg-web/src/lib/sanity-client.ts
 // Variable: getAllPostsCardDataQuery
 // Query: *[_type == "post"] | order(publishedAt desc) {    title,    "categories": categories[]->{title, slug},    publishedAt,    "slug": slug.current,    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),    mainImage {      "url": asset->url,      "lqip": asset->metadata.lqip,        title,        alt    }  }
 export type GetAllPostsCardDataQueryResult = Array<{
-  title: string;
+  title: string
   categories: Array<{
-    title: string;
-    slug: Slug;
-  }>;
-  publishedAt: string;
-  slug: string;
-  estimatedReadingTime: number;
+    title: string
+    slug: Slug
+  }>
+  publishedAt: string
+  slug: string
+  estimatedReadingTime: number
   mainImage: {
-    url: string | null;
-    lqip: string | null;
-    title: string | null;
-    alt: string | null;
-  };
-}>;
+    url: string | null
+    lqip: string | null
+    title: string | null
+    alt: string | null
+  }
+}>
 
 // Source: ../tekblogg-web/src/lib/sanity-client.ts
 // Variable: getAllSlugsQuery
 // Query: *[_type == "post" && defined(slug.current)][].slug.current
-export type GetAllSlugsQueryResult = Array<string>;
+export type GetAllSlugsQueryResult = Array<string>
 
 // Source: ../tekblogg-web/src/lib/sanity-client.ts
 // Variable: getPostQuery
 // Query: *[_type == "post" && slug.current == $slug][0]{    title,    "authors": authors[]->name,    "categories": categories[]->{title, slug},    publishedAt,    "slug": slug.current,    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),    mainImage {      "url": asset->url,      "lqip": asset->metadata.lqip,        title,        alt    },    introduction,    body[]{      ...,      "url": asset->url,      "lqip": asset->metadata.lqip,    }  }
 export type GetPostQueryResult = {
-  title: string;
-  authors: Array<string>;
+  title: string
+  authors: Array<string>
   categories: Array<{
-    title: string;
-    slug: Slug;
-  }>;
-  publishedAt: string;
-  slug: string;
-  estimatedReadingTime: number;
+    title: string
+    slug: Slug
+  }>
+  publishedAt: string
+  slug: string
+  estimatedReadingTime: number
   mainImage: {
-    url: string | null;
-    lqip: string | null;
-    title: string | null;
-    alt: string | null;
-  };
-  introduction: PostIntroduction;
+    url: string | null
+    lqip: string | null
+    title: string | null
+    alt: string | null
+  }
+  introduction: PostIntroduction
   body: Array<
     | {
         children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: "span";
-          _key: string;
-        }>;
-        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-        listItem?: "bullet";
+          marks?: Array<string>
+          text?: string
+          _type: 'span'
+          _key: string
+        }>
+        style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal'
+        listItem?: 'bullet'
         markDefs?: Array<{
-          href?: string;
-          _type: "link";
-          _key: string;
-        }>;
-        level?: number;
-        _type: "block";
-        _key: string;
-        url: null;
-        lqip: null;
+          href?: string
+          _type: 'link'
+          _key: string
+        }>
+        level?: number
+        _type: 'block'
+        _key: string
+        url: null
+        lqip: null
       }
     | {
-        _key: string;
-        _type: "code";
-        language?: string;
-        filename?: string;
-        code?: string;
-        highlightedLines?: Array<number>;
-        url: null;
-        lqip: null;
+        _key: string
+        _type: 'code'
+        language?: string
+        filename?: string
+        code?: string
+        highlightedLines?: Array<number>
+        url: null
+        lqip: null
       }
     | {
-        asset?: SanityImageAssetReference;
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        title?: string;
-        alt?: string;
-        _type: "image";
-        _key: string;
-        url: string | null;
-        lqip: string | null;
+        asset?: SanityImageAssetReference
+        media?: unknown
+        hotspot?: SanityImageHotspot
+        crop?: SanityImageCrop
+        title?: string
+        alt?: string
+        _type: 'image'
+        _key: string
+        url: string | null
+        lqip: string | null
       }
-  >;
-} | null;
+  >
+} | null
 
 // Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
+import '@sanity/client'
+declare module '@sanity/client' {
   interface SanityQueries {
-    '\n  *[_type == "post"] | order(publishedAt desc) {\n    title,\n    "categories": categories[]->{title, slug},\n    publishedAt,\n    "slug": slug.current,\n    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),\n    mainImage {\n      "url": asset->url,\n      "lqip": asset->metadata.lqip,\n        title,\n        alt\n    }\n  }\n': GetAllPostsCardDataQueryResult;
-    '\n  *[_type == "post" && defined(slug.current)][].slug.current\n': GetAllSlugsQueryResult;
-    '\n  *[_type == "post" && slug.current == $slug][0]{\n    title,\n    "authors": authors[]->name,\n    "categories": categories[]->{title, slug},\n    publishedAt,\n    "slug": slug.current,\n    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),\n    mainImage {\n      "url": asset->url,\n      "lqip": asset->metadata.lqip,\n        title,\n        alt\n    },\n    introduction,\n    body[]{\n      ...,\n      "url": asset->url,\n      "lqip": asset->metadata.lqip,\n    }\n  }\n': GetPostQueryResult;
+    '\n  *[_type == "post"] | order(publishedAt desc) {\n    title,\n    "categories": categories[]->{title, slug},\n    publishedAt,\n    "slug": slug.current,\n    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),\n    mainImage {\n      "url": asset->url,\n      "lqip": asset->metadata.lqip,\n        title,\n        alt\n    }\n  }\n': GetAllPostsCardDataQueryResult
+    '\n  *[_type == "post" && defined(slug.current)][].slug.current\n': GetAllSlugsQueryResult
+    '\n  *[_type == "post" && slug.current == $slug][0]{\n    title,\n    "authors": authors[]->name,\n    "categories": categories[]->{title, slug},\n    publishedAt,\n    "slug": slug.current,\n    "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),\n    mainImage {\n      "url": asset->url,\n      "lqip": asset->metadata.lqip,\n        title,\n        alt\n    },\n    introduction,\n    body[]{\n      ...,\n      "url": asset->url,\n      "lqip": asset->metadata.lqip,\n    }\n  }\n': GetPostQueryResult
   }
 }

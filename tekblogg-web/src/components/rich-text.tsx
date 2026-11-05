@@ -1,33 +1,27 @@
-import type { ReactNode } from "react";
-import { PortableText, type PortableTextComponents } from "@portabletext/react";
-import type { BlockContent } from "@/types/sanity.types";
-import { SanityImage } from "@/components/sanity-image";
-import type { SanityImageType } from "@/lib/sanity-client";
-import { CodeBlock, CodeBlockProps } from "@/components/code-block";
+import type { ReactNode } from 'react'
+import { PortableText, type PortableTextComponents } from '@portabletext/react'
+import type { BlockContent } from '@/types/sanity.types'
+import { SanityImage } from '@/components/sanity-image'
+import type { SanityImageType } from '@/lib/sanity-client'
+import { CodeBlock, CodeBlockProps } from '@/components/code-block'
 
 type SanityLink = {
   value?: {
-    href: string;
-    _type: string;
-    _key: string;
-  };
-  children: ReactNode;
-};
+    href: string
+    _type: string
+    _key: string
+  }
+  children: ReactNode
+}
 
 const ptComponents: PortableTextComponents = {
   types: {
     image: ({ value }: { value: SanityImageType }) => {
-      return <SanityImage className="m-auto" image={value} />;
+      return <SanityImage className="m-auto" image={value} />
     },
     code: ({ value }: { value: CodeBlockProps }) => {
-      return (
-        <CodeBlock
-          code={value.code}
-          language={value.language}
-          filename={value.filename}
-        />
-      );
-    },
+      return <CodeBlock code={value.code} language={value.language} filename={value.filename} />
+    }
   },
   marks: {
     code: ({ text }: { text: string }) => (
@@ -37,24 +31,18 @@ const ptComponents: PortableTextComponents = {
     ),
     link: ({ value, children }: SanityLink) => {
       return (
-        <a href={value?.href ?? ""} target="_blank" rel="noreferrer">
+        <a href={value?.href ?? ''} target="_blank" rel="noreferrer">
           {children}
         </a>
-      );
-    },
-  },
-};
+      )
+    }
+  }
+}
 
-export function RichText({
-  value,
-  className,
-}: {
-  value: BlockContent;
-  className?: string;
-}) {
+export function RichText({ value, className }: { value: BlockContent; className?: string }) {
   return (
     <div className={className}>
       <PortableText value={value} components={ptComponents} />
     </div>
-  );
+  )
 }
