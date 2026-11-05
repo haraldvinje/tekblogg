@@ -180,7 +180,7 @@ overrides:
   dompurify@<3.4.17: ^3.4.17
   js-yaml@<3.14.2: ^4.0.0
   js-yaml: 4.3.2
-  nanoid@<3.3.18: ^3.3.18
+  nanoid@<3.3.18: ^6.0.0
   postcss@<=8.5.22: ^8.5.23
   smol-toml@<1.6.1: ^1.6.1
   tar@<=7.5.20: ^7.5.21
@@ -4365,11 +4365,6 @@ packages:
     resolution: {integrity: sha512-zoTNyBafxG0+F5PP3T3j1PKMr7gedriSdYRhLFLRFCz0OnQfQ6BkVk9peXVF30hz633Bw0Zh5McleOrXPjWYCQ==}
     engines: {node: '>=18'}
 
-  nanoid@3.3.18:
-    resolution: {integrity: sha512-DTg4MJbGMWkfi6VZFdNt2/caMbQy4Ou+Op/hJQvGEWcnVfoA1QA+xzRKAzw9jD6+GVOOeYr/mIcuDSdug6F6+w==}
-    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
-    hasBin: true
-
   nanoid@3.3.20:
     resolution: {integrity: sha512-uKdg2G3GNCKQn9byYOpxbGqrT2fGO5KRt5J/8b3pok8rT6qxGWF6hxMyJiEYtAf+FVyYuD9hRaDqX5uPFYJ4ZQ==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
@@ -7737,7 +7732,7 @@ snapshots:
     dependencies:
       '@sanity/eventsource': 5.0.4
       get-it: 8.8.3
-      nanoid: 3.3.18
+      nanoid: 6.0.2
       rxjs: 7.8.2
 
   '@sanity/client@8.14.1':
@@ -10286,8 +10281,6 @@ snapshots:
   mux-embed@5.19.0: {}
 
   nano-pubsub@3.0.0: {}
-
-  nanoid@3.3.18: {}
 
   nanoid@3.3.20: {}
 

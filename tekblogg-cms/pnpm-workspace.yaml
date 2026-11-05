@@ -120,7 +120,7 @@ overrides:
   dompurify@<3.4.17: ^3.4.17
   js-yaml@<3.14.2: ^4.0.0
   js-yaml: 4.3.2
-  nanoid@<3.3.18: ^3.3.18
+  nanoid@<3.3.18: ^6.0.0
   postcss@<=8.5.22: ^8.5.23
   smol-toml@<1.6.1: ^1.6.1
   tar@<=7.5.20: ^7.5.21
