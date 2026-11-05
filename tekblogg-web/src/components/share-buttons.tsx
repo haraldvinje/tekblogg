@@ -1,18 +1,15 @@
-"use client";
+'use client'
 
-import {
-  faLinkedin,
-  faSquareXTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useAbsoluteUrl } from "@/lib/hooks/use-absolute-url";
+import { faLinkedin, faSquareXTwitter } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useAbsoluteUrl } from '@/lib/hooks/use-absolute-url'
 
 export function ShareButtons({ className }: { className?: string }) {
-  const url = useAbsoluteUrl();
+  const url = useAbsoluteUrl()
 
   return (
     <div className={`flex items-center space-x-4 ${className}`}>
-      <span className="text-sm font-medium text-secondary">Del:</span>
+      <span className="text-secondary text-sm font-medium">Del:</span>
 
       <a
         href={`https://twitter.com/intent/tweet?text=${url}`}
@@ -36,5 +33,5 @@ export function ShareButtons({ className }: { className?: string }) {
         <FontAwesomeIcon className="h-4 w-4" icon={faLinkedin} />
       </a>
     </div>
-  );
+  )
 }

@@ -1,10 +1,10 @@
-import { Code } from "bright";
+import { Code } from 'bright'
 
 export type CodeBlockProps = {
-  code: string;
-  language: string;
-  filename: string;
-};
+  code: string
+  language: string
+  filename: string
+}
 
 export function CodeBlock({ code, language, filename }: CodeBlockProps) {
   return (
@@ -13,5 +13,5 @@ export function CodeBlock({ code, language, filename }: CodeBlockProps) {
         {code}
       </Code>
     </div>
-  );
+  )
 }

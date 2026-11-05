@@ -1,82 +1,82 @@
-import { defineType, defineField, defineArrayMember } from "sanity";
+import { defineType, defineField, defineArrayMember } from 'sanity'
 
 export default defineType({
-  title: "Block Content",
-  name: "blockContent",
-  type: "array",
+  title: 'Block Content',
+  name: 'blockContent',
+  type: 'array',
   of: [
     defineArrayMember({
-      title: "Block",
-      type: "block",
+      title: 'Block',
+      type: 'block',
       styles: [
-        { title: "Normal", value: "normal" },
-        { title: "H1", value: "h1" },
-        { title: "H2", value: "h2" },
-        { title: "H3", value: "h3" },
-        { title: "H4", value: "h4" },
-        { title: "Quote", value: "blockquote" },
+        { title: 'Normal', value: 'normal' },
+        { title: 'H1', value: 'h1' },
+        { title: 'H2', value: 'h2' },
+        { title: 'H3', value: 'h3' },
+        { title: 'H4', value: 'h4' },
+        { title: 'Quote', value: 'blockquote' }
       ],
-      lists: [{ title: "Bullet", value: "bullet" }],
+      lists: [{ title: 'Bullet', value: 'bullet' }],
       marks: {
         decorators: [
-          { title: "Strong", value: "strong" },
-          { title: "Emphasis", value: "em" },
-          { title: "Underline", value: "underline" },
-          { title: "Strike", value: "strike-through" },
-          { title: "Code", value: "code" },
+          { title: 'Strong', value: 'strong' },
+          { title: 'Emphasis', value: 'em' },
+          { title: 'Underline', value: 'underline' },
+          { title: 'Strike', value: 'strike-through' },
+          { title: 'Code', value: 'code' }
         ],
         annotations: [
           {
-            title: "URL",
-            name: "link",
-            type: "object",
+            title: 'URL',
+            name: 'link',
+            type: 'object',
             fields: [
               {
-                title: "URL",
-                name: "href",
-                type: "url",
-              },
-            ],
-          },
-        ],
-      },
+                title: 'URL',
+                name: 'href',
+                type: 'url'
+              }
+            ]
+          }
+        ]
+      }
     }),
     defineArrayMember({
-      type: "image",
+      type: 'image',
       options: { hotspot: true },
       fields: [
         {
-          name: "title",
-          type: "string",
-          title: "Title",
+          name: 'title',
+          type: 'string',
+          title: 'Title'
         },
         {
-          name: "alt",
-          type: "string",
-          title: "Alternative text",
-        },
-      ],
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text'
+        }
+      ]
     }),
     defineField({
-      type: "code",
-      name: "code",
-      title: "Code Block",
+      type: 'code',
+      name: 'code',
+      title: 'Code Block',
       options: {
-        language: "javascript",
+        language: 'javascript',
         languageAlternatives: [
-          { title: "Javascript", value: "javascript" },
-          { title: "JSON", value: "json" },
-          { title: "HTML", value: "html" },
-          { title: "CSS", value: "css" },
-          { title: "Typescript", value: "typescript" },
-          { title: "JSX", value: "jsx" },
-          { title: "TSX", value: "tsx" },
-          { title: "Python", value: "python" },
-          { title: "Shell", value: "sh" },
-          { title: "Terraform", value: "hcl", mode: "json" },
+          { title: 'Javascript', value: 'javascript' },
+          { title: 'JSON', value: 'json' },
+          { title: 'HTML', value: 'html' },
+          { title: 'CSS', value: 'css' },
+          { title: 'Typescript', value: 'typescript' },
+          { title: 'JSX', value: 'jsx' },
+          { title: 'TSX', value: 'tsx' },
+          { title: 'Python', value: 'python' },
+          { title: 'Shell', value: 'sh' },
+          { title: 'Terraform', value: 'hcl', mode: 'json' }
         ],
-        withFilename: true,
-      },
-    }),
-  ],
-});
+        withFilename: true
+      }
+    })
+  ]
+})

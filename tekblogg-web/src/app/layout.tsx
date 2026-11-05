@@ -1,101 +1,97 @@
-import "./globals.css";
-import type { ReactNode } from "react";
-import type { Metadata, Viewport } from "next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import localFont from "next/font/local";
-import { Analytics } from "@vercel/analytics/react";
-import { GoogleTagManager } from "@next/third-parties/google";
-import { ThemeProvider } from "next-themes";
-import { generateCanonicalUrl } from "@/lib/text-utils";
-import { Navbar } from "@/components/navbar";
+import './globals.css'
+import type { ReactNode } from 'react'
+import type { Metadata, Viewport } from 'next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import localFont from 'next/font/local'
+import { Analytics } from '@vercel/analytics/react'
+import { GoogleTagManager } from '@next/third-parties/google'
+import { ThemeProvider } from 'next-themes'
+import { generateCanonicalUrl } from '@/lib/text-utils'
+import { Navbar } from '@/components/navbar'
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-  preload: false,
-});
+  src: './fonts/GeistVF.woff',
+  variable: '--font-geist-sans',
+  weight: '100 900',
+  preload: false
+})
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-  preload: false,
-});
+  src: './fonts/GeistMonoVF.woff',
+  variable: '--font-geist-mono',
+  weight: '100 900',
+  preload: false
+})
 
-const title = "TekBlogg";
+const title = 'TekBlogg'
 const titleObject = {
   default: title,
-  template: "%s - TekBlogg",
-};
+  template: '%s - TekBlogg'
+}
 const description =
-  "Velkommen til TekBlogg 🤓 Sjekk ut det nyeste innen teknologi og programmering her!";
-const image = { url: "/harald_og.png", width: 800, height: 600 };
+  'Velkommen til TekBlogg 🤓 Sjekk ut det nyeste innen teknologi og programmering her!'
+const image = { url: '/harald_og.png', width: 800, height: 600 }
 
-const url = generateCanonicalUrl();
+const url = generateCanonicalUrl()
 
 const commonFields = {
   title,
   description,
   images: image,
-  url,
-};
+  url
+}
 
 export const metadata: Metadata = {
-  manifest: "/manifest.json",
+  manifest: '/manifest.json',
   metadataBase: url,
   alternates: {
-    canonical: "/",
+    canonical: '/'
   },
   ...commonFields,
   openGraph: {
-    type: "website",
+    type: 'website',
     siteName: title,
     description,
     images: [image],
     url,
     title,
-    ...titleObject,
+    ...titleObject
   },
   twitter: {
-    card: "summary",
+    card: 'summary',
     ...commonFields,
-    ...titleObject,
+    ...titleObject
   },
   appleWebApp: {
-    statusBarStyle: "default",
-    title,
+    statusBarStyle: 'default',
+    title
   },
   formatDetection: {
-    telephone: false,
+    telephone: false
   },
   other: {
-    "mobile-web-app-capable": ["yes"],
-  },
-};
+    'mobile-web-app-capable': ['yes']
+  }
+}
 
 export const viewport: Viewport = {
-  themeColor: "#FFFFFF",
-  colorScheme: "light",
-};
+  themeColor: '#FFFFFF',
+  colorScheme: 'light'
+}
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
-  children: ReactNode;
+  children: ReactNode
 }>) {
-  const gtmId = process.env.NEXT_PUBLIC_GTM_CONTAINER_ID || "";
-  const defaultTheme = "light";
+  const gtmId = process.env.NEXT_PUBLIC_GTM_CONTAINER_ID || ''
+  const defaultTheme = 'light'
 
   return (
     <html lang="nb" className={defaultTheme} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-surface antialiased transition-colors duration-300`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-surface min-h-screen antialiased transition-colors duration-300`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme={defaultTheme}
-          enableColorScheme={false}
-        >
+        <ThemeProvider attribute="class" defaultTheme={defaultTheme} enableColorScheme={false}>
           <div className="flex min-h-screen flex-col">
             <Navbar />
             <main className="flex-1 px-4 py-12 sm:px-6 lg:px-8">
@@ -108,5 +104,5 @@ export default function RootLayout({
         {gtmId && <GoogleTagManager gtmId={gtmId} />}
       </body>
     </html>
-  );
+  )
 }

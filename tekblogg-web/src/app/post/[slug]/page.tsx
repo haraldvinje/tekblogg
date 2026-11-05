@@ -1,101 +1,95 @@
-import { notFound } from "next/navigation";
-import { BlogPost } from "./blog-post";
-import { getAllSlugs, getBlogPost, imageUrlBuilder } from "@/lib/sanity-client";
+import { notFound } from 'next/navigation'
+import { BlogPost } from './blog-post'
+import { getAllSlugs, getBlogPost, imageUrlBuilder } from '@/lib/sanity-client'
 import {
   richToPlainText,
   getAppropriateMetaDescriptionText,
-  generateCanonicalUrl,
-} from "@/lib/text-utils";
-import { PageTransition } from "@/components/page-transition";
-import { RichText } from "@/components/rich-text";
+  generateCanonicalUrl
+} from '@/lib/text-utils'
+import { PageTransition } from '@/components/page-transition'
+import { RichText } from '@/components/rich-text'
 
-export const revalidate = 60;
+export const revalidate = 60
 
-type Params = Promise<{ slug: string }>;
+type Params = Promise<{ slug: string }>
 
 export async function generateMetadata(props: { params: Params }) {
-  const params = await props.params;
+  const params = await props.params
 
-  const post = await getBlogPost(params.slug);
+  const post = await getBlogPost(params.slug)
 
   if (!post) {
-    notFound();
+    notFound()
   }
 
   const {
     title,
     mainImage: { url: mainImageUrl },
-    introduction,
-  } = post;
-  const rawIntro = richToPlainText(introduction);
+    introduction
+  } = post
+  const rawIntro = richToPlainText(introduction)
 
-  const imageWidth = 1200;
-  const imageHeight = 630;
-  const imageUrl = imageUrlBuilder(mainImageUrl)
-    .width(imageWidth)
-    .height(imageHeight)
-    .url();
+  const imageWidth = 1200
+  const imageHeight = 630
+  const imageUrl = imageUrlBuilder(mainImageUrl).width(imageWidth).height(imageHeight).url()
 
   const image = {
     url: imageUrl,
     alt: title,
     width: imageWidth,
-    height: imageHeight,
-  };
+    height: imageHeight
+  }
 
-  const url = generateCanonicalUrl(`/post/${params.slug}`);
+  const url = generateCanonicalUrl(`/post/${params.slug}`)
 
   const commonFields = {
     title,
     description: getAppropriateMetaDescriptionText(rawIntro),
-    url,
-  };
+    url
+  }
 
   return {
     alternates: {
-      canonical: url.pathname,
+      canonical: url.pathname
     },
     twitter: {
-      card: "summary_large_image",
-      creator: "@haraldvin",
+      card: 'summary_large_image',
+      creator: '@haraldvin',
       images: [image],
-      ...commonFields,
+      ...commonFields
     },
     openGraph: {
-      type: "article",
+      type: 'article',
       images: [image],
-      ...commonFields,
+      ...commonFields
     },
-    ...commonFields,
-  };
+    ...commonFields
+  }
 }
 
 export async function generateStaticParams() {
-  const slugs = await getAllSlugs();
+  const slugs = await getAllSlugs()
 
   return slugs.map((slug) => ({
-    slug,
-  }));
+    slug
+  }))
 }
 
 export default async function BlogPostPage(props: { params: Params }) {
-  const params = await props.params;
-  const post = await getBlogPost(params.slug);
+  const params = await props.params
+  const post = await getBlogPost(params.slug)
 
   if (!post) {
-    notFound();
+    notFound()
   }
 
-  const { introduction: _, body: __, ...postMetadata } = post;
+  const { introduction: _, body: __, ...postMetadata } = post
   const postIntroductionServerComponent = (
     <RichText className="text-lg leading-relaxed" value={post.introduction} />
-  );
+  )
   const postBodyServerComponent = (
-    <RichText
-      className="overflow-hidden hyphens-auto sm:hyphens-none"
-      value={post.body}
-    />
-  );
+    <RichText className="overflow-hidden hyphens-auto sm:hyphens-none" value={post.body} />
+  )
 
   return (
     <PageTransition className="min-h-screen py-8">
@@ -105,5 +99,5 @@ export default async function BlogPostPage(props: { params: Params }) {
         postBodyComponent={postBodyServerComponent}
       />
     </PageTransition>
-  );
+  )
 }

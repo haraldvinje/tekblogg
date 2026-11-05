@@ -1,19 +1,19 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "minimumReleaseAge": "1 day",
+  "extends": ["config:recommended", "group:allNonMajor", "helpers:pinGitHubActionDigests"],
+  "minimumReleaseAge": "3 days",
+  "lockFileMaintenance": { "enabled": true, "automerge": true },
+  "platformAutomerge": true,
   "packageRules": [
     {
-      "description": "Majors, devDependencies included, wait for a human; CI passing doesn't prove a breaking change is safe",
+      "description": "Majors wait for a human; CI passing doesn't prove a breaking change is safe.",
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
     },
     {
-      "description": "Overrides are security floors for transitive deps; a major bump forces a version the parent package never asked for",
-      "matchDepTypes": ["pnpm-workspace.overrides", "pnpm.overrides"],
-      "matchUpdateTypes": ["major"],
+      "description": "Overrides are temporary same-major security pins, not dependencies: bumping their targets breaks the packages they patch.",
+      "matchDepTypes": ["pnpm-workspace.overrides", "pnpm.overrides", "overrides"],
       "enabled": false
     }
-  ],
-  "platformAutomerge": true
+  ]
 }

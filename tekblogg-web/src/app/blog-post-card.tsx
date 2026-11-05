@@ -1,38 +1,20 @@
-import { ViewTransition } from "react";
-import Link from "next/link";
-import type { BlogPostCardData } from "@/lib/sanity-client";
-import { CategoryUi } from "@/components/category-ui";
-import { SanityImage } from "@/components/sanity-image";
-import { formatDate } from "@/lib/text-utils";
-import {
-  postImageTransitionName,
-  postTitleTransitionName,
-} from "@/lib/view-transitions";
+import { ViewTransition } from 'react'
+import Link from 'next/link'
+import type { BlogPostCardData } from '@/lib/sanity-client'
+import { CategoryUi } from '@/components/category-ui'
+import { SanityImage } from '@/components/sanity-image'
+import { formatDate } from '@/lib/text-utils'
+import { postImageTransitionName, postTitleTransitionName } from '@/lib/view-transitions'
 
-export function BlogPostCard({
-  postCardData,
-}: {
-  postCardData: BlogPostCardData;
-}) {
-  const {
-    title,
-    categories,
-    mainImage,
-    publishedAt,
-    slug,
-    estimatedReadingTime,
-  } = postCardData;
-  const linkRef = `/post/${slug}`;
+export function BlogPostCard({ postCardData }: { postCardData: BlogPostCardData }) {
+  const { title, categories, mainImage, publishedAt, slug, estimatedReadingTime } = postCardData
+  const linkRef = `/post/${slug}`
 
   return (
-    <article className="group relative overflow-hidden rounded-xl bg-surface-elevated shadow-sm transition-all duration-300 hover:shadow-lg hover:ring-primary-300 dark:bg-surface-elevated-dark dark:ring-gray-700 dark:hover:ring-primary-600 dark:shadow-xl">
+    <article className="group bg-surface-elevated hover:ring-primary-300 dark:bg-surface-elevated-dark dark:hover:ring-primary-600 relative overflow-hidden rounded-xl shadow-sm transition-all duration-300 hover:shadow-lg dark:shadow-xl dark:ring-gray-700">
       <Link href={linkRef} className="block">
         <div className="relative aspect-16/10 overflow-hidden">
-          <ViewTransition
-            name={postImageTransitionName(slug)}
-            share="morph"
-            default="none"
-          >
+          <ViewTransition name={postImageTransitionName(slug)} share="morph" default="none">
             <SanityImage
               width={600}
               height={400}
@@ -53,12 +35,8 @@ export function BlogPostCard({
             </div>
           )}
 
-          <ViewTransition
-            name={postTitleTransitionName(slug)}
-            share="morph"
-            default="none"
-          >
-            <h2 className="mb-3 line-clamp-2 text-xl font-semibold leading-tight text-gray-900 transition-colors duration-200 group-hover:text-accent-600 dark:text-gray-100 dark:group-hover:text-accent-400">
+          <ViewTransition name={postTitleTransitionName(slug)} share="morph" default="none">
+            <h2 className="group-hover:text-accent-600 dark:group-hover:text-accent-400 mb-3 line-clamp-2 text-xl leading-tight font-semibold text-gray-900 transition-colors duration-200 dark:text-gray-100">
               {title}
             </h2>
           </ViewTransition>
@@ -68,12 +46,7 @@ export function BlogPostCard({
               {formatDate(publishedAt)}
             </time>
             <span className="flex items-center space-x-1">
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -87,5 +60,5 @@ export function BlogPostCard({
         </div>
       </Link>
     </article>
-  );
+  )
 }

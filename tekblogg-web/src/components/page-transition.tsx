@@ -1,5 +1,5 @@
-import { ViewTransition } from "react";
-import type { ReactNode } from "react";
+import { ViewTransition } from 'react'
+import type { ReactNode } from 'react'
 
 /**
  * Cross-fades page content on client-side navigation. Animations are defined
@@ -8,14 +8,14 @@ import type { ReactNode } from "react";
  */
 export function PageTransition({
   children,
-  className,
+  className
 }: {
-  children: ReactNode;
-  className?: string;
+  children: ReactNode
+  className?: string
 }) {
   return (
     <ViewTransition enter="page-enter" exit="page-exit" default="none">
       <div className={className}>{children}</div>
     </ViewTransition>
-  );
+  )
 }

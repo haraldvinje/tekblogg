@@ -1,37 +1,37 @@
-import { defineField, defineType } from "sanity";
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: "postIntroduction",
-  title: "Introduction",
-  type: "array",
+  name: 'postIntroduction',
+  title: 'Introduction',
+  type: 'array',
   of: [
     defineField({
-      name: "block",
-      title: "Block",
-      type: "block",
-      styles: [{ title: "Normal", value: "normal" }],
-      lists: [{ title: "Bullet", value: "bullet" }],
+      name: 'block',
+      title: 'Block',
+      type: 'block',
+      styles: [{ title: 'Normal', value: 'normal' }],
+      lists: [{ title: 'Bullet', value: 'bullet' }],
       marks: {
         decorators: [
-          { title: "Strong", value: "strong" },
-          { title: "Emphasis", value: "em" },
+          { title: 'Strong', value: 'strong' },
+          { title: 'Emphasis', value: 'em' }
         ],
         annotations: [
           {
-            title: "URL",
-            name: "link",
-            type: "object",
+            title: 'URL',
+            name: 'link',
+            type: 'object',
             fields: [
               {
-                title: "URL",
-                name: "href",
-                type: "url",
-              },
-            ],
-          },
-        ],
+                title: 'URL',
+                name: 'href',
+                type: 'url'
+              }
+            ]
+          }
+        ]
       },
-      validation: (Rule) => Rule.required(),
-    }),
-  ],
-});
+      validation: (Rule) => Rule.required()
+    })
+  ]
+})

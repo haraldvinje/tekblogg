@@ -1,71 +1,47 @@
-"use client";
+'use client'
 
-import { ViewTransition } from "react";
-import type { ReactNode } from "react";
-import { formatAuthors, formatDate } from "@/lib/text-utils";
-import { CategoryUi } from "@/components/category-ui";
-import { ShareButtons } from "@/components/share-buttons";
-import { SanityImage } from "@/components/sanity-image";
-import type { BlogPostMetadata } from "@/lib/sanity-client";
-import {
-  postImageTransitionName,
-  postTitleTransitionName,
-} from "@/lib/view-transitions";
+import { ViewTransition } from 'react'
+import type { ReactNode } from 'react'
+import { formatAuthors, formatDate } from '@/lib/text-utils'
+import { CategoryUi } from '@/components/category-ui'
+import { ShareButtons } from '@/components/share-buttons'
+import { SanityImage } from '@/components/sanity-image'
+import type { BlogPostMetadata } from '@/lib/sanity-client'
+import { postImageTransitionName, postTitleTransitionName } from '@/lib/view-transitions'
 
 export function BlogPost({
   postMetadata,
   postIntroductionComponent,
-  postBodyComponent,
+  postBodyComponent
 }: {
-  postMetadata: BlogPostMetadata;
-  postIntroductionComponent: ReactNode;
-  postBodyComponent: ReactNode;
+  postMetadata: BlogPostMetadata
+  postIntroductionComponent: ReactNode
+  postBodyComponent: ReactNode
 }) {
-  const {
-    title,
-    authors,
-    categories,
-    mainImage,
-    publishedAt,
-    estimatedReadingTime,
-    slug,
-  } = postMetadata;
+  const { title, authors, categories, mainImage, publishedAt, estimatedReadingTime, slug } =
+    postMetadata
 
   return (
     <div className="relative">
       <div className="mx-auto max-w-4xl">
         <header className="mb-12 text-center">
-          <ViewTransition
-            name={postTitleTransitionName(slug)}
-            share="morph"
-            default="none"
-          >
-            <h1 className="mb-6 text-4xl font-bold tracking-tight text-primary sm:text-5xl lg:text-6xl">
+          <ViewTransition name={postTitleTransitionName(slug)} share="morph" default="none">
+            <h1 className="text-primary mb-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
               {title}
             </h1>
           </ViewTransition>
 
           <div className="mx-auto max-w-2xl">
-            <div className="mb-6 flex flex-col items-center space-y-4 sm:flex-row sm:justify-center sm:space-x-8 sm:space-y-0">
+            <div className="mb-6 flex flex-col items-center space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-8">
               <div className="flex items-center space-x-4">
-                <span className="text-lg font-medium text-primary">
-                  {formatAuthors(authors)}
-                </span>
+                <span className="text-primary text-lg font-medium">{formatAuthors(authors)}</span>
                 <span className="h-1 w-1 rounded-full bg-gray-400"></span>
-                <time
-                  dateTime={publishedAt}
-                  className="text-lg font-medium text-secondary"
-                >
+                <time dateTime={publishedAt} className="text-secondary text-lg font-medium">
                   {formatDate(publishedAt)}
                 </time>
               </div>
-              <div className="flex items-center space-x-1 text-secondary">
-                <svg
-                  className="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+              <div className="text-secondary flex items-center space-x-1">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -73,9 +49,7 @@ export function BlogPost({
                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span className="text-lg">
-                  {estimatedReadingTime} min lesning
-                </span>
+                <span className="text-lg">{estimatedReadingTime} min lesning</span>
               </div>
             </div>
 
@@ -90,42 +64,33 @@ export function BlogPost({
             <ShareButtons className="justify-center" />
           </div>
 
-          <div className="mx-auto mt-8 h-px w-24 bg-gradient-to-r from-primary-300 to-accent-300 dark:from-primary-600 dark:to-accent-600" />
+          <div className="from-primary-300 to-accent-300 dark:from-primary-600 dark:to-accent-600 mx-auto mt-8 h-px w-24 bg-gradient-to-r" />
         </header>
 
         <article className="mx-auto max-w-3xl">
-          <div className="mb-8 rounded-2xl bg-surface-elevated p-8 ring-1 ring-gray-200 dark:ring-gray-700">
-            <div className="prose prose-lg max-w-none text-secondary dark:prose-invert">
+          <div className="bg-surface-elevated mb-8 rounded-2xl p-8 ring-1 ring-gray-200 dark:ring-gray-700">
+            <div className="prose prose-lg text-secondary dark:prose-invert max-w-none">
               {postIntroductionComponent}
             </div>
           </div>
 
           {mainImage && (
             <div className="mb-12">
-              <ViewTransition
-                name={postImageTransitionName(slug)}
-                share="morph"
-                default="none"
-              >
+              <ViewTransition name={postImageTransitionName(slug)} share="morph" default="none">
                 <div className="overflow-hidden rounded-2xl shadow-lg">
-                  <SanityImage
-                    priority
-                    maxWidth={800}
-                    image={mainImage}
-                    className="w-full"
-                  />
+                  <SanityImage priority maxWidth={800} image={mainImage} className="w-full" />
                 </div>
               </ViewTransition>
             </div>
           )}
 
-          <div className="prose prose-lg max-w-none text-primary dark:prose-invert">
+          <div className="prose prose-lg text-primary dark:prose-invert max-w-none">
             {postBodyComponent}
           </div>
 
           <div className="mt-16 border-t border-gray-200 pt-8 dark:border-gray-700">
             <div className="text-center">
-              <p className="mb-4 text-lg font-medium text-secondary">
+              <p className="text-secondary mb-4 text-lg font-medium">
                 Fant du artikkelen nyttig? Del den gjerne!
               </p>
               <ShareButtons className="justify-center" />
@@ -134,5 +99,5 @@ export function BlogPost({
         </article>
       </div>
     </div>
-  );
+  )
 }
