@@ -8,24 +8,19 @@ env:
   VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
 
 jobs:
-  verify:
-    name: Verify
+  deploy:
+    name: Deploy to Vercel
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
-    defaults:
-      run:
-        working-directory: ./tekblogg-web
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: actions/setup-node@v7
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .tool-versions
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          package_json_file: tekblogg-web/package.json
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -33,26 +28,11 @@ jobs:
       - name: Verify
         run: pnpm run verify
 
-  deploy-production:
-    name: Deploy to Vercel
-    needs: verify
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    steps:
-      - uses: actions/checkout@v7
-
-      - uses: actions/setup-node@v7
-        with:
-          node-version-file: .tool-versions
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          package_json_file: tekblogg-web/package.json
-
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
+      # The Vercel project's root directory is tekblogg-web; vercel build runs
+      # its install there, which pnpm resolves against this workspace's lockfile.
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 

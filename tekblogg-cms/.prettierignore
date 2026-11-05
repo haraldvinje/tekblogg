@@ -1,8 +1,0 @@
-dist
-.sanity
-coverage
-logs
-*.log
-
-pnpm-lock.yaml
-pnpm-workspace.yaml

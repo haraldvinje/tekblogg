@@ -1,69 +1,57 @@
-import globals from "globals";
-import jsPlugin from "@eslint/js";
-import nextPlugin from "@next/eslint-plugin-next";
-import importPlugin from "eslint-plugin-import";
-import noRelativeImportsPlugin from "eslint-plugin-no-relative-import-paths";
-import tseslint from "typescript-eslint";
-import reactPluginConfig from "eslint-plugin-react/configs/recommended.js";
-import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
+import js from '@eslint/js'
+import nextPlugin from '@next/eslint-plugin-next'
+import importX from 'eslint-plugin-import-x'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
+import hooksPlugin from 'eslint-plugin-react-hooks'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
-export default [
-  jsPlugin.configs.recommended,
+const eslintConfig = [
+  { ignores: ['.next/', 'out/', 'build/', 'coverage/', 'public/', 'next-env.d.ts'] },
+  js.configs.recommended,
   ...tseslint.configs.recommended,
-  ...fixupConfigRules(reactPluginConfig),
+  jsxA11y.flatConfigs.recommended,
   {
+    files: ['**/*.{js,jsx,mjs,cjs,ts,tsx,mts}'],
     plugins: {
-      "@next/next": nextPlugin,
+      '@next/next': nextPlugin,
+      'react-hooks': hooksPlugin,
+      'import-x': importX
+    },
+    languageOptions: {
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true
+        }
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node
+      }
     },
     rules: {
       ...nextPlugin.configs.recommended.rules,
-      ...nextPlugin.configs["core-web-vitals"].rules,
-    },
-  },
-  {
-    plugins: {
-      import: importPlugin,
-      "no-relative-import-paths": fixupPluginRules(noRelativeImportsPlugin),
-    },
-    languageOptions: {
-      globals: { ...globals.browser, ...globals.node },
-    },
-    settings: {
-      react: {
-        version: "detect",
-      },
-    },
-    rules: {
-      "@typescript-eslint/no-unused-vars": [
-        "warn",
+      ...nextPlugin.configs['core-web-vitals'].rules,
+      ...hooksPlugin.configs.recommended.rules,
+      'react-hooks/incompatible-library': 'off',
+      'preserve-caught-error': 'warn',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
         {
-          vars: "all",
-          varsIgnorePattern: "^_",
-          args: "after-used",
-          argsIgnorePattern: "^_",
-        },
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_'
+        }
       ],
-      "react/react-in-jsx-scope": "off",
-      "import/order": [
-        "warn",
+      'import-x/order': [
+        'warn',
         {
-          groups: [
-            "builtin",
-            "external",
-            "internal",
-            "parent",
-            "sibling",
-            "index",
-            "object",
-          ],
-        },
-      ],
-      "no-relative-import-paths/no-relative-import-paths": [
-        "warn",
-        {
-          allowSameFolder: true,
-        },
-      ],
-    },
-  },
-];
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object']
+        }
+      ]
+    }
+  }
+]
+
+export default eslintConfig

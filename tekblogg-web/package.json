@@ -2,22 +2,17 @@
   "name": "tekblogg-web",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@12.16.1",
   "engines": {
-    "node": "24.x"
+    "node": "26.x"
   },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src/** && tsc --noEmit --incremental",
-    "lint:fix": "eslint src/** --fix",
-    "prettier": "prettier --write src",
-    "format:check": "prettier --check src",
+    "lint": "eslint . --max-warnings 0 && tsc --noEmit --incremental",
+    "lint:fix": "eslint . --fix",
     "clean": "rm -rf node_modules .next",
-    "prepare": "cd .. && husky tekblogg-web/.husky",
-    "test": "jest",
-    "verify": "pnpm format:check && pnpm lint && pnpm test && pnpm build"
+    "test": "vitest run src"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "7.3.1",
@@ -44,37 +39,22 @@
     "styled-components": "6.6.0"
   },
   "devDependencies": {
-    "@eslint/compat": "2.1.1",
     "@eslint/js": "10.0.1",
-    "@jest/globals": "30.5.2",
     "@next/eslint-plugin-next": "16.4.5",
     "@tailwindcss/postcss": "4.3.4",
     "@tailwindcss/typography": "0.5.20",
-    "@testing-library/dom": "10.4.2",
-    "@testing-library/jest-dom": "7.0.1",
-    "@testing-library/react": "16.3.3",
-    "@types/jest": "30.0.0",
     "@types/node": "26.6.6",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "eslint": "10.14.0",
-    "eslint-config-next": "16.4.5",
-    "eslint-plugin-import": "2.32.0",
-    "eslint-plugin-no-relative-import-paths": "1.7.3",
-    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-import-x": "4.17.1",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-react-hooks": "7.1.1",
     "globals": "17.14.0",
-    "husky": "9.1.7",
-    "jest": "30.5.2",
-    "jest-environment-jsdom": "30.5.2",
-    "lint-staged": "17.6.0",
     "postcss": "8.5.32",
-    "prettier": "3.9.10",
     "tailwindcss": "4.3.4",
-    "ts-node": "10.9.2",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.72.1"
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": "pnpm run prettier"
+    "typescript-eslint": "8.72.1",
+    "vitest": "5.1.0"
   }
 }
