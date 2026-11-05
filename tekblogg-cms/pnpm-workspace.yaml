@@ -106,7 +106,7 @@ overrides:
   source-map-js@<1.2.2: ^1.2.2
   'vite@>=8.2.0 <8.2.4': ^8.2.4
   'zod@>=4.0.0 <4.6.6': ^4.6.6
-  '@babel/core@<=7.29.0': ^7.29.1
+  '@babel/core@<=7.29.0': ^8.0.0
   '@codemirror/state': 6.7.6
   '@codemirror/view': 6.43.15
   adm-zip@<0.6.1: ^0.6.1
