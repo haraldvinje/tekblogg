@@ -15,7 +15,7 @@ overrides:
   source-map-js@<1.2.2: ^1.2.2
   'vite@>=8.2.0 <8.2.4': ^8.2.4
   'zod@>=4.0.0 <4.6.6': ^4.6.6
-  postcss-selector-parser@<6.1.5: ^6.1.5
+  postcss-selector-parser@<6.1.5: ^7.0.0
   '@types/react': 19.3.0
   '@types/react-dom': 19.3.0
   adm-zip@<0.6.1: ^0.6.1
