@@ -207,8 +207,8 @@ importers:
   tekblogg-cms:
     dependencies:
       '@sanity/code-input':
-        specifier: 7.3.14
-        version: 7.3.14(877227763948f43c0c55e4b6a1283c7b)
+        specifier: 7.3.15
+        version: 7.3.15(877227763948f43c0c55e4b6a1283c7b)
       '@sanity/vision':
         specifier: 6.22.0
         version: 6.22.0(848ab756383cacf935199c75b45dc99a)
@@ -2493,8 +2493,8 @@ packages:
     resolution: {integrity: sha512-NQNo0yigdHF4edYwUEVqyDi4ZsTUmWT2YMGUn/sQOW6/T+KPAuVXbVZk6gO+Vzd7dTAhaWj8AV/gIddjpo5P6Q==}
     engines: {node: '>=22.12.0'}
 
-  '@sanity/code-input@7.3.14':
-    resolution: {integrity: sha512-7eHrWJ6tJeTve6kt2CZNAOy6pvsd7M033JlCDnkSUKu0li4jw8xZ7E5WamTZtttuIjvmYeeWiHARV7jLF3SkSQ==}
+  '@sanity/code-input@7.3.15':
+    resolution: {integrity: sha512-fuIVDULunxH+Zs1SVkUJ+BkDohFsmFLkcIh1P/7aACxuJDGujI5teYrru+eQojtOzfAx27BnkTIAW4XBYwTI0Q==}
     engines: {node: '>=20.19 <22 || >=22.12'}
     peerDependencies:
       react: ^19.2
@@ -9200,7 +9200,7 @@ snapshots:
     transitivePeerDependencies:
       - vitest
 
-  '@sanity/code-input@7.3.14(877227763948f43c0c55e4b6a1283c7b)':
+  '@sanity/code-input@7.3.15(877227763948f43c0c55e4b6a1283c7b)':
     dependencies:
       '@codemirror/lang-html': 6.4.12
       '@codemirror/lang-java': 6.0.2
