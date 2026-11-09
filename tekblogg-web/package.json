@@ -22,7 +22,7 @@
     "@next/third-parties": "16.4.5",
     "@portabletext/react": "8.0.1",
     "@sanity/asset-utils": "2.3.0",
-    "@sanity/client": "8.14.1",
+    "@sanity/client": "8.15.0",
     "@sanity/image-url": "2.1.1",
     "@vercel/analytics": "2.0.1",
     "@vercel/speed-insights": "2.1.0",
@@ -41,7 +41,7 @@
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@next/eslint-plugin-next": "16.4.5",
-    "@tailwindcss/postcss": "4.3.4",
+    "@tailwindcss/postcss": "4.3.5",
     "@tailwindcss/typography": "0.5.20",
     "@types/node": "26.6.6",
     "@types/react": "19.3.0",
@@ -52,7 +52,7 @@
     "eslint-plugin-react-hooks": "7.1.1",
     "globals": "17.14.0",
     "postcss": "8.5.32",
-    "tailwindcss": "4.3.4",
+    "tailwindcss": "4.3.5",
     "typescript": "6.0.3",
     "typescript-eslint": "8.72.1",
     "vitest": "5.1.0"
