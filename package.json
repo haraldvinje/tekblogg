@@ -19,7 +19,7 @@
     "globals": "17.14.0",
     "husky": "9.1.7",
     "lint-staged": "17.6.0",
-    "prettier": "3.10.0",
+    "prettier": "3.10.1",
     "prettier-plugin-tailwindcss": "0.8.1"
   },
   "packageManager": "pnpm@12.20.0",
